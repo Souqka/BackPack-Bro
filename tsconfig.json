@@ -16,5 +16,5 @@
     "allowImportingTsExtensions": true,
     "types": ["node"]
   },
-  "include": ["scripts/**/*.ts"]
+    "include": ["scripts/**/*.ts", "src/**/*.ts"]
 }

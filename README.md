@@ -43,7 +43,18 @@ assets/items/{id}/full.webp
 
 Канонические координаты после crop: `minRow === 0`, `minCol === 0`.
 
-`rotateGeometry(geometry, 0 | 90 | 180 | 270)` вращает `cells` и `stars` вместе и снова обрезает к началу координат. Это утилита для будущего optimizer, не placement engine.
+`rotateGeometry(geometry, 0 | 90 | 180 | 270)` вращает `cells` и `stars` вместе и снова обрезает к началу координат.
+
+## Placement Engine (этап 4)
+
+`src/lib/inventory/` размещает `PlacedItem` в рюкзаке произвольного размера, считает глобальную геометрию, коллизии Item-клеток и активацию Star.
+
+```bash
+npm run test:inventory
+```
+
+Star не занимает клетку и не создаёт collision. `analyzeInventory` не запускает optimizer.
+
 
 ## Модель эффектов
 
