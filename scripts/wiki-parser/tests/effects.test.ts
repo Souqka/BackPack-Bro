@@ -55,6 +55,22 @@ describe("Effect", () => {
     });
   });
 
+  it("нормализует Lose N Max Health и Star items gain", () => {
+    const lose = parseEffectPhrase("Lose 3 Max Health");
+    expect(lose.effects[0]?.effect).toMatchObject({
+      type: "lose",
+      status: "max_health",
+      value: 3,
+    });
+    const starGain = parseEffectPhrase("Star items gain 4 Static");
+    expect(starGain.effects[0]?.effect).toMatchObject({
+      type: "gain",
+      status: "static",
+      value: 4,
+      applyTo: ["star_occupants"],
+    });
+  });
+
   it("оставляет неизвестную фразу как raw", () => {
     const result = parseEffectPhrase("Moonlight reverses the backpack");
     expect(result.unparsed).toBe(true);
@@ -105,6 +121,10 @@ describe("Trigger", () => {
     expect(result.conditions).toEqual([
       { type: "star_occupant_type", itemTypes: ["melee_weapon"] },
     ]);
+  });
+
+  it("разбирает When opponent heals", () => {
+    expect(parseTrigger("When opponent heals").trigger).toEqual({ type: "when_opponent_heals" });
   });
 
   it("оставляет неизвестный триггер как raw", () => {

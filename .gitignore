@@ -3,3 +3,9 @@ dist/
 .DS_Store
 *.log
 .cache/
+
+# Полный dump raw HTML слишком большой для git; три образца остаются в репозитории.
+data/raw/items/*
+!data/raw/items/adamantite_bar.json
+!data/raw/items/adamantite_ore.json
+!data/raw/items/starbloom.json

@@ -1,0 +1,17 @@
+{
+  "part": [
+    "adamantite_bar"
+  ],
+  "accessory": [
+    "adamantite_bar"
+  ],
+  "mineral": [
+    "adamantite_ore"
+  ],
+  "ranged_weapon": [
+    "adamantite_ore"
+  ],
+  "plant": [
+    "starbloom"
+  ]
+}

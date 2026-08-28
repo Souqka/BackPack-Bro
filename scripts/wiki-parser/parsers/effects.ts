@@ -402,6 +402,41 @@ function parseSingleEffect(text: string, scale: EffectScale | undefined, raw: st
     };
   }
 
+  const starItemsGain = t.match(/^star items gain\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+  if (starItemsGain) {
+    return {
+      type: "gain",
+      status: statusOrRaw(starItemsGain[2] ?? ""),
+      value: Number(starItemsGain[1]),
+      applyTo: ["star_occupants"],
+      raw,
+    };
+  }
+
+  const increase = t.match(
+    /^increase\s+(.+?)\s+by\s+(\d+(?:\.\d+)?)(%?)(?:\s+for\s+(\d+(?:\.\d+)?)\s+seconds)?$/i,
+  );
+  if (increase) {
+    const stat = matchStat(increase[1] ?? "");
+    if (stat) {
+      return {
+        type: "modify_stat",
+        stat: stat.slug,
+        operation: "add",
+        value: Number(increase[2]),
+        unit: increase[3] === "%" ? "percent" : "flat",
+        durationSeconds: increase[4] ? Number(increase[4]) : undefined,
+        scale,
+        raw,
+      };
+    }
+  }
+
+  const lose = t.match(/^lose\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+  if (lose) {
+    return { type: "lose", status: statusOrRaw(lose[2] ?? ""), value: Number(lose[1]), raw };
+  }
+
   const requireLess = t.match(/^(?:this\s+)?requires?\s+(\d+)\s+less\s+(.+?)\s+to activate$/i);
   if (requireLess) {
     return {
@@ -420,7 +455,7 @@ function parseSingleEffect(text: string, scale: EffectScale | undefined, raw: st
 
   const trapSoul = t.match(/^trap\s+(\d+(?:\.\d+)?)\s+soul$/i);
   if (trapSoul) {
-    return { type: "special", id: "trap_soul", raw };
+    return { type: "special", id: "trap_soul", value: Number(trapSoul[1]), raw };
   }
 
   const bloom = t.match(/^star\s+bloomers?\s+bloom for\s+(\d+(?:\.\d+)?)\s+seconds$/i);

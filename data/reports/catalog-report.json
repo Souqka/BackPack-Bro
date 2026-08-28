@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-08-28T19:09:31.414Z",
+  "parserVersion": "0.3.0",
+  "schemaVersion": "1.0.0",
+  "source": "https://backpackbrawl.wiki.gg",
+  "run": {
+    "listed": 3,
+    "parsed": 3,
+    "successful": 3,
+    "skipped": 0,
+    "skippedPages": [],
+    "failedPages": []
+  },
+  "validation": {
+    "valid": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "errorsByCode": {},
+    "warningsByCode": {
+      "unresolved_recipe_ingredient": 1
+    }
+  },
+  "items": {
+    "total": 3,
+    "rarity": {
+      "epic": 2,
+      "common": 1
+    },
+    "types": {
+      "part": 1,
+      "accessory": 1,
+      "mineral": 1,
+      "ranged_weapon": 1,
+      "plant": 1
+    },
+    "heroes": {
+      "Shared": 1,
+      "Dorf": 1,
+      "Chana": 1
+    }
+  },
+  "geometry": {
+    "itemsWithCells": 3,
+    "emptyCells": 0,
+    "notCroppedToOrigin": 0,
+    "cellCountHistogram": {
+      "1": 1,
+      "2": 2
+    }
+  },
+  "stars": {
+    "itemsWithStars": 2,
+    "totalStars": 4,
+    "maxStarsOnOneItem": 2,
+    "offsetCounts": {
+      "[0, -1]": 2,
+      "[0, 1]": 2
+    },
+    "distanceCounts": {
+      "adjacent": 4
+    }
+  },
+  "effects": {
+    "gain": 35,
+    "modify_stat": 11
+  },
+  "triggers": {
+    "on_self_activation": 28,
+    "on_star_activation": 2,
+    "on_hit": 15,
+    "start_of_phase": 1
+  },
+  "conditions": {},
+  "constraints": {
+    "max_uses_per_battle": 1
+  },
+  "levelUpChangeTypes": {
+    "gain": 31,
+    "modify_stat": 11
+  },
+  "recipes": {
+    "itemsWithRecipes": 1,
+    "totalRecipes": 2,
+    "totalIngredients": 2,
+    "unresolvedIngredientIds": [
+      "steel_bar"
+    ]
+  },
+  "images": {
+    "withIcon": 3,
+    "withFull": 3,
+    "missingBoth": 0
+  },
+  "raw": {
+    "effects": 0,
+    "triggers": 0,
+    "conditions": 0,
+    "constraints": 0,
+    "patterns": []
+  }
+}

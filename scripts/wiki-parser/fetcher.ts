@@ -15,7 +15,7 @@ export interface FileInfo {
   height?: number;
 }
 
-const DEFAULT_DELAY_MS = 80;
+const DEFAULT_DELAY_MS = 150;
 
 /**
  * MediaWiki client for backpackbrawl.wiki.gg.
@@ -184,15 +184,20 @@ export class WikiFetcher {
     const search = new URLSearchParams({ ...params, format: "json" });
     const url = `${WIKI_API}?${search.toString()}`;
     let lastError: Error | null = null;
-    for (let attempt = 0; attempt < 6; attempt++) {
+    for (let attempt = 0; attempt < 10; attempt++) {
       await this.wait();
       if (attempt > 0) {
-        await new Promise((r) => setTimeout(r, 1500 * 2 ** (attempt - 1)));
+        await new Promise((r) => setTimeout(r, 2000 * 2 ** Math.min(attempt - 1, 5)));
       }
       const response = await fetch(url, {
         headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
       });
       if (response.status === 429) {
+        const retryAfter = response.headers.get("Retry-After");
+        const extra = retryAfter && /^\d+$/.test(retryAfter) ? Number(retryAfter) * 1000 : 0;
+        if (extra > 0) {
+          await new Promise((r) => setTimeout(r, Math.min(extra, 60_000)));
+        }
         lastError = new Error(`Wiki API 429 for ${params.action}`);
         continue;
       }

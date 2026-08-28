@@ -1,6 +1,6 @@
 {
-  "parserVersion": "0.2.0",
-  "generatedAt": "2026-08-28T18:49:34.109Z",
+  "parserVersion": "0.3.0",
+  "generatedAt": "2026-08-28T19:09:31.414Z",
   "wikiOrigin": "https://backpackbrawl.wiki.gg",
   "items": [
     {
@@ -351,8 +351,8 @@
         "imageUrls": [
           "https://backpackbrawl.wiki.gg/images/Adamantite_Bar.png"
         ],
-        "parsedAt": "2026-08-28T18:49:33.300Z",
-        "parserVersion": "0.2.0"
+        "parsedAt": "2026-08-28T19:09:30.329Z",
+        "parserVersion": "0.3.0"
       }
     },
     {
@@ -695,8 +695,8 @@
         "imageUrls": [
           "https://backpackbrawl.wiki.gg/images/Adamantite_Ore.png"
         ],
-        "parsedAt": "2026-08-28T18:49:33.721Z",
-        "parserVersion": "0.2.0"
+        "parsedAt": "2026-08-28T19:09:30.873Z",
+        "parserVersion": "0.3.0"
       }
     },
     {
@@ -1050,17 +1050,9 @@
         "imageUrls": [
           "https://backpackbrawl.wiki.gg/images/Starbloom.png"
         ],
-        "parsedAt": "2026-08-28T18:49:34.109Z",
-        "parserVersion": "0.2.0"
+        "parsedAt": "2026-08-28T19:09:31.412Z",
+        "parserVersion": "0.3.0"
       }
     }
-  ],
-  "usedIn": {
-    "steel_bar": [
-      "adamantite_bar"
-    ],
-    "adamantite_ore": [
-      "adamantite_bar"
-    ]
-  }
+  ]
 }

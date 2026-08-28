@@ -3,12 +3,13 @@
  * Не выдуманы: неизвестное значение остаётся строкой и не ломает parser.
  */
 
-export const PARSER_VERSION = "0.2.0";
+export const PARSER_VERSION = "0.3.0";
+export const SCHEMA_VERSION = "1.0.0";
 
 export const WIKI_ORIGIN = "https://backpackbrawl.wiki.gg";
 export const WIKI_API = `${WIKI_ORIGIN}/api.php`;
 export const USER_AGENT =
-  "BackpackBrawlOptimizer/0.2.0 (https://github.com/Souqka/BackPack-Bro; wiki item parser)";
+  "BackpackBrawlOptimizer/0.3.0 (https://github.com/Souqka/BackPack-Bro; wiki item parser)";
 
 export const KNOWN_RARITIES = [
   "common",

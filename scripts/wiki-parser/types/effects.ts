@@ -77,6 +77,7 @@ export interface ModifyStatEffect {
   operation: StatOperation;
   value: number;
   unit: EffectUnit;
+  durationSeconds?: number;
   scale?: EffectScale;
   applyTo?: Array<"self" | "star_occupants">;
   occupantTypes?: string[];
@@ -139,9 +140,17 @@ export interface ExtraAttackEffect {
   raw?: string;
 }
 
+export interface LoseEffect {
+  type: "lose";
+  status: Status;
+  value: number;
+  raw?: string;
+}
+
 export interface SpecialEffect {
   type: "special";
   id: string;
+  value?: number;
   raw: string;
 }
 
@@ -164,6 +173,7 @@ export type Effect =
   | BlockDamageEffect
   | StunEffect
   | ExtraAttackEffect
+  | LoseEffect
   | SpecialEffect
   | RawEffect;
 
@@ -203,6 +213,7 @@ export type Trigger =
   | { type: "on_stun" }
   | { type: "out_of_stamina" }
   | { type: "when_consumed" }
+  | { type: "when_opponent_heals" }
   | { type: "discharge"; staticAmount: number }
   | { type: "per_status"; status: Status; subject: Subject }
   | { type: "on_star_activation" }
