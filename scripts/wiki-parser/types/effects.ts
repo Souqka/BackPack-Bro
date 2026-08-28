@@ -214,7 +214,7 @@ export type Trigger =
   | { type: "out_of_stamina" }
   | { type: "when_consumed" }
   | { type: "when_opponent_heals" }
-  | { type: "discharge"; staticAmount: number }
+  | { type: "discharge"; staticAmount?: number }
   | { type: "per_status"; status: Status; subject: Subject }
   | { type: "on_star_activation" }
   | { type: "on_star_occupant"; event: StarOccupantEvent; itemTypes?: string[] }

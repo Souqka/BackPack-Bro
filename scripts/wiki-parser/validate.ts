@@ -350,7 +350,7 @@ function validateLevels(
 ): void {
   const seen = new Set<number>();
   for (const change of item.abilities.levelUp) {
-    if (!Number.isInteger(change.level) || change.level < 2) {
+    if (!Number.isInteger(change.level) || change.level < 1) {
       push(
         issues,
         logger,

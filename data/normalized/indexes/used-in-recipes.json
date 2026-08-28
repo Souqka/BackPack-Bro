@@ -1,8 +1,1747 @@
 {
+  "oilskin_slicker": [
+    "abyssal_embrace"
+  ],
+  "writhing_tentacle": [
+    "abyssal_embrace",
+    "everdrift_anchor",
+    "squirming_bicorne",
+    "the_voidcaller"
+  ],
+  "steel_pickaxe": [
+    "adamantite_axepick"
+  ],
+  "adamantite_ore": [
+    "adamantite_axepick",
+    "adamantite_bar",
+    "adamantite_forge_hammer"
+  ],
+  "emerald": [
+    "adamantite_axepick",
+    "gemfused_workboots",
+    "heart_of_the_mountain"
+  ],
   "steel_bar": [
     "adamantite_bar"
   ],
-  "adamantite_ore": [
-    "adamantite_bar"
+  "steel_forge_hammer": [
+    "adamantite_forge_hammer"
+  ],
+  "sapphire": [
+    "adamantite_forge_hammer",
+    "gem_studded_forgeplate",
+    "heart_of_the_mountain"
+  ],
+  "cast_iron_anchor": [
+    "admiralty_anchor"
+  ],
+  "sturdy_fly_gaff": [
+    "admiralty_anchor"
+  ],
+  "stolen_moment": [
+    "aeonglass"
+  ],
+  "diamond_dust": [
+    "aeonglass",
+    "melange",
+    "shifting_visage"
+  ],
+  "fermented_grape_juice": [
+    "aged_grape_juice"
+  ],
+  "bat": [
+    "all_seeing_bat",
+    "electrobat",
+    "haunted_bat",
+    "vampire_bat"
+  ],
+  "eyeball_vessel": [
+    "all_seeing_bat"
+  ],
+  "fine_sword": [
+    "amethyst_blade",
+    "flaming_sword",
+    "unholy_sword"
+  ],
+  "amethyst_pendant": [
+    "amethyst_blade",
+    "vampires_scepter"
+  ],
+  "cocoonling": [
+    "amethyst_dancer",
+    "ruby_admiral",
+    "sapphire_morpho"
+  ],
+  "forest_spirit": [
+    "ancestral_spirit"
+  ],
+  "lost_symbol": [
+    "ancestral_spirit",
+    "rune_of_rlyeh"
+  ],
+  "water_potion": [
+    "antivenom",
+    "berserker_potion",
+    "endurance_potion",
+    "eyeball_vessel",
+    "health_potion",
+    "large_water_potion",
+    "loaf_of_bread",
+    "mana_potion",
+    "oakheart_sapling",
+    "oakheart_sprout",
+    "placebo_potion",
+    "poison_potion",
+    "prickly_potion",
+    "scroll_of_water",
+    "wilderness_potion",
+    "young_oakheart"
+  ],
+  "poison_apple": [
+    "antivenom",
+    "cursed_clover"
+  ],
+  "runed_scimitar": [
+    "apophian_saif",
+    "god_king_khopesh"
+  ],
+  "serpents_tongue": [
+    "apophian_saif"
+  ],
+  "reinforced_shield": [
+    "arboreal_defender",
+    "elementium_bulwark",
+    "frost_barrier",
+    "gothic_shield"
+  ],
+  "heartwood": [
+    "arboreal_defender",
+    "oakblood_glaive"
+  ],
+  "titanwood_repeater": [
+    "arcane_bolt_blaster"
+  ],
+  "refined_jade": [
+    "arcane_bolt_blaster",
+    "jade_dagger",
+    "zephyrs_edge"
+  ],
+  "oil": [
+    "arcane_bolt_blaster",
+    "flame_bolt"
+  ],
+  "spell_scroll": [
+    "arcane_scroll",
+    "frost_scroll",
+    "phoenix_scroll"
+  ],
+  "magic_essence": [
+    "arcane_scroll",
+    "infinity_essence",
+    "magic_belt",
+    "sorcerat",
+    "staff_of_wisdom",
+    "tainted_soulstone"
+  ],
+  "rat_romancer": [
+    "aristorat",
+    "count_ratula"
+  ],
+  "bronze_bar": [
+    "aristorat",
+    "bronzebark_carnyx",
+    "discordant_harp",
+    "gold_bar",
+    "stormbound_tranquility"
+  ],
+  "simple_quiver": [
+    "arrow_sheath"
+  ],
+  "snake_oil": [
+    "arrow_sheath",
+    "shadow_armor",
+    "viperskin_strap"
+  ],
+  "zephyrs_edge": [
+    "astral_reaver"
+  ],
+  "tainted_soulstone": [
+    "astral_reaver",
+    "deathhowl"
+  ],
+  "whetstone": [
+    "autotrigger",
+    "eagle_eye_amulet",
+    "elemental_whetstone",
+    "fine_sword",
+    "flaming_sword",
+    "kiritsuke_knife",
+    "moonlit_blade"
+  ],
+  "iron_bolt": [
+    "autotrigger",
+    "razor_bolt"
+  ],
+  "trick_or_treat_bucket": [
+    "bag_of_lost_souls",
+    "bucket_of_nightmares"
+  ],
+  "eyeball": [
+    "bag_of_lost_souls",
+    "eyeball_vessel",
+    "graveyard_soil"
+  ],
+  "superior_spring": [
+    "barbed_spring",
+    "deathdart_dispenser",
+    "mana_recycler"
+  ],
+  "tusk": [
+    "barbed_spring",
+    "predator_teeth",
+    "spiked_shield"
+  ],
+  "rootflare_flute": [
+    "barkskin_horn"
+  ],
+  "sapwood": [
+    "barkskin_horn",
+    "sapwood_javelin"
+  ],
+  "brown_rat": [
+    "bat",
+    "bumble_rat",
+    "fuzzy_sous_chef",
+    "mossfur_squirrel",
+    "muck_rat",
+    "mystery_stew",
+    "robo_rat_2_0",
+    "zap_rat"
+  ],
+  "boo_bar": [
+    "bat"
+  ],
+  "shamans_talisman": [
+    "bear_visage"
+  ],
+  "berserker_helmet": [
+    "bear_visage"
+  ],
+  "wild_rose": [
+    "beautiful_bouquet",
+    "bloodthorn",
+    "bouquet_of_roses",
+    "giant_chocolate_gift_box",
+    "rat_romancer"
+  ],
+  "nightshade": [
+    "beautiful_bouquet",
+    "poison_potion",
+    "red_widow",
+    "toxic_bolt"
+  ],
+  "longing_begonia": [
+    "beautiful_bouquet",
+    "pinewhisper_thrush",
+    "strong_health_potion"
+  ],
+  "night_dahlia": [
+    "beautiful_bouquet",
+    "ingobnito_mask",
+    "mana_potion",
+    "wizard_robe"
+  ],
+  "leather_belt": [
+    "belt_of_firethrowing",
+    "charged_girdle",
+    "elixir_express_3000",
+    "giants_belt",
+    "ki_flow_cord",
+    "magic_belt",
+    "vanguard_belt",
+    "viperskin_strap"
+  ],
+  "starbloom": [
+    "belt_of_firethrowing",
+    "mana_crystal",
+    "starlight_potion",
+    "wicked_stick"
+  ],
+  "fury_fungus": [
+    "berserker_potion",
+    "giants_belt"
+  ],
+  "bag_of_flour": [
+    "blind_bake_pie",
+    "loaf_of_bread"
+  ],
+  "butter": [
+    "blind_bake_pie",
+    "croissant",
+    "croquette",
+    "golden_omelette",
+    "perpetual_stew"
+  ],
+  "health_potion": [
+    "blood_siphon_potion",
+    "strong_antivenom",
+    "strong_health_potion"
+  ],
+  "bloodthorn": [
+    "blood_siphon_potion",
+    "bloodwood_spear",
+    "spice",
+    "thorned_crown"
+  ],
+  "ginseng_root": [
+    "bloodthorn",
+    "carrot",
+    "graveyard_soil",
+    "health_potion"
+  ],
+  "sapwood_javelin": [
+    "bloodwood_spear"
+  ],
+  "succulent_cheese": [
+    "blue_chilly_cheese",
+    "funky_fundue"
+  ],
+  "frost_emblem": [
+    "blue_chilly_cheese",
+    "frost_barrier",
+    "frost_bolts",
+    "frost_dagger",
+    "frost_quiver",
+    "frost_scroll",
+    "hailstorm_scepter"
+  ],
+  "skull_cap": [
+    "bolstered_helmet",
+    "mining_helmet",
+    "stunbreaker_shield"
+  ],
+  "armor_kit": [
+    "bolstered_helmet",
+    "spinegrowth_breastplate",
+    "vanguard_belt"
+  ],
+  "hand_file": [
+    "bolt_cutter",
+    "discordant_harp"
+  ],
+  "sledgehammer": [
+    "bonecrusher",
+    "skullsmasher"
+  ],
+  "warhammer": [
+    "bonecrusher"
+  ],
+  "dusty_book": [
+    "book_of_ephemeral_earth",
+    "book_of_everlasting_flame",
+    "chain_lightning_codex",
+    "enlightened_bell",
+    "holy_libram"
+  ],
+  "weightless_stone": [
+    "book_of_ephemeral_earth",
+    "elemental_confluence",
+    "elemental_greatstaff"
+  ],
+  "burning_water": [
+    "book_of_everlasting_flame",
+    "elemental_confluence",
+    "infernal_tide"
+  ],
+  "danger_candle": [
+    "boom_barrel"
+  ],
+  "clockwork": [
+    "boomer",
+    "deathdart_dispenser",
+    "elixir_express_3000",
+    "mana_recycler",
+    "robo_rat_2_0"
+  ],
+  "superior_bolts": [
+    "boomer",
+    "frost_bolts",
+    "runesmith_goniometer"
+  ],
+  "broom": [
+    "boomslang",
+    "flying_broomstick",
+    "power_vacuum",
+    "scarecrow",
+    "shovel"
+  ],
+  "death_essence": [
+    "boomslang",
+    "infinity_essence",
+    "unholy_skull"
+  ],
+  "lobster_pot": [
+    "bottom_trawl"
+  ],
+  "faulty_compass": [
+    "bottom_trawl",
+    "captains_cap"
+  ],
+  "rock": [
+    "boulder",
+    "coconut",
+    "danger_candle",
+    "mana_crystal",
+    "scroll_of_earth"
+  ],
+  "mallet": [
+    "brainsquasher",
+    "skullsmasher",
+    "stormstrike_gavel"
+  ],
+  "wooden_club": [
+    "bramblebat",
+    "leafblade_skean",
+    "makeshift_oar",
+    "mallet",
+    "mining_pick",
+    "soup_ladle",
+    "tonfas"
+  ],
+  "brambleheart": [
+    "bramblebat"
+  ],
+  "barkskin_horn": [
+    "bronzebark_carnyx"
+  ],
+  "black_cat": [
+    "bucket_of_nightmares",
+    "cat_o_lantern"
+  ],
+  "cursed_candy": [
+    "bucket_of_nightmares"
+  ],
+  "gold_elixir": [
+    "bumble_rat",
+    "champion_bee"
+  ],
+  "scroll_of_water": [
+    "burning_water",
+    "ceremonial_lathi",
+    "ki_flow_cord"
+  ],
+  "scroll_of_fire": [
+    "burning_water",
+    "fists_of_flame",
+    "tempered_ritual_staff"
+  ],
+  "snapdragon": [
+    "buzzing_bouquet"
+  ],
+  "sunflower": [
+    "buzzing_bouquet"
+  ],
+  "poppy": [
+    "buzzing_bouquet"
+  ],
+  "tulip": [
+    "buzzing_bouquet"
+  ],
+  "cactus": [
+    "cactrio",
+    "jagged_blade",
+    "prickly_potion"
+  ],
+  "soup_ladle": [
+    "campfire_skillet"
+  ],
+  "iron_bar": [
+    "campfire_skillet",
+    "cast_iron_anchor",
+    "dagger",
+    "iron_forge_hammer",
+    "reinforced_shield",
+    "steel_bar"
+  ],
+  "noreaster_hat": [
+    "captains_cap",
+    "oilskin_slicker"
+  ],
+  "pliers": [
+    "carnage_saw"
+  ],
+  "screwsmacker": [
+    "carnage_saw"
+  ],
+  "scrap_metal": [
+    "carnage_saw",
+    "iron_bar"
+  ],
+  "lucky_clover": [
+    "carrot",
+    "cursed_clover",
+    "golden_clover",
+    "viridian_warbler"
+  ],
+  "makeshift_oar": [
+    "cast_iron_anchor"
+  ],
+  "sash": [
+    "cast_net",
+    "huge_chocolate_gift_box",
+    "indomitable_snowman",
+    "leather_belt",
+    "relative_safety_goggles"
+  ],
+  "length_of_rope": [
+    "cast_net",
+    "drift_net",
+    "reef_knot",
+    "shoddy_handline"
+  ],
+  "jack_o_lantern": [
+    "cat_o_lantern",
+    "scarecrow"
+  ],
+  "deathbringer": [
+    "cataclysm",
+    "ragnarok"
+  ],
+  "doombringer": [
+    "cataclysm",
+    "worlds_end"
+  ],
+  "quarterstaff": [
+    "ceremonial_lathi",
+    "martial_monkey"
+  ],
+  "electrostatic_scroll": [
+    "chain_lightning_codex",
+    "electrobat",
+    "stormcloud_staff"
+  ],
+  "worker_bee": [
+    "champion_bee"
+  ],
+  "hooked_blade": [
+    "champions_ripper"
+  ],
+  "knights_razor": [
+    "champions_ripper"
+  ],
+  "cheese_board_buckler": [
+    "charcuterie_shield"
+  ],
+  "loaf_of_bread": [
+    "charcuterie_shield",
+    "croissant",
+    "grilled_cheese"
+  ],
+  "spicy_sausage": [
+    "charcuterie_shield"
+  ],
+  "charged_tesseract": [
+    "charged_girdle",
+    "stormbound_tranquility"
+  ],
+  "cheese": [
+    "cheese_board_buckler",
+    "grilled_cheese",
+    "succulent_cheese"
+  ],
+  "grapes": [
+    "cheese_board_buckler",
+    "fermented_grape_juice",
+    "grapeshot_slinger"
+  ],
+  "wooden_buckler": [
+    "cheese_board_buckler",
+    "heater_shield",
+    "mana_shield",
+    "regenerating_shield",
+    "spiked_shield",
+    "stunbreaker_shield"
+  ],
+  "paring_knife": [
+    "chefs_knife"
+  ],
+  "frozen_stick": [
+    "chillbane"
+  ],
+  "frost_tome": [
+    "chillbane"
+  ],
+  "blazing_rod": [
+    "cinderstaff"
+  ],
+  "hungry_wand": [
+    "cinderstaff"
+  ],
+  "succulent": [
+    "cleansomatic",
+    "dragonflower",
+    "hags_hat",
+    "succulent_cheese"
+  ],
+  "goblin_gizmo": [
+    "cleansomatic",
+    "drillbot"
+  ],
+  "ball_of_thread": [
+    "coconut",
+    "discordant_harp",
+    "ethereal_cloak",
+    "inconspicuous_fedora"
+  ],
+  "sticky_stuff": [
+    "coconut",
+    "goblin_spice_mix",
+    "sticky_dart",
+    "subtle_distractor_shield"
+  ],
+  "caterpillar": [
+    "cocoonling"
+  ],
+  "cinderstaff": [
+    "conflagration_staff"
+  ],
+  "phoenix_scroll": [
+    "conflagration_staff",
+    "wild_magic_scroll"
+  ],
+  "staff_of_wisdom": [
+    "corruptors_wisdom",
+    "infernal_tide",
+    "vampires_scepter"
+  ],
+  "cursed_clover": [
+    "corruptors_wisdom"
+  ],
+  "elemental_barrier": [
+    "cosmos_ward"
+  ],
+  "starlight_potion": [
+    "cosmos_ward"
+  ],
+  "vampire_bat": [
+    "count_ratula"
+  ],
+  "flotsam": [
+    "crab_trap",
+    "lobster_pot",
+    "sturdy_fly_gaff"
+  ],
+  "grapeshot_slinger": [
+    "croissant_crossbow"
+  ],
+  "croissant": [
+    "croissant_crossbow"
+  ],
+  "potato": [
+    "croquette"
+  ],
+  "scarecrow": [
+    "crowbane"
+  ],
+  "cat_o_lantern": [
+    "crowbane"
+  ],
+  "spanner": [
+    "crowbar"
+  ],
+  "bronzebark_carnyx": [
+    "crownwood_lur"
+  ],
+  "crownwood": [
+    "crownwood_lur",
+    "regrowth_barrier"
+  ],
+  "frostbite_wand": [
+    "cryoblaze_staff"
+  ],
+  "critical_focus": [
+    "cryoblaze_staff"
+  ],
+  "crystal_shard": [
+    "crystal_cluster",
+    "gemstone_forge_hammer"
+  ],
+  "crystal_cluster": [
+    "crystal_golem"
+  ],
+  "lockpick_dart": [
+    "dagger",
+    "sticky_dart"
+  ],
+  "wax_candle": [
+    "danger_candle",
+    "mining_helmet"
+  ],
+  "lumps_of_coal": [
+    "danger_candle",
+    "gold_attuned_shovel",
+    "steel_forge_hammer",
+    "steel_pickaxe"
+  ],
+  "mining_helmet": [
+    "darkvision_faceguard"
+  ],
+  "relative_safety_goggles": [
+    "darkvision_faceguard"
+  ],
+  "skullsmasher": [
+    "deathbringer"
+  ],
+  "bonecrusher": [
+    "deathbringer"
+  ],
+  "elemental_core": [
+    "deathdart_dispenser",
+    "forest_mower"
+  ],
+  "rat_lich": [
+    "deathhowl"
+  ],
+  "silverbark_bow": [
+    "deathshot",
+    "evergreen_arc"
+  ],
+  "quiver_of_speed": [
+    "deathshot",
+    "frost_quiver"
+  ],
+  "willow_wand": [
+    "dendromancy_rod",
+    "mystic_rat",
+    "staff_of_wisdom"
+  ],
+  "enchanters_antlers": [
+    "dendromancy_rod",
+    "jackalope"
+  ],
+  "gemfused_workboots": [
+    "diamond_covered_toecaps"
+  ],
+  "diamond": [
+    "diamond_covered_toecaps",
+    "gemstone_forge_hammer",
+    "heart_of_the_mountain"
+  ],
+  "wolfstrike": [
+    "doombringer"
+  ],
+  "dark_omen": [
+    "doombringer"
+  ],
+  "iron_sword": [
+    "double_ender",
+    "fine_sword",
+    "thunder_sword"
+  ],
+  "stalkers_shiv": [
+    "dragonfang"
+  ],
+  "truefire_bracers": [
+    "dragonfang"
+  ],
+  "dragonleaf": [
+    "dragonflower",
+    "eagle_eye_amulet",
+    "wilderness_potion"
+  ],
+  "dragonleaf_acorn": [
+    "dragonleaf_sapling",
+    "leafbound_striders"
+  ],
+  "wilderness_potion": [
+    "dragonleaf_sapling",
+    "elven_blade"
+  ],
+  "pyrefly": [
+    "drakefly",
+    "scorpionfly"
+  ],
+  "arcanefly": [
+    "drakefly",
+    "pyrefly"
+  ],
+  "crab_trap": [
+    "drift_net",
+    "lobster_pot"
+  ],
+  "shovel": [
+    "drillbot",
+    "gold_attuned_shovel"
+  ],
+  "sturdy_stick": [
+    "dumbbell",
+    "quarterstaff",
+    "tonfas"
+  ],
+  "prayer_bell": [
+    "dumbbell",
+    "scroll_of_air"
+  ],
+  "platemail": [
+    "duneshaper_jazerant"
+  ],
+  "moon_scarab": [
+    "duneshaper_jazerant"
+  ],
+  "grim_scythe": [
+    "duskreaver"
+  ],
+  "graveyard_soil": [
+    "duskreaver",
+    "flying_broomstick"
+  ],
+  "mana_shield": [
+    "elemental_barrier"
+  ],
+  "frostflame_orb": [
+    "elemental_barrier"
+  ],
+  "tempered_ritual_staff": [
+    "elemental_greatstaff"
+  ],
+  "spark": [
+    "elemental_whetstone",
+    "power_cluster",
+    "zap_rat"
+  ],
+  "elementium_ore": [
+    "elementium_bulwark",
+    "elementium_golem",
+    "fulmination_hammer"
+  ],
+  "stone_golem": [
+    "elementium_golem",
+    "sand_golem"
+  ],
+  "hunting_knife": [
+    "elven_blade"
+  ],
+  "boomslang": [
+    "emperor_cobra",
+    "fang_the_rattleslang"
+  ],
+  "sun_scarb": [
+    "emperor_cobra"
+  ],
+  "banana": [
+    "endurance_potion"
+  ],
+  "drillbot": [
+    "enhanced_drillbot"
+  ],
+  "arcane_core": [
+    "enhanced_drillbot",
+    "mana_recycler",
+    "power_vacuum"
+  ],
+  "dumbbell": [
+    "enlightened_bell"
+  ],
+  "tournament_lance": [
+    "errant_lance"
+  ],
+  "fanged_blade": [
+    "errant_lance",
+    "twinmaw"
+  ],
+  "speed_essence": [
+    "ethereal_cloak",
+    "flaming_sword",
+    "flash_potion",
+    "infinity_essence",
+    "instant_eternity"
+  ],
+  "admiralty_anchor": [
+    "everdrift_anchor"
+  ],
+  "dragonleaf_sapling": [
+    "evergreen_arc"
+  ],
+  "champions_ripper": [
+    "excalibur"
+  ],
+  "knights_sigil": [
+    "excalibur",
+    "rhongomiant"
+  ],
+  "plague_rat": [
+    "fang_the_rattleslang"
+  ],
+  "jagged_blade": [
+    "fanged_blade",
+    "knights_razor"
+  ],
+  "fanged_axe": [
+    "fanged_blade",
+    "twinmaw"
+  ],
+  "blasted_gull": [
+    "feathered_first_mate"
+  ],
+  "seaform_pipe": [
+    "feathered_first_mate"
+  ],
+  "fishermans_hook": [
+    "fishing_rod",
+    "hooked_dagger"
+  ],
+  "wooden_stick": [
+    "fishing_rod",
+    "grapeshot_slinger",
+    "lightning_rod",
+    "scarecrow",
+    "wicked_stick",
+    "willow_wand"
+  ],
+  "gloves_of_power": [
+    "fists_of_flame"
+  ],
+  "fortified_sanjiegun": [
+    "flail_of_atonement"
+  ],
+  "enlightened_bell": [
+    "flail_of_atonement"
+  ],
+  "razor_bolt": [
+    "flame_bolt",
+    "soulpiercer",
+    "toxic_bolt"
+  ],
+  "wizard_robe": [
+    "flame_cloak"
+  ],
+  "phoenix_feather": [
+    "flame_cloak",
+    "phoenix_scroll"
+  ],
+  "lightning_in_a_bottle": [
+    "flash_potion",
+    "galvanic_armor"
+  ],
+  "flash_potion": [
+    "flashy_boots"
+  ],
+  "fur_boots": [
+    "flashy_boots"
+  ],
+  "hags_hat": [
+    "flying_broomstick",
+    "ratuman_the_white"
+  ],
+  "carnage_saw": [
+    "forest_mower"
+  ],
+  "barbed_spring": [
+    "forest_mower"
+  ],
+  "whirling_nunchucks": [
+    "fortified_sanjiegun"
+  ],
+  "scroll_of_earth": [
+    "fortified_sanjiegun",
+    "weightless_stone"
+  ],
+  "dagger": [
+    "frost_dagger",
+    "hooked_dagger",
+    "jade_dagger",
+    "lava_dagger",
+    "magic_dagger",
+    "poison_dagger",
+    "royal_seax",
+    "spiked_sickle"
+  ],
+  "chillbane": [
+    "frostbite_wand"
+  ],
+  "icicle_shard": [
+    "frostbite_wand"
+  ],
+  "line_cooks_apron": [
+    "full_plate_splatterguard"
+  ],
+  "scalemail": [
+    "full_plate_splatterguard",
+    "gem_studded_forgeplate",
+    "predator_scales",
+    "spinegrowth_breastplate"
+  ],
+  "stormstrike_gavel": [
+    "fulmination_hammer",
+    "hurricane_focus"
+  ],
+  "grilled_cheese": [
+    "funky_fundue"
+  ],
+  "leather_boots": [
+    "fur_boots",
+    "gemfused_workboots",
+    "leafbound_striders"
+  ],
+  "golden_tail": [
+    "fur_boots"
+  ],
+  "chefs_hat": [
+    "fuzzy_sous_chef",
+    "line_cooks_apron"
+  ],
+  "wooden_spoon": [
+    "fuzzy_sous_chef",
+    "soup_ladle"
+  ],
+  "leather_armor": [
+    "galvanic_armor",
+    "line_cooks_apron",
+    "oilskin_slicker",
+    "shadow_armor"
+  ],
+  "adamantite_bar": [
+    "gem_studded_forgeplate"
+  ],
+  "ruby": [
+    "gem_studded_forgeplate",
+    "gemforged_warpick",
+    "heart_of_the_mountain"
+  ],
+  "adamantite_axepick": [
+    "gemforged_warpick"
+  ],
+  "amethyst": [
+    "gemforged_warpick",
+    "heart_of_the_mountain",
+    "relative_safety_goggles"
+  ],
+  "adamantite_forge_hammer": [
+    "gemstone_forge_hammer"
+  ],
+  "huge_chocolate_gift_box": [
+    "giant_chocolate_gift_box"
+  ],
+  "sand_sprite": [
+    "glass_sprite",
+    "sand_golem"
+  ],
+  "lava_rock": [
+    "glass_sprite",
+    "lava_boulder",
+    "lava_dagger"
+  ],
+  "short_shamshir": [
+    "glimmering_yatagan"
+  ],
+  "silver_sand": [
+    "glimmering_yatagan"
+  ],
+  "pinewhisper_thrush": [
+    "glittercall_magpie",
+    "ratatoskr"
+  ],
+  "golden_egg": [
+    "glittercall_magpie",
+    "golden_clover",
+    "golden_omelette"
+  ],
+  "gear": [
+    "goblin_gizmo",
+    "regenerating_shield",
+    "superior_gear"
+  ],
+  "bolts": [
+    "goblin_gizmo",
+    "regenerating_shield",
+    "superior_bolts"
+  ],
+  "spring": [
+    "goblin_gizmo",
+    "pliers",
+    "superior_spring"
+  ],
+  "finely_ground_gravel": [
+    "goblin_spice_mix",
+    "improvised_smokebomb",
+    "placebo_potion"
+  ],
+  "pleasant_green_paste": [
+    "goblin_spice_mix",
+    "gobliterator_dart",
+    "trangoblizer_dart",
+    "trusty_trench_coat"
+  ],
+  "noxious_red_mush": [
+    "goblin_spice_mix",
+    "gobliterator_dart",
+    "gobnoxious_dart",
+    "subtle_distractor_shield"
+  ],
+  "brimstone_powder": [
+    "goblin_spice_mix",
+    "oil_of_vitriol",
+    "premeditated_stinkbomb"
+  ],
+  "gobnoxious_dart": [
+    "gobliterator_dart"
+  ],
+  "delicate_matter_converter": [
+    "gobliterator_dart"
+  ],
+  "trangoblizer_dart": [
+    "gobliterator_dart"
+  ],
+  "sticky_dart": [
+    "gobnoxious_dart",
+    "trangoblizer_dart"
+  ],
+  "heavenly_skull": [
+    "god_king_khopesh"
+  ],
+  "gold_ore": [
+    "gold_attuned_shovel",
+    "gold_bar"
+  ],
+  "weathered_skull": [
+    "golden_skull",
+    "harvest_skull",
+    "heavenly_skull",
+    "potion_of_botulinum",
+    "ratbone",
+    "soulharvester",
+    "unholy_skull",
+    "unsafe_safe_cracker"
+  ],
+  "golden_clover": [
+    "golden_skull",
+    "lucky_ratomelon"
+  ],
+  "scorpionfly": [
+    "goliathfly"
+  ],
+  "drakefly": [
+    "goliathfly",
+    "scorpionfly"
+  ],
+  "gold_bar": [
+    "gothic_shield"
+  ],
+  "watermelon": [
+    "green_snapper",
+    "ratomelon"
+  ],
+  "life_essence": [
+    "green_snapper",
+    "infinity_essence",
+    "red_widow",
+    "royal_seax",
+    "sun_scarab",
+    "vampire_bat"
+  ],
+  "simple_sickle": [
+    "grim_scythe"
+  ],
+  "zenpanzee": [
+    "gururangutan"
+  ],
+  "holy_essence": [
+    "gururangutan",
+    "heavenly_skull",
+    "holy_libram",
+    "infinity_essence"
+  ],
+  "cauldron": [
+    "hags_cauldron",
+    "mystery_stew"
+  ],
+  "creepy_doll": [
+    "hags_cauldron"
+  ],
+  "travelers_hat": [
+    "hags_hat",
+    "hooded_cowl",
+    "inconspicuous_fedora",
+    "indomitable_snowman",
+    "noreaster_hat"
+  ],
+  "stormcloud_staff": [
+    "hailstorm_scepter",
+    "thunderstorm_spear"
+  ],
+  "tactical_blowgun": [
+    "harper_sonic_dart_sling"
+  ],
+  "discordant_harp": [
+    "harper_sonic_dart_sling"
+  ],
+  "harvest_pumpkin": [
+    "harvest_skull",
+    "jack_o_lantern"
+  ],
+  "harvest_skull": [
+    "haunted_bat"
+  ],
+  "koneko_steel_knife": [
+    "head_chefs_skewer"
+  ],
+  "campfire_skillet": [
+    "head_chefs_skewer"
+  ],
+  "leather_cloak": [
+    "hooded_cowl",
+    "trusty_trench_coat"
+  ],
+  "coconut": [
+    "hot_choconut",
+    "tactical_blowgun",
+    "zenpanzee"
+  ],
+  "filled_chocolate_shield": [
+    "hot_choconut"
+  ],
+  "big_chocolate_gift_box": [
+    "huge_chocolate_gift_box"
+  ],
+  "searing_wand": [
+    "hungry_wand"
+  ],
+  "wicked_stick": [
+    "hungry_wand"
+  ],
+  "light_bow": [
+    "hunters_bow"
+  ],
+  "hailstorm_scepter": [
+    "hurricane_focus"
+  ],
+  "subtle_distractor_shield": [
+    "hypnodisc_deflector"
+  ],
+  "unholy_skull": [
+    "hypnodisc_deflector",
+    "moldemort",
+    "soulpiercer",
+    "unholy_sword"
+  ],
+  "boomer": [
+    "ice_age_boomer"
+  ],
+  "frost_bolts": [
+    "ice_age_boomer"
+  ],
+  "torch": [
+    "improvised_smokebomb",
+    "infernal_cog",
+    "scroll_of_fire",
+    "spicy_sausage"
+  ],
+  "snow_boulder": [
+    "indomitable_snowman"
+  ],
+  "carrot": [
+    "indomitable_snowman"
+  ],
+  "superior_gear": [
+    "infernal_cog",
+    "power_vacuum"
+  ],
+  "inconspicuous_fedora": [
+    "ingobnito_mask"
+  ],
+  "aeonglass": [
+    "instant_eternity"
+  ],
+  "iron_ore": [
+    "iron_bar",
+    "steel_forge_hammer",
+    "steel_pickaxe"
+  ],
+  "rusty_forge_hammer": [
+    "iron_forge_hammer"
+  ],
+  "wooden_sword": [
+    "iron_sword",
+    "jagged_blade",
+    "pliers"
+  ],
+  "meat_cleaver": [
+    "ironhowl"
+  ],
+  "tomahawk": [
+    "ironhowl"
+  ],
+  "hand_crossbow": [
+    "ironwood_boltcaster"
+  ],
+  "lantern": [
+    "jack_o_lantern"
+  ],
+  "mossfur_squirrel": [
+    "jackalope"
+  ],
+  "chefs_knife": [
+    "kiritsuke_knife"
+  ],
+  "training_blade": [
+    "knights_razor"
+  ],
+  "kiritsuke_knife": [
+    "koneko_steel_knife"
+  ],
+  "hooked_dagger": [
+    "koneko_steel_knife",
+    "scroll_of_blood"
+  ],
+  "lava_boulder": [
+    "lava_golem",
+    "ratnaros"
+  ],
+  "heartleaf": [
+    "leafblade_skean",
+    "mossfur_squirrel",
+    "rootflare_flute"
+  ],
+  "thunderfork": [
+    "lightning_rod",
+    "voltaic_shiv"
+  ],
+  "dendromancy_rod": [
+    "living_staff"
+  ],
+  "wood_sprite": [
+    "living_staff"
+  ],
+  "ratomelon": [
+    "lucky_ratomelon"
+  ],
+  "carp": [
+    "lucky_tuna"
+  ],
+  "mana_potion": [
+    "magic_dagger",
+    "starlight_potion"
+  ],
+  "broken_oar": [
+    "makeshift_oar"
+  ],
+  "mana_crystal": [
+    "mana_shield"
+  ],
+  "aping_acolyte": [
+    "martial_monkey"
+  ],
+  "young_oakheart": [
+    "mature_oakheart"
+  ],
+  "large_water_potion": [
+    "mature_oakheart"
+  ],
+  "spice": [
+    "melange",
+    "perpetual_stew"
+  ],
+  "golden_gravel": [
+    "melange"
+  ],
+  "toxic_bolt": [
+    "midori_bolt"
+  ],
+  "midori_toxin": [
+    "midori_bolt",
+    "midori_quiver",
+    "midori_smokebomb"
+  ],
+  "bolt_quiver": [
+    "midori_quiver"
+  ],
+  "autotrigger": [
+    "midori_smokebomb",
+    "titanwood_repeater"
+  ],
+  "bite_trap": [
+    "mimic",
+    "stingtrap"
+  ],
+  "treasure_chest": [
+    "mimic"
+  ],
+  "iron_chisel": [
+    "mining_pick"
+  ],
+  "blue_chilly_cheese": [
+    "moldemort"
+  ],
+  "gleaming_kunai": [
+    "moonlit_blade"
+  ],
+  "muck_rat": [
+    "mystic_rat",
+    "plague_rat",
+    "rat_romancer",
+    "ratbone",
+    "ratomelon"
+  ],
+  "fishing_harpoon": [
+    "neptunes_wrath"
+  ],
+  "polyphemus_bane": [
+    "neptunes_wrath"
+  ],
+  "glittercall_magpie": [
+    "nightsong_raven"
+  ],
+  "werewolf_paw": [
+    "nightsong_raven"
+  ],
+  "seafoam_pipe": [
+    "noreaster_hat",
+    "seafarers_telescope"
+  ],
+  "bloodwood_spear": [
+    "oakblood_glaive"
+  ],
+  "oakheart_sprout": [
+    "oakheart_sapling"
+  ],
+  "oakheart_acorn": [
+    "oakheart_sprout"
+  ],
+  "placebo_potion": [
+    "oil_of_vitriol"
+  ],
+  "trusty_trench_coat": [
+    "partial_invisibility_cloak"
+  ],
+  "ingobnito_mask": [
+    "partial_invisibility_cloak",
+    "rat_burglar"
+  ],
+  "ethereal_cloak": [
+    "partial_invisibility_cloak"
+  ],
+  "mystery_stew": [
+    "perpetual_stew"
+  ],
+  "viridian_warbler": [
+    "pinewhisper_thrush"
+  ],
+  "poison_potion": [
+    "plague_rat",
+    "poison_dagger",
+    "potion_of_botulinum"
+  ],
+  "shadow_armor": [
+    "predator_scales"
+  ],
+  "improvised_smokebomb": [
+    "premeditated_stinkbomb"
+  ],
+  "champion_bee": [
+    "queen_bee"
+  ],
+  "champions_syrup": [
+    "queen_bee"
+  ],
+  "arrow_sheath": [
+    "quiver_of_speed"
+  ],
+  "sniper_scope": [
+    "quiver_of_speed"
+  ],
+  "warbringer": [
+    "ragnarok",
+    "worlds_end"
+  ],
+  "ratbone": [
+    "rat_burglar",
+    "rat_lich"
+  ],
+  "mystic_rat": [
+    "rat_lich",
+    "sorcerat"
+  ],
+  "jackalope": [
+    "ratatoskr"
+  ],
+  "sorcerat": [
+    "ratnaros",
+    "ratuman_the_white"
+  ],
+  "lucky_ratomelon": [
+    "ratymandias"
+  ],
+  "aristorat": [
+    "ratymandias"
+  ],
+  "soulharvester": [
+    "reapers_judgment"
+  ],
+  "spiderweb": [
+    "reapers_judgment"
+  ],
+  "jade_stone": [
+    "refined_jade"
+  ],
+  "arboreal_defender": [
+    "regrowth_barrier"
+  ],
+  "heater_shield": [
+    "reinforced_shield"
+  ],
+  "errant_lance": [
+    "rhongomiant"
+  ],
+  "chain_lightning_codex": [
+    "rolling_thunder_tablet"
+  ],
+  "thunderbolt": [
+    "rolling_thunder_tablet",
+    "stormbreaker_armor"
+  ],
+  "wooden_fife": [
+    "rootflare_flute"
+  ],
+  "glimmering_yatagan": [
+    "runed_scimitar"
+  ],
+  "engraved_was": [
+    "runed_scimitar"
+  ],
+  "crowbar": [
+    "runesmith_goniometer"
+  ],
+  "leafblade_skean": [
+    "sapwood_javelin"
+  ],
+  "scroll_of_potential": [
+    "scroll_of_air",
+    "scroll_of_earth",
+    "scroll_of_fire",
+    "scroll_of_water"
+  ],
+  "scroll_of_replenishment": [
+    "scroll_of_blood"
+  ],
+  "scroll_of_blood": [
+    "scroll_of_sharp_edges"
+  ],
+  "axe_of_abraxas": [
+    "scroll_of_sharp_edges"
+  ],
+  "bosuns_monocular": [
+    "seafarers_telescope"
+  ],
+  "reflective_facemask": [
+    "shifting_visage"
+  ],
+  "dull_oyster_shucker": [
+    "shoddy_handline"
+  ],
+  "hunters_bow": [
+    "silverbark_bow"
+  ],
+  "eagle_eye_amulet": [
+    "silverbark_bow"
+  ],
+  "regular_old_lobster": [
+    "slithering_lobster"
+  ],
+  "three_eyed_crab": [
+    "slithering_lobster"
+  ],
+  "snowball": [
+    "snow_boulder"
+  ],
+  "duskreaver": [
+    "soulharvester"
+  ],
+  "dragonbreath_chili": [
+    "spice"
+  ],
+  "tender_sausage": [
+    "spicy_sausage",
+    "wrath_potion"
+  ],
+  "predator_teeth": [
+    "spiked_sickle"
+  ],
+  "bramblebat": [
+    "spiked_whip"
+  ],
+  "thorned_crown": [
+    "spiked_whip",
+    "stingtrap"
+  ],
+  "thornwall": [
+    "spinegrowth_breastplate"
+  ],
+  "captains_cap": [
+    "squirming_bicorne"
+  ],
+  "elven_blade": [
+    "stalkers_shiv"
+  ],
+  "dragonflower": [
+    "stalkers_shiv"
+  ],
+  "ruby_admiral": [
+    "starwing"
+  ],
+  "amethyst_dancer": [
+    "starwing"
+  ],
+  "sapphire_morpho": [
+    "starwing"
+  ],
+  "iron_forge_hammer": [
+    "steel_forge_hammer"
+  ],
+  "mining_pick": [
+    "steel_pickaxe"
+  ],
+  "boulder": [
+    "stone_golem"
+  ],
+  "power_cluster": [
+    "stormbound_tranquility",
+    "stormstrike_gavel"
+  ],
+  "galvanic_armor": [
+    "stormbreaker_armor"
+  ],
+  "lightning_rod": [
+    "stormcloud_staff"
+  ],
+  "antivenom": [
+    "strong_antivenom"
+  ],
+  "shoddy_handline": [
+    "sturdy_fly_gaff"
+  ],
+  "stunbreaker_shield": [
+    "subtle_distractor_shield"
+  ],
+  "gold_scarab": [
+    "sun_scarab"
+  ],
+  "simple_blowgun": [
+    "tactical_blowgun"
+  ],
+  "fly_agaric": [
+    "tainted_soulstone"
+  ],
+  "ceremonial_lathi": [
+    "tempered_ritual_staff"
+  ],
+  "endurance_potion": [
+    "tenacity_potion"
+  ],
+  "apple": [
+    "tenacity_potion"
+  ],
+  "whispering_conch": [
+    "the_voidcaller"
+  ],
+  "briarthorn": [
+    "thorned_crown"
+  ],
+  "spiked_shield": [
+    "thornwall",
+    "unsafe_safe_cracker"
+  ],
+  "cactrio": [
+    "thornwall"
+  ],
+  "voltaic_shiv": [
+    "thunder_sword"
+  ],
+  "thunder_sword": [
+    "thunderstorm_spear"
+  ],
+  "ironwood_boltcaster": [
+    "titanwood_repeater"
+  ],
+  "double_ender": [
+    "twinmaw"
+  ],
+  "knights_aegis": [
+    "unbreakable_wall"
+  ],
+  "defenders_shield": [
+    "unbreakable_wall"
+  ],
+  "bolt_cutter": [
+    "unsafe_safe_cracker"
+  ],
+  "goldcrest": [
+    "viridian_warbler"
+  ],
+  "unsafe_safe_cracker": [
+    "vitri_oil_vault_drill"
+  ],
+  "oil_of_vitriol": [
+    "vitri_oil_vault_drill"
+  ],
+  "elemental_whetstone": [
+    "voltaic_shiv"
+  ],
+  "ironhowl": [
+    "warbringer"
+  ],
+  "fury_edge": [
+    "warbringer"
+  ],
+  "scroll_of_air": [
+    "weightless_stone",
+    "whirling_nunchucks"
+  ],
+  "runesmith_goniometer": [
+    "welding_torch"
+  ],
+  "infernal_cog": [
+    "welding_torch"
+  ],
+  "tonfas": [
+    "whirling_nunchucks"
+  ],
+  "arcane_scroll": [
+    "wild_magic_scroll"
+  ],
+  "frost_scroll": [
+    "wild_magic_scroll"
+  ],
+  "buzzing_bouquet": [
+    "wildflower_symphony"
+  ],
+  "beautiful_bouquet": [
+    "wildflower_symphony"
+  ],
+  "hooded_cowl": [
+    "wizard_robe"
+  ],
+  "bonesaw": [
+    "wolfstrike"
+  ],
+  "rusty_sword": [
+    "wolfstrike"
+  ],
+  "honey_bee": [
+    "worker_bee"
+  ],
+  "manuka_honey": [
+    "worker_bee"
+  ],
+  "tenacity_potion": [
+    "wrath_potion"
+  ],
+  "oakheart_sapling": [
+    "young_oakheart"
+  ],
+  "martial_monkey": [
+    "zenpanzee"
+  ],
+  "moonlit_blade": [
+    "zephyrs_edge"
   ]
 }

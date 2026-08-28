@@ -148,6 +148,9 @@ function parseSingleTrigger(raw: string): TriggerParseResult {
   if (discharge) {
     return { trigger: { type: "discharge", staticAmount: Number(discharge[1]) }, conditions: [] };
   }
+  if (/^(?:on\s+)?discharge$/i.test(raw)) {
+    return { trigger: { type: "discharge" }, conditions: [] };
+  }
 
   const perStatus = raw.match(/^per\s+(.+?)\s+on\s+(opponent|you|both players combined)$/i);
   if (perStatus) {

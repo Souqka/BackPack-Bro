@@ -55,6 +55,25 @@ describe("Effect", () => {
     });
   });
 
+  it("разбирает chance без to, block another и Stun for N seconds", () => {
+    const starGain = parseEffectPhrase("33% chance Star items gain 1 Static");
+    expect(starGain.effects[0]?.chance).toBe(33);
+    expect(starGain.effects[0]?.effect).toMatchObject({
+      type: "gain",
+      status: "static",
+      value: 1,
+      applyTo: ["star_occupants"],
+    });
+    expect(parseEffectPhrase("5% chance to block another 15 Damage").effects[0]?.effect).toMatchObject({
+      type: "block_damage",
+      value: 15,
+    });
+    expect(parseEffectPhrase("20% chance to Stun for 0.75 seconds").effects[0]?.effect).toMatchObject({
+      type: "stun",
+      seconds: 0.75,
+    });
+  });
+
   it("нормализует Lose N Max Health и Star items gain", () => {
     const lose = parseEffectPhrase("Lose 3 Max Health");
     expect(lose.effects[0]?.effect).toMatchObject({
@@ -121,6 +140,10 @@ describe("Trigger", () => {
     expect(result.conditions).toEqual([
       { type: "star_occupant_type", itemTypes: ["melee_weapon"] },
     ]);
+  });
+
+  it("разбирает On discharge", () => {
+    expect(parseTrigger("On discharge").trigger).toEqual({ type: "discharge" });
   });
 
   it("разбирает When opponent heals", () => {

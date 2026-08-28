@@ -1,7 +1,9 @@
+import { access } from "node:fs/promises";
+import path from "node:path";
 import * as cheerio from "cheerio";
 import type { ItemImages } from "../types/normalized.ts";
 import type { Logger } from "../utils/logger.ts";
-import { originalImageUrl } from "../utils/images.ts";
+import { localAssetDir, originalImageUrl, publicAssetPath } from "../utils/images.ts";
 import { materializeItemImages } from "../utils/images.ts";
 import type { WikiFetcher } from "../fetcher.ts";
 
@@ -41,6 +43,12 @@ export async function parseAndDownloadImages(options: {
       images: { icon: null, full: null },
       sourceUrls: [sourceUrl],
     };
+  }
+
+  const cached = await existingLocalImages(options.outputDir, options.itemId);
+  if (cached) {
+    options.logger.info("Изображение: из кэша", options.itemName);
+    return { images: cached, sourceUrls: [sourceUrl] };
   }
 
   try {
@@ -95,6 +103,22 @@ function fileNameFromUrl(url: string): string | null {
     const pathname = new URL(url, "https://backpackbrawl.wiki.gg").pathname;
     const last = pathname.split("/").filter(Boolean).pop();
     return last ? decodeURIComponent(last) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function existingLocalImages(outputDir: string, itemId: string): Promise<ItemImages | null> {
+  const dir = localAssetDir(outputDir, itemId);
+  const iconPath = path.join(dir, "icon.webp");
+  const fullPath = path.join(dir, "full.webp");
+  try {
+    await access(iconPath);
+    await access(fullPath);
+    return {
+      icon: publicAssetPath(itemId, "icon.webp"),
+      full: publicAssetPath(itemId, "full.webp"),
+    };
   } catch {
     return null;
   }
