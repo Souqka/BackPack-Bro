@@ -12,6 +12,7 @@
     "test:inventory": "vitest run src/lib/inventory",
     "test:scoring": "vitest run src/lib/scoring",
     "test:optimizer": "vitest run src/lib/optimizer",
+    "benchmark:optimizer": "tsx scripts/optimizer-stage8-report.ts",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

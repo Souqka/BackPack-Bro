@@ -63,6 +63,13 @@ describe("benchmark cases A–F", () => {
       );
     }
   });
+
+  it("case F: Beam находит лучший score, чем Greedy (layout Bags влияет на Items)", () => {
+    const row = compareAlgorithms(OPTIMIZER_BENCHMARK_CASES[5]!, catalog);
+    expect(row.beam?.finalScore).toBe(3);
+    expect(row.greedy?.finalScore).toBe(2);
+    expect(row.beam!.finalScore).toBeGreaterThan(row.greedy!.finalScore);
+  });
 });
 
 describe("beam width sweep", () => {

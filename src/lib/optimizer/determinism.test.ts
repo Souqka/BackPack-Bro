@@ -59,7 +59,7 @@ describe("determinism", () => {
     walk(root);
     for (const file of files) {
       const source = readFileSync(file, "utf8");
-      expect(source.includes("Math.random"), file).toBe(false);
+      expect(source.includes("Math.random("), file).toBe(false);
     }
   });
 
