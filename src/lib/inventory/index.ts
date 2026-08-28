@@ -27,5 +27,5 @@ export { positionKey, resolvePlacedGeometry, rotateGeometry } from "./geometry.t
 export { isInsideInventory, isPlacementInsideInventory, findOutOfBounds } from "./placement.ts";
 export { findCollisions, hasCollision } from "./collision.ts";
 export { findStarOverlaps } from "./stars.ts";
-export { evaluateStarActivations } from "./activation.ts";
+export { evaluateStarActivations, matchingStarRuleIndexes } from "./activation.ts";
 export { analyzeInventory, catalogFromItems } from "./inventory.ts";

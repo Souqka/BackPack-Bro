@@ -55,6 +55,16 @@ npm run test:inventory
 
 Star не занимает клетку и не создаёт collision. `analyzeInventory` не запускает optimizer.
 
+## Scoring Engine (этап 5)
+
+`src/lib/scoring/` оценивает конкретную расстановку: structural score (активные Star), effect coverage и synergy graph. Боевая симуляция не входит в этот слой.
+
+```bash
+npm run test:scoring
+```
+
+Невалидная расстановка получает `-Infinity` и никогда не побеждает валидную.
+
 
 ## Модель эффектов
 
