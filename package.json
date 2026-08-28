@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:parser": "vitest run scripts/wiki-parser",
     "test:inventory": "vitest run src/lib/inventory",
+    "test:scoring": "vitest run src/lib/scoring",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

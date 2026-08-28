@@ -83,6 +83,20 @@ function evaluateOne(
   return { ...base, active: false, reason };
 }
 
+/**
+ * Индексы StarRule, которые проходят occupant для данной пары source/target.
+ * Геометрию не пересчитывает: scoring использует это только для активных overlap.
+ */
+export function matchingStarRuleIndexes(source: Item, target: Item): number[] {
+  if (!source.star) return [];
+  const indexes: number[] = [];
+  for (let i = 0; i < source.star.rules.length; i++) {
+    const rule = source.star.rules[i];
+    if (rule && evaluateRule(rule, target) === "active") indexes.push(i);
+  }
+  return indexes;
+}
+
 function evaluateRule(rule: StarRule, target: Item): StarActivationReason {
   for (const condition of rule.conditions) {
     const result = evaluateCondition(condition, target);
