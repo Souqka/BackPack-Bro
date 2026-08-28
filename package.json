@@ -11,6 +11,7 @@
     "test:parser": "vitest run scripts/wiki-parser",
     "test:inventory": "vitest run src/lib/inventory",
     "test:scoring": "vitest run src/lib/scoring",
+    "test:optimizer": "vitest run src/lib/optimizer",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

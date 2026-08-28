@@ -65,6 +65,16 @@ npm run test:scoring
 
 Невалидная расстановка получает `-Infinity` и никогда не побеждает валидную.
 
+## Candidate Generator (этап 6)
+
+`src/lib/optimizer/` генерирует валидные позиции и уникальные повороты, ведёт инкрементальный `SearchState`. Поиск лучшего layout не входит в этот слой.
+
+```bash
+npm run test:optimizer
+```
+
+Collision проверяется за O(клетки кандидата) через `occupiedCells`. Scoring на кандидат не вызывается.
+
 
 ## Модель эффектов
 
