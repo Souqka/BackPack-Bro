@@ -61,7 +61,7 @@ export function parseLevels(
     const first = cells.first();
     const colspan = Number(first.attr("colspan") ?? "1");
     if (colspan >= 2) {
-      const header = visibleText($, first).replace(/:\s*$/, "");
+      const header = visibleText($, first).replace(/:\s*$/, "").trim();
       if (header && !/^level$/i.test(header)) {
         currentTrigger = header;
       }

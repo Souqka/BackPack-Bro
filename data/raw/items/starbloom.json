@@ -1,0 +1,169 @@
+{
+  "page": {
+    "title": "Starbloom",
+    "pageId": 1627,
+    "wikiUrl": "https://backpackbrawl.wiki.gg/wiki/Starbloom",
+    "wikitext": "{{Item\n| name=Starbloom\n| rarity=Common\n| type1=Plant\n| cost=2\n| hero=Chana\n| unlockSource=Initially available\n| purchasable=Yes\n\n| ability1Trigger=Start of {{Icon|Misc|Dawn}}\n| ability1Effect1=Gain 2 {{Icon|Status|Mana}}\n\n| ability2Trigger=On {{Icon|Misc|Star}} activation\n| ability2Effect1=35% chance to gain 1 {{Icon|Status|Mana}}\n\n| levelUpAbilityTrigger=When this item activates\n| levelUpAbilityEffect=to gain 1 {{Icon|Status|Mana}}\n\n| r1c1=e\n| r1c2=e\n| r1c3=e\n| r1c4=e\n| r1c5=e\n\n| r2c1=e\n| r2c2=e\n| r2c3=i\n| r2c4=s\n| r2c5=e\n\n| r3c1=e\n| r3c2=s\n| r3c3=i\n| r3c4=e\n| r3c5=e\n\n| r4c1=e\n| r4c2=e\n| r4c3=e\n| r4c4=e\n| r4c5=e\n\n| recipe1Result=Wicked Stick\n| recipe1Ingredient1=Wooden Stick\n| recipe1Ingredient2=Starbloom\n\n| recipe2Result=Mana Crystal\n| recipe2Ingredient1=Rock\n| recipe2Ingredient2=Starbloom\n| recipe2Ingredient3=Starbloom\n\n| recipe3Result=Belt of Firethrowing\n| recipe3Ingredient1=Leather Belt\n| recipe3Ingredient2=Starbloom\n| recipe3Ingredient3=Starbloom\n\n| recipe4Result=Starlight Potion\n| recipe4Ingredient1=Mana Potion\n| recipe4Ingredient2=Starbloom\n| recipe4Ingredient3=Starbloom\n}}",
+    "images": [
+      "Starbloom.png",
+      "Type_Plant.png",
+      "Gold.png",
+      "Chana.png",
+      "TileEmpty.png",
+      "TileItem.png",
+      "Star.png",
+      "Dawn.png",
+      "Mana.png",
+      "Wicked_Stick.png",
+      "Wooden_Stick.png",
+      "Mana_Crystal.png",
+      "Rock.png",
+      "Belt_of_Firethrowing.png",
+      "Leather_Belt.png",
+      "Starlight_Potion.png",
+      "Mana_Potion.png"
+    ],
+    "fetchedAt": "2026-08-28T18:03:51.493Z",
+    "htmlLength": 21288,
+    "html": "<div class=\"mw-content-ltr mw-parser-output\" lang=\"en\" dir=\"ltr\"><div class=\"druid-infobox druid-container noexcerpt druid-rarity-Common druid-container-item\" id=\"druid-container-1\"><div><div class=\"druid-title\">Starbloom</div></div><div class=\"druid-section-container\"><div class=\"druid-main-image\"><a href=\"/wiki/File:Starbloom.png\" class=\"image\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/100px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"100\" height=\"200\" data-file-width=\"120\" data-file-height=\"240\" /></a></div></div><div class=\"druid-section-container\"><div data-druid-section=\"GeneralInfo\"><div class=\"druid-section druid-section-GeneralInfo\">General Info</div></div><div class=\"druid-row druid-row-Rarity\" data-druid-section-row=\"GeneralInfo\"><div class=\"druid-label druid-label-Rarity\">Rarity</div><div class=\"druid-data druid-data-Rarity druid-data-nonempty\">\nCommon</div></div><div class=\"druid-row druid-row-Type\" data-druid-section-row=\"GeneralInfo\"><div class=\"druid-label druid-label-Type\">Type</div><div class=\"druid-data druid-data-Type druid-data-nonempty\">\n<span><a href=\"/wiki/Item_Types#Plant\" title=\"Plant Type\"><img alt=\"Plant Type\" src=\"/images/thumb/Type_Plant.png/20px-Type_Plant.png?a0dc72\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a> Plant</span></div></div><div class=\"druid-row druid-row-Cost\" data-druid-section-row=\"GeneralInfo\"><div class=\"druid-label druid-label-Cost\">Cost</div><div class=\"druid-data druid-data-Cost druid-data-nonempty\">\n<a href=\"/wiki/File:Gold.png\" class=\"image\"><img alt=\"Gold\" src=\"/images/thumb/Gold.png/20px-Gold.png?192f9a\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a> 2</div></div><div class=\"druid-row druid-row-Hero\" data-druid-section-row=\"GeneralInfo\"><div class=\"druid-label druid-label-Hero\">Hero</div><div class=\"druid-data druid-data-Hero druid-data-nonempty\">\n<a href=\"/wiki/File:Chana.png\" class=\"image\"><img alt=\"Chana\" src=\"/images/thumb/Chana.png/40px-Chana.png?a3cba9\" decoding=\"async\" loading=\"lazy\" width=\"40\" height=\"40\" data-file-width=\"120\" data-file-height=\"120\" /></a> Chana</div></div><div class=\"druid-row druid-row-UnlockSource\" data-druid-section-row=\"GeneralInfo\"><div class=\"druid-label druid-label-UnlockSource\">Unlock Source</div><div class=\"druid-data druid-data-UnlockSource druid-data-nonempty\">\nInitially available</div></div><div class=\"druid-row druid-row-Purchasable\" data-druid-section-row=\"GeneralInfo\"><div class=\"druid-label druid-label-Purchasable\">Purchasable</div><div class=\"druid-data druid-data-Purchasable druid-data-nonempty\">\nYes</div></div></div><div class=\"druid-section-container\"><div data-druid-section=\"Tiles\"><div class=\"druid-section druid-section-Tiles\">Tiles</div></div><div class=\"druid-row druid-row-Grid\" data-druid-section-row=\"Tiles\"><div class=\"druid-data druid-data-Grid druid-data-nonempty druid-data-wide\">\n<div style=\"width: 100%; display: flex; justify-content: center;\">\n<table style=\"text-align: center; margin: 0 auto; border-spacing: 0; border-collapse: collapse; line-height: 0; font-size: 0; max-width: 100%;\">\n<tbody><tr>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td></tr>\n<tr>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Item Tile\" src=\"/images/TileItem.png?6b8d11\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Star\" src=\"/images/thumb/Star.png/32px-Star.png?757b03\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"160\" data-file-height=\"160\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td></tr>\n<tr>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Star\" src=\"/images/thumb/Star.png/32px-Star.png?757b03\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"160\" data-file-height=\"160\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Item Tile\" src=\"/images/TileItem.png?6b8d11\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td></tr>\n<tr>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td>\n<td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td><td><div style=\"display:inline-block; width:32px; max-width:100%; vertical-align:middle; line-height:0;\"><img alt=\"Empty Tile\" src=\"/images/TileEmpty.png?f6a3e0\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"32\" data-file-width=\"32\" data-file-height=\"32\" /></div></td></tr>\n</tbody></table>\n</div></div></div></div></div>\n<p>Starbloom is a <a href=\"/wiki/Category:Plant_Type_Items\" title=\"Category:Plant Type Items\">Plant</a> type item for <a href=\"/wiki/Chana\" title=\"Chana\">Chana</a>. It costs 2 <span><a href=\"/wiki/File:Gold.png\" class=\"image\" title=\"Gold\"><img alt=\"Gold\" src=\"/images/thumb/Gold.png/20px-Gold.png?192f9a\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span> and is initially available.\n</p>\n<h2><span class=\"mw-headline\" id=\"Initial_Abilities\">Initial Abilities</span><span class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">[</span><a href=\"/wiki/Template:Item?action=edit&amp;section=T-1\" title=\"Edit section&#039;s source code: Initial Abilities\"><span>edit source</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<p><b>Start of <span><a href=\"/wiki/File:Dawn.png\" class=\"image\" title=\"Dawn\"><img alt=\"Dawn\" src=\"/images/thumb/Dawn.png/20px-Dawn.png?eda80a\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span>:</b>\n</p>\n<ul>\n<li>Gain 2 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span>\n</li>\n</ul>\n<p><b>On <span><a href=\"/wiki/File:Star.png\" class=\"image\" title=\"Star\"><img alt=\"Star\" src=\"/images/thumb/Star.png/20px-Star.png?757b03\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"160\" data-file-height=\"160\" /></a></span> activation:</b>\n</p>\n<ul>\n<li>35% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span>\n</li>\n</ul>\n<h2><span class=\"mw-headline\" id=\"Level_Up_Bonus\">Level Up Bonus</span><span class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">[</span><a href=\"/wiki/Template:Item?action=edit&amp;section=T-2\" title=\"Edit section&#039;s source code: Level Up Bonus\"><span>edit source</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<table class=\"itemTable\" style=\"text-align: center\">\n<tbody><tr>\n   <th>Level</th>\n   <th>Bonus</th>\n</tr>\n<tr>\n   <td colspan=\"2\"><b>When this item activates:</b></td>\n</tr>\n<tr>\n   <td>2</td>\n   <td>\n<ul><li>5% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>3</td>\n   <td>\n<ul><li>10% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>4</td>\n   <td>\n<ul><li>15% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>5</td>\n   <td>\n<ul><li>30% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>6</td>\n   <td>\n<ul><li>35% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>7</td>\n   <td>\n<ul><li>40% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>8</td>\n   <td>\n<ul><li>45% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>9</td>\n   <td>\n<ul><li>50% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>10</td>\n   <td>\n<ul><li>65% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>11</td>\n   <td>\n<ul><li>70% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>12</td>\n   <td>\n<ul><li>75% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>13</td>\n   <td>\n<ul><li>80% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>14</td>\n   <td>\n<ul><li>85% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n<tr>\n   <td>15</td>\n   <td>\n<ul><li>100% chance to gain 1 <span><a href=\"/wiki/Category:Mana_Items\" title=\"Mana\"><img alt=\"Mana\" src=\"/images/thumb/Mana.png/20px-Mana.png?be3cc4\" decoding=\"async\" loading=\"lazy\" width=\"20\" height=\"20\" data-file-width=\"64\" data-file-height=\"64\" /></a></span></li></ul></td>\n</tr>\n</tbody></table>\n<h2><span class=\"mw-headline\" id=\"Recipes\">Recipes</span><span class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">[</span><a href=\"/wiki/Template:Item?action=edit&amp;section=T-3\" title=\"Edit section&#039;s source code: Recipes\"><span>edit source</span></a><span class=\"mw-editsection-bracket\">]</span></span></h2>\n<table class=\"itemTable\" style=\"border: solid 2px var(--wiki-sidebar-border-color)\">\n<tbody><tr>\n<th>Item</th>\n<th>Image</th>\n<th>Recipe</th>\n</tr>\n<tr style=\"border-top: solid 2px var(--wiki-sidebar-border-color)\">\n<td rowspan=\"2\"> <b><a href=\"/wiki/Wicked_Stick\" title=\"Wicked Stick\">Wicked Stick</a></b></td>\n<td rowspan=\"2\"> <a href=\"/wiki/Wicked_Stick\" title=\"Wicked Stick\"><img alt=\"Wicked Stick.png\" src=\"/images/thumb/Wicked_Stick.png/48px-Wicked_Stick.png?4a101e\" decoding=\"async\" loading=\"lazy\" width=\"48\" height=\"96\" data-file-width=\"120\" data-file-height=\"240\" /></a></td>\n<td><a href=\"/wiki/Wooden_Stick\" title=\"Wooden Stick\"><img alt=\"Wooden Stick.png\" src=\"/images/thumb/Wooden_Stick.png/24px-Wooden_Stick.png?55c7df\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a href=\"/wiki/Wooden_Stick\" title=\"Wooden Stick\">Wooden Stick</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr><tr style=\"border-top: solid 2px var(--wiki-sidebar-border-color)\">\n<td rowspan=\"3\"> <b><a href=\"/wiki/Mana_Crystal\" title=\"Mana Crystal\">Mana Crystal</a></b></td>\n<td rowspan=\"3\"> <a href=\"/wiki/Mana_Crystal\" title=\"Mana Crystal\"><img alt=\"Mana Crystal.png\" src=\"/images/thumb/Mana_Crystal.png/96px-Mana_Crystal.png?7d37f9\" decoding=\"async\" loading=\"lazy\" width=\"96\" height=\"96\" data-file-width=\"120\" data-file-height=\"120\" /></a></td>\n<td><a href=\"/wiki/Rock\" title=\"Rock\"><img alt=\"Rock.png\" src=\"/images/thumb/Rock.png/48px-Rock.png?d43364\" decoding=\"async\" loading=\"lazy\" width=\"48\" height=\"48\" data-file-width=\"120\" data-file-height=\"120\" /></a><br /><a href=\"/wiki/Rock\" title=\"Rock\">Rock</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr><tr style=\"border-top: solid 2px var(--wiki-sidebar-border-color)\">\n<td rowspan=\"3\"> <b><a href=\"/wiki/Belt_of_Firethrowing\" title=\"Belt of Firethrowing\">Belt of Firethrowing</a></b></td>\n<td rowspan=\"3\"> <a href=\"/wiki/Belt_of_Firethrowing\" title=\"Belt of Firethrowing\"><img alt=\"Belt of Firethrowing.png\" src=\"/images/thumb/Belt_of_Firethrowing.png/96px-Belt_of_Firethrowing.png?46880e\" decoding=\"async\" loading=\"lazy\" width=\"96\" height=\"48\" data-file-width=\"240\" data-file-height=\"120\" /></a></td>\n<td><a href=\"/wiki/Leather_Belt\" title=\"Leather Belt\"><img alt=\"Leather Belt.png\" src=\"/images/thumb/Leather_Belt.png/48px-Leather_Belt.png?54ee70\" decoding=\"async\" loading=\"lazy\" width=\"48\" height=\"24\" data-file-width=\"240\" data-file-height=\"120\" /></a><br /><a href=\"/wiki/Leather_Belt\" title=\"Leather Belt\">Leather Belt</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr><tr style=\"border-top: solid 2px var(--wiki-sidebar-border-color)\">\n<td rowspan=\"3\"> <b><a href=\"/wiki/Starlight_Potion\" title=\"Starlight Potion\">Starlight Potion</a></b></td>\n<td rowspan=\"3\"> <a href=\"/wiki/Starlight_Potion\" title=\"Starlight Potion\"><img alt=\"Starlight Potion.png\" src=\"/images/thumb/Starlight_Potion.png/32px-Starlight_Potion.png?7d0da8\" decoding=\"async\" loading=\"lazy\" width=\"32\" height=\"96\" data-file-width=\"120\" data-file-height=\"360\" /></a></td>\n<td><a href=\"/wiki/Mana_Potion\" title=\"Mana Potion\"><img alt=\"Mana Potion.png\" src=\"/images/thumb/Mana_Potion.png/24px-Mana_Potion.png?aa197e\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a href=\"/wiki/Mana_Potion\" title=\"Mana Potion\">Mana Potion</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr><tr><td><a href=\"/wiki/Starbloom\" title=\"Starbloom\"><img alt=\"Starbloom.png\" src=\"/images/thumb/Starbloom.png/24px-Starbloom.png?56bddf\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"48\" data-file-width=\"120\" data-file-height=\"240\" /></a><br /><a class=\"mw-selflink selflink\">Starbloom</a></td></tr></tbody></table>\n</div>"
+  },
+  "templateParams": {
+    "name": "Starbloom",
+    "rarity": "Common",
+    "type1": "Plant",
+    "cost": "2",
+    "hero": "Chana",
+    "unlockSource": "Initially available",
+    "purchasable": "Yes",
+    "ability1Trigger": "Start of {{Icon|Misc|Dawn}}",
+    "ability1Effect1": "Gain 2 {{Icon|Status|Mana}}",
+    "ability2Trigger": "On {{Icon|Misc|Star}} activation",
+    "ability2Effect1": "35% chance to gain 1 {{Icon|Status|Mana}}",
+    "levelUpAbilityTrigger": "When this item activates",
+    "levelUpAbilityEffect": "to gain 1 {{Icon|Status|Mana}}",
+    "r1c1": "e",
+    "r1c2": "e",
+    "r1c3": "e",
+    "r1c4": "e",
+    "r1c5": "e",
+    "r2c1": "e",
+    "r2c2": "e",
+    "r2c3": "i",
+    "r2c4": "s",
+    "r2c5": "e",
+    "r3c1": "e",
+    "r3c2": "s",
+    "r3c3": "i",
+    "r3c4": "e",
+    "r3c5": "e",
+    "r4c1": "e",
+    "r4c2": "e",
+    "r4c3": "e",
+    "r4c4": "e",
+    "r4c5": "e",
+    "recipe1Result": "Wicked Stick",
+    "recipe1Ingredient1": "Wooden Stick",
+    "recipe1Ingredient2": "Starbloom",
+    "recipe2Result": "Mana Crystal",
+    "recipe2Ingredient1": "Rock",
+    "recipe2Ingredient2": "Starbloom",
+    "recipe2Ingredient3": "Starbloom",
+    "recipe3Result": "Belt of Firethrowing",
+    "recipe3Ingredient1": "Leather Belt",
+    "recipe3Ingredient2": "Starbloom",
+    "recipe3Ingredient3": "Starbloom",
+    "recipe4Result": "Starlight Potion",
+    "recipe4Ingredient1": "Mana Potion",
+    "recipe4Ingredient2": "Starbloom",
+    "recipe4Ingredient3": "Starbloom"
+  },
+  "recipesAll": [
+    {
+      "resultName": "Wicked Stick",
+      "ingredientNames": [
+        "Wooden Stick",
+        "Starbloom"
+      ]
+    },
+    {
+      "resultName": "Mana Crystal",
+      "ingredientNames": [
+        "Rock",
+        "Starbloom",
+        "Starbloom"
+      ]
+    },
+    {
+      "resultName": "Belt of Firethrowing",
+      "ingredientNames": [
+        "Leather Belt",
+        "Starbloom",
+        "Starbloom"
+      ]
+    },
+    {
+      "resultName": "Starlight Potion",
+      "ingredientNames": [
+        "Mana Potion",
+        "Starbloom",
+        "Starbloom"
+      ]
+    }
+  ],
+  "usedInRecipes": [
+    {
+      "resultName": "Wicked Stick",
+      "ingredientNames": [
+        "Wooden Stick",
+        "Starbloom"
+      ]
+    },
+    {
+      "resultName": "Mana Crystal",
+      "ingredientNames": [
+        "Rock",
+        "Starbloom",
+        "Starbloom"
+      ]
+    },
+    {
+      "resultName": "Belt of Firethrowing",
+      "ingredientNames": [
+        "Leather Belt",
+        "Starbloom",
+        "Starbloom"
+      ]
+    },
+    {
+      "resultName": "Starlight Potion",
+      "ingredientNames": [
+        "Mana Potion",
+        "Starbloom",
+        "Starbloom"
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "level": "warning",
+      "code": "unparsed_star_activation",
+      "message": "Star activation kept as raw: \"On Star activation\"",
+      "itemName": "Starbloom"
+    },
+    {
+      "level": "info",
+      "code": "info",
+      "message": "Image: cached",
+      "itemName": "Starbloom"
+    }
+  ],
+  "unparsed": [
+    {
+      "kind": "star_activation",
+      "raw": "On Star activation",
+      "reason": "Star trigger has no structured target type in Wiki text"
+    }
+  ],
+  "parsedAt": "2026-08-28T18:03:51.675Z",
+  "parserVersion": "0.1.0"
+}

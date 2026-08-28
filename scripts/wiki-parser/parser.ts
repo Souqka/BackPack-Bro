@@ -10,7 +10,7 @@ import { parseLevels } from "./parsers/levels.ts";
 import { parseRecipes } from "./parsers/recipes.ts";
 import { parseStats } from "./parsers/stats.ts";
 import type { Item, NormalizedCatalog } from "./types/normalized.ts";
-import type { RawItemRecord, RawWikiPage, UnparsedConstruct } from "./types/raw.ts";
+import type { Diagnostic, RawItemRecord, RawWikiPage, UnparsedConstruct } from "./types/raw.ts";
 import { slugifyItemName } from "./utils/ids.ts";
 import type { Logger } from "./utils/logger.ts";
 import { parseItemTemplate } from "./utils/wikitext.ts";
@@ -196,13 +196,27 @@ export async function parseOneItem(
     templateParams: params,
     recipesAll: recipes.recipesAll,
     usedInRecipes: recipes.usedInRecipes,
-    diagnostics: ctx.logger.itemDiagnostics(name).concat(ctx.logger.itemDiagnostics(page.title)),
+    diagnostics: uniqueDiagnostics(
+      ctx.logger.itemDiagnostics(name).concat(ctx.logger.itemDiagnostics(page.title)),
+    ),
     unparsed,
     parsedAt: item.source.parsedAt,
     parserVersion: PARSER_VERSION,
   };
 
   return { item, raw };
+}
+
+function uniqueDiagnostics(list: Diagnostic[]): Diagnostic[] {
+  const seen = new Set<string>();
+  const out: Diagnostic[] = [];
+  for (const d of list) {
+    const key = `${d.level}:${d.code}:${d.message}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(d);
+  }
+  return out;
 }
 
 async function writeOutputs(

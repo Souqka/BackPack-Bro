@@ -108,7 +108,7 @@ export function parseAbilitiesFromHtml(html: string): Ability[] {
       const text = visibleText($, el);
       if (bold.length > 0) {
         if (current) abilities.push(current);
-        const trigger = visibleText($, bold).replace(/:\s*$/, "");
+        const trigger = visibleText($, bold).replace(/:\s*$/, "").trim();
         current = { trigger, effects: [], rawText: text };
       } else if (text && text !== "This item has no initial abilities") {
         // Template:Initial_abilities renders triggerless blocks as a bare <p>.
