@@ -53,6 +53,43 @@ export function sortRankedLayouts(layouts: RankedLayout[]): RankedLayout[] {
   return [...layouts].sort(compareRankedLayouts);
 }
 
+/**
+ * Строгое улучшение качества без signature.
+ *
+ * Local Search не должен ходить между layout с одинаковым score
+ * только потому, что каноническая подпись лексикографически меньше —
+ * иначе возникнет бесконечный обход эквивалентных геометрий.
+ */
+export function isStrictlyBetterLayout(candidate: RankedLayout, current: RankedLayout): boolean {
+  if (candidate.complete !== current.complete) return candidate.complete;
+
+  const scoreA = finiteScore(candidate);
+  const scoreB = finiteScore(current);
+  if (scoreA !== scoreB) return scoreA > scoreB;
+
+  const starsA = candidate.score.breakdown.activatedStars;
+  const starsB = current.score.breakdown.activatedStars;
+  if (starsA !== starsB) return starsA > starsB;
+
+  const covA = candidate.score.effectCoverage.normalizedEffects;
+  const covB = current.score.effectCoverage.normalizedEffects;
+  if (covA !== covB) return covA > covB;
+
+  const totalA = candidate.score.effectCoverage.totalActiveEffects;
+  const totalB = current.score.effectCoverage.totalActiveEffects;
+  if (totalA !== totalB) return totalA > totalB;
+
+  const placedA = candidate.state.items.items.length;
+  const placedB = current.state.items.items.length;
+  if (placedA !== placedB) return placedA > placedB;
+
+  const occA = candidate.score.breakdown.occupiedCells;
+  const occB = current.score.breakdown.occupiedCells;
+  if (occA !== occB) return occA > occB;
+
+  return false;
+}
+
 function finiteScore(layout: RankedLayout): number {
   if (!layout.score.valid) return Number.NEGATIVE_INFINITY;
   return layout.score.score;

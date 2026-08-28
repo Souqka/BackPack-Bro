@@ -18,9 +18,13 @@ export function toBeamWidthRow(caseId: string, beamWidth: number, result: Optimi
     caseId,
     beamWidth,
     score: metrics.finalScore,
+    activatedStars: metrics.activatedStars,
+    effectCoverage: metrics.normalizedEffects,
+    placedItems: metrics.placedItems,
+    complete: metrics.complete,
     durationMs: metrics.durationMs,
     statesGenerated: metrics.statesGenerated,
     statesPruned: metrics.statesPruned,
-    complete: metrics.complete,
+    candidatesGenerated: metrics.candidatesGenerated,
   };
 }

@@ -42,6 +42,16 @@ export interface OptimizerOptions {
   /** Если true, в результат кладётся OptimizerMetrics. */
   metrics?: boolean;
   dfs?: DfsSearchLimits;
+  /**
+   * Local Search после Top-N. false/undefined — выключен (default),
+   * чтобы сравнение Beam width не смешивалось с локальными ходами.
+   */
+  localSearch?: boolean | LocalSearchOptions;
+}
+
+export interface LocalSearchOptions {
+  maxIterations?: number;
+  maxNeighbors?: number;
 }
 
 export interface BeamSearchOptions {
@@ -58,6 +68,7 @@ export const DEFAULT_OPTIMIZER_OPTIONS: OptimizerOptions = {
   resultCount: 1,
   dynamicOrdering: false,
   metrics: true,
+  localSearch: false,
 };
 
 export const DEFAULT_DFS_LIMITS: DfsSearchLimits = {
@@ -112,6 +123,14 @@ export interface OptimizerMetrics {
    * beam не упёрся в deadline). false не означает, что layout — глобальный оптимум.
    */
   searchExhaustive: boolean;
+  beamWidth?: number;
+  bagBeamWidth?: number;
+  localSearchEnabled: boolean;
+  localSearchIterations: number;
+  localSearchNeighbors: number;
+  localSearchImprovements: number;
+  initialScore: number;
+  scoreDelta: number;
 }
 
 export interface OptimizerLayout {

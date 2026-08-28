@@ -30,8 +30,20 @@ export function toOptimizerMetrics(
   result: Omit<OptimizerResult, "metrics">,
   algorithm: OptimizerMetrics["algorithm"],
   searchExhaustive: boolean,
+  extra?: {
+    beamWidth?: number;
+    bagBeamWidth?: number;
+    localSearch?: {
+      enabled: boolean;
+      iterations: number;
+      neighbors: number;
+      improvements: number;
+      initialScore: number;
+    };
+  },
 ): OptimizerMetrics {
   const score = result.score.valid ? result.score.score : Number.NEGATIVE_INFINITY;
+  const initialScore = extra?.localSearch?.initialScore ?? score;
   return {
     algorithm,
     durationMs: result.stats.durationMs,
@@ -49,6 +61,16 @@ export function toOptimizerMetrics(
     unplacedItems: result.unplacedItems.length,
     complete: result.complete,
     searchExhaustive,
+    beamWidth: extra?.beamWidth,
+    bagBeamWidth: extra?.bagBeamWidth,
+    localSearchEnabled: extra?.localSearch?.enabled ?? false,
+    localSearchIterations: extra?.localSearch?.iterations ?? 0,
+    localSearchNeighbors: extra?.localSearch?.neighbors ?? 0,
+    localSearchImprovements: extra?.localSearch?.improvements ?? 0,
+    initialScore,
+    scoreDelta: score === Number.NEGATIVE_INFINITY || initialScore === Number.NEGATIVE_INFINITY
+      ? 0
+      : score - initialScore,
   };
 }
 

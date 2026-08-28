@@ -43,6 +43,7 @@ export type {
   RankedLayout,
   RunOptimizerInput,
 } from "./search-types.ts";
+export type { LocalSearchOptions } from "./search-types.ts";
 export { DEFAULT_DFS_LIMITS, DEFAULT_OPTIMIZER_OPTIONS } from "./search-types.ts";
 
 export { evaluatePartialState, countFutureStarPotential, DEFAULT_HEURISTIC_WEIGHTS } from "./heuristic.ts";
@@ -53,6 +54,13 @@ export { selectBeam } from "./beam-search.ts";
 export { runGreedySearch } from "./greedy.ts";
 export { runDfsSearch } from "./dfs.ts";
 export { compareOptimizerResults } from "./compare.ts";
-export { compareRankedLayouts, sortRankedLayouts } from "./rank.ts";
+export { compareRankedLayouts, isStrictlyBetterLayout, sortRankedLayouts } from "./rank.ts";
 export { analyzeHeuristicInversions, toOptimizerMetrics } from "./metrics.ts";
 export { loadProductionCatalog } from "./load-catalog.ts";
+export {
+  DEFAULT_LOCAL_SEARCH_OPTIONS,
+  improveLayoutLocally,
+  improveTopNLocally,
+  resolveLocalSearchOptions,
+} from "./local-search.ts";
+export type { LocalSearchOutcome, LocalSearchStats } from "./local-search.ts";

@@ -17,6 +17,12 @@ import { runDfsSearch } from "./dfs.ts";
 import { runGreedySearch, orderBags } from "./greedy.ts";
 import { evaluatePartialState, remainingItemCells } from "./heuristic.ts";
 import { loadProductionCatalog } from "./load-catalog.ts";
+import {
+  emptyLocalSearchStats,
+  improveTopNLocally,
+  layoutScore,
+  resolveLocalSearchOptions,
+} from "./local-search.ts";
 import { createEmptyStats, toOptimizerMetrics } from "./metrics.ts";
 import { orderItemsForSearch } from "./ordering.ts";
 import { sortRankedLayouts } from "./rank.ts";
@@ -594,7 +600,18 @@ function finish(args: {
   searchExhaustive: boolean;
   heuristicSamples?: import("./search-types.ts").HeuristicSample[];
 }): OptimizerResult {
-  const ranked = sortRankedLayouts(args.ranked);
+  let ranked = sortRankedLayouts(args.ranked);
+  const initialScore = ranked[0] ? layoutScore(ranked[0]) : Number.NEGATIVE_INFINITY;
+  const lsOptions = resolveLocalSearchOptions(args.options.localSearch);
+  let lsStats = emptyLocalSearchStats(initialScore);
+
+  if (lsOptions) {
+    const resultCount = Math.max(1, args.options.resultCount ?? 1);
+    const improved = improveTopNLocally(ranked, args.catalog, resultCount, lsOptions);
+    ranked = improved.layouts;
+    lsStats = improved.stats;
+  }
+
   const best = ranked[0]!;
   args.stats.durationMs = Date.now() - args.started;
   const resultCount = Math.max(1, args.options.resultCount ?? 1);
@@ -638,6 +655,17 @@ function finish(args: {
       },
       args.algorithm,
       args.searchExhaustive,
+      {
+        beamWidth: args.options.itemBeamWidth,
+        bagBeamWidth: args.options.bagBeamWidth,
+        localSearch: {
+          enabled: lsOptions !== null,
+          iterations: lsStats.iterations,
+          neighbors: lsStats.neighborsEvaluated,
+          improvements: lsStats.improvements,
+          initialScore: lsStats.initialScore,
+        },
+      },
     ),
   };
 
