@@ -1,0 +1,26 @@
+{
+  "parserVersion": "0.2.0",
+  "source": "wikitext corpus via MediaWiki parse API (912/912 pages)",
+  "pages": 912,
+  "triggers": {
+    "total": 1690,
+    "normalized": 1567,
+    "rawFallback": 123,
+    "coverage": 0.927
+  },
+  "effects": {
+    "total": 2534,
+    "normalized": 1858,
+    "rawFallback": 676,
+    "coverage": 0.733
+  },
+  "constraints": {
+    "totalRecognizedPhrases": 75,
+    "coverage": 1
+  },
+  "notes": [
+    "HTML catalog of all 912 items was not committed: Wiki.gg returns HTTP 429 under full HTML crawl.",
+    "Wikitext corpus is the Stage 2 source of truth for pattern design.",
+    "Unknown constructions remain { type: raw, raw }."
+  ]
+}

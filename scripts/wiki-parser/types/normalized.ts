@@ -1,17 +1,31 @@
 /**
- * Normalized item contract produced by the Wiki parser.
+ * Нормализованный контракт предмета после Stage 2.
  *
- * Coordinates in `geometry` are `[row, col]` in the item's local system after
- * cropping empty padding around occupied Item tiles and Star tiles.
- * Star tiles are NOT included in `cells`.
+ * Координаты geometry — `[row, col]` в локальной системе после обрезки пустых
+ * клеток вокруг Item Tile и Star. Star не входит в `cells` и не является
+ * отдельным предметом инвентаря.
  *
- * Effect / condition / trigger values stay loosely typed on purpose: stage 1
- * extracts Wiki data faithfully. A strict game DSL comes later from this JSON.
+ * Effect / Trigger / Condition / Constraint — строгие discriminated unions
+ * по реальным формулировкам Wiki; неизвестное остаётся `{ type: "raw" }`.
  */
 
 import type { KnownRarity } from "../constants.ts";
+import type {
+  Ability as AbilityModel,
+  ChancedEffect,
+  Constraint,
+  StarData,
+  Trigger,
+} from "./effects.ts";
 
-/** `[row, col]` in the canonical local geometry. */
+export type { ChancedEffect, Constraint, StarData, Trigger } from "./effects.ts";
+export type {
+  Condition,
+  Effect,
+  StarRule,
+} from "./effects.ts";
+
+/** `[row, col]` в канонической локальной геометрии. */
 export type Cell = [row: number, col: number];
 
 export type Rarity = KnownRarity | string;
@@ -30,7 +44,7 @@ export interface UnlockInfo {
   area?: number | null;
   rank?: string | null;
   seasonEvent?: number | null;
-  /** True when the Wiki text is too irregular to split reliably. */
+  /** true, если текст Wiki слишком нерегулярен для надёжного разбора. */
   unparsed?: boolean;
 }
 
@@ -44,35 +58,13 @@ export interface ItemStats {
   critDamage?: number | null;
 }
 
-/**
- * One Initial Abilities block from the Wiki.
- * `effects` may contain lightly structured objects or `{ raw }` fallbacks.
- */
-export interface Ability {
-  trigger?: string | null;
-  condition?: unknown;
-  effects: unknown[];
-  rawText?: string;
-}
+export type Ability = AbilityModel;
 
 export interface LevelUpChange {
   level: number;
-  trigger?: string | null;
-  changes: unknown[];
+  trigger: Trigger | null;
+  changes: ChancedEffect[];
   rawText?: string;
-}
-
-export interface StarActivation {
-  raw?: string;
-  trigger?: string | null;
-  target?: {
-    types?: string[];
-  };
-}
-
-export interface StarData {
-  activation: StarActivation;
-  effects: unknown[];
 }
 
 export interface UpgradeInfo {
@@ -111,6 +103,7 @@ export interface Item {
   cost?: number | null;
   geometry: ItemGeometry;
   stats?: ItemStats | null;
+  constraints: Constraint[];
   abilities: {
     initial: Ability[];
     levelUp: LevelUpChange[];
@@ -127,4 +120,5 @@ export interface NormalizedCatalog {
   generatedAt: string;
   wikiOrigin: string;
   items: Item[];
+  usedIn: Record<string, string[]>;
 }

@@ -64,6 +64,48 @@ export class WikiFetcher {
   }
 
   /**
+   * Пакетно загрузить wikitext страниц (до 50 за запрос).
+   * Нужен для корпусного анализа триггеров и эффектов без полного HTML.
+   */
+  async fetchWikitextBatch(titles: string[]): Promise<Map<string, string>> {
+    const out = new Map<string, string>();
+    const chunkSize = 50;
+    for (let i = 0; i < titles.length; i += chunkSize) {
+      const chunk = titles.slice(i, i + chunkSize);
+      const data = await this.api({
+        action: "query",
+        prop: "revisions",
+        rvprop: "content",
+        rvslots: "main",
+        titles: chunk.join("|"),
+        redirects: "1",
+      });
+      const pages = (
+        data as {
+          query?: {
+            pages?: Record<
+              string,
+              {
+                title?: string;
+                revisions?: Array<{ slots?: { main?: { "*": string } }; "*": string }>;
+              }
+            >;
+          };
+        }
+      ).query?.pages;
+      if (!pages) continue;
+      for (const page of Object.values(pages)) {
+        const title = page.title;
+        if (!title) continue;
+        const rev = page.revisions?.[0];
+        const text = rev?.slots?.main?.["*"] ?? rev?.["*"] ?? "";
+        out.set(title, text);
+      }
+    }
+    return out;
+  }
+
+  /**
    * Fetch wikitext + rendered HTML for one item page.
    */
   async fetchPage(title: string): Promise<RawWikiPage> {
@@ -139,16 +181,27 @@ export class WikiFetcher {
   }
 
   private async api(params: Record<string, string>): Promise<unknown> {
-    await this.wait();
     const search = new URLSearchParams({ ...params, format: "json" });
     const url = `${WIKI_API}?${search.toString()}`;
-    const response = await fetch(url, {
-      headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
-    });
-    if (!response.ok) {
-      throw new Error(`Wiki API ${response.status} for ${params.action}`);
+    let lastError: Error | null = null;
+    for (let attempt = 0; attempt < 6; attempt++) {
+      await this.wait();
+      if (attempt > 0) {
+        await new Promise((r) => setTimeout(r, 1500 * 2 ** (attempt - 1)));
+      }
+      const response = await fetch(url, {
+        headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
+      });
+      if (response.status === 429) {
+        lastError = new Error(`Wiki API 429 for ${params.action}`);
+        continue;
+      }
+      if (!response.ok) {
+        throw new Error(`Wiki API ${response.status} for ${params.action}`);
+      }
+      return response.json();
     }
-    return response.json();
+    throw lastError ?? new Error(`Wiki API failed for ${params.action}`);
   }
 
   private async wait(): Promise<void> {

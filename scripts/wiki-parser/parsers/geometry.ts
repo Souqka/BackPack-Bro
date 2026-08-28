@@ -45,13 +45,13 @@ export function parseGeometry(
   if (fromWiki.grid.length > 0) {
     logger.warn(
       "geometry_html_missing",
-      "Tiles HTML table missing or unreadable; used rXcY wikitext fallback",
+      "HTML-таблица тайлов недоступна; использован запасной разбор rXcY из wikitext",
       itemName,
     );
     return { ...fromWiki, source: "wikitext", unparsed };
   }
 
-  logger.warn("geometry_missing", "No geometry table or rXcY grid found", itemName);
+  logger.warn("geometry_missing", "Нет таблицы геометрии и параметров rXcY", itemName);
   unparsed.push({
     kind: "geometry",
     raw: "",
@@ -104,14 +104,14 @@ export function parseGeometryFromHtml(
   });
 
   if (grid.length === 0) {
-    logger.warn("geometry_empty_table", "Tiles table had no rows", itemName);
+    logger.warn("geometry_empty_table", "Таблица тайлов не содержит строк", itemName);
     return null;
   }
 
   if (unknownCount > 0) {
     logger.warn(
       "geometry_unknown_tile",
-      `Geometry table has ${unknownCount} unrecognized tile alt(s)`,
+      `В таблице геометрии ${unknownCount} нераспознанных alt тайлов`,
       itemName,
     );
   }
@@ -120,7 +120,7 @@ export function parseGeometryFromHtml(
   if (geometry.cells.length === 0) {
     logger.warn(
       "geometry_no_item_tiles",
-      "Geometry table parsed but no Item Tile cells were found",
+      "Таблица геометрии разобрана, но клетки Item Tile не найдены",
       itemName,
       { stars: geometry.stars.length },
     );
