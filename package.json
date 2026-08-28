@@ -9,6 +9,7 @@
     "analyze:corpus": "tsx scripts/wiki-parser/analyze-corpus.ts",
     "test": "vitest run",
     "test:parser": "vitest run scripts/wiki-parser",
+    "test:inventory": "vitest run src/lib/inventory",
     "typecheck": "tsc --noEmit"
   },
   "engines": {
