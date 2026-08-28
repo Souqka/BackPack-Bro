@@ -1,5 +1,5 @@
 /**
- * Публичный API optimizer: кандидаты Stage 6 + двухслойный Beam Search Stage 7.
+ * Публичный API optimizer: кандидаты Stage 6, двухслойный поиск Stage 7–8.
  */
 
 export type {
@@ -27,17 +27,32 @@ export { addBagCandidate, createBagState, emptyBagState, getBagStateSignature } 
 
 export type {
   BeamSearchOptions,
+  DfsSearchLimits,
+  HeuristicInversionReport,
+  HeuristicSample,
+  OptimizerAlgorithm,
+  OptimizerAlternative,
+  OptimizerComparison,
+  OptimizerLayout,
+  OptimizerMetrics,
   OptimizerOptions,
   OptimizerResult,
   OptimizerState,
   OptimizerStats,
   PartialStateScore,
+  RankedLayout,
   RunOptimizerInput,
 } from "./search-types.ts";
-export { DEFAULT_OPTIMIZER_OPTIONS } from "./search-types.ts";
+export { DEFAULT_DFS_LIMITS, DEFAULT_OPTIMIZER_OPTIONS } from "./search-types.ts";
 
-export { evaluatePartialState, DEFAULT_HEURISTIC_WEIGHTS } from "./heuristic.ts";
+export { evaluatePartialState, countFutureStarPotential, DEFAULT_HEURISTIC_WEIGHTS } from "./heuristic.ts";
 export type { HeuristicWeights } from "./heuristic.ts";
 export { orderItemsForSearch } from "./ordering.ts";
 export { runBeamSearch, runOptimizer, getOptimizerStateSignature } from "./optimizer.ts";
 export { selectBeam } from "./beam-search.ts";
+export { runGreedySearch } from "./greedy.ts";
+export { runDfsSearch } from "./dfs.ts";
+export { compareOptimizerResults } from "./compare.ts";
+export { compareRankedLayouts, sortRankedLayouts } from "./rank.ts";
+export { analyzeHeuristicInversions, toOptimizerMetrics } from "./metrics.ts";
+export { loadProductionCatalog } from "./load-catalog.ts";
