@@ -65,6 +65,7 @@ export function createBagState(
         issues.push(`Коллизия Bags на ${key}`);
       }
     }
+    state.bags.push(bag);
     applyBagGeometry(state, bag, geometry);
   }
 

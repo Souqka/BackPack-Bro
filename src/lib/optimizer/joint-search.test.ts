@@ -61,13 +61,10 @@ describe("joint local search", () => {
       repairBeamWidth: 4,
       itemLocalSearch: true,
     });
-    expect(isStrictlyBetterLayout(improved.layout, seed) || improved.layout.signature === seed.signature).toBe(
-      true,
-    );
-    expect(improved.stats.finalScore).toBeGreaterThanOrEqual(improved.stats.initialScore);
-    if (improved.stats.bagLayoutsAccepted > 0) {
-      expect(isStrictlyBetterLayout(improved.layout, seed)).toBe(true);
-    }
+    expect(isStrictlyBetterLayout(improved.layout, seed)).toBe(true);
+    expect(improved.layout.complete).toBe(true);
+    expect(improved.stats.bagLayoutsAccepted).toBeGreaterThan(0);
+    expect(improved.stats.finalScore).toBeGreaterThan(improved.stats.initialScore);
   });
 
   it("не принимает равный score", () => {
@@ -296,5 +293,33 @@ describe("Stage 10 pipeline", () => {
     });
     expect(result.placedBags).toHaveLength(2);
     expect(result.metrics).toBeDefined();
+  });
+
+  it("H/I/J: Joint Bag LS улучшает Beam(1)+Item LS", () => {
+    const ids = ["H-multiple-bags", "I-geometry-trap", "J-bag-item-topology"] as const;
+    for (const id of ids) {
+      const entry = STAGE10_BENCHMARK_CASES.find((caseEntry) => caseEntry.id === id)!;
+      const itemLs = runBenchmarkCase(entry, catalog, {
+        algorithm: "beam",
+        bagBeamWidth: 1,
+        itemBeamWidth: 1,
+        localSearch: true,
+        bagLocalSearch: false,
+        resultCount: 10,
+      });
+      const joint = runBenchmarkCase(entry, catalog, {
+        algorithm: "beam",
+        bagBeamWidth: 1,
+        itemBeamWidth: 1,
+        localSearch: true,
+        bagLocalSearch: true,
+        resultCount: 10,
+      });
+      const betterScore = joint.metrics!.finalScore > itemLs.metrics!.finalScore;
+      const betterComplete = joint.complete && !itemLs.complete;
+      expect(betterScore || betterComplete).toBe(true);
+      expect(joint.metrics!.bagLocalSearchEnabled).toBe(true);
+      expect(joint.metrics!.displacedItems).toBeGreaterThan(0);
+    }
   });
 });

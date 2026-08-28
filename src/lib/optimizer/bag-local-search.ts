@@ -7,7 +7,8 @@ import type { BagLocalSearchOptions } from "./search-types.ts";
 
 export const DEFAULT_BAG_LOCAL_SEARCH_OPTIONS: Required<BagLocalSearchOptions> = {
   maxIterations: 5,
-  maxNeighbors: 16,
+  /** J has ~120 Bag neighbors; 16/32 miss improving topology, 48 finds it. */
+  maxNeighbors: 48,
   repairBeamWidth: 4,
   itemLocalSearch: true,
 };
