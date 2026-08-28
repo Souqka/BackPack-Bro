@@ -100,6 +100,90 @@ export const OPTIMIZER_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   },
 ];
 
+export const STAGE9_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
+  {
+    id: "G-competing-stars",
+    name: "Competing Stars",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "warrior_backpack" },
+      { instanceId: "bag-b", itemId: "medium_bag" },
+    ],
+    items: [
+      { instanceId: "bar-1", itemId: "adamantite_bar" },
+      { instanceId: "bar-2", itemId: "adamantite_bar" },
+      { instanceId: "bloom-1", itemId: "starbloom" },
+      { instanceId: "bloom-2", itemId: "starbloom" },
+    ],
+    bagIds: ["warrior_backpack", "medium_bag"],
+    itemIds: ["adamantite_bar", "adamantite_bar", "starbloom", "starbloom"],
+    expected: { minScore: 2, minActiveStars: 2 },
+    options: { bagBeamWidth: 50, itemBeamWidth: 50 },
+    description:
+      "Два Bar и два Starbloom: ранний placement блокирует взаимные Star. Широкий Beam сохраняет ветку с большим числом активаций.",
+  },
+  {
+    id: "H-multiple-bags",
+    name: "Multiple Bags",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "fanny_pack" },
+      { instanceId: "bag-b", itemId: "fanny_pack" },
+      { instanceId: "bag-c", itemId: "fanny_pack" },
+    ],
+    items: [
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "ore", itemId: "adamantite_ore" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["fanny_pack", "fanny_pack", "fanny_pack"],
+    itemIds: ["adamantite_bar", "adamantite_ore", "starbloom"],
+    expected: { minScore: 1, minActiveStars: 1 },
+    options: { bagBeamWidth: 50, itemBeamWidth: 50 },
+    description:
+      "Три Fanny Pack: Bag layout A может не собрать смежную площадь под Bar+Starbloom, layout B даёт больше Star activation.",
+  },
+  {
+    id: "I-geometry-trap",
+    name: "Geometry trap",
+    inventory: GRID,
+    bags: [{ instanceId: "bag", itemId: "bottom_trawl" }],
+    items: [
+      { instanceId: "cat", itemId: "black_cat" },
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "ore", itemId: "adamantite_ore" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["bottom_trawl"],
+    itemIds: ["black_cat", "adamantite_bar", "adamantite_ore", "starbloom"],
+    expected: { minScore: 2, minActiveStars: 2 },
+    options: { bagBeamWidth: 8, itemBeamWidth: 50 },
+    description:
+      "L-shape black_cat + Bar со Star вне cells. Ранний поворот кошки перекрывает выгодную Star-конфигурацию.",
+  },
+  {
+    id: "J-bag-item-topology",
+    name: "Bag + Item topology",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "medium_bag" },
+      { instanceId: "bag-b", itemId: "fanny_pack" },
+    ],
+    items: [
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "ore", itemId: "adamantite_ore" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["medium_bag", "fanny_pack"],
+    itemIds: ["adamantite_bar", "adamantite_ore", "starbloom"],
+    expected: { minScore: 2, minActiveStars: 2 },
+    options: { bagBeamWidth: 50, itemBeamWidth: 50, dfs: { maxNodes: 25_000, maxDepth: 8, timeoutMs: 8_000 } },
+    description:
+      "Те же Items, что в B, но две Bags вместо одной прямоугольной. Оптимум зависит от формы availableCells, не только от Item search.",
+    runDfs: true,
+  },
+];
+
 export const SMOKE_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   {
     id: "smoke-5",
@@ -176,9 +260,12 @@ export const SMOKE_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
 ];
 
 export const BEAM_WIDTHS = [1, 5, 10, 20, 50, 100] as const;
+export const STAGE9_BEAM_WIDTHS = [1, 2, 5, 10, 20, 50] as const;
 
 export function getBenchmarkCase(id: string): OptimizerBenchmarkCase {
-  const found = [...OPTIMIZER_BENCHMARK_CASES, ...SMOKE_BENCHMARK_CASES].find((entry) => entry.id === id);
+  const found = [...OPTIMIZER_BENCHMARK_CASES, ...STAGE9_BENCHMARK_CASES, ...SMOKE_BENCHMARK_CASES].find(
+    (entry) => entry.id === id,
+  );
   if (!found) throw new Error(`Неизвестный benchmark case: ${id}`);
   return found;
 }

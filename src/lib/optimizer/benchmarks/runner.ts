@@ -13,13 +13,15 @@ import { analyzeHeuristicInversions } from "../metrics.ts";
 import { compareOptimizerResults } from "../compare.ts";
 import { runOptimizer } from "../optimizer.ts";
 import type { OptimizerOptions, OptimizerResult } from "../search-types.ts";
-import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES } from "./cases.ts";
+import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE9_BEAM_WIDTHS } from "./cases.ts";
 import { requireMetrics, toBeamWidthRow } from "./metrics.ts";
 import type {
   AlgorithmComparisonRow,
   BenchmarkRun,
   OptimizerBenchmarkCase,
   Stage8Report,
+  Stage9AlgorithmRow,
+  Stage9CaseReport,
 } from "./types.ts";
 
 export function runBenchmarkCase(
@@ -94,7 +96,8 @@ export function runBeamWidthSweep(
   return widths.map((width) => {
     const result = runBenchmarkCase(benchmarkCase, catalog, {
       algorithm: "beam",
-      bagBeamWidth: Math.min(width, benchmarkCase.options?.bagBeamWidth ?? width),
+      localSearch: false,
+      bagBeamWidth: width,
       itemBeamWidth: width,
     });
     return toBeamWidthRow(benchmarkCase.id, width, result);
@@ -159,4 +162,123 @@ export function buildStage8Report(catalog: Map<string, Item>): Stage8Report {
   });
 
   return { algorithms, beamWidths, dynamicOrdering, heuristic, smoke };
+}
+
+function algorithmRow(label: string, result: OptimizerResult): Stage9AlgorithmRow {
+  const metrics = requireMetrics(result);
+  return {
+    label,
+    score: metrics.finalScore,
+    stars: metrics.activatedStars,
+    complete: metrics.complete,
+    durationMs: metrics.durationMs,
+    statesGenerated: metrics.statesGenerated,
+  };
+}
+
+/**
+ * Stage 9: width-sensitive cases, Local Search, dynamic ordering, DFS gap.
+ * Local Search в width-sweep выключен, чтобы не маскировать эффект Beam width.
+ */
+export function buildStage9Report(catalog: Map<string, Item>): Stage9CaseReport[] {
+  return STAGE9_BENCHMARK_CASES.map((entry) => {
+    const greedy = runBenchmarkCase(entry, catalog, { algorithm: "greedy", localSearch: false });
+    const greedyLocal = runBenchmarkCase(entry, catalog, {
+      algorithm: "greedy",
+      localSearch: true,
+      resultCount: 1,
+    });
+    const widths = runBeamWidthSweep(entry, catalog, STAGE9_BEAM_WIDTHS);
+    const beam20 = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 20,
+      itemBeamWidth: 20,
+      localSearch: false,
+      resultCount: 10,
+    });
+    const beam20Local = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 20,
+      itemBeamWidth: 20,
+      localSearch: true,
+      resultCount: 10,
+    });
+    const beam1Local = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 1,
+      itemBeamWidth: 1,
+      localSearch: true,
+      resultCount: 10,
+    });
+
+    let dfsRow: Stage9CaseReport["dfs"];
+    if (entry.runDfs) {
+      const dfs = runBenchmarkCase(entry, catalog, { algorithm: "dfs", localSearch: false });
+      const comparison = compareOptimizerResults(dfs, beam20);
+      dfsRow = {
+        ...algorithmRow("DFS", dfs),
+        exhaustive: dfs.searchExhaustive,
+        gap: comparison.gap,
+      };
+    }
+
+    const staticRun = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 20,
+      itemBeamWidth: 20,
+      dynamicOrdering: false,
+      localSearch: false,
+    });
+    const dynamicRun = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 20,
+      itemBeamWidth: 20,
+      dynamicOrdering: true,
+      localSearch: false,
+    });
+
+    const withoutLocalScores = [
+      beam20.score.valid ? beam20.score.score : Number.NEGATIVE_INFINITY,
+      ...beam20.alternatives.map((entryAlt) => (entryAlt.score.valid ? entryAlt.score.score : Number.NEGATIVE_INFINITY)),
+    ];
+    const withLocalScores = [
+      beam20Local.score.valid ? beam20Local.score.score : Number.NEGATIVE_INFINITY,
+      ...beam20Local.alternatives.map((entryAlt) =>
+        entryAlt.score.valid ? entryAlt.score.score : Number.NEGATIVE_INFINITY,
+      ),
+    ];
+
+    const lsMetrics = requireMetrics(beam1Local);
+    return {
+      caseId: entry.id,
+      name: entry.name,
+      description: entry.description,
+      greedy: algorithmRow("Greedy", greedy),
+      widths,
+      beamPlusLocal: algorithmRow("Beam(20)+LS", beam20Local),
+      greedyPlusLocal: algorithmRow("Greedy+LS", greedyLocal),
+      dfs: dfsRow,
+      localSearch: {
+        caseId: entry.id,
+        initialScore: lsMetrics.initialScore,
+        finalScore: lsMetrics.finalScore,
+        delta: lsMetrics.scoreDelta,
+        improvements: lsMetrics.localSearchImprovements,
+        iterations: lsMetrics.localSearchIterations,
+        neighbors: lsMetrics.localSearchNeighbors,
+        durationMs: lsMetrics.durationMs,
+        complete: lsMetrics.complete,
+      },
+      dynamicOrdering: {
+        staticScore: requireMetrics(staticRun).finalScore,
+        dynamicScore: requireMetrics(dynamicRun).finalScore,
+        staticDurationMs: requireMetrics(staticRun).durationMs,
+        dynamicDurationMs: requireMetrics(dynamicRun).durationMs,
+      },
+      topN: {
+        withoutLocal: withoutLocalScores,
+        withLocal: withLocalScores,
+      },
+    };
+  });
 }
