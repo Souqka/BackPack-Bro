@@ -1,8 +1,8 @@
 # Backpack Brawl Optimizer
 
-Этап 2: строгая модель игровых эффектов по данным [backpackbrawl.wiki.gg](https://backpackbrawl.wiki.gg/).
+Этап 3: полный каталог Wiki, валидация и production JSON.
 
-Игровые значения берутся только из официальной Wiki. Неизвестные формулировки сохраняются как `{ "type": "raw", "raw": "…" }` — parser ничего не выдумывает.
+Источник игровых значений — только [backpackbrawl.wiki.gg](https://backpackbrawl.wiki.gg/). Неизвестные формулировки сохраняются как `{ "type": "raw", "raw": "…" }`.
 
 ## Запуск
 
@@ -13,46 +13,40 @@ npm test
 # три тестовых предмета
 npm run parse:items -- --item "Adamantite Bar" --item "Adamantite Ore" --item "Starbloom"
 
-# быстрая проверка
-npm run parse:items -- --limit 5 --skip-images
+# полный каталог
+npm run parse:items -- --quiet
 
-# полный каталог без портретов
-npm run parse:items -- --skip-images --quiet
+# продолжить, используя уже сохранённый raw HTML
+npm run parse:items -- --resume --quiet
 ```
 
 Результат:
 
-- `data/normalized/items.json` — каталог + производный индекс `usedIn`
-- `data/raw/items/{id}.json` — wikitext, диагностика
-- `assets/items/{id}/icon.webp` и `full.webp`
-- `data/analysis/wikitext-corpus.json` — частоты паттернов Wiki
+```text
+data/normalized/items.json          — source of truth
+data/normalized/catalog-meta.json
+data/normalized/indexes/by-id.json
+data/normalized/indexes/by-type.json
+data/normalized/indexes/by-rarity.json
+data/normalized/indexes/by-hero.json
+data/normalized/indexes/used-in-recipes.json
+data/reports/catalog-report.json
+data/reports/catalog-report.md
+data/raw/items/{id}.json
+assets/items/{id}/icon.webp
+assets/items/{id}/full.webp
+```
 
-Покрытие по wikitext-корпусу (912 предметов):
+`usedIn` не дублируется в Item: индекс `used-in-recipes.json` строится из `item.recipes`.
 
-| Сущность | Нормализовано | Всего | Доля |
-| --- | --- | --- | --- |
-| Triggers | 1567 | 1690 | 93% |
-| Effects | 1858 | 2534 | 73% |
-| Constraints | 75 | 75 | 100% |
+## Геометрия
 
-Нераспознанное остаётся `{ "type": "raw" }`. Полный HTML-обход Wiki.gg может отвечать HTTP 429 — для проектирования модели достаточно wikitext.
+Канонические координаты после crop: `minRow === 0`, `minCol === 0`.
 
-## Модель Stage 2
+`rotateGeometry(geometry, 0 | 90 | 180 | 270)` вращает `cells` и `stars` вместе и снова обрезает к началу координат. Это утилита для будущего optimizer, не placement engine.
 
-Вероятность — обёртка `ChancedEffect.chance`, а не отдельный тип эффекта.
+## Модель эффектов
 
-`Gain 20 Armor` и `20% chance to gain 24 Armor` используют один `GainEffect`.
+Вероятность — обёртка `ChancedEffect.chance`. Star — часть geometry, не отдельный Item.
 
-Star — часть geometry предмета, не отдельный Item в инвентаре. Правило Star: occupant на клетке Star → condition → trigger → effects.
-
-Рецепты `item.recipes` — только крафт этого предмета. Кто использует предмет как ингредиент, считается из каталога в `usedIn`.
-
-## Тестовые предметы
-
-| Страница Wiki | Зачем |
-| --- | --- |
-| Adamantite Bar | Star `on_star_activation`, Gain Armor с шансом, два рецепта |
-| Adamantite Ore | On hit, constraint `max_uses_per_battle`, статы, level-up |
-| Starbloom | `start_of_phase` Dawn vs Star activation |
-
-Подмен не было.
+Если формулировка Wiki не распознана надёжно, остаётся `raw`.

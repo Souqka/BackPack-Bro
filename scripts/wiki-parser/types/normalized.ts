@@ -1,5 +1,8 @@
 /**
- * Нормализованный контракт предмета после Stage 2.
+ * Нормализованный контракт предмета после Stage 3.
+ *
+ * `data/normalized/items.json` — source of truth для frontend и optimizer.
+ * Производные индексы (`data/normalized/indexes/`) не дублируют Item.
  *
  * Координаты geometry — `[row, col]` в локальной системе после обрезки пустых
  * клеток вокруг Item Tile и Star. Star не входит в `cells` и не является
@@ -120,5 +123,4 @@ export interface NormalizedCatalog {
   generatedAt: string;
   wikiOrigin: string;
   items: Item[];
-  usedIn: Record<string, string[]>;
 }

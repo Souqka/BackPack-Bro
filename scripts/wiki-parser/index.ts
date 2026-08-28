@@ -9,6 +9,8 @@ export interface CliArgs {
   skipImages: boolean;
   outputDir: string;
   quiet: boolean;
+  resume: boolean;
+  delayMs?: number;
 }
 
 /**
@@ -17,6 +19,7 @@ export interface CliArgs {
  *   npm run parse:items
  *   npm run parse:items -- --item "Adamantite Bar"
  *   npm run parse:items -- --limit 5
+ *   npm run parse:items -- --resume --quiet
  */
 export function parseArgs(argv: string[]): CliArgs {
   const items: string[] = [];
@@ -24,6 +27,8 @@ export function parseArgs(argv: string[]): CliArgs {
   let skipImages = false;
   let outputDir = process.cwd();
   let quiet = false;
+  let resume = false;
+  let delayMs: number | undefined;
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
@@ -46,6 +51,15 @@ export function parseArgs(argv: string[]): CliArgs {
       quiet = true;
       continue;
     }
+    if (arg === "--resume") {
+      resume = true;
+      continue;
+    }
+    if (arg === "--delay" && next) {
+      delayMs = Number(next);
+      i += 1;
+      continue;
+    }
     if ((arg === "--out" || arg === "--output-dir") && next) {
       outputDir = path.resolve(next);
       i += 1;
@@ -57,7 +71,7 @@ export function parseArgs(argv: string[]): CliArgs {
     }
   }
 
-  return { items, limit, skipImages, outputDir, quiet };
+  return { items, limit, skipImages, outputDir, quiet, resume, delayMs };
 }
 
 function printHelp(): void {
@@ -69,11 +83,14 @@ function printHelp(): void {
   npm run parse:items -- --item "Adamantite Bar" --item "Starbloom"
   npm run parse:items -- --limit 5
   npm run parse:items -- --skip-images --quiet
+  npm run parse:items -- --resume --quiet
 
 Параметры:
   --item <name>       Разобрать указанную страницу Wiki (можно повторять)
   --limit <n>         Не больше n предметов
   --skip-images       Не скачивать портреты
+  --resume            Брать HTML из data/raw/items, если он уже сохранён
+  --delay <ms>        Пауза между запросами к Wiki API
   --quiet             Печатать только предупреждения, ошибки и итог
   --out <dir>         Корень вывода (по умолчанию cwd)
 `);
@@ -89,6 +106,11 @@ async function main(): Promise<void> {
     process.exitCode = 1;
     return;
   }
+  if (args.delayMs !== undefined && (!Number.isFinite(args.delayMs) || args.delayMs < 0)) {
+    logger.error("cli", `Некорректный --delay: ${args.delayMs}`);
+    process.exitCode = 1;
+    return;
+  }
 
   await parseItems(
     {
@@ -96,6 +118,8 @@ async function main(): Promise<void> {
       itemTitles: args.items.length > 0 ? args.items : undefined,
       limit: args.limit,
       skipImages: args.skipImages,
+      resume: args.resume,
+      delayMs: args.delayMs,
     },
     logger,
   );

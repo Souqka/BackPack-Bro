@@ -99,5 +99,6 @@ export function correctWikiTypos(text: string): string {
     .replace(/\bOne shop entered\b/gi, "On shop entered")
     .replace(/\bsecoonds\b/gi, "seconds")
     .replace(/\bOuantity\b/gi, "Quantity")
+    .replace(/\bchance chance\b/gi, "chance")
     .replace(/\bavialable\b/gi, "available");
 }

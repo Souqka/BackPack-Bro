@@ -8,24 +8,28 @@
 
 ```bash
 npm test
+npm run parse:items
 npm run parse:items -- --item "Adamantite Bar" --item "Adamantite Ore" --item "Starbloom"
-npm run parse:items -- --limit 5 --skip-images --quiet
+npm run parse:items -- --resume --quiet
 npm run analyze:corpus
 ```
 
+Полный прогон обрабатывает весь Cargo-список, не останавливается на ошибке одной страницы, пишет каталог, индексы, отчёт и raw.
+
+## Выход
+
+- `data/normalized/items.json` — единственный source of truth предметов
+- `data/normalized/catalog-meta.json` — schemaVersion / parserVersion / itemCount
+- `data/normalized/indexes/` — только item ID
+- `data/reports/catalog-report.md` — качество базы
+- `data/raw/items/` — диагностика
+
 ## Геометрия
 
-`geometry.cells` и `geometry.stars` — локальные `[row, col]` после обрезки пустых клеток. Star не занимает клетку Item. Повороты не хранятся.
+`geometry.cells` и `geometry.stars` — локальные `[row, col]` после обрезки. Star не занимает клетку Item.
 
-## Эффекты (этап 2)
+`rotateGeometry` в `utils/geometry.ts` — поворот 0/90/180/270 с повторным crop.
 
-Строгие union-типы в `types/effects.ts`:
+## Валидация
 
-- `Effect` — gain / inflict / modify_stat / reduce / …
-- `ChancedEffect` — `{ chance?, effect }`
-- `Trigger` — on_hit, start_of_phase, on_star_activation, …
-- `Condition` — тип occupant'а Star, наличие статуса у противника
-- `Constraint` — лимит использований, quantity, counts_as
-- `StarRule` — trigger + conditions + effects; Star не отдельный предмет
-
-Если формулировка Wiki не распознана: `{ type: "raw", raw: "оригинальный текст" }`.
+`validateCatalog(items)` проверяет id, имена, geometry, stars, рецепты, ссылки, уровни, source URL. Изображения проверяются отдельно: битые локальные пути обнуляются.

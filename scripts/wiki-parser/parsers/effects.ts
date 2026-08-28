@@ -1,5 +1,5 @@
 import type { ChancedEffect, Constraint, Effect, EffectScale, Status } from "../types/effects.ts";
-import { extractItemTypes, matchStat, matchStatus } from "../utils/vocab.ts";
+import { extractItemTypes, matchStat, matchStatus, correctWikiTypos } from "../utils/vocab.ts";
 
 export interface EffectParseResult {
   effects: ChancedEffect[];
@@ -18,17 +18,19 @@ export interface EffectParseResult {
  * разбиваются на отдельные Effect, если обе части распознаны.
  */
 export function parseEffectPhrase(text: string): EffectParseResult {
-  const raw = text.trim();
-  if (!raw) {
+  const original = text.trim();
+  if (!original) {
     return { effects: [], constraint: null, unparsed: true };
   }
+  const raw = original;
+  const normalized = correctWikiTypos(original);
 
-  const constraint = parseConstraintPhrase(raw);
+  const constraint = parseConstraintPhrase(normalized);
   if (constraint && constraint.type !== "raw") {
-    return { effects: [], constraint, unparsed: false };
+    return { effects: [], constraint: { ...constraint, raw: original }, unparsed: false };
   }
 
-  const { chance, rest } = splitChance(raw);
+  const { chance, rest } = splitChance(normalized);
   const { scale, rest: scaled } = splitScale(rest);
 
   const spendThen = scaled.match(/^use\s+(\d+(?:\.\d+)?)\s+(.+?)\s+to\s+(.+)$/i);
@@ -126,7 +128,7 @@ export function parseConstraintPhrase(text: string): Constraint | null {
 }
 
 function splitChance(text: string): { chance?: number; rest: string } {
-  const m = text.match(/^(\d+(?:\.\d+)?)%\s+chance\s+to\s+(?:\:\s*)?(.*)$/i);
+  const m = text.match(/^(\d+(?:\.\d+)?)%\s+chance(?:\s+to)?\s*(?:\:\s*)?(.*)$/i);
   if (!m) return { rest: text };
   return { chance: Number(m[1]), rest: (m[2] ?? "").trim() };
 }
@@ -146,6 +148,16 @@ function splitScale(text: string): { scale?: EffectScale; rest: string } {
 }
 
 function splitAndClauses(text: string): string[] {
+  const andVerb = text.match(
+    /^(.*?)\s+and\s+((?:gain|inflict|heal|steal|remove|cleanse|block|stun|deal|lose)\b.*)$/i,
+  );
+  if (andVerb?.[1] && andVerb[2]) {
+    const left = parseSingleEffect(andVerb[1], undefined, text);
+    const right = parseSingleEffect(andVerb[2], undefined, text);
+    if (left.type !== "raw" && right.type !== "raw") {
+      return [andVerb[1], andVerb[2]];
+    }
+  }
   if (/\band\b/i.test(text) && /gain|inflict|heal|steal|remove|cleanse/i.test(text)) {
     const parts = text.split(/\s+and\s+/i).map((p) => p.trim()).filter(Boolean);
     if (parts.length === 2 && looksLikeValueStatus(parts[1] ?? "")) {
@@ -265,7 +277,7 @@ function parseSingleEffect(text: string, scale: EffectScale | undefined, raw: st
     return { type: "deal_damage", value: Number(deal[1]), scale, raw };
   }
 
-  const block = t.match(/^block\s+(\d+(?:\.\d+)?)\s+damage$/i);
+  const block = t.match(/^block(?:\s+another)?\s+(\d+(?:\.\d+)?)\s+damage$/i);
   if (block) {
     return { type: "block_damage", value: Number(block[1]), raw };
   }
@@ -273,6 +285,11 @@ function parseSingleEffect(text: string, scale: EffectScale | undefined, raw: st
   const extra = t.match(/^trigger an extra attack$|^trigger an attack$|^trigger a free attack$/i);
   if (extra) {
     return { type: "extra_attack", raw };
+  }
+
+  const stunFor = t.match(/^stun(?:\s+(?:the\s+)?attacking item)?\s+for\s+(\d+(?:\.\d+)?)\s+seconds?$/i);
+  if (stunFor) {
+    return { type: "stun", seconds: Number(stunFor[1]), raw };
   }
 
   const stunItem = t.match(/^stun(?:\s+an)?(?:\s+(\d+))?\s*enemy item(?:s)?\s+for\s+(\d+(?:\.\d+)?)\s+seconds?$/i);
@@ -402,6 +419,41 @@ function parseSingleEffect(text: string, scale: EffectScale | undefined, raw: st
     };
   }
 
+  const starItemsGain = t.match(/^star items gain\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+  if (starItemsGain) {
+    return {
+      type: "gain",
+      status: statusOrRaw(starItemsGain[2] ?? ""),
+      value: Number(starItemsGain[1]),
+      applyTo: ["star_occupants"],
+      raw,
+    };
+  }
+
+  const increase = t.match(
+    /^increase\s+(.+?)\s+by\s+(\d+(?:\.\d+)?)(%?)(?:\s+for\s+(\d+(?:\.\d+)?)\s+seconds)?$/i,
+  );
+  if (increase) {
+    const stat = matchStat(increase[1] ?? "");
+    if (stat) {
+      return {
+        type: "modify_stat",
+        stat: stat.slug,
+        operation: "add",
+        value: Number(increase[2]),
+        unit: increase[3] === "%" ? "percent" : "flat",
+        durationSeconds: increase[4] ? Number(increase[4]) : undefined,
+        scale,
+        raw,
+      };
+    }
+  }
+
+  const lose = t.match(/^lose\s+(\d+(?:\.\d+)?)\s+(.+)$/i);
+  if (lose) {
+    return { type: "lose", status: statusOrRaw(lose[2] ?? ""), value: Number(lose[1]), raw };
+  }
+
   const requireLess = t.match(/^(?:this\s+)?requires?\s+(\d+)\s+less\s+(.+?)\s+to activate$/i);
   if (requireLess) {
     return {
@@ -420,7 +472,7 @@ function parseSingleEffect(text: string, scale: EffectScale | undefined, raw: st
 
   const trapSoul = t.match(/^trap\s+(\d+(?:\.\d+)?)\s+soul$/i);
   if (trapSoul) {
-    return { type: "special", id: "trap_soul", raw };
+    return { type: "special", id: "trap_soul", value: Number(trapSoul[1]), raw };
   }
 
   const bloom = t.match(/^star\s+bloomers?\s+bloom for\s+(\d+(?:\.\d+)?)\s+seconds$/i);

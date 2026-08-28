@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { parseArgs } from "../index.ts";
-import { buildUsedInIndex, parseOneItem } from "../parser.ts";
+import { buildUsedInIndex } from "../indexes.ts";
+import { parseOneItem } from "../parser.ts";
 import { slugifyItemName } from "../utils/ids.ts";
 import { Logger } from "../utils/logger.ts";
 import { parseItemTemplate } from "../utils/wikitext.ts";
@@ -47,16 +48,16 @@ describe("parseOneItem fixtures", () => {
     expect(item.upgrade?.maxLevel).toBe(15);
     expect(item.stats).toBeNull();
     const logger = new Logger();
-    const issues = validateCatalog([item], logger);
-    expect(issues.filter((i) => i.level === "error")).toEqual([]);
+    const result = validateCatalog([item], logger);
+    expect(result.errors).toEqual([]);
   });
 
   it("detects duplicate ids and names", async () => {
     const { item } = await parse("adamantite_bar");
     const logger = new Logger();
-    const issues = validateCatalog([item, { ...item }], logger);
-    expect(issues.some((i) => i.message.includes("Дублирующийся id"))).toBe(true);
-    expect(issues.some((i) => i.message.includes("Дублирующееся имя"))).toBe(true);
+    const result = validateCatalog([item, { ...item }], logger);
+    expect(result.errors.some((i) => i.code === "duplicate_id")).toBe(true);
+    expect(result.errors.some((i) => i.code === "duplicate_name")).toBe(true);
   });
 });
 
@@ -79,10 +80,10 @@ describe("usedIn index", () => {
 
 describe("CLI args", () => {
   it("parses --item, --limit, and --skip-images", () => {
-    const args = parseArgs(["--item", "Adamantite Bar", "--limit", "5", "--skip-images"]);
+    const args = parseArgs(["--item", "Adamantite Bar", "--limit", "5", "--skip-images", "--resume"]);
     expect(args.items).toEqual(["Adamantite Bar"]);
     expect(args.limit).toBe(5);
     expect(args.skipImages).toBe(true);
-    expect(args.quiet).toBe(false);
+    expect(args.resume).toBe(true);
   });
 });

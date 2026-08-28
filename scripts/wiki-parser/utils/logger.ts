@@ -1,8 +1,10 @@
 import type { Diagnostic } from "../types/raw.ts";
 
 export interface LoggerSummary {
+  listed: number;
   parsed: number;
   successful: number;
+  skipped: number;
   warnings: number;
   errors: number;
 }
@@ -12,8 +14,10 @@ export interface LoggerSummary {
  */
 export class Logger {
   readonly diagnostics: Diagnostic[] = [];
+  listed = 0;
   parsed = 0;
   successful = 0;
+  skipped = 0;
   quiet = false;
 
   info(message: string, itemName?: string): void {
@@ -37,8 +41,10 @@ export class Logger {
 
   summary(): LoggerSummary {
     return {
+      listed: this.listed,
       parsed: this.parsed,
       successful: this.successful,
+      skipped: this.skipped,
       warnings: this.diagnostics.filter((d) => d.level === "warning").length,
       errors: this.diagnostics.filter((d) => d.level === "error").length,
     };
@@ -47,8 +53,10 @@ export class Logger {
   printSummary(): void {
     const s = this.summary();
     console.log("");
+    console.log(`Всего страниц: ${s.listed}`);
     console.log(`Разобрано: ${s.parsed}`);
     console.log(`Успешно: ${s.successful}`);
+    console.log(`Пропущено: ${s.skipped}`);
     console.log(`Предупреждения: ${s.warnings}`);
     console.log(`Ошибки: ${s.errors}`);
   }

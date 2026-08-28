@@ -106,22 +106,22 @@ export function parseAbilities(
   }
 
   let star: StarData | null = null;
-  if (hasStarCells || starRules.length > 0) {
+  if (starRules.length > 0) {
     star = { rules: starRules };
-    if (hasStarCells && starRules.length === 0) {
-      logger.warn(
-        "star_without_effects",
-        "У предмета есть клетки Star, но нет Star-способности",
-        itemName,
-      );
-    }
-    if (!hasStarCells && starRules.length > 0) {
-      logger.warn(
-        "star_ability_without_tiles",
-        "Найдена Star-способность, но в geometry нет клеток Star",
-        itemName,
-      );
-    }
+  }
+  if (hasStarCells && starRules.length === 0) {
+    logger.warn(
+      "star_without_effects",
+      "У предмета есть клетки Star, но нет Star-способности",
+      itemName,
+    );
+  }
+  if (!hasStarCells && starRules.length > 0) {
+    logger.warn(
+      "star_ability_without_tiles",
+      "Найдена Star-способность, но в geometry нет клеток Star",
+      itemName,
+    );
   }
 
   return { initial, constraints, star, unparsed };

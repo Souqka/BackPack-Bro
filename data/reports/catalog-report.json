@@ -1,0 +1,4686 @@
+{
+  "generatedAt": "2026-08-28T19:46:07.251Z",
+  "parserVersion": "0.3.0",
+  "schemaVersion": "1.0.0",
+  "source": "https://backpackbrawl.wiki.gg",
+  "run": {
+    "listed": 912,
+    "parsed": 912,
+    "successful": 912,
+    "skipped": 0,
+    "skippedPages": [],
+    "failedPages": []
+  },
+  "validation": {
+    "valid": true,
+    "errorCount": 0,
+    "warningCount": 18,
+    "errorsByCode": {},
+    "warningsByCode": {
+      "unresolved_recipe_ingredient": 15,
+      "missing_images": 3
+    }
+  },
+  "items": {
+    "total": 912,
+    "rarity": {
+      "mythic": 106,
+      "legendary": 155,
+      "epic": 193,
+      "relic": 33,
+      "rare": 145,
+      "unique": 147,
+      "common": 88,
+      "special": 45
+    },
+    "types": {
+      "armor": 108,
+      "tool": 62,
+      "melee_weapon": 138,
+      "part": 18,
+      "accessory": 269,
+      "mineral": 25,
+      "ranged_weapon": 83,
+      "potion": 38,
+      "pet": 125,
+      "butterfly": 4,
+      "charm": 43,
+      "food": 86,
+      "ingredient": 71,
+      "bloomer": 20,
+      "plant": 76,
+      "scroll": 16,
+      "fly": 5,
+      "rat": 25,
+      "bag": 30,
+      "katana": 4,
+      "bramble": 13,
+      "bomb": 9,
+      "cat": 4,
+      "jelly_bean": 7,
+      "bee": 7,
+      "shallow": 9,
+      "fish": 20,
+      "pumpkin": 8,
+      "honey": 4,
+      "golem": 6,
+      "skull": 16,
+      "deep": 10,
+      "abyssal": 9,
+      "bell": 4,
+      "bolt": 7,
+      "dart": 6,
+      "rune": 4,
+      "crab": 2,
+      "lobster": 2
+    },
+    "heroes": {
+      "Morrow": 45,
+      "Dorf": 45,
+      "Shared": 271,
+      "Zahir": 26,
+      "Pepper": 40,
+      "Enoch": 46,
+      "Fern": 42,
+      "Buzz": 44,
+      "Harkon": 37,
+      "Kragg": 36,
+      "Sage": 37,
+      "Tink": 44,
+      "Chana": 42,
+      "Ronan": 35,
+      "Nymphedora": 37,
+      "Hob Gang": 43,
+      "Celeste": 41,
+      "pepper": 1
+    }
+  },
+  "geometry": {
+    "itemsWithCells": 912,
+    "emptyCells": 0,
+    "notCroppedToOrigin": 0,
+    "cellCountHistogram": {
+      "1": 197,
+      "2": 318,
+      "3": 120,
+      "4": 178,
+      "5": 28,
+      "6": 50,
+      "7": 9,
+      "8": 4,
+      "9": 4,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1
+    }
+  },
+  "stars": {
+    "itemsWithStars": 495,
+    "totalStars": 2050,
+    "maxStarsOnOneItem": 16,
+    "offsetCounts": {
+      "[0, -1]": 409,
+      "[0, 1]": 429,
+      "[-1, 0]": 282,
+      "[1, 0]": 262,
+      "[-1, -1]": 68,
+      "[-1, 1]": 69,
+      "[1, -1]": 55,
+      "[1, 1]": 61,
+      "[-4, 0]": 3,
+      "[-3, 0]": 16,
+      "[-2, 0]": 19,
+      "[0, -2]": 55,
+      "[0, 2]": 63,
+      "[-1, 2]": 14,
+      "[0, 3]": 19,
+      "[1, 2]": 13,
+      "[1, -2]": 17,
+      "[2, -1]": 13,
+      "[3, -3]": 1,
+      "[-3, -2]": 3,
+      "[-2, 1]": 17,
+      "[-1, 5]": 2,
+      "[1, 4]": 1,
+      "[0, -3]": 20,
+      "[2, 0]": 26,
+      "[-1, -2]": 14,
+      "[-2, -1]": 15,
+      "[2, 1]": 13,
+      "[-2, -2]": 4,
+      "[-2, 2]": 4,
+      "[1, -3]": 3,
+      "[-3, -1]": 4,
+      "[-3, 1]": 3,
+      "[-1, -3]": 4,
+      "[-1, 3]": 5,
+      "[-3, 2]": 3,
+      "[-2, 3]": 2,
+      "[-4, 1]": 2,
+      "[1, -4]": 1,
+      "[3, 0]": 6,
+      "[0, 4]": 5,
+      "[0, 6]": 3,
+      "[3, -2]": 2,
+      "[3, 2]": 2,
+      "[2, -2]": 2,
+      "[2, 2]": 2,
+      "[0, 5]": 1,
+      "[1, 3]": 3,
+      "[2, -3]": 2,
+      "[2, 3]": 2,
+      "[1, 5]": 1,
+      "[0, -6]": 1,
+      "[0, -5]": 1,
+      "[0, -4]": 2,
+      "[-4, -1]": 1
+    },
+    "distanceCounts": {
+      "adjacent": 1635,
+      "distance 4": 15,
+      "distance 3": 100,
+      "distance 2": 291,
+      "distance 5": 5,
+      "distance 6": 4
+    }
+  },
+  "effects": {
+    "gain": 5728,
+    "reduce": 70,
+    "inflict": 2485,
+    "raw": 1113,
+    "remove": 199,
+    "special": 212,
+    "modify_stat": 4598,
+    "stun": 150,
+    "cleanse": 624,
+    "spend": 91,
+    "steal": 371,
+    "heal": 470,
+    "block_damage": 348,
+    "extra_attack": 30,
+    "deal_damage": 22,
+    "lose": 3
+  },
+  "triggers": {
+    "start_of_phase": 720,
+    "every_seconds": 3525,
+    "_none": 133,
+    "on_hit": 4648,
+    "on_critical_hit": 189,
+    "on_shop_entered": 253,
+    "on_self_activation": 434,
+    "on_star_activation": 16,
+    "on_time_of_day_change": 1667,
+    "when_consumed": 464,
+    "raw": 463,
+    "per_status": 85,
+    "on_star_occupant": 408,
+    "during_phase": 19,
+    "when_hit": 116,
+    "while_blooms": 20,
+    "on_block": 406,
+    "while_equipped": 9,
+    "after_seconds": 41,
+    "compound": 6,
+    "health_below": 28,
+    "discharge": 116,
+    "on_stun": 12,
+    "when_critically_hit": 18,
+    "when_opponent_heals": 2
+  },
+  "conditions": {
+    "star_occupant_type": 87,
+    "opponent_has_status": 5
+  },
+  "constraints": {
+    "max_uses_per_battle": 13,
+    "remaining_uses": 34,
+    "counts_as": 14,
+    "immunity": 2,
+    "quantity": 13
+  },
+  "levelUpChangeTypes": {
+    "gain": 4884,
+    "modify_stat": 4290,
+    "inflict": 2058,
+    "stun": 111,
+    "raw": 540,
+    "cleanse": 531,
+    "special": 94,
+    "heal": 431,
+    "block_damage": 329,
+    "steal": 305,
+    "remove": 138,
+    "spend": 17,
+    "deal_damage": 14,
+    "reduce": 14
+  },
+  "recipes": {
+    "itemsWithRecipes": 418,
+    "totalRecipes": 426,
+    "totalIngredients": 849,
+    "unresolvedIngredientIds": [
+      "gold_scarab",
+      "golden_gravel",
+      "platemail",
+      "reflective_facemask",
+      "sand_sprite",
+      "scalemail",
+      "seaform_pipe",
+      "short_shamshir",
+      "silver_sand",
+      "stolen_moment",
+      "sun_scarb"
+    ]
+  },
+  "images": {
+    "withIcon": 909,
+    "withFull": 909,
+    "missingBoth": 3
+  },
+  "raw": {
+    "effects": 1113,
+    "triggers": 463,
+    "conditions": 0,
+    "constraints": 0,
+    "patterns": [
+      {
+        "pattern": "special: activate_absorbed_items: {pct} chance to activate absorbed items",
+        "count": 92,
+        "examples": [
+          "activate_absorbed_items: 30% chance to activate absorbed items",
+          "activate_absorbed_items: 60% chance to activate absorbed items",
+          "activate_absorbed_items: 90% chance to activate absorbed items",
+          "activate_absorbed_items: 5% chance to activate absorbed items",
+          "activate_absorbed_items: 10% chance to activate absorbed items"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to be invulnerable for {n} seconds instead",
+        "count": 28,
+        "examples": [
+          "5% chance to be invulnerable for 1.5 seconds instead",
+          "10% chance to be invulnerable for 1.5 seconds instead",
+          "15% chance to be invulnerable for 1.5 seconds instead",
+          "30% chance to be invulnerable for 1.5 seconds instead",
+          "35% chance to be invulnerable for 1.5 seconds instead"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to heal for {n} Health per second for {n} seconds",
+        "count": 28,
+        "examples": [
+          "5% chance to heal for 5 Health per second for 6 seconds",
+          "10% chance to heal for 5 Health per second for 6 seconds",
+          "15% chance to heal for 5 Health per second for 6 seconds",
+          "30% chance to heal for 5 Health per second for 6 seconds",
+          "35% chance to heal for 5 Health per second for 6 seconds"
+        ]
+      },
+      {
+        "pattern": "special: star_bloomer_bloom: Star Bloomers bloom for {n} seconds",
+        "count": 19,
+        "examples": [
+          "star_bloomer_bloom: Star Bloomers bloom for 3 seconds",
+          "star_bloomer_bloom: Star Bloomers bloom for 2 seconds",
+          "star_bloomer_bloom: Star Bloomers bloom for 1.5 seconds",
+          "star_bloomer_bloom: Star Bloomers bloom for 6 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance all items inside gain {n} Static",
+        "count": 15,
+        "examples": [
+          "20% chance all items inside gain 1 Static",
+          "5% chance all items inside gain 2 Static",
+          "10% chance all items inside gain 2 Static",
+          "15% chance all items inside gain 2 Static",
+          "30% chance all items inside gain 2 Static"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for all Star Rat Type to gain +{n} Damage",
+        "count": 15,
+        "examples": [
+          "5% chance for all Star Rat Type to gain +1 Damage",
+          "10% chance for all Star Rat Type to gain +1 Damage",
+          "15% chance for all Star Rat Type to gain +1 Damage",
+          "30% chance for all Star Rat Type to gain +1 Damage",
+          "35% chance for all Star Rat Type to gain +1 Damage"
+        ]
+      },
+      {
+        "pattern": "special: open_this: Open this",
+        "count": 15,
+        "examples": [
+          "open_this: Open this"
+        ]
+      },
+      {
+        "pattern": "trigger: On every {n} Star Tool Type activations",
+        "count": 15,
+        "examples": [
+          "On every 5 Star Tool Type activations"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Armor gained by Star items",
+        "count": 15,
+        "examples": [
+          "Per 16 Armor gained by Star items"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Burn inflicted by Star items",
+        "count": 15,
+        "examples": [
+          "Per 10 Burn inflicted by Star items"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Chill inflicted by this and Star items",
+        "count": 15,
+        "examples": [
+          "Per 4 Chill inflicted by this and Star items"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Empower gained by you",
+        "count": 15,
+        "examples": [
+          "Per 3 Empower gained by you"
+        ]
+      },
+      {
+        "pattern": "trigger: When item inside activates",
+        "count": 15,
+        "examples": [
+          "When item inside activates"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance all Star Melee Weapon Type Ranged Weapon Type gains +{n} Damage",
+        "count": 14,
+        "examples": [
+          "5% chance all Star Melee Weapon Type Ranged Weapon Type gains +1 Damage",
+          "10% chance all Star Melee Weapon Type Ranged Weapon Type gains +1 Damage",
+          "15% chance all Star Melee Weapon Type Ranged Weapon Type gains +1 Damage",
+          "30% chance all Star Melee Weapon Type Ranged Weapon Type gains +1 Damage",
+          "35% chance all Star Melee Weapon Type Ranged Weapon Type gains +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance Bolts and Darts gain +{n} Damage",
+        "count": 14,
+        "examples": [
+          "5% chance Bolts and Darts gain +3 Damage",
+          "10% chance Bolts and Darts gain +3 Damage",
+          "15% chance Bolts and Darts gain +3 Damage",
+          "30% chance Bolts and Darts gain +3 Damage",
+          "35% chance Bolts and Darts gain +3 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance both players gain {n} Mana and {n} Poison",
+        "count": 14,
+        "examples": [
+          "5% chance both players gain 2 Mana and 2 Poison",
+          "10% chance both players gain 2 Mana and 2 Poison",
+          "15% chance both players gain 2 Mana and 2 Poison",
+          "30% chance both players gain 2 Mana and 2 Poison",
+          "35% chance both players gain 2 Mana and 2 Poison"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance Star items activate Day Dusk Night effects {n} more time",
+        "count": 14,
+        "examples": [
+          "5% chance Star items activate Day Dusk Night effects 1 more time",
+          "10% chance Star items activate Day Dusk Night effects 1 more time",
+          "15% chance Star items activate Day Dusk Night effects 1 more time",
+          "30% chance Star items activate Day Dusk Night effects 1 more time",
+          "35% chance Star items activate Day Dusk Night effects 1 more time"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance Star items get +{pct} faster",
+        "count": 14,
+        "examples": [
+          "5% chance Star items get +4% faster",
+          "10% chance Star items get +4% faster",
+          "15% chance Star items get +4% faster",
+          "30% chance Star items get +4% faster",
+          "35% chance Star items get +4% faster"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance Star items trap {n} Soul",
+        "count": 14,
+        "examples": [
+          "5% chance Star items trap 1 Soul",
+          "10% chance Star items trap 1 Soul",
+          "15% chance Star items trap 1 Soul",
+          "30% chance Star items trap 1 Soul",
+          "35% chance Star items trap 1 Soul"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this gains +{pct} faster activations",
+        "count": 14,
+        "examples": [
+          "5% chance this gains +8% faster activations",
+          "10% chance this gains +8% faster activations",
+          "15% chance this gains +8% faster activations",
+          "30% chance this gains +8% faster activations",
+          "35% chance this gains +8% faster activations"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this goes +{pct} faster",
+        "count": 14,
+        "examples": [
+          "5% chance this goes +25% faster",
+          "10% chance this goes +25% faster",
+          "15% chance this goes +25% faster",
+          "30% chance this goes +25% faster",
+          "35% chance this goes +25% faster"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this inflicts {n} more Poison",
+        "count": 14,
+        "examples": [
+          "5% chance this inflicts 1 more Poison",
+          "10% chance this inflicts 1 more Poison",
+          "15% chance this inflicts 1 more Poison",
+          "30% chance this inflicts 1 more Poison",
+          "35% chance this inflicts 1 more Poison"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to activate all absorbed Ingredient Type on Star items",
+        "count": 14,
+        "examples": [
+          "5% chance to activate all absorbed Ingredient Type on Star items",
+          "10% chance to activate all absorbed Ingredient Type on Star items",
+          "15% chance to activate all absorbed Ingredient Type on Star items",
+          "30% chance to activate all absorbed Ingredient Type on Star items",
+          "35% chance to activate all absorbed Ingredient Type on Star items"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to activate Regeneration twice",
+        "count": 14,
+        "examples": [
+          "5% chance to activate Regeneration twice",
+          "10% chance to activate Regeneration twice",
+          "15% chance to activate Regeneration twice",
+          "30% chance to activate Regeneration twice",
+          "35% chance to activate Regeneration twice"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to deal {n}-{n} Damage",
+        "count": 14,
+        "examples": [
+          "5% chance to deal 1-33 Damage",
+          "10% chance to deal 1-33 Damage",
+          "15% chance to deal 1-33 Damage",
+          "30% chance to deal 1-33 Damage",
+          "35% chance to deal 1-33 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to explode a second time",
+        "count": 14,
+        "examples": [
+          "5% chance to explode a second time",
+          "10% chance to explode a second time",
+          "15% chance to explode a second time",
+          "30% chance to explode a second time",
+          "35% chance to explode a second time"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to gain {n}-{n} Mana per Star Ranged Weapon Type Pet Type",
+        "count": 14,
+        "examples": [
+          "5% chance to gain 1-2 Mana per Star Ranged Weapon Type Pet Type",
+          "10% chance to gain 1-2 Mana per Star Ranged Weapon Type Pet Type",
+          "15% chance to gain 1-2 Mana per Star Ranged Weapon Type Pet Type",
+          "30% chance to gain 1-2 Mana per Star Ranged Weapon Type Pet Type",
+          "35% chance to gain 1-2 Mana per Star Ranged Weapon Type Pet Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Jelly Bean",
+        "count": 14,
+        "examples": [
+          "5% chance to get 1 Jelly Bean",
+          "10% chance to get 1 Jelly Bean",
+          "15% chance to get 1 Jelly Bean",
+          "30% chance to get 1 Jelly Bean",
+          "35% chance to get 1 Jelly Bean"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to give Star Ranged Weapon Type +{pct} Crit Damage",
+        "count": 14,
+        "examples": [
+          "5% chance to give Star Ranged Weapon Type +20% Crit Damage",
+          "10% chance to give Star Ranged Weapon Type +20% Crit Damage",
+          "15% chance to give Star Ranged Weapon Type +20% Crit Damage",
+          "30% chance to give Star Ranged Weapon Type +20% Crit Damage",
+          "35% chance to give Star Ranged Weapon Type +20% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to heal for {n} Health per Buff type on you",
+        "count": 14,
+        "examples": [
+          "5% chance to heal for 3 Health per Buff type on you",
+          "10% chance to heal for 3 Health per Buff type on you",
+          "15% chance to heal for 3 Health per Buff type on you",
+          "30% chance to heal for 3 Health per Buff type on you",
+          "35% chance to heal for 3 Health per Buff type on you"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to heal for {n} Health per Burn on opponent",
+        "count": 14,
+        "examples": [
+          "5% chance to heal for 0.5 Health per Burn on opponent",
+          "10% chance to heal for 0.5 Health per Burn on opponent",
+          "15% chance to heal for 0.5 Health per Burn on opponent",
+          "30% chance to heal for 0.5 Health per Burn on opponent",
+          "35% chance to heal for 0.5 Health per Burn on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to increase chance to gain Thorns by +{pct} permanently",
+        "count": 14,
+        "examples": [
+          "5% chance to increase chance to gain Thorns by +1% permanently",
+          "10% chance to increase chance to gain Thorns by +1% permanently",
+          "15% chance to increase chance to gain Thorns by +1% permanently",
+          "30% chance to increase chance to gain Thorns by +1% permanently",
+          "35% chance to increase chance to gain Thorns by +1% permanently"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to increase chance to inflict Poison by +{pct} permanently",
+        "count": 14,
+        "examples": [
+          "5% chance to increase chance to inflict Poison by +1% permanently",
+          "10% chance to increase chance to inflict Poison by +1% permanently",
+          "15% chance to increase chance to inflict Poison by +1% permanently",
+          "30% chance to increase chance to inflict Poison by +1% permanently",
+          "35% chance to increase chance to inflict Poison by +1% permanently"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to increase Damage blocking by {n} more",
+        "count": 14,
+        "examples": [
+          "5% chance to increase Damage blocking by 1 more",
+          "10% chance to increase Damage blocking by 1 more",
+          "15% chance to increase Damage blocking by 1 more",
+          "30% chance to increase Damage blocking by 1 more",
+          "35% chance to increase Damage blocking by 1 more"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to steal it instead",
+        "count": 14,
+        "examples": [
+          "5% chance to steal it instead",
+          "10% chance to steal it instead",
+          "15% chance to steal it instead",
+          "30% chance to steal it instead",
+          "35% chance to steal it instead"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to Stun yourself for {n} seconds",
+        "count": 14,
+        "examples": [
+          "5% chance to Stun yourself for 0.4 seconds",
+          "10% chance to Stun yourself for 0.4 seconds",
+          "15% chance to Stun yourself for 0.4 seconds",
+          "30% chance to Stun yourself for 0.4 seconds",
+          "35% chance to Stun yourself for 0.4 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to transfer {n} additional Debuff",
+        "count": 14,
+        "examples": [
+          "5% chance to transfer 4 additional Debuff",
+          "10% chance to transfer 4 additional Debuff",
+          "15% chance to transfer 4 additional Debuff",
+          "30% chance to transfer 4 additional Debuff",
+          "35% chance to transfer 4 additional Debuff"
+        ]
+      },
+      {
+        "pattern": "special: trap_soul: Trap {n} Soul",
+        "count": 14,
+        "examples": [
+          "trap_soul: Trap 1 Soul"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} seconds during Dusk and Night",
+        "count": 14,
+        "examples": [
+          "Every 3.3 seconds during Dusk and Night"
+        ]
+      },
+      {
+        "pattern": "trigger: Every Burn activation on you",
+        "count": 14,
+        "examples": [
+          "Every Burn activation on you"
+        ]
+      },
+      {
+        "pattern": "trigger: Fish Type , crab, or lobster activates this",
+        "count": 14,
+        "examples": [
+          "Fish Type , crab, or lobster activates this"
+        ]
+      },
+      {
+        "pattern": "trigger: When absorbing parts",
+        "count": 14,
+        "examples": [
+          "When absorbing parts"
+        ]
+      },
+      {
+        "pattern": "trigger: When an attack misses you",
+        "count": 14,
+        "examples": [
+          "When an attack misses you"
+        ]
+      },
+      {
+        "pattern": "trigger: When comsumed",
+        "count": 14,
+        "examples": [
+          "When comsumed"
+        ]
+      },
+      {
+        "pattern": "trigger: When increasing Damage blocking",
+        "count": 14,
+        "examples": [
+          "When increasing Damage blocking"
+        ]
+      },
+      {
+        "pattern": "trigger: When this explodes",
+        "count": 14,
+        "examples": [
+          "When this explodes"
+        ]
+      },
+      {
+        "pattern": "trigger: When this gains Static",
+        "count": 14,
+        "examples": [
+          "When this gains Static"
+        ]
+      },
+      {
+        "pattern": "trigger: When this gives + Damage",
+        "count": 14,
+        "examples": [
+          "When this gives + Damage"
+        ]
+      },
+      {
+        "pattern": "trigger: When this inflicts Poison",
+        "count": 14,
+        "examples": [
+          "When this inflicts Poison"
+        ]
+      },
+      {
+        "pattern": "trigger: When this removes Lifesteal or Empower",
+        "count": 14,
+        "examples": [
+          "When this removes Lifesteal or Empower"
+        ]
+      },
+      {
+        "pattern": "trigger: When this uses Mana",
+        "count": 14,
+        "examples": [
+          "When this uses Mana"
+        ]
+      },
+      {
+        "pattern": "trigger: When time of day changescritical hit",
+        "count": 14,
+        "examples": [
+          "When time of day changescritical hit"
+        ]
+      },
+      {
+        "pattern": "trigger: When time of the day changes",
+        "count": 14,
+        "examples": [
+          "When time of the day changes"
+        ]
+      },
+      {
+        "pattern": "trigger: When transferring Debuff",
+        "count": 14,
+        "examples": [
+          "When transferring Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance",
+        "count": 13,
+        "examples": [
+          "10% chance",
+          "20% chance",
+          "30% chance",
+          "40% chance",
+          "50% chance"
+        ]
+      },
+      {
+        "pattern": "special: activate_absorbed_items: Activate absorbed items",
+        "count": 13,
+        "examples": [
+          "activate_absorbed_items: Activate absorbed items"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to discharge again",
+        "count": 12,
+        "examples": [
+          "25% chance to discharge again",
+          "50% chance to discharge again",
+          "75% chance to discharge again",
+          "30% chance to discharge again",
+          "60% chance to discharge again"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Haste gained by opponent",
+        "count": 11,
+        "examples": [
+          "Per 3 Haste gained by opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Thorns gained by you",
+        "count": 11,
+        "examples": [
+          "Per 5 Thorns gained by you"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Food Type to gain +{pct} faster activations",
+        "count": 10,
+        "examples": [
+          "10% chance for Star Food Type to gain +10% faster activations",
+          "20% chance for Star Food Type to gain +10% faster activations",
+          "30% chance for Star Food Type to gain +10% faster activations",
+          "40% chance for Star Food Type to gain +10% faster activations",
+          "50% chance for Star Food Type to gain +10% faster activations"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Melee Weapon Type gains +{pct} Crit Damage for {n} seconds",
+        "count": 10,
+        "examples": [
+          "10% chance for Star Melee Weapon Type gains +75% Crit Damage for 3 seconds",
+          "20% chance for Star Melee Weapon Type gains +75% Crit Damage for 3 seconds",
+          "30% chance for Star Melee Weapon Type gains +75% Crit Damage for 3 seconds",
+          "40% chance for Star Melee Weapon Type gains +75% Crit Damage for 3 seconds",
+          "50% chance for Star Melee Weapon Type gains +75% Crit Damage for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +{n} Damage",
+        "count": 10,
+        "examples": [
+          "10% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +1 Damage",
+          "20% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +1 Damage",
+          "30% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +1 Damage",
+          "40% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +1 Damage",
+          "50% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gains +{pct} faster attacks",
+        "count": 10,
+        "examples": [
+          "10% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gains +5% faster attacks",
+          "20% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gains +5% faster attacks",
+          "30% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gains +5% faster attacks",
+          "40% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gains +5% faster attacks",
+          "50% chance for Star Melee Weapon Type Ranged Weapon Type Pet Type to gains +5% faster attacks"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Mineral Type to gain +{pct} faster attacks",
+        "count": 10,
+        "examples": [
+          "10% chance for Star Mineral Type to gain +10% faster attacks",
+          "20% chance for Star Mineral Type to gain +10% faster attacks",
+          "30% chance for Star Mineral Type to gain +10% faster attacks",
+          "40% chance for Star Mineral Type to gain +10% faster attacks",
+          "50% chance for Star Mineral Type to gain +10% faster attacks"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to gain {n}-{n} Buff",
+        "count": 10,
+        "examples": [
+          "10% chance to gain 1-5 Buff",
+          "20% chance to gain 1-5 Buff",
+          "30% chance to gain 1-5 Buff",
+          "40% chance to gain 1-5 Buff",
+          "50% chance to gain 1-5 Buff"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to gains {n} Max Health per Star item from any hero",
+        "count": 10,
+        "examples": [
+          "10% chance to gains 5 Max Health per Star item from any hero",
+          "20% chance to gains 5 Max Health per Star item from any hero",
+          "30% chance to gains 5 Max Health per Star item from any hero",
+          "40% chance to gains 5 Max Health per Star item from any hero",
+          "50% chance to gains 5 Max Health per Star item from any hero"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to heal {n} Health per Pet Type Plant Type",
+        "count": 10,
+        "examples": [
+          "10% chance to heal 12 Health per Pet Type Plant Type",
+          "20% chance to heal 12 Health per Pet Type Plant Type",
+          "30% chance to heal 12 Health per Pet Type Plant Type",
+          "40% chance to heal 12 Health per Pet Type Plant Type",
+          "50% chance to heal 12 Health per Pet Type Plant Type"
+        ]
+      },
+      {
+        "pattern": "trigger: Every Soul trapped",
+        "count": 10,
+        "examples": [
+          "Every Soul trapped"
+        ]
+      },
+      {
+        "pattern": "effect: Star Mineral Type can now be thrown multiple times",
+        "count": 8,
+        "examples": [
+          "Star Mineral Type can now be thrown multiple times"
+        ]
+      },
+      {
+        "pattern": "special: activate_bleed: Activate Bleed",
+        "count": 8,
+        "examples": [
+          "activate_bleed: Activate Bleed"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Part",
+        "count": 7,
+        "examples": [
+          "60% chance to get 1 Part",
+          "45% chance to get 1 Part",
+          "20% chance to get 1 Part",
+          "75% chance to get 1 Part",
+          "10% chance to get 1 Part"
+        ]
+      },
+      {
+        "pattern": "special: hatches: This hatches",
+        "count": 7,
+        "examples": [
+          "hatches: This hatches"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Charm Type ({n}/{n})",
+        "count": 6,
+        "examples": [
+          "Absorb 1 Star Charm Type (0/2)",
+          "Absorb 1 Star Charm Type (0/1)",
+          "Absorb 1 Star Charm Type (0/5)"
+        ]
+      },
+      {
+        "pattern": "effect: Shoot {n} Star Bolt or Dart",
+        "count": 6,
+        "examples": [
+          "Shoot 1 Star Bolt or Dart"
+        ]
+      },
+      {
+        "pattern": "effect: Star Potion Type gain +{n} more use",
+        "count": 6,
+        "examples": [
+          "Star Potion Type gain +1 more use"
+        ]
+      },
+      {
+        "pattern": "special: destroy_this: Destroy this",
+        "count": 6,
+        "examples": [
+          "destroy_this: Destroy this"
+        ]
+      },
+      {
+        "pattern": "trigger: Hunter's mark",
+        "count": 6,
+        "examples": [
+          "Hunter's mark"
+        ]
+      },
+      {
+        "pattern": "effect: Activate absorbed items No Charm Type absorbed yet",
+        "count": 5,
+        "examples": [
+          "Activate absorbed items No Charm Type absorbed yet"
+        ]
+      },
+      {
+        "pattern": "trigger: Call of the Void",
+        "count": 5,
+        "examples": [
+          "Call of the Void"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Soul trapped",
+        "count": 5,
+        "examples": [
+          "Every 8 Soul trapped",
+          "Every 6 Soul trapped",
+          "Every 4 Soul trapped",
+          "Every 10 Soul trapped",
+          "Every 3 Soul trapped"
+        ]
+      },
+      {
+        "pattern": "trigger: On Melee Weapon Type Ranged Weapon Type Pet Type inside hit",
+        "count": 5,
+        "examples": [
+          "On Melee Weapon Type Ranged Weapon Type Pet Type inside hit"
+        ]
+      },
+      {
+        "pattern": "trigger: Out of stamina",
+        "count": 5,
+        "examples": [
+          "Out of stamina"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Insect",
+        "count": 4,
+        "examples": [
+          "20% chance to get 1 Insect",
+          "30% chance to get 1 Insect",
+          "25% chance to get 1 Insect"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to Sabotage {n} enemy Melee Weapon Type Ranged Weapon Type",
+        "count": 4,
+        "examples": [
+          "50% chance to Sabotage 1 enemy Melee Weapon Type Ranged Weapon Type",
+          "25% chance to Sabotage 1 enemy Melee Weapon Type Ranged Weapon Type",
+          "75% chance to Sabotage 1 enemy Melee Weapon Type Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Block {n} Damage Drain {n} Stamina from opponent",
+        "count": 4,
+        "examples": [
+          "40% chance to: Block 12 Damage Drain 0.5 Stamina from opponent",
+          "50% chance to: Block 20 Damage Drain 0.5 Stamina from opponent",
+          "40% chance to: Block 14 Damage Drain 0.5 Stamina from opponent",
+          "50% chance to: Block 12 Damage Drain 0.4 Stamina from opponent"
+        ]
+      },
+      {
+        "pattern": "effect: +{pct} per failed attempt until success",
+        "count": 4,
+        "examples": [
+          "+5% per failed attempt until success",
+          "+10% per failed attempt until success"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Filled Chocolate ({n}/{n})",
+        "count": 4,
+        "examples": [
+          "Absorb 1 Star Filled Chocolate (0/4)",
+          "Absorb 1 Star Filled Chocolate (0/9)",
+          "Absorb 1 Star Filled Chocolate (0/3)",
+          "Absorb 1 Star Filled Chocolate (0/6)"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Ingredient Type ({n}/{n})",
+        "count": 4,
+        "examples": [
+          "Absorb 1 Star Ingredient Type (0/2)",
+          "Absorb 1 Star Ingredient Type (0/1)",
+          "Absorb 1 Star Ingredient Type (0/3)"
+        ]
+      },
+      {
+        "pattern": "effect: Gain Hunter's mark",
+        "count": 4,
+        "examples": [
+          "Gain Hunter's mark"
+        ]
+      },
+      {
+        "pattern": "effect: Increase Max Health gained by {n} permanently",
+        "count": 4,
+        "examples": [
+          "Increase Max Health gained by 1 permanently",
+          "Increase Max Health gained by 2 permanently",
+          "Increase Max Health gained by 3 permanently"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce hits required by {n} (minimum {n})",
+        "count": 4,
+        "examples": [
+          "Reduce hits required by 1 (minimum 1)"
+        ]
+      },
+      {
+        "pattern": "effect: Remove -{n} min Damage and -{pct} Crit Damage from target",
+        "count": 4,
+        "examples": [
+          "Remove -1 min Damage and -10% Crit Damage from target"
+        ]
+      },
+      {
+        "pattern": "effect: Resist on this ignores Insanity",
+        "count": 4,
+        "examples": [
+          "Resist on this ignores Insanity"
+        ]
+      },
+      {
+        "pattern": "effect: Sabotage {n} enemy Melee Weapon Type Ranged Weapon Type",
+        "count": 4,
+        "examples": [
+          "Sabotage 1 enemy Melee Weapon Type Ranged Weapon Type",
+          "Sabotage 2 enemy Melee Weapon Type Ranged Weapon Type",
+          "Sabotage 3 enemy Melee Weapon Type Ranged Weapon Type",
+          "Sabotage 4 enemy Melee Weapon Type Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: Skip {n} seconds Cooldown on Star Ingredient Type",
+        "count": 4,
+        "examples": [
+          "Skip 1.0 seconds Cooldown on Star Ingredient Type",
+          "Skip 1.5 seconds Cooldown on Star Ingredient Type",
+          "Skip 0.8 seconds Cooldown on Star Ingredient Type"
+        ]
+      },
+      {
+        "pattern": "effect: Suffer {n} Insanity for {n} seconds",
+        "count": 4,
+        "examples": [
+          "Suffer 5 Insanity for 5 seconds"
+        ]
+      },
+      {
+        "pattern": "special: activate_regeneration: Activate Regeneration",
+        "count": 4,
+        "examples": [
+          "activate_regeneration: Activate Regeneration"
+        ]
+      },
+      {
+        "pattern": "trigger: On item inside activating",
+        "count": 4,
+        "examples": [
+          "On item inside activating"
+        ]
+      },
+      {
+        "pattern": "trigger: Sabotage",
+        "count": 4,
+        "examples": [
+          "Sabotage"
+        ]
+      },
+      {
+        "pattern": "trigger: When this shoots a Bolt or Dart",
+        "count": 4,
+        "examples": [
+          "When this shoots a Bolt or Dart"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this and Star Rat Type gain +{pct} Crit Damage",
+        "count": 3,
+        "examples": [
+          "30% chance this and Star Rat Type gain +10% Crit Damage",
+          "60% chance this and Star Rat Type gain +10% Crit Damage",
+          "90% chance this and Star Rat Type gain +10% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this and Star Rat Type gains +{n} max Damage",
+        "count": 3,
+        "examples": [
+          "30% chance this and Star Rat Type gains +1 max Damage",
+          "60% chance this and Star Rat Type gains +1 max Damage",
+          "90% chance this and Star Rat Type gains +1 max Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to apply the discharge effect an additional time",
+        "count": 3,
+        "examples": [
+          "30% chance to apply the discharge effect an additional time",
+          "60% chance to apply the discharge effect an additional time",
+          "90% chance to apply the discharge effect an additional time"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to count that Part twice",
+        "count": 3,
+        "examples": [
+          "30% chance to count that Part twice",
+          "60% chance to count that Part twice",
+          "90% chance to count that Part twice"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to gain Hunter's mark",
+        "count": 3,
+        "examples": [
+          "60% chance to gain Hunter's mark",
+          "50% chance to gain Hunter's mark",
+          "30% chance to gain Hunter's mark"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Essence",
+        "count": 3,
+        "examples": [
+          "25% chance to get 1 Essence",
+          "33% chance to get 1 Essence"
+        ]
+      },
+      {
+        "pattern": "effect: +{pct} chance to increase the rarity on a shop item when it rerolls",
+        "count": 3,
+        "examples": [
+          "+40% chance to increase the rarity on a shop item when it rerolls",
+          "+50% chance to increase the rarity on a shop item when it rerolls",
+          "+30% chance to increase the rarity on a shop item when it rerolls"
+        ]
+      },
+      {
+        "pattern": "effect: double that bonus",
+        "count": 3,
+        "examples": [
+          "double that bonus"
+        ]
+      },
+      {
+        "pattern": "effect: During Dawn : Gain {n} Resist and {n} Regeneration",
+        "count": 3,
+        "examples": [
+          "During Dawn : Gain 5 Resist and 5 Regeneration",
+          "During Dawn : Gain 2 Resist and 2 Regeneration",
+          "During Dawn : Gain 4 Resist and 4 Regeneration"
+        ]
+      },
+      {
+        "pattern": "effect: Gain {n}-{n} Gold",
+        "count": 3,
+        "examples": [
+          "Gain 0-3 Gold",
+          "Gain 0-2 Gold"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Potion Type",
+        "count": 3,
+        "examples": [
+          "Get 1 Potion Type"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per empty slot",
+        "count": 3,
+        "examples": [
+          "Heal for 2 Health per empty slot",
+          "Heal for 4 Health per empty slot",
+          "Heal for 3 Health per empty slot"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per filled slot",
+        "count": 3,
+        "examples": [
+          "Heal for 4 Health per filled slot",
+          "Heal for 8 Health per filled slot",
+          "Heal for 6 Health per filled slot"
+        ]
+      },
+      {
+        "pattern": "effect: If opponent has Armor : Gain +{n} Damage and +{pct} Crit Chance",
+        "count": 3,
+        "examples": [
+          "If opponent has Armor : Gain +3 Damage and +10% Crit Chance",
+          "If opponent has Armor : Gain +2 Damage and +10% Crit Chance",
+          "If opponent has Armor : Gain +4 Damage and +12% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Potion Type gains +{n} more use",
+        "count": 3,
+        "examples": [
+          "Star Potion Type gains +1 more use"
+        ]
+      },
+      {
+        "pattern": "effect: That shot gets +{n} Damage",
+        "count": 3,
+        "examples": [
+          "That shot gets +4 Damage",
+          "That shot gets +6 Damage",
+          "That shot gets +9 Damage"
+        ]
+      },
+      {
+        "pattern": "special: activate_bleed: {pct} chance to activate Bleed",
+        "count": 3,
+        "examples": [
+          "activate_bleed: 25% chance to activate Bleed",
+          "activate_bleed: 20% chance to activate Bleed",
+          "activate_bleed: 40% chance to activate Bleed"
+        ]
+      },
+      {
+        "pattern": "special: break_star_rock: Break {n} Star Rock to find an Ore",
+        "count": 3,
+        "examples": [
+          "break_star_rock: Break 1 Star Rock to find an Ore"
+        ]
+      },
+      {
+        "pattern": "special: go_fishing: {pct} chance to Go Fishing (Deep)",
+        "count": 3,
+        "examples": [
+          "go_fishing: 50% chance to Go Fishing (Deep)"
+        ]
+      },
+      {
+        "pattern": "special: go_fishing: {pct} chance to Go Fishing (Shallow)",
+        "count": 3,
+        "examples": [
+          "go_fishing: 20% chance to Go Fishing (Shallow)",
+          "go_fishing: 50% chance to Go Fishing (Shallow)",
+          "go_fishing: 40% chance to Go Fishing (Shallow)"
+        ]
+      },
+      {
+        "pattern": "special: go_mining: {pct} chance to Go Mining (Surface)",
+        "count": 3,
+        "examples": [
+          "go_mining: 50% chance to Go Mining (Surface)",
+          "go_mining: 20% chance to Go Mining (Surface)",
+          "go_mining: 40% chance to Go Mining (Surface)"
+        ]
+      },
+      {
+        "pattern": "special: trap_soul: {pct} chance to trap {n} Soul and inflict {n} Bleed",
+        "count": 3,
+        "examples": [
+          "trap_soul: 30% chance to trap 1 Soul and inflict 1 Bleed",
+          "trap_soul: 60% chance to trap 1 Soul and inflict 1 Bleed",
+          "trap_soul: 90% chance to trap 1 Soul and inflict 1 Bleed"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} hits",
+        "count": 3,
+        "examples": [
+          "Every 5 hits",
+          "Every 3 hits"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to activate Poison on hit",
+        "count": 2,
+        "examples": [
+          "30% chance to activate Poison on hit",
+          "40% chance to activate Poison on hit"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to catch {n} Brown Rat",
+        "count": 2,
+        "examples": [
+          "25% chance to catch 1 Brown Rat",
+          "50% chance to catch 1 Brown Rat"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to catch {n} Rat Type",
+        "count": 2,
+        "examples": [
+          "25% chance to catch 1 Rat Type",
+          "50% chance to catch 1 Rat Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to find a Treasure",
+        "count": 2,
+        "examples": [
+          "20% chance to find a Treasure",
+          "40% chance to find a Treasure"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Cheese",
+        "count": 2,
+        "examples": [
+          "50% chance to get 1 Cheese"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to Stun attacking Melee Weapon Type Ranged Weapon Type for {n} second",
+        "count": 2,
+        "examples": [
+          "10% chance to Stun attacking Melee Weapon Type Ranged Weapon Type for 1 second"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to Stun attacking Pet Type for {n} seconds",
+        "count": 2,
+        "examples": [
+          "30% chance to Stun attacking Pet Type for 2 seconds",
+          "30% chance to Stun attacking Pet Type for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to use {n} Mana to: Block {n} Damage Inflict {n} Burn or {n} Chill",
+        "count": 2,
+        "examples": [
+          "50% chance to use 1 Mana to: Block 18 Damage Inflict 2 Burn or 2 Chill",
+          "50% chance to use 1 Mana to: Block 14 Damage Inflict 1 Burn or 1 Chill"
+        ]
+      },
+      {
+        "pattern": "effect: Activate Poison on opponent",
+        "count": 2,
+        "examples": [
+          "Activate Poison on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Become invulnerable for {n} second",
+        "count": 2,
+        "examples": [
+          "Become invulnerable for 1 second"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n} Damage per Thorns on you",
+        "count": 2,
+        "examples": [
+          "Deal 1 Damage per Thorns on you"
+        ]
+      },
+      {
+        "pattern": "effect: do a Charged Strike (+{pct} Damage )",
+        "count": 2,
+        "examples": [
+          "do a Charged Strike (+50% Damage )"
+        ]
+      },
+      {
+        "pattern": "effect: During Dusk : Inflict {n} Blind and {n} Curse",
+        "count": 2,
+        "examples": [
+          "During Dusk : Inflict 2 Blind and 2 Curse",
+          "During Dusk : Inflict 4 Blind and 4 Curse"
+        ]
+      },
+      {
+        "pattern": "effect: During Night : Steal {n} Max Health and {n} Buff",
+        "count": 2,
+        "examples": [
+          "During Night : Steal 9 Max Health and 3 Buff",
+          "During Night : Steal 12 Max Health and 4 Buff"
+        ]
+      },
+      {
+        "pattern": "effect: Extend Day by {n} seconds per Star Pet Type Ranged Weapon Type",
+        "count": 2,
+        "examples": [
+          "Extend Day by 2 seconds per Star Pet Type Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: Find a special rock!",
+        "count": 2,
+        "examples": [
+          "Find a special rock!"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Ingredient Type",
+        "count": 2,
+        "examples": [
+          "Get 1 Ingredient Type",
+          "Get 2 Ingredient Type"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Insect",
+        "count": 2,
+        "examples": [
+          "Get 1 Insect"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Jelly Bean",
+        "count": 2,
+        "examples": [
+          "Get 1 Jelly Bean"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Part",
+        "count": 2,
+        "examples": [
+          "Get 1 Part"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n}-{n} Treats",
+        "count": 2,
+        "examples": [
+          "Get 1-3 Treats"
+        ]
+      },
+      {
+        "pattern": "effect: Have a drink",
+        "count": 2,
+        "examples": [
+          "Have a drink"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per Burn on opponent",
+        "count": 2,
+        "examples": [
+          "Heal for 1 Health per Burn on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Increase Armor gained by {n} permanently",
+        "count": 2,
+        "examples": [
+          "Increase Armor gained by 3 permanently",
+          "Increase Armor gained by 5 permanently"
+        ]
+      },
+      {
+        "pattern": "effect: Increase block by {n} Damage",
+        "count": 2,
+        "examples": [
+          "Increase block by 6 Damage",
+          "Increase block by 8 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Increase block by {n} Damage per Star item from another hero",
+        "count": 2,
+        "examples": [
+          "Increase block by 3 Damage per Star item from another hero",
+          "Increase block by 2 Damage per Star item from another hero"
+        ]
+      },
+      {
+        "pattern": "effect: Increase chance to activate Bleed by +{pct} permanently",
+        "count": 2,
+        "examples": [
+          "Increase chance to activate Bleed by +2% permanently",
+          "Increase chance to activate Bleed by +3% permanently"
+        ]
+      },
+      {
+        "pattern": "effect: Increase chance to activate Poison by +{pct} permanently",
+        "count": 2,
+        "examples": [
+          "Increase chance to activate Poison by +1% permanently",
+          "Increase chance to activate Poison by +2% permanently"
+        ]
+      },
+      {
+        "pattern": "effect: Increase chance to block by +{pct}",
+        "count": 2,
+        "examples": [
+          "Increase chance to block by +15%",
+          "Increase chance to block by +20%"
+        ]
+      },
+      {
+        "pattern": "effect: Remove -{n} Damage from target",
+        "count": 2,
+        "examples": [
+          "Remove -1 Damage from target"
+        ]
+      },
+      {
+        "pattern": "effect: remove up to {n} Regeneration",
+        "count": 2,
+        "examples": [
+          "remove up to 6 Regeneration",
+          "remove up to 4 Regeneration"
+        ]
+      },
+      {
+        "pattern": "effect: Shoot {n} Star Dart or Bolt",
+        "count": 2,
+        "examples": [
+          "Shoot 1 Star Dart or Bolt"
+        ]
+      },
+      {
+        "pattern": "effect: Shorten Dawn and Day by {n} seconds per Star Melee Weapon Type Armor Type",
+        "count": 2,
+        "examples": [
+          "Shorten Dawn and Day by 1.5 seconds per Star Melee Weapon Type Armor Type"
+        ]
+      },
+      {
+        "pattern": "effect: Star Bolts and Darts gain +{n} quantity",
+        "count": 2,
+        "examples": [
+          "Star Bolts and Darts gain +2 quantity"
+        ]
+      },
+      {
+        "pattern": "effect: Star items bloom for {n} seconds",
+        "count": 2,
+        "examples": [
+          "Star items bloom for 5 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type gains +{pct} Accuracy and +{pct} Crit Damage",
+        "count": 2,
+        "examples": [
+          "Star Melee Weapon Type gains +20% Accuracy and +20% Crit Damage",
+          "Star Melee Weapon Type gains +30% Accuracy and +30% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type gains +{n} Damage and +{pct} Crit Chance",
+        "count": 2,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type gains +2 Damage and +10% Crit Chance",
+          "Star Melee Weapon Type Ranged Weapon Type gains +1 Damage and +5% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type gains +{pct} Accuracy and +{pct} Crit Chance",
+        "count": 2,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type gains +10% Accuracy and +5% Crit Chance",
+          "Star Melee Weapon Type Ranged Weapon Type gains +15% Accuracy and +10% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type gains +{pct} Crit Chance and +{pct} Crit Damage",
+        "count": 2,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type gains +5% Crit Chance and +10% Crit Damage",
+          "Star Melee Weapon Type Ranged Weapon Type gains +15% Crit Chance and +25% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Star Pet Type gains +{pct} Accuracy and +{n} Damage",
+        "count": 2,
+        "examples": [
+          "Star Pet Type gains +20% Accuracy and +2 Damage",
+          "Star Pet Type gains +30% Accuracy and +3 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Star Potion Type gains +{n} more uses",
+        "count": 2,
+        "examples": [
+          "Star Potion Type gains +1 more uses"
+        ]
+      },
+      {
+        "pattern": "effect: Stun {n} opponent Food Type for {n} seconds",
+        "count": 2,
+        "examples": [
+          "Stun 1 opponent Food Type for 2 seconds",
+          "Stun 2 opponent Food Type for 2 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: This ability requires {n} more Armor to trigger",
+        "count": 2,
+        "examples": [
+          "This ability requires 5 more Armor to trigger",
+          "This ability requires 2 more Armor to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Melee Weapon Type Ranged Weapon Type Pet Type gain +{n} Damage",
+        "count": 2,
+        "examples": [
+          "This and Star Melee Weapon Type Ranged Weapon Type Pet Type gain +2 Damage",
+          "This and Star Melee Weapon Type Ranged Weapon Type Pet Type gain +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This gains +{pct} faster attacks",
+        "count": 2,
+        "examples": [
+          "This gains +5% faster attacks"
+        ]
+      },
+      {
+        "pattern": "effect: Turn {n} Star Rock into a Lava Rock",
+        "count": 2,
+        "examples": [
+          "Turn 1 Star Rock into a Lava Rock"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Fly Agaric into Noxious Red Mush",
+        "count": 2,
+        "examples": [
+          "Turn Star Fly Agaric into Noxious Red Mush"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Ginseng Root into Sticky Stuff",
+        "count": 2,
+        "examples": [
+          "Turn Star Ginseng Root into Sticky Stuff"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Golden Tail into {n} Ball of Thread",
+        "count": 2,
+        "examples": [
+          "Turn Star Golden Tail into 3 Ball of Thread"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Lava Rock into Brimstone Powder",
+        "count": 2,
+        "examples": [
+          "Turn Star Lava Rock into Brimstone Powder"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Rock into Finely Ground Gravel",
+        "count": 2,
+        "examples": [
+          "Turn Star Rock into Finely Ground Gravel"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Succulent into Pleasant Green Paste",
+        "count": 2,
+        "examples": [
+          "Turn Star Succulent into Pleasant Green Paste"
+        ]
+      },
+      {
+        "pattern": "special: activate_poison: Activate Poison",
+        "count": 2,
+        "examples": [
+          "activate_poison: Activate Poison"
+        ]
+      },
+      {
+        "pattern": "special: break_star_ore: Break {n} Star Ore to find a Gem",
+        "count": 2,
+        "examples": [
+          "break_star_ore: Break 1 Star Ore to find a Gem"
+        ]
+      },
+      {
+        "pattern": "special: go_fishing: Go Fishing (Abyssal)",
+        "count": 2,
+        "examples": [
+          "go_fishing: Go Fishing (Abyssal)"
+        ]
+      },
+      {
+        "pattern": "special: go_mining: {pct} chance to Go Mining (Underground)",
+        "count": 2,
+        "examples": [
+          "go_mining: 60% chance to Go Mining (Underground)",
+          "go_mining: 40% chance to Go Mining (Underground)"
+        ]
+      },
+      {
+        "pattern": "special: go_mining: Go Mining (Core)",
+        "count": 2,
+        "examples": [
+          "go_mining: Go Mining (Core)"
+        ]
+      },
+      {
+        "pattern": "special: go_mining: Go Mining (Underground)",
+        "count": 2,
+        "examples": [
+          "go_mining: Go Mining (Underground)"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Max Health gained by Star Food Type",
+        "count": 2,
+        "examples": [
+          "Every 30 Max Health gained by Star Food Type"
+        ]
+      },
+      {
+        "pattern": "trigger: Health below {pct} or {n} Burn on you",
+        "count": 2,
+        "examples": [
+          "Health below 50% or 15 Burn on you",
+          "Health below 50% or 3 Burn on you"
+        ]
+      },
+      {
+        "pattern": "trigger: Health below {pct} or {n} Chill on you",
+        "count": 2,
+        "examples": [
+          "Health below 50% or 15 Chill on you",
+          "Health below 50% or 20 Chill on you"
+        ]
+      },
+      {
+        "pattern": "trigger: Health below {pct} or {n} Poison on you",
+        "count": 2,
+        "examples": [
+          "Health below 75% or 15 Poison on you",
+          "Health below 75% or 30 Poison on you"
+        ]
+      },
+      {
+        "pattern": "trigger: Health below {pct} or insufficient Mana",
+        "count": 2,
+        "examples": [
+          "Health below 50% or insufficient Mana"
+        ]
+      },
+      {
+        "pattern": "trigger: On every Regeneration activation",
+        "count": 2,
+        "examples": [
+          "On every Regeneration activation"
+        ]
+      },
+      {
+        "pattern": "trigger: Weaken",
+        "count": 2,
+        "examples": [
+          "Weaken"
+        ]
+      },
+      {
+        "pattern": "trigger: When this has used {n} Mana",
+        "count": 2,
+        "examples": [
+          "When this has used 35 Mana",
+          "When this has used 60 Mana"
+        ]
+      },
+      {
+        "pattern": "trigger: When this shoots a Dart or Bolt",
+        "count": 2,
+        "examples": [
+          "When this shoots a Dart or Bolt"
+        ]
+      },
+      {
+        "pattern": "effect: {n} other Star Bomb goes +{pct} faster",
+        "count": 1,
+        "examples": [
+          "1 other Star Bomb goes +20% faster"
+        ]
+      },
+      {
+        "pattern": "effect: {n} random Star Melee Weapon Type Ranged Weapon Type trigger a free attack",
+        "count": 1,
+        "examples": [
+          "2 random Star Melee Weapon Type Ranged Weapon Type trigger a free attack"
+        ]
+      },
+      {
+        "pattern": "effect: {n} Star Bomb goes +{pct} faster",
+        "count": 1,
+        "examples": [
+          "1 Star Bomb goes +33% faster"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance all Star Melee Weapon Type Ranged Weapon Type Pet Type gains +{pct} attacks",
+        "count": 1,
+        "examples": [
+          "50% chance all Star Melee Weapon Type Ranged Weapon Type Pet Type gains +3% attacks"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance all Star Pet Type gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "20% chance all Star Pet Type gain +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance another Star Melee Weapon Type Ranged Weapon Type triggers a free attack",
+        "count": 1,
+        "examples": [
+          "20% chance another Star Melee Weapon Type Ranged Weapon Type triggers a free attack"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for all Star Melee Weapon Type Ranged Weapon Type to gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "50% chance for all Star Melee Weapon Type Ranged Weapon Type to gain +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for all Star Tool Type to gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "40% chance for all Star Tool Type to gain +2 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for it to trap another Soul",
+        "count": 1,
+        "examples": [
+          "40% chance for it to trap another Soul"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Melee Weapon Type to gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "30% chance for Star Melee Weapon Type to gain +2 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for Star Pet Type to trigger an extra attack",
+        "count": 1,
+        "examples": [
+          "10% chance for Star Pet Type to trigger an extra attack"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for that Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "40% chance for that Star Melee Weapon Type Ranged Weapon Type Pet Type to gain +2 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance for this to escape!",
+        "count": 1,
+        "examples": [
+          "100% chance for this to escape!"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per empty slot to Go Fishing (Abyssal)",
+        "count": 1,
+        "examples": [
+          "20% chance per empty slot to Go Fishing (Abyssal)"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per empty slot to Go Fishing (Deep)",
+        "count": 1,
+        "examples": [
+          "20% chance per empty slot to Go Fishing (Deep)"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per empty slot to Go Fishing (Shallow)",
+        "count": 1,
+        "examples": [
+          "20% chance per empty slot to Go Fishing (Shallow)"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Food Type to catch a crab",
+        "count": 1,
+        "examples": [
+          "30% chance per Star Food Type to catch a crab"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Food Type to catch a crab or lobster",
+        "count": 1,
+        "examples": [
+          "30% chance per Star Food Type to catch a crab or lobster"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Food Type to Go Fishing (Deep). If you catch something Destroy Star Food Type",
+        "count": 1,
+        "examples": [
+          "50% chance per Star Food Type to Go Fishing (Deep). If you catch something Destroy Star Food Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Melee Weapon Type Food Type to: Gain {n} Stamina Inflict {n} Chill",
+        "count": 1,
+        "examples": [
+          "20% chance per Star Melee Weapon Type Food Type to: Gain 1.5 Stamina Inflict 2 Chill"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Pet Type to inflict {n} Chill",
+        "count": 1,
+        "examples": [
+          "14% chance per Star Pet Type to inflict 4 Chill"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Plant Type to catch {n} Insect",
+        "count": 1,
+        "examples": [
+          "25% chance per Star Plant Type to catch 1 Insect"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Plant Type to get {n} Champion's Syrup",
+        "count": 1,
+        "examples": [
+          "10% chance per Star Plant Type to get 1 Champion's Syrup"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Plant Type to get {n} Gold Elixir",
+        "count": 1,
+        "examples": [
+          "10% chance per Star Plant Type to get 1 Gold Elixir"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Plant Type to get {n} Manuka Honey",
+        "count": 1,
+        "examples": [
+          "10% chance per Star Plant Type to get 1 Manuka Honey"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Star Plant Type to get {n} Royal Nectar",
+        "count": 1,
+        "examples": [
+          "10% chance per Star Plant Type to get 1 Royal Nectar"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance per Tool Type inside to: Get {n} Tool Type",
+        "count": 1,
+        "examples": [
+          "20% chance per Tool Type inside to: Get 1 Tool Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance Star Pet Type gains +{n} Damage and +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "33% chance Star Pet Type gains +1 Damage and +1% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this and Melee Weapon Type Ranged Weapon Type gains +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "50% chance this and Melee Weapon Type Ranged Weapon Type gains +15% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance this inflicts {n} more Debuff",
+        "count": 1,
+        "examples": [
+          "35% chance this inflicts 3 more Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to break open and gain {n} Gold",
+        "count": 1,
+        "examples": [
+          "20% chance to break open and gain 5 Gold"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to catch {n} Arcanefly",
+        "count": 1,
+        "examples": [
+          "25% chance to catch 1 Arcanefly"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to catch a crab",
+        "count": 1,
+        "examples": [
+          "30% chance to catch a crab"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to catch a crab or lobster",
+        "count": 1,
+        "examples": [
+          "30% chance to catch a crab or lobster"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to catch a Rat Type",
+        "count": 1,
+        "examples": [
+          "50% chance to catch a Rat Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to gain Haste",
+        "count": 1,
+        "examples": [
+          "60% chance to gain Haste"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Frost Emblem",
+        "count": 1,
+        "examples": [
+          "25% chance to get 1 Frost Emblem"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Plant Type",
+        "count": 1,
+        "examples": [
+          "50% chance to get 1 Plant Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get {n} Treasure",
+        "count": 1,
+        "examples": [
+          "50% chance to get 1 Treasure"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to get a Cactus",
+        "count": 1,
+        "examples": [
+          "50% chance to get a Cactus"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to restore {n} use to {n} Star Potion Type",
+        "count": 1,
+        "examples": [
+          "20% chance to restore 1 use to 2 Star Potion Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to slow attacking Pet Type by {pct}",
+        "count": 1,
+        "examples": [
+          "50% chance to slow attacking Pet Type by 10%"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to Star Melee Weapon Type Ranged Weapon Type to trigger a free attack",
+        "count": 1,
+        "examples": [
+          "25% chance to Star Melee Weapon Type Ranged Weapon Type to trigger a free attack"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to trigger and extra attack",
+        "count": 1,
+        "examples": [
+          "20% chance to trigger and extra attack"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to trigger Regeneration",
+        "count": 1,
+        "examples": [
+          "8% chance to trigger Regeneration"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to use {n} Mana to: Inflict {n} Burn , {n} Chill , and {n} Poison per Star Part",
+        "count": 1,
+        "examples": [
+          "25% chance to use 1 Mana to: Inflict 1 Burn , 1 Chill , and 1 Poison per Star Part"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Block {n} Damage Drain {n} Stamina from opponent Gain {n} Static",
+        "count": 1,
+        "examples": [
+          "40% chance to: Block 16 Damage Drain 0.5 Stamina from opponent Gain 1 Static"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} Chance to: Block {n} Damage Gain {n} Thorns",
+        "count": 1,
+        "examples": [
+          "30% Chance to: Block 14 Damage Gain 1 Thorns"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Block {n} Damage Inflict {n} Chill",
+        "count": 1,
+        "examples": [
+          "50% chance to: Block 16 Damage Inflict 2 Chill"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Block {n} Damage Inflict {n} Poison , {n} Chill , or {n} Curse",
+        "count": 1,
+        "examples": [
+          "50% chance to: Block 12 Damage Inflict 2 Poison , 2 Chill , or 2 Curse"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Block {n} Damage Inflict {n} Poison or {n} Chill",
+        "count": 1,
+        "examples": [
+          "50% chance to: Block 8 Damage Inflict 1 Poison or 1 Chill"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Trigger a free attack Inflict Stun for {n} second",
+        "count": 1,
+        "examples": [
+          "33% chance to: Trigger a free attack Inflict Stun for 1.3 second"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Trigger an extra attack for a Star Molten Core Creeper",
+        "count": 1,
+        "examples": [
+          "30% chance to: Trigger an extra attack for a Star Molten Core Creeper"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} chance to: Trigger an extra attack Trigger an extra attack for a random Star Rat Type",
+        "count": 1,
+        "examples": [
+          "20% chance to: Trigger an extra attack Trigger an extra attack for a random Star Rat Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} less chance to escape per Star Food Type Pet Type Melee Weapon Type Ranged Weapon Type",
+        "count": 1,
+        "examples": [
+          "15% less chance to escape per Star Food Type Pet Type Melee Weapon Type Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: {pct} to inflict Stun for {n} second",
+        "count": 1,
+        "examples": [
+          "20% to inflict Stun for 1 second"
+        ]
+      },
+      {
+        "pattern": "effect: +{pct} chance to get items on sale",
+        "count": 1,
+        "examples": [
+          "+5% chance to get items on sale"
+        ]
+      },
+      {
+        "pattern": "effect: +{pct} chance to increase the rarity on a shop item when it rerolls.",
+        "count": 1,
+        "examples": [
+          "+50% chance to increase the rarity on a shop item when it rerolls."
+        ]
+      },
+      {
+        "pattern": "effect: +{pct} chance to make a shop item reroll as Common",
+        "count": 1,
+        "examples": [
+          "+50% chance to make a shop item reroll as Common"
+        ]
+      },
+      {
+        "pattern": "effect: a Charged Strike (+{pct} Damage )",
+        "count": 1,
+        "examples": [
+          "a Charged Strike (+50% Damage )"
+        ]
+      },
+      {
+        "pattern": "effect: Absoeb {n} Star Charm Type ({n}/{n})",
+        "count": 1,
+        "examples": [
+          "Absoeb 1 Star Charm Type (0/1)"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Charm Type",
+        "count": 1,
+        "examples": [
+          "Absorb 1 Star Charm Type"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Golden Egg ({n}/{n})",
+        "count": 1,
+        "examples": [
+          "Absorb 1 Star Golden Egg (0/3)"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Ingredient Type",
+        "count": 1,
+        "examples": [
+          "Absorb 1 Star Ingredient Type"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Parts",
+        "count": 1,
+        "examples": [
+          "Absorb 2 Star Parts"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Snowball",
+        "count": 1,
+        "examples": [
+          "Absorb 1 Star Snowball"
+        ]
+      },
+      {
+        "pattern": "effect: Absorb {n} Star Snowball ({n}/{n})",
+        "count": 1,
+        "examples": [
+          "Absorb 1 Star Snowball (0/4)"
+        ]
+      },
+      {
+        "pattern": "effect: Activate all absorbed Ingredient Type on Star items",
+        "count": 1,
+        "examples": [
+          "Activate all absorbed Ingredient Type on Star items"
+        ]
+      },
+      {
+        "pattern": "effect: Activate Bleed once per Star Melee Weapon Type Ranged Weapon Type Pet Type",
+        "count": 1,
+        "examples": [
+          "Activate Bleed once per Star Melee Weapon Type Ranged Weapon Type Pet Type"
+        ]
+      },
+      {
+        "pattern": "effect: Activate Burn",
+        "count": 1,
+        "examples": [
+          "Activate Burn"
+        ]
+      },
+      {
+        "pattern": "effect: Activate Burn on opponent",
+        "count": 1,
+        "examples": [
+          "Activate Burn on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: activate Poison on opponent",
+        "count": 1,
+        "examples": [
+          "activate Poison on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Activate Regeneration {n} times",
+        "count": 1,
+        "examples": [
+          "Activate Regeneration 2 times"
+        ]
+      },
+      {
+        "pattern": "effect: Activate Regeneration twice per Star Food Type",
+        "count": 1,
+        "examples": [
+          "Activate Regeneration twice per Star Food Type"
+        ]
+      },
+      {
+        "pattern": "effect: Add {n} quantity to Bolts, Darts and Potion Type inside",
+        "count": 1,
+        "examples": [
+          "Add 1 quantity to Bolts, Darts and Potion Type inside"
+        ]
+      },
+      {
+        "pattern": "effect: Add {n} quantity to Darts and Bolts inside",
+        "count": 1,
+        "examples": [
+          "Add 1 quantity to Darts and Bolts inside"
+        ]
+      },
+      {
+        "pattern": "effect: After {n} seconds: Inflict Stun for {n} second per Star Melee Weapon Type Ranged Weapon Type",
+        "count": 1,
+        "examples": [
+          "After 3 seconds: Inflict Stun for 1 second per Star Melee Weapon Type Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: Attract a Brown Rat",
+        "count": 1,
+        "examples": [
+          "Attract a Brown Rat"
+        ]
+      },
+      {
+        "pattern": "effect: Become invulnerable for {n} seconds per item inside",
+        "count": 1,
+        "examples": [
+          "Become invulnerable for 0.3 seconds per item inside"
+        ]
+      },
+      {
+        "pattern": "effect: Bleed on your opponent triggers every {n} seconds",
+        "count": 1,
+        "examples": [
+          "Bleed on your opponent triggers every 2 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Bleed on your opponent triggers every second",
+        "count": 1,
+        "examples": [
+          "Bleed on your opponent triggers every second"
+        ]
+      },
+      {
+        "pattern": "effect: Both players cleanse all Debuff",
+        "count": 1,
+        "examples": [
+          "Both players cleanse all Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: Both players gain {n} Haste per second for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Both players gain 1 Haste per second for 60 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Both players gain {n} Mana and {n} Poison",
+        "count": 1,
+        "examples": [
+          "Both players gain 2 Mana and 2 Poison"
+        ]
+      },
+      {
+        "pattern": "effect: Both players heal for {n} Health",
+        "count": 1,
+        "examples": [
+          "Both players heal for 1000 Health"
+        ]
+      },
+      {
+        "pattern": "effect: Break open and get {n} Cargo item {n} Flotsam",
+        "count": 1,
+        "examples": [
+          "Break open and get 1 Cargo item 1 Flotsam"
+        ]
+      },
+      {
+        "pattern": "effect: Break open Star Tidal Clam and gain {n} Gold",
+        "count": 1,
+        "examples": [
+          "Break open Star Tidal Clam and gain 5 Gold"
+        ]
+      },
+      {
+        "pattern": "effect: Brings you a random Armor Type",
+        "count": 1,
+        "examples": [
+          "Brings you a random Armor Type"
+        ]
+      },
+      {
+        "pattern": "effect: Burn on you triggers {n} second slower",
+        "count": 1,
+        "examples": [
+          "Burn on you triggers 1 second slower"
+        ]
+      },
+      {
+        "pattern": "effect: Can be thrown once more per absorbed Snowball",
+        "count": 1,
+        "examples": [
+          "Can be thrown once more per absorbed Snowball"
+        ]
+      },
+      {
+        "pattern": "effect: Catch {n} Brown Rat",
+        "count": 1,
+        "examples": [
+          "Catch 1 Brown Rat"
+        ]
+      },
+      {
+        "pattern": "effect: Catch {n} Rat Type",
+        "count": 1,
+        "examples": [
+          "Catch 1 Rat Type"
+        ]
+      },
+      {
+        "pattern": "effect: Check the spiderweb",
+        "count": 1,
+        "examples": [
+          "Check the spiderweb"
+        ]
+      },
+      {
+        "pattern": "effect: Cleanse {n}-{n} Debuff",
+        "count": 1,
+        "examples": [
+          "Cleanse 1-2 Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: Cleanse all Curse",
+        "count": 1,
+        "examples": [
+          "Cleanse all Curse"
+        ]
+      },
+      {
+        "pattern": "effect: Cleanse all Debuff",
+        "count": 1,
+        "examples": [
+          "Cleanse all Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: cleanse all Debuff (once)",
+        "count": 1,
+        "examples": [
+          "cleanse all Debuff (once)"
+        ]
+      },
+      {
+        "pattern": "effect: Crack open a Star Rock",
+        "count": 1,
+        "examples": [
+          "Crack open a Star Rock"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n} Damage per {n} Thorns",
+        "count": 1,
+        "examples": [
+          "Deal 1 Damage per 2 Thorns"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n} Damage per Burn inflicted",
+        "count": 1,
+        "examples": [
+          "Deal 1 Damage per Burn inflicted"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n} Damage per Burn on opponent",
+        "count": 1,
+        "examples": [
+          "Deal 3 Damage per Burn on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n} Damage per Debuff on the opponent",
+        "count": 1,
+        "examples": [
+          "Deal 1 Damage per Debuff on the opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n} Damage per Regeneration on you",
+        "count": 1,
+        "examples": [
+          "Deal 1 Damage per Regeneration on you"
+        ]
+      },
+      {
+        "pattern": "effect: Deal {n}-{n} Damage",
+        "count": 1,
+        "examples": [
+          "Deal 1-33 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Decrease {n} Stamina per second for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Decrease 1 Stamina per second for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Destory this if there is no Star Food Type",
+        "count": 1,
+        "examples": [
+          "Destory this if there is no Star Food Type"
+        ]
+      },
+      {
+        "pattern": "effect: Dig for Gold",
+        "count": 1,
+        "examples": [
+          "Dig for Gold"
+        ]
+      },
+      {
+        "pattern": "effect: Dig for Treasure",
+        "count": 1,
+        "examples": [
+          "Dig for Treasure"
+        ]
+      },
+      {
+        "pattern": "effect: Discharge requires {n} less Static per different Star Pet Type",
+        "count": 1,
+        "examples": [
+          "Discharge requires 2 less Static per different Star Pet Type"
+        ]
+      },
+      {
+        "pattern": "effect: Double Bleed on opponent",
+        "count": 1,
+        "examples": [
+          "Double Bleed on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: During Dawn : - Gain {n} Resist",
+        "count": 1,
+        "examples": [
+          "During Dawn : - Gain 2 Resist"
+        ]
+      },
+      {
+        "pattern": "effect: During Dawn : Steal {n} Max Health and {n} Buff",
+        "count": 1,
+        "examples": [
+          "During Dawn : Steal 9 Max Health and 3 Buff"
+        ]
+      },
+      {
+        "pattern": "effect: During Day : Stun {n} enemy Pet Type for {n} seconds",
+        "count": 1,
+        "examples": [
+          "During Day : Stun 3 enemy Pet Type for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: During Day : Stun an enemy Pet Type for {n} seconds",
+        "count": 1,
+        "examples": [
+          "During Day : Stun an enemy Pet Type for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: During Dusk : - Inflict {n} Blind",
+        "count": 1,
+        "examples": [
+          "During Dusk : - Inflict 2 Blind"
+        ]
+      },
+      {
+        "pattern": "effect: During Dusk : Inflict {n} Blind , {n} Poison , {n} Curse",
+        "count": 1,
+        "examples": [
+          "During Dusk : Inflict 4 Blind , 6 Poison , 8 Curse"
+        ]
+      },
+      {
+        "pattern": "effect: During Dusk : Inflict {n} Poison and {n} Curse",
+        "count": 1,
+        "examples": [
+          "During Dusk : Inflict 6 Poison and 4 Curse"
+        ]
+      },
+      {
+        "pattern": "effect: Every Star Pet Type gains +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Every Star Pet Type gains +1% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Extend Day by {n} seconds",
+        "count": 1,
+        "examples": [
+          "Extend Day by 10 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Extend Day by {n} seconds per Star Sun Scarb",
+        "count": 1,
+        "examples": [
+          "Extend Day by 6.0 seconds per Star Sun Scarb"
+        ]
+      },
+      {
+        "pattern": "effect: Fish Type , crabs, and lobsters inside this are {pct} faster",
+        "count": 1,
+        "examples": [
+          "Fish Type , crabs, and lobsters inside this are 20% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Fish Type , crabs, and lobsters inside this are +{pct} faster",
+        "count": 1,
+        "examples": [
+          "Fish Type , crabs, and lobsters inside this are +30% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Fish Type inside this are +{pct} faster",
+        "count": 1,
+        "examples": [
+          "Fish Type inside this are +5% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Gain {n}-{n} Luck and {n}-{n} Luck for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Gain 1-6 Luck and 1-6 Luck for 6 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Gain {n}-{n} Mana per Star Ranged Weapon Type Pet Type",
+        "count": 1,
+        "examples": [
+          "Gain 1-2 Mana per Star Ranged Weapon Type Pet Type"
+        ]
+      },
+      {
+        "pattern": "effect: Gain{n} Regeneration per Star Pet Type Plant Type",
+        "count": 1,
+        "examples": [
+          "Gain2 Regeneration per Star Pet Type Plant Type"
+        ]
+      },
+      {
+        "pattern": "effect: gains +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "gains +5% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Arcanefly",
+        "count": 1,
+        "examples": [
+          "Get 1 Arcanefly"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Bargain",
+        "count": 1,
+        "examples": [
+          "Get 1 Bargain"
+        ]
+      },
+      {
+        "pattern": "effect: get {n} Boomslang or {n} Red Widow",
+        "count": 1,
+        "examples": [
+          "get 1 Boomslang or 1 Red Widow"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Bramble",
+        "count": 1,
+        "examples": [
+          "Get 1 Bramble"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Cheese or catch {n} Brown Rat",
+        "count": 1,
+        "examples": [
+          "Get 1 Cheese or catch 1 Brown Rat"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} common Plant Type",
+        "count": 1,
+        "examples": [
+          "Get 1 common Plant Type"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Dragonleaf",
+        "count": 1,
+        "examples": [
+          "Get 1 Dragonleaf"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} free rerolls",
+        "count": 1,
+        "examples": [
+          "Get 2 free rerolls"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Grapes",
+        "count": 1,
+        "examples": [
+          "Get 1 Grapes"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Insect or {n} Filled Chocolate",
+        "count": 1,
+        "examples": [
+          "Get 1 Insect or 1 Filled Chocolate"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} magnetic item from last opponent's hero",
+        "count": 1,
+        "examples": [
+          "Get 1 magnetic item from last opponent's hero"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Plant Type",
+        "count": 1,
+        "examples": [
+          "Get 1 Plant Type"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} random eggs",
+        "count": 1,
+        "examples": [
+          "Get 3 random eggs"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Rock",
+        "count": 1,
+        "examples": [
+          "Get 1 Rock"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Rock and {n} Part",
+        "count": 1,
+        "examples": [
+          "Get 1 Rock and 1 Part"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Spark",
+        "count": 1,
+        "examples": [
+          "Get 1 Spark"
+        ]
+      },
+      {
+        "pattern": "effect: get {n} Spicy Sausage or {n} Dragonbreath Chili",
+        "count": 1,
+        "examples": [
+          "get 1 Spicy Sausage or 1 Dragonbreath Chili"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Treasure",
+        "count": 1,
+        "examples": [
+          "Get 1 Treasure"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Water Potion",
+        "count": 1,
+        "examples": [
+          "Get 1 Water Potion"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n} Wax Candle",
+        "count": 1,
+        "examples": [
+          "Get 1 Wax Candle"
+        ]
+      },
+      {
+        "pattern": "effect: Get {n}-{n} Insects",
+        "count": 1,
+        "examples": [
+          "Get 1-3 Insects"
+        ]
+      },
+      {
+        "pattern": "effect: Get a Rock or a Part",
+        "count": 1,
+        "examples": [
+          "Get a Rock or a Part"
+        ]
+      },
+      {
+        "pattern": "effect: Get a Rock or Lava Rock",
+        "count": 1,
+        "examples": [
+          "Get a Rock or Lava Rock"
+        ]
+      },
+      {
+        "pattern": "effect: Get a Rock, Boulder, or Pet Rock",
+        "count": 1,
+        "examples": [
+          "Get a Rock, Boulder, or Pet Rock"
+        ]
+      },
+      {
+        "pattern": "effect: give Star Ranged Weapon Type +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "give Star Ranged Weapon Type +40% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Hammer {n} Star Lumps of Coal to make a Diamond",
+        "count": 1,
+        "examples": [
+          "Hammer 3 Star Lumps of Coal to make a Diamond"
+        ]
+      },
+      {
+        "pattern": "effect: Heal {n} Health and deal {n} Damage per Debuff inflicted",
+        "count": 1,
+        "examples": [
+          "Heal 2 Health and deal 2 Damage per Debuff inflicted"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per {n} Bleed on you",
+        "count": 1,
+        "examples": [
+          "Heal for 1 Health per 3 Bleed on you"
+        ]
+      },
+      {
+        "pattern": "effect: heal for {n} Health per Bleed on opponent",
+        "count": 1,
+        "examples": [
+          "heal for 2 Health per Bleed on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per Bleed on opponent",
+        "count": 1,
+        "examples": [
+          "Heal for 1 Health per Bleed on opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per Buff type on you",
+        "count": 1,
+        "examples": [
+          "Heal for 3 Health per Buff type on you"
+        ]
+      },
+      {
+        "pattern": "effect: Heal for {n} Health per different Star Food Type",
+        "count": 1,
+        "examples": [
+          "Heal for 8 Health per different Star Food Type"
+        ]
+      },
+      {
+        "pattern": "effect: Hits also gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "Hits also gain +25 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Hits also inflict {n} Curse",
+        "count": 1,
+        "examples": [
+          "Hits also inflict 10 Curse"
+        ]
+      },
+      {
+        "pattern": "effect: Hits also steal {n} Buff",
+        "count": 1,
+        "examples": [
+          "Hits also steal 10 Buff"
+        ]
+      },
+      {
+        "pattern": "effect: Hits steal {n} Max Health",
+        "count": 1,
+        "examples": [
+          "Hits steal 20 Max Health"
+        ]
+      },
+      {
+        "pattern": "effect: If last opponent had a Gift Box or Filled Chocolate Get {n} Filled Chocolate",
+        "count": 1,
+        "examples": [
+          "If last opponent had a Gift Box or Filled Chocolate Get 1 Filled Chocolate"
+        ]
+      },
+      {
+        "pattern": "effect: If last opponent had a Love Letter Get {n} Love Letter If you got a Wild Rose, Filled Chocolate, or Love Letter Destroy this",
+        "count": 1,
+        "examples": [
+          "If last opponent had a Love Letter Get 1 Love Letter If you got a Wild Rose, Filled Chocolate, or Love Letter Destroy this"
+        ]
+      },
+      {
+        "pattern": "effect: If last opponent had any Roses Get {n} Wild Rose",
+        "count": 1,
+        "examples": [
+          "If last opponent had any Roses Get 1 Wild Rose"
+        ]
+      },
+      {
+        "pattern": "effect: If opponent has no Armor : Gain {n} Lifesteal Inflict {n} Bleed",
+        "count": 1,
+        "examples": [
+          "If opponent has no Armor : Gain 2 Lifesteal Inflict 3 Bleed"
+        ]
+      },
+      {
+        "pattern": "effect: If opponent has no Armor Gain {n} Lifesteal and inflict {n} Bleed",
+        "count": 1,
+        "examples": [
+          "If opponent has no Armor Gain 3 Lifesteal and inflict 4 Bleed"
+        ]
+      },
+      {
+        "pattern": "effect: If opponent has no Armor Inflict {n} Bleed",
+        "count": 1,
+        "examples": [
+          "If opponent has no Armor Inflict 6 Bleed"
+        ]
+      },
+      {
+        "pattern": "effect: If there are {n} Star Ingredient Type : Absorb both ({n}/{n})",
+        "count": 1,
+        "examples": [
+          "If there are 2 Star Ingredient Type : Absorb both (0/2)"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Cactus inside: Get {n} Cactus",
+        "count": 1,
+        "examples": [
+          "If there is a Cactus inside: Get 1 Cactus"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Dragonleaf inside: Get {n} Dragonleaf",
+        "count": 1,
+        "examples": [
+          "If there is a Dragonleaf inside: Get 1 Dragonleaf"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Fury Fungus inside: Get {n} Fury Fungus",
+        "count": 1,
+        "examples": [
+          "If there is a Fury Fungus inside: Get 1 Fury Fungus"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Harvest Pumpkin inside: Get {n} Harvest Pumpkin",
+        "count": 1,
+        "examples": [
+          "If there is a Harvest Pumpkin inside: Get 1 Harvest Pumpkin"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Heist inside: Potion Type inside gain +{n} more use",
+        "count": 1,
+        "examples": [
+          "If there is a Heist inside: Potion Type inside gain +1 more use"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Melee Weapon Type Ranged Weapon Type inside: Get {n} Iron Bolt",
+        "count": 1,
+        "examples": [
+          "If there is a Melee Weapon Type Ranged Weapon Type inside: Get 1 Iron Bolt"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Melee Weapon Type Ranged Weapon Type Pet Type inside: Get {n} Sturdy Stick",
+        "count": 1,
+        "examples": [
+          "If there is a Melee Weapon Type Ranged Weapon Type Pet Type inside: Get 1 Sturdy Stick"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Part inside: Get {n} Part",
+        "count": 1,
+        "examples": [
+          "If there is a Part inside: Get 1 Part"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Potato inside: Get {n} simple Ingredient Type",
+        "count": 1,
+        "examples": [
+          "If there is a Potato inside: Get 1 simple Ingredient Type"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Spark or Power Cluster inside: Get {n} Spark",
+        "count": 1,
+        "examples": [
+          "If there is a Spark or Power Cluster inside: Get 1 Spark"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Starbloom inside: Get {n} Starbloom",
+        "count": 1,
+        "examples": [
+          "If there is a Starbloom inside: Get 1 Starbloom"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Sunflower inside: Get {n} Sunflower",
+        "count": 1,
+        "examples": [
+          "If there is a Sunflower inside: Get 1 Sunflower"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Tool Type inside Get {n} Guppy",
+        "count": 1,
+        "examples": [
+          "If there is a Tool Type inside Get 1 Guppy"
+        ]
+      },
+      {
+        "pattern": "effect: If there is a Tool Type inside: Go Mining (Surface)",
+        "count": 1,
+        "examples": [
+          "If there is a Tool Type inside: Go Mining (Surface)"
+        ]
+      },
+      {
+        "pattern": "effect: If there is an item from another hero inside: Get {n} common item from last opponent's hero",
+        "count": 1,
+        "examples": [
+          "If there is an item from another hero inside: Get 1 common item from last opponent's hero"
+        ]
+      },
+      {
+        "pattern": "effect: If this converted any items: Destroy this",
+        "count": 1,
+        "examples": [
+          "If this converted any items: Destroy this"
+        ]
+      },
+      {
+        "pattern": "effect: If you don't have a Heist: Get a Heist",
+        "count": 1,
+        "examples": [
+          "If you don't have a Heist: Get a Heist"
+        ]
+      },
+      {
+        "pattern": "effect: If you have {n} or more Luck : This and Star Rat Type gain +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "If you have 35 or more Luck : This and Star Rat Type gain +20% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: If you have gained {n} Mana this fight: Also inflict {n} Burn per Star Ranged Weapon Type",
+        "count": 1,
+        "examples": [
+          "If you have gained 60 Mana this fight: Also inflict 2 Burn per Star Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: If your Oakheart Tree is inside: Collect {n} Foliage from it",
+        "count": 1,
+        "examples": [
+          "If your Oakheart Tree is inside: Collect 1 Foliage from it"
+        ]
+      },
+      {
+        "pattern": "effect: Increase chance of Spiderwebs in the shop",
+        "count": 1,
+        "examples": [
+          "Increase chance of Spiderwebs in the shop"
+        ]
+      },
+      {
+        "pattern": "effect: Increase chance to gain Thorns by +{pct} permanently",
+        "count": 1,
+        "examples": [
+          "Increase chance to gain Thorns by +1% permanently"
+        ]
+      },
+      {
+        "pattern": "effect: Increase chance to inflict Poison by +{pct} permanently",
+        "count": 1,
+        "examples": [
+          "Increase chance to inflict Poison by +1% permanently"
+        ]
+      },
+      {
+        "pattern": "effect: Increase Cooldown by {n} seconds",
+        "count": 1,
+        "examples": [
+          "Increase Cooldown by 0.3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: increase Health steal by {n}",
+        "count": 1,
+        "examples": [
+          "increase Health steal by 4"
+        ]
+      },
+      {
+        "pattern": "effect: Increase your maximum Stamina by {n}",
+        "count": 1,
+        "examples": [
+          "Increase your maximum Stamina by 1"
+        ]
+      },
+      {
+        "pattern": "effect: Increased chance of Bat appearing in the shop",
+        "count": 1,
+        "examples": [
+          "Increased chance of Bat appearing in the shop"
+        ]
+      },
+      {
+        "pattern": "effect: Increased chance of Essences in the shop",
+        "count": 1,
+        "examples": [
+          "Increased chance of Essences in the shop"
+        ]
+      },
+      {
+        "pattern": "effect: Inflilct {n} Poison",
+        "count": 1,
+        "examples": [
+          "Inflilct 1 Poison"
+        ]
+      },
+      {
+        "pattern": "effect: Items in this bag gain +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Items in this bag gain +10% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Items in this bag gain +{pct} faster activations",
+        "count": 1,
+        "examples": [
+          "Items in this bag gain +10% faster activations"
+        ]
+      },
+      {
+        "pattern": "effect: Katana inside require {n} less hit to trigger",
+        "count": 1,
+        "examples": [
+          "Katana inside require 1 less hit to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: Look cool!",
+        "count": 1,
+        "examples": [
+          "Look cool!"
+        ]
+      },
+      {
+        "pattern": "effect: make {n} random Star Rat Type attack",
+        "count": 1,
+        "examples": [
+          "make 3 random Star Rat Type attack"
+        ]
+      },
+      {
+        "pattern": "effect: Mineral Type inside this bag can be thrown +{n} more time",
+        "count": 1,
+        "examples": [
+          "Mineral Type inside this bag can be thrown +1 more time"
+        ]
+      },
+      {
+        "pattern": "effect: Next Discharge cleanse +{n} Debuff",
+        "count": 1,
+        "examples": [
+          "Next Discharge cleanse +5 Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: Next Discharge deals +{n} Damage",
+        "count": 1,
+        "examples": [
+          "Next Discharge deals +20 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Next Discharge requires +{n} Static",
+        "count": 1,
+        "examples": [
+          "Next Discharge requires +10 Static"
+        ]
+      },
+      {
+        "pattern": "effect: No longer removes {n} Burn every second",
+        "count": 1,
+        "examples": [
+          "No longer removes 1 Burn every second"
+        ]
+      },
+      {
+        "pattern": "effect: Open this and get {n} random Filled Chocolates",
+        "count": 1,
+        "examples": [
+          "Open this and get 3 random Filled Chocolates"
+        ]
+      },
+      {
+        "pattern": "effect: Opponent Fatigue starts {n} seconds earlier per Star Ranged Weapon Type",
+        "count": 1,
+        "examples": [
+          "Opponent Fatigue starts 2 seconds earlier per Star Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "effect: Per Star empty bag slot: {pct} chance to gain {n} Arcanefly",
+        "count": 1,
+        "examples": [
+          "Per Star empty bag slot: 50% chance to gain 1 Arcanefly"
+        ]
+      },
+      {
+        "pattern": "effect: per Star Pet Type Plant Type gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "per Star Pet Type Plant Type gain +5 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Poison on you triggers {n} seconds slower",
+        "count": 1,
+        "examples": [
+          "Poison on you triggers 2 seconds slower"
+        ]
+      },
+      {
+        "pattern": "effect: Poison on your opponent triggers {n} seconds faster",
+        "count": 1,
+        "examples": [
+          "Poison on your opponent triggers 0.1 seconds faster"
+        ]
+      },
+      {
+        "pattern": "effect: Polishes into a Refined Jade",
+        "count": 1,
+        "examples": [
+          "Polishes into a Refined Jade"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce Cooldown by {n}",
+        "count": 1,
+        "examples": [
+          "Reduce Cooldown by 1"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce cost of all Reserved items by {n}",
+        "count": 1,
+        "examples": [
+          "Reduce cost of all Reserved items by 1"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce Damage by {pct}",
+        "count": 1,
+        "examples": [
+          "Reduce Damage by 20%"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce Damage taken by {pct} instead",
+        "count": 1,
+        "examples": [
+          "Reduce Damage taken by 40% instead"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce Mana gained by {n}",
+        "count": 1,
+        "examples": [
+          "Reduce Mana gained by 1"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce Stun on Star Melee Weapon Type Ranged Weapon Type Pet Type by {pct}",
+        "count": 1,
+        "examples": [
+          "Reduce Stun on Star Melee Weapon Type Ranged Weapon Type Pet Type by 50%"
+        ]
+      },
+      {
+        "pattern": "effect: Reduce Stun taken by {pct}",
+        "count": 1,
+        "examples": [
+          "Reduce Stun taken by 40%"
+        ]
+      },
+      {
+        "pattern": "effect: Reduces Stun duration by {pct} on items inside",
+        "count": 1,
+        "examples": [
+          "Reduces Stun duration by 50% on items inside"
+        ]
+      },
+      {
+        "pattern": "effect: Remove {n}-{n} Buff",
+        "count": 1,
+        "examples": [
+          "Remove 1-2 Buff"
+        ]
+      },
+      {
+        "pattern": "effect: Remove {pct} Max Health",
+        "count": 1,
+        "examples": [
+          "Remove 15% Max Health"
+        ]
+      },
+      {
+        "pattern": "effect: Remove all Regeneration",
+        "count": 1,
+        "examples": [
+          "Remove all Regeneration"
+        ]
+      },
+      {
+        "pattern": "effect: Restore {n} use to {n} empty Star Potion Type",
+        "count": 1,
+        "examples": [
+          "Restore 1 use to 1 empty Star Potion Type"
+        ]
+      },
+      {
+        "pattern": "effect: Restore all quantity on Star Bolts and Darts",
+        "count": 1,
+        "examples": [
+          "Restore all quantity on Star Bolts and Darts"
+        ]
+      },
+      {
+        "pattern": "effect: Restore all uses on Star Potion Type",
+        "count": 1,
+        "examples": [
+          "Restore all uses on Star Potion Type"
+        ]
+      },
+      {
+        "pattern": "effect: Shorten Dawn and Day by {n} per Star",
+        "count": 1,
+        "examples": [
+          "Shorten Dawn and Day by 4.0 per Star"
+        ]
+      },
+      {
+        "pattern": "effect: Shorten Dawn by {n} seconds",
+        "count": 1,
+        "examples": [
+          "Shorten Dawn by 5 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Slow attacking Melee Weapon Type Ranged Weapon Type Pet Type by {pct} when this inflicts Poison",
+        "count": 1,
+        "examples": [
+          "Slow attacking Melee Weapon Type Ranged Weapon Type Pet Type by 10% when this inflicts Poison"
+        ]
+      },
+      {
+        "pattern": "effect: Spend {n} Potion Type use to give all Star Potion Type +{n} more use",
+        "count": 1,
+        "examples": [
+          "Spend 1 Potion Type use to give all Star Potion Type +1 more use"
+        ]
+      },
+      {
+        "pattern": "effect: Spend {n} Potion Type use to inflict {n} Burn and {n} Poison",
+        "count": 1,
+        "examples": [
+          "Spend 1 Potion Type use to inflict 9 Burn and 9 Poison"
+        ]
+      },
+      {
+        "pattern": "effect: Star Bees gain +{n} Damage and +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Star Bees gain +1 Damage and +5% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Bees have a second chance to make Honey",
+        "count": 1,
+        "examples": [
+          "Star Bees have a second chance to make Honey"
+        ]
+      },
+      {
+        "pattern": "effect: Star Bloomers bloom until the fight ends",
+        "count": 1,
+        "examples": [
+          "Star Bloomers bloom until the fight ends"
+        ]
+      },
+      {
+        "pattern": "effect: Star Bolts gain {n} quantity",
+        "count": 1,
+        "examples": [
+          "Star Bolts gain 1 quantity"
+        ]
+      },
+      {
+        "pattern": "effect: Star Food Type are +{pct} faster",
+        "count": 1,
+        "examples": [
+          "Star Food Type are +10% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Star Food Type turns into Plague Ichor",
+        "count": 1,
+        "examples": [
+          "Star Food Type turns into Plague Ichor"
+        ]
+      },
+      {
+        "pattern": "effect: Star Golem benefits from Empower",
+        "count": 1,
+        "examples": [
+          "Star Golem benefits from Empower"
+        ]
+      },
+      {
+        "pattern": "effect: Star Improvised Smokebombs activate +{pct} faster",
+        "count": 1,
+        "examples": [
+          "Star Improvised Smokebombs activate +33% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Star items activate Day Dusk Night effects {n} more time",
+        "count": 1,
+        "examples": [
+          "Star items activate Day Dusk Night effects 1 more time"
+        ]
+      },
+      {
+        "pattern": "effect: Star items are {pct} faster",
+        "count": 1,
+        "examples": [
+          "Star items are 1% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Star items get +{pct} faster",
+        "count": 1,
+        "examples": [
+          "Star items get +4% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Star Katana require {n} less hit to trigger",
+        "count": 1,
+        "examples": [
+          "Star Katana require 1 less hit to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type +25% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type gain +{n} max Damage and +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type gain +5 max Damage and +5% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type Pet Type gains +{pct} Crit Chance and +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type Pet Type gains +25% Crit Chance and +50% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type Pet Type gains +{pct} effect from Empower",
+        "count": 1,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type Pet Type gains +20% effect from Empower"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type Pet Type triggers {n} free attack",
+        "count": 1,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type Pet Type triggers 1 free attack"
+        ]
+      },
+      {
+        "pattern": "effect: Star Melee Weapon Type Ranged Weapon Type Pet Type triggers {n} free attacks",
+        "count": 1,
+        "examples": [
+          "Star Melee Weapon Type Ranged Weapon Type Pet Type triggers 2 free attacks"
+        ]
+      },
+      {
+        "pattern": "effect: Star Mineral Type triggers an extra attack",
+        "count": 1,
+        "examples": [
+          "Star Mineral Type triggers an extra attack"
+        ]
+      },
+      {
+        "pattern": "effect: Star Pet Type are affected by Empower and Lifesteal",
+        "count": 1,
+        "examples": [
+          "Star Pet Type are affected by Empower and Lifesteal"
+        ]
+      },
+      {
+        "pattern": "effect: Star Pet Type gains +{pct} Crit Chance and +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "Star Pet Type gains +10% Crit Chance and +20% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Star Premeditated Stinkbombs activate +{pct} faster",
+        "count": 1,
+        "examples": [
+          "Star Premeditated Stinkbombs activate +66% faster"
+        ]
+      },
+      {
+        "pattern": "effect: Star Ranged Weapon Type +{pct} Accuracy and +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Star Ranged Weapon Type +20% Accuracy and +10% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Ranged Weapon Type gains +{pct} Accuracy and +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Star Ranged Weapon Type gains +30% Accuracy and +15% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Star Rocks turn into a Lava Rock, Frost Emblem, or {n} Rocks",
+        "count": 1,
+        "examples": [
+          "Star Rocks turn into a Lava Rock, Frost Emblem, or 2 Rocks"
+        ]
+      },
+      {
+        "pattern": "effect: Stun {n} enemy item per Star Melee Weapon Type Ranged Weapon Type Pet Type for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Stun 1 enemy item per Star Melee Weapon Type Ranged Weapon Type Pet Type for 2 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Stun {n} enemy Melee Weapon Type Ranged Weapon Type per Star Melee Weapon Type Ranged Weapon Type Pet Type for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Stun 1 enemy Melee Weapon Type Ranged Weapon Type per Star Melee Weapon Type Ranged Weapon Type Pet Type for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Stun {n} enemy Pet Type for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Stun 5 enemy Pet Type for 5 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Stun a random enemy Pet Type for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Stun a random enemy Pet Type for 6 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Stun Star Rat Type for {n} second",
+        "count": 1,
+        "examples": [
+          "Stun Star Rat Type for 1 second"
+        ]
+      },
+      {
+        "pattern": "effect: Stun this and opponent for {n} second",
+        "count": 1,
+        "examples": [
+          "Stun this and opponent for 1 second"
+        ]
+      },
+      {
+        "pattern": "effect: Suffers {n} Insanity for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Suffers 5 Insanity for 5 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: That Mineral Type gains +{n} Damage",
+        "count": 1,
+        "examples": [
+          "That Mineral Type gains +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: That shot gets +{n} Damage and +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "That shot gets +12 Damage and +15% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: The next hit with this inflict +{n} Poison",
+        "count": 1,
+        "examples": [
+          "The next hit with this inflict +3 Poison"
+        ]
+      },
+      {
+        "pattern": "effect: This ability requires {n} more Buff to trigger",
+        "count": 1,
+        "examples": [
+          "This ability requires 1 more Buff to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: This ability requires {n} more Burn to trigger",
+        "count": 1,
+        "examples": [
+          "This ability requires 1 more Burn to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: This ability requires {n} more Curse to trigger",
+        "count": 1,
+        "examples": [
+          "This ability requires 10 more Curse to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: This ability requires {n} more Empower to trigger",
+        "count": 1,
+        "examples": [
+          "This ability requires 1 more Empower to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: This ability requires {n} more Health to trigger",
+        "count": 1,
+        "examples": [
+          "This ability requires 5 more Health to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Melee Weapon Type Ranged Weapon Type gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "This and Star Melee Weapon Type Ranged Weapon Type gain +10 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Melee Weapon Type Ranged Weapon Type gain +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "This and Star Melee Weapon Type Ranged Weapon Type gain +100% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Melee Weapon Type Ranged Weapon Type gains +{n} Damage",
+        "count": 1,
+        "examples": [
+          "This and Star Melee Weapon Type Ranged Weapon Type gains +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Melee Weapon Type Ranged Weapon Type Pet Type are not affected by Chill",
+        "count": 1,
+        "examples": [
+          "This and Star Melee Weapon Type Ranged Weapon Type Pet Type are not affected by Chill"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Pet Type are affected by Empower",
+        "count": 1,
+        "examples": [
+          "This and Star Pet Type are affected by Empower"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Pet Type gain +{pct} faster attacks",
+        "count": 1,
+        "examples": [
+          "This and Star Pet Type gain +4% faster attacks"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Pet Type gains +{n} max Damage",
+        "count": 1,
+        "examples": [
+          "This and Star Pet Type gains +2 max Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Pet Type Plant Type gain +{pct} faster activations",
+        "count": 1,
+        "examples": [
+          "This and Star Pet Type Plant Type gain +30% faster activations"
+        ]
+      },
+      {
+        "pattern": "effect: This and Star Rat Type gain +{pct} faster attacks",
+        "count": 1,
+        "examples": [
+          "This and Star Rat Type gain +1% faster attacks"
+        ]
+      },
+      {
+        "pattern": "effect: This benefits from Empower and Lifesteal",
+        "count": 1,
+        "examples": [
+          "This benefits from Empower and Lifesteal"
+        ]
+      },
+      {
+        "pattern": "effect: This benefits from Lifesteal",
+        "count": 1,
+        "examples": [
+          "This benefits from Lifesteal"
+        ]
+      },
+      {
+        "pattern": "effect: This can be thrown {n} more time",
+        "count": 1,
+        "examples": [
+          "This can be thrown 1 more time"
+        ]
+      },
+      {
+        "pattern": "effect: This gains +{n} Damage",
+        "count": 1,
+        "examples": [
+          "This gains +1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This gains +{n} Damage and +{pct} Crit Damage",
+        "count": 1,
+        "examples": [
+          "This gains +2 Damage and +2% Crit Damage"
+        ]
+      },
+      {
+        "pattern": "effect: This gains +{pct} Crit Chance per Star Rat Type",
+        "count": 1,
+        "examples": [
+          "This gains +10% Crit Chance per Star Rat Type"
+        ]
+      },
+      {
+        "pattern": "effect: This goes {pct} faster",
+        "count": 1,
+        "examples": [
+          "This goes 10% faster"
+        ]
+      },
+      {
+        "pattern": "effect: This goes +{pct} faster",
+        "count": 1,
+        "examples": [
+          "This goes +25% faster"
+        ]
+      },
+      {
+        "pattern": "effect: This goes +{pct} faster per Star Potion Type",
+        "count": 1,
+        "examples": [
+          "This goes +25% faster per Star Potion Type"
+        ]
+      },
+      {
+        "pattern": "effect: This heals +{pct} more Health permanently",
+        "count": 1,
+        "examples": [
+          "This heals +3% more Health permanently"
+        ]
+      },
+      {
+        "pattern": "effect: This is an extremely rare secret item!",
+        "count": 1,
+        "examples": [
+          "This is an extremely rare secret item!"
+        ]
+      },
+      {
+        "pattern": "effect: This requires {n} mor shop entered",
+        "count": 1,
+        "examples": [
+          "This requires 1 mor shop entered"
+        ]
+      },
+      {
+        "pattern": "effect: This requires {n} more Mana to trigger",
+        "count": 1,
+        "examples": [
+          "This requires 1 more Mana to trigger"
+        ]
+      },
+      {
+        "pattern": "effect: transfer {n} Debuff to opponent",
+        "count": 1,
+        "examples": [
+          "transfer 4 Debuff to opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Transfer all Burn , Bleed , and Poison to opponent",
+        "count": 1,
+        "examples": [
+          "Transfer all Burn , Bleed , and Poison to opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Transfer up to {n} Chill to opponent",
+        "count": 1,
+        "examples": [
+          "Transfer up to 2 Chill to opponent"
+        ]
+      },
+      {
+        "pattern": "effect: Transform {n} Star Brown Rat into a Black Cat",
+        "count": 1,
+        "examples": [
+          "Transform 1 Star Brown Rat into a Black Cat"
+        ]
+      },
+      {
+        "pattern": "effect: Transform into a Butterfly",
+        "count": 1,
+        "examples": [
+          "Transform into a Butterfly"
+        ]
+      },
+      {
+        "pattern": "effect: Transforms into a Cocoonling",
+        "count": 1,
+        "examples": [
+          "Transforms into a Cocoonling"
+        ]
+      },
+      {
+        "pattern": "effect: Trigger an extra attack for a random Star Golem",
+        "count": 1,
+        "examples": [
+          "Trigger an extra attack for a random Star Golem"
+        ]
+      },
+      {
+        "pattern": "effect: Trigger and extra attack",
+        "count": 1,
+        "examples": [
+          "Trigger and extra attack"
+        ]
+      },
+      {
+        "pattern": "effect: Turn {n} Star Lava Boulder into {n} Molten Core Creeper",
+        "count": 1,
+        "examples": [
+          "Turn 1 Star Lava Boulder into 1 Molten Core Creeper"
+        ]
+      },
+      {
+        "pattern": "effect: Turn {n} Star Rock into a Lost Symbol",
+        "count": 1,
+        "examples": [
+          "Turn 1 Star Rock into a Lost Symbol"
+        ]
+      },
+      {
+        "pattern": "effect: Turn {n} Star Rock into Crystal Shard",
+        "count": 1,
+        "examples": [
+          "Turn 1 Star Rock into Crystal Shard"
+        ]
+      },
+      {
+        "pattern": "effect: Turn all Star Rocks into Lava Rocks",
+        "count": 1,
+        "examples": [
+          "Turn all Star Rocks into Lava Rocks"
+        ]
+      },
+      {
+        "pattern": "effect: Turn into Aged Grape Juice",
+        "count": 1,
+        "examples": [
+          "Turn into Aged Grape Juice"
+        ]
+      },
+      {
+        "pattern": "effect: Turn into Mature Oakheart",
+        "count": 1,
+        "examples": [
+          "Turn into Mature Oakheart"
+        ]
+      },
+      {
+        "pattern": "effect: Turn into Oakheart Sapling",
+        "count": 1,
+        "examples": [
+          "Turn into Oakheart Sapling"
+        ]
+      },
+      {
+        "pattern": "effect: Turn into Oakheart Sprout",
+        "count": 1,
+        "examples": [
+          "Turn into Oakheart Sprout"
+        ]
+      },
+      {
+        "pattern": "effect: Turn into Young Oakheart",
+        "count": 1,
+        "examples": [
+          "Turn into Young Oakheart"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Apple into a Fancy Tiny Present",
+        "count": 1,
+        "examples": [
+          "Turn Star Apple into a Fancy Tiny Present"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Broom into a Fancy Long Present If you wrapped something: Destroy this",
+        "count": 1,
+        "examples": [
+          "Turn Star Broom into a Fancy Long Present If you wrapped something: Destroy this"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Cauldron into a Fancy Big Present",
+        "count": 1,
+        "examples": [
+          "Turn Star Cauldron into a Fancy Big Present"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Coconut into a Fancy Small Present",
+        "count": 1,
+        "examples": [
+          "Turn Star Coconut into a Fancy Small Present"
+        ]
+      },
+      {
+        "pattern": "effect: Turn Star Golden Egg into {n} Gold",
+        "count": 1,
+        "examples": [
+          "Turn Star Golden Egg into 9 Gold"
+        ]
+      },
+      {
+        "pattern": "effect: Turns up to {n} Star Rock into Lava Rock",
+        "count": 1,
+        "examples": [
+          "Turns up to 2 Star Rock into Lava Rock"
+        ]
+      },
+      {
+        "pattern": "effect: Turns up to {n} Star Rocks into Crystal Shards",
+        "count": 1,
+        "examples": [
+          "Turns up to 2 Star Rocks into Crystal Shards"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Blind from opponent (once): Inflict Stun for {n} seconds Gain +{pct} Crit Chance",
+        "count": 1,
+        "examples": [
+          "Use 20 Blind from opponent (once): Inflict Stun for 5 seconds Gain +30% Crit Chance"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Haste from opponent to: Inflict {n} Bleed Gain +{pct} faster attacks",
+        "count": 1,
+        "examples": [
+          "Use 4 Haste from opponent to: Inflict 1 Bleed Gain +10% faster attacks"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana from opponent to: Inflict {n} Poison Heal for {n} Health",
+        "count": 1,
+        "examples": [
+          "Use 3 Mana from opponent to: Inflict 2 Poison Heal for 12 Health"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Cleanse {n} Debuff Heal for {n} Health",
+        "count": 1,
+        "examples": [
+          "Use 8 Mana to: Cleanse 3 Debuff Heal for 48 Health"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Deal {n}-{n} Damage Inflict Stun for {n} second Stun {n} enemy item for {n} seconds",
+        "count": 1,
+        "examples": [
+          "Use 5 Mana to: Deal 1-99 Damage Inflict Stun for 0.5 second Stun 1 enemy item for 3 seconds"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Drain {n} Stamina This and Star Rat Type gain +{n} Damage",
+        "count": 1,
+        "examples": [
+          "Use 2 Mana to: Drain 0.5 Stamina This and Star Rat Type gain +2 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Gain {n} Buff Inflict {n} Debuff",
+        "count": 1,
+        "examples": [
+          "Use 4 Mana to: Gain 8 Buff Inflict 4 Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Gain {n} Buff This and Star Rat Type gain + {n} Damage",
+        "count": 1,
+        "examples": [
+          "Use 2 Mana to: Gain 1 Buff This and Star Rat Type gain + 1 Damage"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Gain +{n} Damage and +{pct} faster attacks Gain {n} Resist",
+        "count": 1,
+        "examples": [
+          "Use 5 Mana to: Gain +4 Damage and +10% faster attacks Gain 5 Resist"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Inflict {n} Burn Inflict {n} Blind",
+        "count": 1,
+        "examples": [
+          "Use 3 Mana to: Inflict 2 Burn Inflict 2 Blind"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Mana to: Remove {n} Buff Cleanse {n} Debuff",
+        "count": 1,
+        "examples": [
+          "Use 4 Mana to: Remove 4 Buff Cleanse 6 Debuff"
+        ]
+      },
+      {
+        "pattern": "effect: Use {n} Star Dart or Bolt",
+        "count": 1,
+        "examples": [
+          "Use 1 Star Dart or Bolt"
+        ]
+      },
+      {
+        "pattern": "effect: Use Mana to inflict {n} Burn",
+        "count": 1,
+        "examples": [
+          "Use Mana to inflict 2 Burn"
+        ]
+      },
+      {
+        "pattern": "effect: Uses remaining: {n}",
+        "count": 1,
+        "examples": [
+          "Uses remaining: 3"
+        ]
+      },
+      {
+        "pattern": "effect: Weaken {n} random enemy Pet Type",
+        "count": 1,
+        "examples": [
+          "Weaken 1 random enemy Pet Type"
+        ]
+      },
+      {
+        "pattern": "effect: Weaken {n} random opponent Pet Type",
+        "count": 1,
+        "examples": [
+          "Weaken 2 random opponent Pet Type"
+        ]
+      },
+      {
+        "pattern": "effect: Wish for {n} item of same type as Star Melee Weapon Type Ranged Weapon Type Pet Type Accessory Type",
+        "count": 1,
+        "examples": [
+          "Wish for 1 item of same type as Star Melee Weapon Type Ranged Weapon Type Pet Type Accessory Type"
+        ]
+      },
+      {
+        "pattern": "effect: Your Fatigue starts {n} seconds later",
+        "count": 1,
+        "examples": [
+          "Your Fatigue starts 10 seconds later"
+        ]
+      },
+      {
+        "pattern": "effect: Your Thorns also activate on enemy Pet Type attacks",
+        "count": 1,
+        "examples": [
+          "Your Thorns also activate on enemy Pet Type attacks"
+        ]
+      },
+      {
+        "pattern": "special: activate_poison: activate Poison",
+        "count": 1,
+        "examples": [
+          "activate_poison: activate Poison"
+        ]
+      },
+      {
+        "pattern": "special: activate_regeneration: {pct} chance to activate Regeneration",
+        "count": 1,
+        "examples": [
+          "activate_regeneration: 50% chance to activate Regeneration"
+        ]
+      },
+      {
+        "pattern": "special: go_fishing: {pct} chance to Go Fishing (Abyssal)",
+        "count": 1,
+        "examples": [
+          "go_fishing: 50% chance to Go Fishing (Abyssal)"
+        ]
+      },
+      {
+        "pattern": "special: go_mining: Go Mining (Surface)",
+        "count": 1,
+        "examples": [
+          "go_mining: Go Mining (Surface)"
+        ]
+      },
+      {
+        "pattern": "trigger: After attack",
+        "count": 1,
+        "examples": [
+          "After attack"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Armor lost",
+        "count": 1,
+        "examples": [
+          "Every 125 Armor lost"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Blind inflicted on you",
+        "count": 1,
+        "examples": [
+          "Every 3 Blind inflicted on you"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Buff stolen",
+        "count": 1,
+        "examples": [
+          "Every 6 Buff stolen"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Chill inflicted",
+        "count": 1,
+        "examples": [
+          "Every 15 Chill inflicted"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Chill inflicted by this",
+        "count": 1,
+        "examples": [
+          "Every 20 Chill inflicted by this"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Debuff inflicted by Melee Weapon Type Ranged Weapon Type Pet Type inside",
+        "count": 1,
+        "examples": [
+          "Every 4 Debuff inflicted by Melee Weapon Type Ranged Weapon Type Pet Type inside"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Health healed or overhealed by opponent",
+        "count": 1,
+        "examples": [
+          "Every 30 Health healed or overhealed by opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Mana gained",
+        "count": 1,
+        "examples": [
+          "Every 35 Mana gained"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Mana gained by opponent",
+        "count": 1,
+        "examples": [
+          "Every 15 Mana gained by opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Mana gained by this and Star items",
+        "count": 1,
+        "examples": [
+          "Every 10 Mana gained by this and Star items"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} Poison inflicted by Star items",
+        "count": 1,
+        "examples": [
+          "Every 5 Poison inflicted by Star items"
+        ]
+      },
+      {
+        "pattern": "trigger: Every {n} seconds during Day",
+        "count": 1,
+        "examples": [
+          "Every 3.1 seconds during Day"
+        ]
+      },
+      {
+        "pattern": "trigger: Every Burn activation on opponent",
+        "count": 1,
+        "examples": [
+          "Every Burn activation on opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Fish Type , crab, or lobster inside activates",
+        "count": 1,
+        "examples": [
+          "Fish Type , crab, or lobster inside activates"
+        ]
+      },
+      {
+        "pattern": "trigger: For every {n} Max Health you have more than opponent",
+        "count": 1,
+        "examples": [
+          "For every 10 Max Health you have more than opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Health below {pct} or {n} Blind on you",
+        "count": 1,
+        "examples": [
+          "Health below 50% or 15 Blind on you"
+        ]
+      },
+      {
+        "pattern": "trigger: Health below {pct} or {n} Regeneration on opponent",
+        "count": 1,
+        "examples": [
+          "Health below 50% or 5 Regeneration on opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Inflicted Burn on opponent",
+        "count": 1,
+        "examples": [
+          "Inflicted Burn on opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Moon Scarb",
+        "count": 1,
+        "examples": [
+          "Moon Scarb"
+        ]
+      },
+      {
+        "pattern": "trigger: On {n} Buff stolen",
+        "count": 1,
+        "examples": [
+          "On 40 Buff stolen"
+        ]
+      },
+      {
+        "pattern": "trigger: On every Burn activation on you",
+        "count": 1,
+        "examples": [
+          "On every Burn activation on you"
+        ]
+      },
+      {
+        "pattern": "trigger: On every Fatigue activation",
+        "count": 1,
+        "examples": [
+          "On every Fatigue activation"
+        ]
+      },
+      {
+        "pattern": "trigger: On Fish Type inside activating",
+        "count": 1,
+        "examples": [
+          "On Fish Type inside activating"
+        ]
+      },
+      {
+        "pattern": "trigger: On Melee Weapon Type Ranged Weapon Type hit",
+        "count": 1,
+        "examples": [
+          "On Melee Weapon Type Ranged Weapon Type hit"
+        ]
+      },
+      {
+        "pattern": "trigger: On Melee Weapon Type Ranged Weapon Type Rat Type inside hit",
+        "count": 1,
+        "examples": [
+          "On Melee Weapon Type Ranged Weapon Type Rat Type inside hit"
+        ]
+      },
+      {
+        "pattern": "trigger: On Mineral Type inside critical hit",
+        "count": 1,
+        "examples": [
+          "On Mineral Type inside critical hit"
+        ]
+      },
+      {
+        "pattern": "trigger: On Star Mineral Type inflicts Debuff",
+        "count": 1,
+        "examples": [
+          "On Star Mineral Type inflicts Debuff"
+        ]
+      },
+      {
+        "pattern": "trigger: On Star Pet Type inflicts Poison",
+        "count": 1,
+        "examples": [
+          "On Star Pet Type inflicts Poison"
+        ]
+      },
+      {
+        "pattern": "trigger: On Star Ranged Weapon Type",
+        "count": 1,
+        "examples": [
+          "On Star Ranged Weapon Type"
+        ]
+      },
+      {
+        "pattern": "trigger: On Star tt Melee Weapon Type Ranged Weapon Type Pet Type it",
+        "count": 1,
+        "examples": [
+          "On Star tt Melee Weapon Type Ranged Weapon Type Pet Type it"
+        ]
+      },
+      {
+        "pattern": "trigger: On this and Star Pet Type critical hit",
+        "count": 1,
+        "examples": [
+          "On this and Star Pet Type critical hit"
+        ]
+      },
+      {
+        "pattern": "trigger: On this and Star Pet Type hit",
+        "count": 1,
+        "examples": [
+          "On this and Star Pet Type hit"
+        ]
+      },
+      {
+        "pattern": "trigger: On this or Star Melee Weapon Type Ranged Weapon Type hit",
+        "count": 1,
+        "examples": [
+          "On this or Star Melee Weapon Type Ranged Weapon Type hit"
+        ]
+      },
+      {
+        "pattern": "trigger: On Tool Type inside hit",
+        "count": 1,
+        "examples": [
+          "On Tool Type inside hit"
+        ]
+      },
+      {
+        "pattern": "trigger: One hit",
+        "count": 1,
+        "examples": [
+          "One hit"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Armor gained by you",
+        "count": 1,
+        "examples": [
+          "Per 30 Armor gained by you"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Armor removed from opponent",
+        "count": 1,
+        "examples": [
+          "Per 12 Armor removed from opponent"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Burn inflicted by this",
+        "count": 1,
+        "examples": [
+          "Per 16 Burn inflicted by this"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Damage dealt by Star Mineral Type",
+        "count": 1,
+        "examples": [
+          "Per 250 Damage dealt by Star Mineral Type"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Mana gained by this",
+        "count": 1,
+        "examples": [
+          "Per 10 Mana gained by this"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Max Health gained",
+        "count": 1,
+        "examples": [
+          "Per 30 Max Health gained"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Poison inflicted by this",
+        "count": 1,
+        "examples": [
+          "Per 16 Poison inflicted by this"
+        ]
+      },
+      {
+        "pattern": "trigger: Per {n} Static gained by items inside",
+        "count": 1,
+        "examples": [
+          "Per 10 Static gained by items inside"
+        ]
+      },
+      {
+        "pattern": "trigger: Per Bleed on either player",
+        "count": 1,
+        "examples": [
+          "Per Bleed on either player"
+        ]
+      },
+      {
+        "pattern": "trigger: Sabotage effect",
+        "count": 1,
+        "examples": [
+          "Sabotage effect"
+        ]
+      },
+      {
+        "pattern": "trigger: Start of combat",
+        "count": 1,
+        "examples": [
+          "Start of combat"
+        ]
+      },
+      {
+        "pattern": "trigger: Start on Dawn",
+        "count": 1,
+        "examples": [
+          "Start on Dawn"
+        ]
+      },
+      {
+        "pattern": "trigger: When Armor Type inside activates",
+        "count": 1,
+        "examples": [
+          "When Armor Type inside activates"
+        ]
+      },
+      {
+        "pattern": "trigger: When critically hit ( Melee Weapon Type Ranged Weapon Type Pet Type ) or health below {pct}",
+        "count": 1,
+        "examples": [
+          "When critically hit ( Melee Weapon Type Ranged Weapon Type Pet Type ) or health below 50%"
+        ]
+      },
+      {
+        "pattern": "trigger: When hit {n} time ( Melee Weapon Type Ranged Weapon Type Pet Type )",
+        "count": 1,
+        "examples": [
+          "When hit 5 time ( Melee Weapon Type Ranged Weapon Type Pet Type )"
+        ]
+      },
+      {
+        "pattern": "trigger: When Plant Type Pet Type inside activates",
+        "count": 1,
+        "examples": [
+          "When Plant Type Pet Type inside activates"
+        ]
+      },
+      {
+        "pattern": "trigger: When Star items Discharge",
+        "count": 1,
+        "examples": [
+          "When Star items Discharge"
+        ]
+      },
+      {
+        "pattern": "trigger: When Star items trap a Soul",
+        "count": 1,
+        "examples": [
+          "When Star items trap a Soul"
+        ]
+      },
+      {
+        "pattern": "trigger: When this has inflicted {n} Bleed",
+        "count": 1,
+        "examples": [
+          "When this has inflicted 9 Bleed"
+        ]
+      },
+      {
+        "pattern": "trigger: While opponent has {n}+ Burn",
+        "count": 1,
+        "examples": [
+          "While opponent has 40+ Burn"
+        ]
+      },
+      {
+        "pattern": "trigger: While opponent has {n}+ Chill",
+        "count": 1,
+        "examples": [
+          "While opponent has 40+ Chill"
+        ]
+      },
+      {
+        "pattern": "trigger: Your Burn on opponent",
+        "count": 1,
+        "examples": [
+          "Your Burn on opponent"
+        ]
+      }
+    ]
+  }
+}

@@ -136,12 +136,20 @@ function parseSingleTrigger(raw: string): TriggerParseResult {
   if (/^on stun$/i.test(raw) || /^when you get stun$/i.test(raw)) {
     return { trigger: { type: "on_stun" }, conditions: [] };
   }
-  if (/^out of stamina$/i.test(raw)) return { trigger: { type: "out_of_stamina" }, conditions: [] };
+  if (/^all day long$/i.test(raw)) {
+    return { trigger: { type: "during_phase", phases: ["day"] }, conditions: [] };
+  }
+  if (/^when opponent heals$/i.test(raw)) {
+    return { trigger: { type: "when_opponent_heals" }, conditions: [] };
+  }
   if (/^when consumed$/i.test(raw)) return { trigger: { type: "when_consumed" }, conditions: [] };
 
   const discharge = raw.match(/^discharge\s*\((\d+)\s*static\s*\)$/i);
   if (discharge) {
     return { trigger: { type: "discharge", staticAmount: Number(discharge[1]) }, conditions: [] };
+  }
+  if (/^(?:on\s+)?discharge$/i.test(raw)) {
+    return { trigger: { type: "discharge" }, conditions: [] };
   }
 
   const perStatus = raw.match(/^per\s+(.+?)\s+on\s+(opponent|you|both players combined)$/i);
