@@ -1,0 +1,47 @@
+{{Item
+| name=Adamantite Bar
+| rarity=Epic
+| type1=Part
+| type2=Accessory
+| cost=12
+| hero=Shared
+| unlockSource=Initially available
+| purchasable=No
+
+| ability1Trigger=When {{Icon|Misc|Star}} item activates
+| ability1Effect1=20% chance to gain 24 {{Icon|Status|Armor}}
+
+| levelUpAbilityTrigger=When this activates
+| levelUpAbilityEffect=to gain 24 {{Icon|Status|Armor}}
+
+| r1c1=e
+| r1c2=e
+| r1c3=e
+| r1c4=e
+| r1c5=e
+| r1c6=e
+
+| r2c1=e
+| r2c2=s
+| r2c3=i
+| r2c4=i
+| r2c5=s
+| r2c6=e
+
+| r3c1=e
+| r3c2=e
+| r3c3=e
+| r3c4=e
+| r3c5=e
+| r3c6=e
+
+| recipe1Result=Adamantite Bar
+| recipe1Ingredient1=Steel Bar
+| recipe1Ingredient2=Steel Bar
+
+| recipe2Result=Adamantite Bar
+| recipe2Ingredient1=Adamantite Ore
+| recipe2Ingredient2=Adamantite Ore
+| recipe2Ingredient3=Adamantite Ore
+
+}}

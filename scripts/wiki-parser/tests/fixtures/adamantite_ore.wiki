@@ -1,0 +1,52 @@
+{{Item
+| name=Adamantite Ore
+| rarity=Epic
+| type1=Mineral
+| type2=Ranged Weapon
+| cost=6
+| hero=Dorf
+| unlockSource=Initially available
+| purchasable=Yes
+| damageMin=6
+| damageMax=9
+| cooldown=6
+| accuracy=80
+| staminaCost=0
+| critChance=0
+| critDamage=100
+
+| ability1Trigger=On hit
+| ability1Effect1=Gain 20 {{Icon|Status|Armor}}
+
+| ability2Effect1=Can only be thrown once per battle
+
+| levelUpAbilityTrigger=On hit
+| levelUpAbilityEffect=to gain 6 {{Icon|Status|Armor}}
+
+| r1c1=e
+| r1c2=e
+| r1c3=e
+
+| r2c1=e
+| r2c2=i
+| r2c3=e
+
+| r3c1=e
+| r3c2=e
+| r3c3=e
+
+| recipe1Result=Adamantite Bar
+| recipe1Ingredient1=Adamantite Ore
+| recipe1Ingredient2=Adamantite Ore
+| recipe1Ingredient3=Adamantite Ore
+
+| recipe2Result=Adamantite Forge Hammer
+| recipe2Ingredient1=Steel Forge Hammer
+| recipe2Ingredient2=Adamantite Ore
+| recipe2Ingredient3=Sapphire
+
+| recipe3Result=Adamantite Axepick
+| recipe3Ingredient1=Steel Pickaxe
+| recipe3Ingredient2=Adamantite Ore
+| recipe3Ingredient3=Emerald
+}}

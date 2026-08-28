@@ -1,0 +1,61 @@
+{{Item
+| name=Starbloom
+| rarity=Common
+| type1=Plant
+| cost=2
+| hero=Chana
+| unlockSource=Initially available
+| purchasable=Yes
+
+| ability1Trigger=Start of {{Icon|Misc|Dawn}}
+| ability1Effect1=Gain 2 {{Icon|Status|Mana}}
+
+| ability2Trigger=On {{Icon|Misc|Star}} activation
+| ability2Effect1=35% chance to gain 1 {{Icon|Status|Mana}}
+
+| levelUpAbilityTrigger=When this item activates
+| levelUpAbilityEffect=to gain 1 {{Icon|Status|Mana}}
+
+| r1c1=e
+| r1c2=e
+| r1c3=e
+| r1c4=e
+| r1c5=e
+
+| r2c1=e
+| r2c2=e
+| r2c3=i
+| r2c4=s
+| r2c5=e
+
+| r3c1=e
+| r3c2=s
+| r3c3=i
+| r3c4=e
+| r3c5=e
+
+| r4c1=e
+| r4c2=e
+| r4c3=e
+| r4c4=e
+| r4c5=e
+
+| recipe1Result=Wicked Stick
+| recipe1Ingredient1=Wooden Stick
+| recipe1Ingredient2=Starbloom
+
+| recipe2Result=Mana Crystal
+| recipe2Ingredient1=Rock
+| recipe2Ingredient2=Starbloom
+| recipe2Ingredient3=Starbloom
+
+| recipe3Result=Belt of Firethrowing
+| recipe3Ingredient1=Leather Belt
+| recipe3Ingredient2=Starbloom
+| recipe3Ingredient3=Starbloom
+
+| recipe4Result=Starlight Potion
+| recipe4Ingredient1=Mana Potion
+| recipe4Ingredient2=Starbloom
+| recipe4Ingredient3=Starbloom
+}}
