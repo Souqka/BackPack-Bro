@@ -31,7 +31,7 @@ export async function parseAndDownloadImages(options: {
 }): Promise<ImagesParseResult> {
   const src = findInfoboxImageSrc(options.html, options.itemName, options.wikiImages);
   if (!src) {
-    options.logger.warn("image_missing", "No item portrait found on Wiki page", options.itemName);
+    options.logger.warn("image_missing", "На странице Wiki нет портрета предмета", options.itemName);
     return { images: { icon: null, full: null }, sourceUrls: [] };
   }
 
@@ -55,7 +55,7 @@ export async function parseAndDownloadImages(options: {
       fetchBuffer: (url) => options.fetcher!.fetchBuffer(url),
     });
     options.logger.info(
-      saved.downloaded ? "Image: downloaded" : "Image: cached",
+      saved.downloaded ? "Изображение: скачано" : "Изображение: из кэша",
       options.itemName,
     );
     return {
@@ -64,7 +64,7 @@ export async function parseAndDownloadImages(options: {
     };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    options.logger.warn("image_download_failed", `Image download failed: ${message}`, options.itemName);
+    options.logger.warn("image_download_failed", `Не удалось скачать изображение: ${message}`, options.itemName);
     return { images: { icon: null, full: null }, sourceUrls: [sourceUrl] };
   }
 }

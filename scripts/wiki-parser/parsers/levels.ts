@@ -1,11 +1,13 @@
 import * as cheerio from "cheerio";
 import type { Element } from "domhandler";
+import type { ChancedEffect } from "../types/effects.ts";
 import type { LevelUpChange, UpgradeInfo } from "../types/normalized.ts";
 import type { TemplateParams, UnparsedConstruct } from "../types/raw.ts";
 import { headingSection, visibleText } from "../utils/html.ts";
 import type { Logger } from "../utils/logger.ts";
 import { flattenWikitext, param } from "../utils/wikitext.ts";
-import { normalizeEffect } from "./abilities.ts";
+import { parseEffectPhrase } from "./effects.ts";
+import { parseTrigger } from "./triggers.ts";
 
 export interface LevelsParseResult {
   levelUp: LevelUpChange[];
@@ -14,18 +16,11 @@ export interface LevelsParseResult {
 }
 
 /**
- * Parse the Level Up Bonus table.
+ * Таблица Level Up Bonus.
  *
- * Wiki rarity/`name` selects a bonus table inside Template:LevelUpBonus;
- * percentages and stat lines are therefore only reliable from rendered HTML,
- * not from the short `levelUpAbilityEffect` wikitext parameter.
- *
- * A `colspan` header row (`When this activates:`) applies as `trigger` to the
- * following level rows until the next header. Each `<li>` (or the cell text)
- * becomes its own change. Special rarity pages that say the item cannot be
- * levelled up yield `upgrade.maxLevel = null` and an empty `levelUp` list.
- *
- * Levels of one Wiki item stay on that item — no `item_level_N` IDs.
+ * Проценты и статы надёжно читаются только из HTML (Template:LevelUpBonus),
+ * не из короткого `levelUpAbilityEffect`. Строки уровня используют те же
+ * Effect/ChancedEffect, что и Initial Abilities — отдельной DSL нет.
  */
 export function parseLevels(
   html: string,
@@ -45,14 +40,15 @@ export function parseLevels(
       return { levelUp: [], upgrade: { maxLevel: null }, unparsed };
     }
     if (prose) {
-      logger.warn("levels_unparsed_prose", `Level Up Bonus was not a table: ${prose}`, itemName);
-      unparsed.push({ kind: "levels", raw: prose, reason: "Level-up section had no table" });
+      logger.warn("levels_unparsed_prose", `Level Up Bonus не таблица: ${prose}`, itemName);
+      unparsed.push({ kind: "levels", raw: prose, reason: "Секция уровней без таблицы" });
     }
     return { levelUp: [], upgrade: null, unparsed };
   }
 
   const levelUp: LevelUpChange[] = [];
-  let currentTrigger: string | null = flattenWikitext(param(params, "levelUpAbilityTrigger")) || null;
+  const defaultTriggerText = flattenWikitext(param(params, "levelUpAbilityTrigger")) || null;
+  let currentTriggerText: string | null = defaultTriggerText;
 
   table.find("tr").each((_, tr) => {
     const cells = $(tr).children("td, th");
@@ -63,7 +59,7 @@ export function parseLevels(
     if (colspan >= 2) {
       const header = visibleText($, first).replace(/:\s*$/, "").trim();
       if (header && !/^level$/i.test(header)) {
-        currentTrigger = header;
+        currentTriggerText = header;
       }
       return;
     }
@@ -83,13 +79,20 @@ export function parseLevels(
       if (fallback) listItems.push(fallback);
     }
 
-    const changes = listItems.map((text) =>
-      normalizeLevelChange(text, logger, itemName, unparsed),
-    );
+    const changes: ChancedEffect[] = [];
+    for (const text of listItems) {
+      const parsed = parseEffectPhrase(text);
+      if (parsed.unparsed) {
+        logger.warn("unknown_effect_structure", `Неизвестная структура эффекта: ${text}`, itemName);
+        unparsed.push({ kind: "level_up", raw: text, reason: "Строка уровня не нормализована" });
+      }
+      changes.push(...parsed.effects);
+    }
 
+    const triggerInfo = parseTrigger(currentTriggerText);
     levelUp.push({
       level: Number(levelText),
-      trigger: currentTrigger,
+      trigger: triggerInfo.trigger,
       changes,
       rawText: listItems.join("; "),
     });
@@ -103,39 +106,4 @@ export function parseLevels(
     upgrade: { maxLevel },
     unparsed,
   };
-}
-
-function normalizeLevelChange(
-  text: string,
-  logger: Logger,
-  itemName: string,
-  unparsed: UnparsedConstruct[],
-): unknown {
-  const gainStat = text.match(/^gain\s+\+?(\d+(?:\.\d+)?)(?:\s+min|\s+max)?\s+(.+)$/i);
-  if (gainStat) {
-    return {
-      verb: "gain",
-      amount: Number(gainStat[1]),
-      status: (gainStat[2] ?? "")
-        .replace(/\s+min$/i, "")
-        .replace(/\s+max$/i, "")
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "_")
-        .replace(/^_+|_+$/g, ""),
-      raw: text,
-    };
-  }
-
-  const requiresLess = text.match(/requires\s+(\d+)\s+less\s+(.+?)\s+to activate/i);
-  if (requiresLess) {
-    return {
-      verb: "require_less",
-      amount: Number(requiresLess[1]),
-      status: (requiresLess[2] ?? "").trim().toLowerCase().replace(/\s+/g, "_"),
-      raw: text,
-    };
-  }
-
-  return normalizeEffect(text, logger, itemName, unparsed);
 }

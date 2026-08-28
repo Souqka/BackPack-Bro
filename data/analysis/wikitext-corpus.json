@@ -1,0 +1,4651 @@
+{
+  "itemsListed": 912,
+  "wikitextPages": 912,
+  "itemsWithTemplate": 912,
+  "itemsWithoutTemplate": 0,
+  "uniqueTriggers": 269,
+  "uniqueEffects": 1676,
+  "uniqueEffectPatterns": 1488,
+  "coverage": {
+    "triggers": {
+      "total": 1690,
+      "normalized": 1567
+    },
+    "effects": {
+      "total": 2534,
+      "normalized": 1858
+    },
+    "constraints": {
+      "total": 75,
+      "normalized": 75
+    }
+  },
+  "rawTriggers": [
+    [
+      "Hunter's mark",
+      6
+    ],
+    [
+      "Call of the Void",
+      5
+    ],
+    [
+      "On Melee Weapon Ranged Weapon Pet inside hit",
+      5
+    ],
+    [
+      "On item inside activating",
+      4
+    ],
+    [
+      "Sabotage",
+      4
+    ],
+    [
+      "When this shoots a Bolt or Dart",
+      4
+    ],
+    [
+      "Every 3 hits",
+      2
+    ],
+    [
+      "Every 30 Max Health gained by Star Food",
+      2
+    ],
+    [
+      "Health below 50% or insufficient Mana",
+      2
+    ],
+    [
+      "On every Regeneration activation",
+      2
+    ],
+    [
+      "Weaken",
+      2
+    ],
+    [
+      "When opponent heals",
+      2
+    ],
+    [
+      "When this shoots a Dart or Bolt",
+      2
+    ],
+    [
+      "After attack",
+      1
+    ],
+    [
+      "All day long",
+      1
+    ],
+    [
+      "Every 10 Mana gained by this and Star items",
+      1
+    ],
+    [
+      "Every 10 Soul trapped",
+      1
+    ],
+    [
+      "Every 125 Armor lost",
+      1
+    ],
+    [
+      "Every 15 Chill inflicted",
+      1
+    ],
+    [
+      "Every 15 Mana gained by opponent",
+      1
+    ],
+    [
+      "Every 20 Chill inflicted by this",
+      1
+    ],
+    [
+      "Every 3 Blind inflicted on you",
+      1
+    ],
+    [
+      "Every 3 Soul trapped",
+      1
+    ],
+    [
+      "Every 3.1 seconds during Day",
+      1
+    ],
+    [
+      "Every 30 Health healed or overhealed by opponent",
+      1
+    ],
+    [
+      "Every 35 Mana gained",
+      1
+    ],
+    [
+      "Every 4 Debuff inflicted by Melee Weapon Ranged Weapon Pet inside",
+      1
+    ],
+    [
+      "Every 4 Soul trapped",
+      1
+    ],
+    [
+      "Every 5 hits",
+      1
+    ],
+    [
+      "Every 5 Poison inflicted by Star items",
+      1
+    ],
+    [
+      "Every 6 Buff stolen",
+      1
+    ],
+    [
+      "Every 6 Soul trapped",
+      1
+    ],
+    [
+      "Every 8 Soul trapped",
+      1
+    ],
+    [
+      "Every Burn activation on opponent",
+      1
+    ],
+    [
+      "Fish , crab , or lobster inside activates",
+      1
+    ],
+    [
+      "For every 10 Max Health you have more than opponent",
+      1
+    ],
+    [
+      "Health below 50% or 15 Blind on you",
+      1
+    ],
+    [
+      "Health below 50% or 15 Burn on you",
+      1
+    ],
+    [
+      "Health below 50% or 15 Chill on you",
+      1
+    ],
+    [
+      "Health below 50% or 20 Chill on you",
+      1
+    ],
+    [
+      "Health below 50% or 3 Burn on you",
+      1
+    ],
+    [
+      "Health below 50% or 5 Regeneration on opponent",
+      1
+    ],
+    [
+      "Health below 75% or 15 Poison on you",
+      1
+    ],
+    [
+      "Health below 75% or 30 Poison on you",
+      1
+    ],
+    [
+      "Inflicted Burn on opponent",
+      1
+    ],
+    [
+      "Moon Scarb",
+      1
+    ],
+    [
+      "On 40 Buff stolen",
+      1
+    ],
+    [
+      "On every 5 Star Tool activations",
+      1
+    ],
+    [
+      "On every Burn activation on you",
+      1
+    ],
+    [
+      "On every Fatigue activation",
+      1
+    ],
+    [
+      "On Fish inside activating",
+      1
+    ],
+    [
+      "On Melee Weapon Ranged Weapon Rat inside hit",
+      1
+    ],
+    [
+      "On Mineral inside critical hit",
+      1
+    ],
+    [
+      "On Star Mineral inflicts Debuff",
+      1
+    ],
+    [
+      "On Star Pet inflicts Poison",
+      1
+    ],
+    [
+      "On Star Ranged Weapon",
+      1
+    ],
+    [
+      "On Star tt Melee Weapon Ranged Weapon Pet it",
+      1
+    ],
+    [
+      "On this and Star Pet critical hit",
+      1
+    ],
+    [
+      "On this and Star Pet hit",
+      1
+    ],
+    [
+      "On this or Star Melee Weapon Ranged Weapon hit",
+      1
+    ],
+    [
+      "On Tool inside hit",
+      1
+    ],
+    [
+      "One hit",
+      1
+    ],
+    [
+      "Per 10 Burn inflicted by Star items",
+      1
+    ],
+    [
+      "Per 10 Mana gained by this",
+      1
+    ],
+    [
+      "Per 10 Static gained by items inside",
+      1
+    ],
+    [
+      "Per 12 Armor removed from opponent",
+      1
+    ],
+    [
+      "Per 16 Armor gained by Star items",
+      1
+    ],
+    [
+      "Per 16 Burn inflicted by this",
+      1
+    ],
+    [
+      "Per 16 Poison inflicted by this",
+      1
+    ],
+    [
+      "Per 250 Damage dealt by Star Mineral",
+      1
+    ],
+    [
+      "Per 3 Empower gained by you",
+      1
+    ],
+    [
+      "Per 3 Haste gained by opponent",
+      1
+    ],
+    [
+      "Per 30 Armor gained by you",
+      1
+    ],
+    [
+      "Per 30 Max Health gained",
+      1
+    ],
+    [
+      "Per 4 Chill inflicted by this and Star items",
+      1
+    ],
+    [
+      "Per 5 Thorns gained by you",
+      1
+    ],
+    [
+      "Per Bleed on either player",
+      1
+    ],
+    [
+      "Sabotage effect",
+      1
+    ],
+    [
+      "Start of combat",
+      1
+    ],
+    [
+      "Start on Dawn",
+      1
+    ]
+  ],
+  "rawEffectPatterns": [
+    [
+      "Star Mineral can now be thrown multiple times",
+      8
+    ],
+    [
+      "{pct} chance to get {n} Part",
+      7
+    ],
+    [
+      "Absorb {n} Star Charm ({n}/{n})",
+      6
+    ],
+    [
+      "Shoot {n} Star Bolt or Dart",
+      6
+    ],
+    [
+      "Star Potion gain +{n} more use",
+      6
+    ],
+    [
+      "{pct} chance to get {n} Insect",
+      4
+    ],
+    [
+      "{pct} chance to: * Block {n} Damage * Drain {n} Stamina from opponent",
+      4
+    ],
+    [
+      "+{pct} per failed attempt until success",
+      4
+    ],
+    [
+      "Absorb {n} Star Filled Chocolate ({n}/{n})",
+      4
+    ],
+    [
+      "Absorb {n} Star Ingredient ({n}/{n})",
+      4
+    ],
+    [
+      "Gain Hunter's mark",
+      4
+    ],
+    [
+      "Increase Max Health gained by {n} permanently",
+      4
+    ],
+    [
+      "Increase Stamina Recovery by {n} for {n} seconds",
+      4
+    ],
+    [
+      "Reduce hits required by {n} (minimum {n})",
+      4
+    ],
+    [
+      "Remove -{n} min Damage and -{pct} Crit Damage from target",
+      4
+    ],
+    [
+      "Resist on this ignores Insanity",
+      4
+    ],
+    [
+      "Sabotage {n} enemy Melee Weapon Ranged Weapon",
+      4
+    ],
+    [
+      "Skip {n} seconds Cooldown on Star Ingredient",
+      4
+    ],
+    [
+      "Suffer {n} Insanity for {n} seconds",
+      4
+    ],
+    [
+      "{pct} chance to gain Hunter's mark",
+      3
+    ],
+    [
+      "{pct} chance to get {n} Essence",
+      3
+    ],
+    [
+      "+{pct} chance to increase the rarity on a shop item when it rerolls",
+      3
+    ],
+    [
+      "Activate absorbed items * No Charm absorbed yet",
+      3
+    ],
+    [
+      "Gain {n}-{n} Gold",
+      3
+    ],
+    [
+      "Get {n} Potion",
+      3
+    ],
+    [
+      "Heal for {n} Health per empty slot",
+      3
+    ],
+    [
+      "Heal for {n} Health per filled slot",
+      3
+    ],
+    [
+      "If opponent has Armor : * Gain +{n} Damage and +{pct} Crit Chance",
+      3
+    ],
+    [
+      "Lose {n} Max Health",
+      3
+    ],
+    [
+      "Star Potion gains +{n} more use",
+      3
+    ],
+    [
+      "That shot gets +{n} Damage",
+      3
+    ],
+    [
+      "Use {n} Mana to double that bonus",
+      3
+    ],
+    [
+      "{pct} chance Star Melee Weapon Ranged Weapon gains +{n} Damage",
+      2
+    ],
+    [
+      "{pct} chance this and Star items gain {n} Static",
+      2
+    ],
+    [
+      "{pct} chance to activate Poison on hit",
+      2
+    ],
+    [
+      "{pct} chance to block {n} Damage and gain {n} Armor",
+      2
+    ],
+    [
+      "{pct} chance to catch {n} Brown Rat",
+      2
+    ],
+    [
+      "{pct} chance to catch {n} Rat",
+      2
+    ],
+    [
+      "{pct} chance to find a Treasure",
+      2
+    ],
+    [
+      "{pct} chance to get {n} Cheese",
+      2
+    ],
+    [
+      "{pct} chance to Stun attacking Melee Weapon Ranged Weapon for {n} second",
+      2
+    ],
+    [
+      "{pct} chance to Stun attacking Pet for {n} seconds",
+      2
+    ],
+    [
+      "{pct} chance to use {n} Mana to: * Block {n} Damage * Inflict {n} Burn or {n} Chill",
+      2
+    ],
+    [
+      "Activate absorbed items *No Charm absorbed yet",
+      2
+    ],
+    [
+      "Activate Poison on opponent",
+      2
+    ],
+    [
+      "Become invulnerable for {n} second",
+      2
+    ],
+    [
+      "Deal {n} Damage per Thorns on you",
+      2
+    ],
+    [
+      "During Dawn : * Gain {n} Resist and {n} Regeneration",
+      2
+    ],
+    [
+      "Extend Day by {n} seconds per Star Pet Ranged Weapon",
+      2
+    ],
+    [
+      "Find a special rock!",
+      2
+    ],
+    [
+      "Get {n} Ingredient",
+      2
+    ],
+    [
+      "Get {n} Insect",
+      2
+    ],
+    [
+      "Get {n} Jelly Bean",
+      2
+    ],
+    [
+      "Get {n} Part",
+      2
+    ],
+    [
+      "Get {n}-{n} Treats",
+      2
+    ],
+    [
+      "Have a drink",
+      2
+    ],
+    [
+      "Heal for {n} Health per Burn on opponent",
+      2
+    ],
+    [
+      "Increase Armor gained by {n} permanently",
+      2
+    ],
+    [
+      "Increase block by {n} Damage",
+      2
+    ],
+    [
+      "Increase block by {n} Damage per Star item from another hero",
+      2
+    ],
+    [
+      "Increase chance to activate Bleed by +{pct} permanently",
+      2
+    ],
+    [
+      "Increase chance to activate Poison by +{pct} permanently",
+      2
+    ],
+    [
+      "Increase chance to block by +{pct}",
+      2
+    ],
+    [
+      "Remove -{n} Damage from target",
+      2
+    ],
+    [
+      "Shoot {n} Star Dart or Bolt",
+      2
+    ],
+    [
+      "Shorten Dawn and Day by {n} seconds per Star Melee Weapon Armor",
+      2
+    ],
+    [
+      "Star Bolts and Darts gain +{n} quantity",
+      2
+    ],
+    [
+      "Star items bloom for {n} seconds",
+      2
+    ],
+    [
+      "Star Melee Weapon gains +{pct} Accuracy and +{pct} Crit Damage",
+      2
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon gains +{n} Damage and +{pct} Crit Chance",
+      2
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon gains +{pct} Accuracy and +{pct} Crit Chance",
+      2
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon gains +{pct} Crit Chance and +{pct} Crit Damage",
+      2
+    ],
+    [
+      "Star Pet gains +{pct} Accuracy and +{n} Damage",
+      2
+    ],
+    [
+      "Star Potion gains +{n} more uses",
+      2
+    ],
+    [
+      "Stun {n} opponent Food for {n} seconds",
+      2
+    ],
+    [
+      "This ability requires {n} more Armor to trigger",
+      2
+    ],
+    [
+      "This and Star Melee Weapon Ranged Weapon Pet gain +{n} Damage",
+      2
+    ],
+    [
+      "This gains +{pct} faster attacks",
+      2
+    ],
+    [
+      "Turn {n} Star Rock into a Lava Rock",
+      2
+    ],
+    [
+      "Turn Star Fly Agaric into Noxious Red Mush",
+      2
+    ]
+  ],
+  "triggers": [
+    [
+      "On hit",
+      302
+    ],
+    [
+      "Start of Dawn",
+      220
+    ],
+    [
+      "On shop entered",
+      202
+    ],
+    [
+      "On critical hit",
+      61
+    ],
+    [
+      "When time of day changes",
+      47
+    ],
+    [
+      "Every 4 seconds",
+      38
+    ],
+    [
+      "When hit ( Melee Weapon Ranged Weapon Pet )",
+      36
+    ],
+    [
+      "Every 5 seconds",
+      30
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon Pet hit",
+      22
+    ],
+    [
+      "Every 3 seconds",
+      20
+    ],
+    [
+      "Every 4.2 seconds",
+      20
+    ],
+    [
+      "While this blooms",
+      20
+    ],
+    [
+      "When hit ( Melee Weapon Ranged Weapon )",
+      18
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon hit",
+      17
+    ],
+    [
+      "Every 4.4 seconds",
+      15
+    ],
+    [
+      "Every 3.3 seconds",
+      13
+    ],
+    [
+      "Discharge (20 Static )",
+      12
+    ],
+    [
+      "Health below 50%",
+      12
+    ],
+    [
+      "When Star item activates",
+      12
+    ],
+    [
+      "Every 3.6 seconds",
+      11
+    ],
+    [
+      "Every 4.6 seconds",
+      10
+    ],
+    [
+      "On Stun",
+      10
+    ],
+    [
+      "After 12 seconds",
+      9
+    ],
+    [
+      "After 15 seconds",
+      9
+    ],
+    [
+      "Start of Dawn , Day , Dusk , Night",
+      9
+    ],
+    [
+      "When hit 5 times ( Melee Weapon Ranged Weapon Pet )",
+      9
+    ],
+    [
+      "While equipped",
+      9
+    ],
+    [
+      "After 10 seconds",
+      8
+    ],
+    [
+      "Every 3.2 seconds",
+      8
+    ],
+    [
+      "Every 3.8 seconds",
+      8
+    ],
+    [
+      "Every 4.1 seconds",
+      8
+    ],
+    [
+      "Every 4.5 seconds",
+      8
+    ],
+    [
+      "Every 4.8 seconds",
+      8
+    ],
+    [
+      "Every 6 seconds",
+      8
+    ],
+    [
+      "Per Burn on opponent",
+      8
+    ],
+    [
+      "Every 3.1 seconds",
+      7
+    ],
+    [
+      "Every 5.2 seconds",
+      7
+    ],
+    [
+      "On Star Potion use",
+      7
+    ],
+    [
+      "Per Bleed on opponent",
+      7
+    ],
+    [
+      "Per Chill on opponent",
+      7
+    ],
+    [
+      "Every 3.5 seconds",
+      6
+    ],
+    [
+      "Hunter's mark",
+      6
+    ],
+    [
+      "On Star Potion consumed",
+      6
+    ],
+    [
+      "Start of Dawn and every 6 seconds",
+      6
+    ],
+    [
+      "After 20 seconds",
+      5
+    ],
+    [
+      "Call of the Void",
+      5
+    ],
+    [
+      "Every 3.9 seconds",
+      5
+    ],
+    [
+      "Every 5.6 seconds",
+      5
+    ],
+    [
+      "Every 7 seconds",
+      5
+    ],
+    [
+      "Every 9 seconds",
+      5
+    ],
+    [
+      "On Melee Weapon Ranged Weapon Pet inside hit",
+      5
+    ],
+    [
+      "On Star Pet hit",
+      5
+    ],
+    [
+      "Out of stamina",
+      5
+    ],
+    [
+      "Per Blind on opponent",
+      5
+    ],
+    [
+      "Per Insanity on you",
+      5
+    ],
+    [
+      "Per Soul trapped",
+      5
+    ],
+    [
+      "After 25 seconds",
+      4
+    ],
+    [
+      "Discharge (16 Static )",
+      4
+    ],
+    [
+      "Every 3.7 seconds",
+      4
+    ],
+    [
+      "Every 6.2 seconds",
+      4
+    ],
+    [
+      "Health below 20%",
+      4
+    ],
+    [
+      "Health below 75%",
+      4
+    ],
+    [
+      "On item inside activating",
+      4
+    ],
+    [
+      "On Star Rat hit",
+      4
+    ],
+    [
+      "Per Curse on opponent",
+      4
+    ],
+    [
+      "Sabotage",
+      4
+    ],
+    [
+      "Start of Dusk",
+      4
+    ],
+    [
+      "Start of Night",
+      4
+    ],
+    [
+      "When hit ( Pet )",
+      4
+    ],
+    [
+      "When hit 8 times ( Melee Weapon Ranged Weapon )",
+      4
+    ],
+    [
+      "When this shoots a Bolt or Dart",
+      4
+    ],
+    [
+      "Discharge (24 Static )",
+      3
+    ],
+    [
+      "Discharge (30 Static )",
+      3
+    ],
+    [
+      "Every 2.8 seconds",
+      3
+    ],
+    [
+      "Health below 30%",
+      3
+    ],
+    [
+      "On hit if opponent has Armor",
+      3
+    ],
+    [
+      "On Star Melee Weapon Pet hit",
+      3
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon critical hit",
+      3
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon Pet critical hit",
+      3
+    ],
+    [
+      "Starat of Dawn",
+      3
+    ],
+    [
+      "Start of Day , Dusk , Night",
+      3
+    ],
+    [
+      "When critically hit ( Melee Weapon Ranged Weapon Pet )",
+      3
+    ],
+    [
+      "After 7 seconds",
+      2
+    ],
+    [
+      "Discharge (22 Static )",
+      2
+    ],
+    [
+      "During Day",
+      2
+    ],
+    [
+      "Every 2.9 seconds",
+      2
+    ],
+    [
+      "Every 3 hits",
+      2
+    ],
+    [
+      "Every 30 Max Health gained by Star Food",
+      2
+    ],
+    [
+      "Every 4.3 seconds",
+      2
+    ],
+    [
+      "Every 4.9 seconds",
+      2
+    ],
+    [
+      "Every 5.5 seconds",
+      2
+    ],
+    [
+      "Every 5.8 seconds",
+      2
+    ],
+    [
+      "Health below 25%",
+      2
+    ],
+    [
+      "Health below 40%",
+      2
+    ],
+    [
+      "Health below 50% or insufficient Mana",
+      2
+    ],
+    [
+      "On 3 shops entered",
+      2
+    ],
+    [
+      "On 3 shops entered (3 left)",
+      2
+    ],
+    [
+      "On every Regeneration activation",
+      2
+    ],
+    [
+      "On hit if opponent has no Armor",
+      2
+    ],
+    [
+      "On Star item activation",
+      2
+    ],
+    [
+      "On Star Melee Weapon hit",
+      2
+    ],
+    [
+      "On Star Pet critical hit",
+      2
+    ],
+    [
+      "On Star Ranged Weapon hit",
+      2
+    ],
+    [
+      "On Star Tool hit",
+      2
+    ],
+    [
+      "One shop entered",
+      2
+    ],
+    [
+      "Per Insanity on both players combined",
+      2
+    ],
+    [
+      "Per Luck on you",
+      2
+    ],
+    [
+      "Per Poison on opponent",
+      2
+    ],
+    [
+      "Per Thorns on you",
+      2
+    ],
+    [
+      "Start of Day",
+      2
+    ],
+    [
+      "Weaken",
+      2
+    ],
+    [
+      "When consumed",
+      2
+    ],
+    [
+      "When opponent heals",
+      2
+    ],
+    [
+      "When this shoots a Dart or Bolt",
+      2
+    ],
+    [
+      "When you critically hit",
+      2
+    ],
+    [
+      "When you get Stun",
+      2
+    ],
+    [
+      "Afer 25 seconds",
+      1
+    ],
+    [
+      "After 13 seconds",
+      1
+    ],
+    [
+      "After 35 seconds",
+      1
+    ],
+    [
+      "After 6 seconds",
+      1
+    ],
+    [
+      "After attack",
+      1
+    ],
+    [
+      "All day long",
+      1
+    ],
+    [
+      "Discharge (10 Static )",
+      1
+    ],
+    [
+      "Discharge (12 Static )",
+      1
+    ],
+    [
+      "Discharge (13 Static )",
+      1
+    ],
+    [
+      "Discharge (15 Static )",
+      1
+    ],
+    [
+      "Discharge (18 Static )",
+      1
+    ],
+    [
+      "Discharge (28 Static )",
+      1
+    ],
+    [
+      "Discharge (8 Static )",
+      1
+    ],
+    [
+      "Dischrage (24 Static )",
+      1
+    ],
+    [
+      "During Dusk and Night",
+      1
+    ],
+    [
+      "During Dusk Night",
+      1
+    ],
+    [
+      "Every 1 second",
+      1
+    ],
+    [
+      "Every 1.6 seconds",
+      1
+    ],
+    [
+      "Every 10 Mana gained by this and Star items",
+      1
+    ],
+    [
+      "Every 10 Soul trapped",
+      1
+    ],
+    [
+      "Every 12 seconds",
+      1
+    ],
+    [
+      "Every 125 Armor lost",
+      1
+    ],
+    [
+      "Every 15 Chill inflicted",
+      1
+    ],
+    [
+      "Every 15 Mana gained by opponent",
+      1
+    ],
+    [
+      "Every 2 seconds",
+      1
+    ],
+    [
+      "Every 2.2 seconds",
+      1
+    ],
+    [
+      "Every 2.6 seconds",
+      1
+    ],
+    [
+      "Every 20 Chill inflicted by this",
+      1
+    ],
+    [
+      "Every 3 Blind inflicted on you",
+      1
+    ],
+    [
+      "Every 3 Soul trapped",
+      1
+    ],
+    [
+      "Every 3.1 seconds during Day",
+      1
+    ],
+    [
+      "Every 30 Health healed or overhealed by opponent",
+      1
+    ],
+    [
+      "Every 35 Mana gained",
+      1
+    ],
+    [
+      "Every 4 Debuff inflicted by Melee Weapon Ranged Weapon Pet inside",
+      1
+    ],
+    [
+      "Every 4 Soul trapped",
+      1
+    ],
+    [
+      "Every 5 hits",
+      1
+    ],
+    [
+      "Every 5 Poison inflicted by Star items",
+      1
+    ],
+    [
+      "Every 5.1 seconds",
+      1
+    ],
+    [
+      "Every 5.7 seconds",
+      1
+    ],
+    [
+      "Every 6 Buff stolen",
+      1
+    ],
+    [
+      "Every 6 Soul trapped",
+      1
+    ],
+    [
+      "Every 6.3 seconds",
+      1
+    ],
+    [
+      "Every 6.6 seconds",
+      1
+    ],
+    [
+      "Every 7.4 seconds",
+      1
+    ],
+    [
+      "Every 7.7 seconds",
+      1
+    ],
+    [
+      "Every 8 seconds",
+      1
+    ],
+    [
+      "Every 8 Soul trapped",
+      1
+    ],
+    [
+      "Every Burn activation on opponent",
+      1
+    ],
+    [
+      "Fish , crab , or lobster inside activates",
+      1
+    ],
+    [
+      "For every 10 Max Health you have more than opponent",
+      1
+    ],
+    [
+      "Health below 50% or 15 Blind on you",
+      1
+    ],
+    [
+      "Health below 50% or 15 Burn on you",
+      1
+    ],
+    [
+      "Health below 50% or 15 Chill on you",
+      1
+    ],
+    [
+      "Health below 50% or 20 Chill on you",
+      1
+    ],
+    [
+      "Health below 50% or 3 Burn on you",
+      1
+    ],
+    [
+      "Health below 50% or 5 Regeneration on opponent",
+      1
+    ],
+    [
+      "Health below 60%",
+      1
+    ],
+    [
+      "Health below 75% or 15 Poison on you",
+      1
+    ],
+    [
+      "Health below 75% or 30 Poison on you",
+      1
+    ],
+    [
+      "Inflicted Burn on opponent",
+      1
+    ],
+    [
+      "Moon Scarb",
+      1
+    ],
+    [
+      "On 2 shops entered (2 left)",
+      1
+    ],
+    [
+      "On 4 shop entered (4left)",
+      1
+    ],
+    [
+      "On 40 Buff stolen",
+      1
+    ],
+    [
+      "On every 5 Star Tool activations",
+      1
+    ],
+    [
+      "On every Burn activation on you",
+      1
+    ],
+    [
+      "On every Fatigue activation",
+      1
+    ],
+    [
+      "On Fish inside activating",
+      1
+    ],
+    [
+      "On hi t",
+      1
+    ],
+    [
+      "On Melee Weapon Ranged Weapon Rat inside hit",
+      1
+    ],
+    [
+      "On Mineral inside critical hit",
+      1
+    ],
+    [
+      "On Star activation",
+      1
+    ],
+    [
+      "On Star Bees hit",
+      1
+    ],
+    [
+      "On Star Bolts and Darts hit",
+      1
+    ],
+    [
+      "On Star Bomb inflicting Stun",
+      1
+    ],
+    [
+      "On Star Fish activation",
+      1
+    ],
+    [
+      "On Star Fly hit",
+      1
+    ],
+    [
+      "On Star Food activation",
+      1
+    ],
+    [
+      "On Star Forge Hammer hit",
+      1
+    ],
+    [
+      "On Star Golem hit",
+      1
+    ],
+    [
+      "On Star item activations",
+      1
+    ],
+    [
+      "On Star Melee Weapon critical hit",
+      1
+    ],
+    [
+      "On Star Melee Weapon Pet critical hit",
+      1
+    ],
+    [
+      "On Star Mineral hit",
+      1
+    ]
+  ],
+  "effectPatterns": [
+    [
+      "+{pct} faster for every Star Food of another type",
+      62
+    ],
+    [
+      "Gain {n} Armor",
+      54
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Bleed",
+      54
+    ],
+    [
+      "Inflict {n} Bleed",
+      50
+    ],
+    [
+      "Cleanse {n} Debuff",
+      42
+    ],
+    [
+      "Inflict {n} Burn",
+      38
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Poison",
+      34
+    ],
+    [
+      "One use left",
+      33
+    ],
+    [
+      "Gain {n} Regeneration",
+      30
+    ],
+    [
+      "levelUpAbilityEffect: to block another {n} Damage",
+      29
+    ],
+    [
+      "Gain {n} Haste",
+      28
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Armor",
+      28
+    ],
+    [
+      "Gain +{pct} Crit Chance",
+      27
+    ],
+    [
+      "Heal for {n} Health",
+      27
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Burn",
+      27
+    ],
+    [
+      "Gain {n} Mana",
+      26
+    ],
+    [
+      "Gain {n} Resist and {n} Max Health",
+      25
+    ],
+    [
+      "Gain {n} Max Health",
+      24
+    ],
+    [
+      "levelUpAbilityEffect: {n}",
+      24
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Chill",
+      24
+    ],
+    [
+      "Inflict {n} Poison",
+      23
+    ],
+    [
+      "Inflict {n} Chill",
+      21
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Luck",
+      21
+    ],
+    [
+      "Reduce Damage taken by {pct}",
+      20
+    ],
+    [
+      "Star Bloomers bloom for {n} seconds",
+      19
+    ],
+    [
+      "Gain {n} Luck",
+      16
+    ],
+    [
+      "{pct} chance to block {n} Damage",
+      15
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Buff",
+      15
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Mana",
+      15
+    ],
+    [
+      "Open this",
+      15
+    ],
+    [
+      "Reduce Stun duration by {pct}",
+      15
+    ],
+    [
+      "Gain {n} Resist",
+      14
+    ],
+    [
+      "Gain {n} Thorns",
+      14
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Haste",
+      14
+    ],
+    [
+      "levelUpAbilityEffect: to heal for {n} Health",
+      14
+    ],
+    [
+      "levelUpAbilityEffect: to remove {n} Buff",
+      14
+    ],
+    [
+      "Steal {n} Buff",
+      14
+    ],
+    [
+      "Trap {n} Soul",
+      14
+    ],
+    [
+      "Activate absorbed items",
+      13
+    ],
+    [
+      "Can only be thrown once per battle",
+      13
+    ],
+    [
+      "Gain {n} Empower",
+      13
+    ],
+    [
+      "Gain {n} Stamina",
+      13
+    ],
+    [
+      "Gain +{pct} Crit Damage",
+      13
+    ],
+    [
+      "Inflict {n} Curse",
+      13
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Max Health",
+      13
+    ],
+    [
+      "Gain {n} Armor and {n} Resist",
+      12
+    ],
+    [
+      "Gain +{n} Damage",
+      12
+    ],
+    [
+      "Gain +{pct} faster attacks",
+      12
+    ],
+    [
+      "levelUpAbilityEffect: to activate absorbed items",
+      12
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Resist",
+      12
+    ],
+    [
+      "{pct} chance to trigger a free attack",
+      11
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Thorns",
+      11
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Blind",
+      11
+    ],
+    [
+      "Quantity: {n}/{n}",
+      11
+    ],
+    [
+      "Remove {n} Buff",
+      11
+    ],
+    [
+      "Star items gain {n} Static",
+      11
+    ],
+    [
+      "{pct} chance to inflict Stun for {n} second",
+      10
+    ],
+    [
+      "levelUpAbilityEffect: to cleanse {n} Debuff",
+      10
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Regeneration",
+      10
+    ],
+    [
+      "Trigger an extra attack",
+      10
+    ],
+    [
+      "{pct} chance to inflict {n} Burn",
+      9
+    ],
+    [
+      "Gain {n} Gold",
+      9
+    ],
+    [
+      "Gain {n} Lifesteal",
+      9
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Static",
+      9
+    ],
+    [
+      "Reduce Crit Damage taken by {pct}",
+      9
+    ],
+    [
+      "Steal {n} Max Health",
+      9
+    ],
+    [
+      "This counts as {n} Dragonleaf",
+      9
+    ],
+    [
+      "{pct} chance to inflict {n} Bleed",
+      8
+    ],
+    [
+      "Activate Bleed",
+      8
+    ],
+    [
+      "Inflict {n} Blind",
+      8
+    ],
+    [
+      "Star Mineral can now be thrown multiple times",
+      8
+    ],
+    [
+      "This and Star items gain {n} Static",
+      8
+    ],
+    [
+      "{pct} chance to get {n} Part",
+      7
+    ],
+    [
+      "Deal {n} Damage",
+      7
+    ],
+    [
+      "Gain {n} Buff",
+      7
+    ],
+    [
+      "Gain {n} Dodge",
+      7
+    ],
+    [
+      "Gain +{pct} faster activations",
+      7
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Empower",
+      7
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Stamina",
+      7
+    ],
+    [
+      "Remove {n} Thorns",
+      7
+    ],
+    [
+      "This hatches",
+      7
+    ],
+    [
+      "Use {n} Mana to inflict {n} Burn",
+      7
+    ],
+    [
+      "{pct} chance to inflict {n} Poison",
+      6
+    ],
+    [
+      "Absorb {n} Star Charm ({n}/{n})",
+      6
+    ],
+    [
+      "Cleanse {n} Blind",
+      6
+    ],
+    [
+      "Destroy this",
+      6
+    ],
+    [
+      "Gain {n} Luck for {n} seconds",
+      6
+    ],
+    [
+      "Gain {n} Static",
+      6
+    ],
+    [
+      "Inflict {n} Insanity on both players",
+      6
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Curse",
+      6
+    ],
+    [
+      "levelUpAbilityEffect: to steal {n} Max Health",
+      6
+    ],
+    [
+      "levelUpAbilityEffect: to Stun an enemy item for {n} seconds",
+      6
+    ],
+    [
+      "Remove {n} Armor",
+      6
+    ],
+    [
+      "Shoot {n} Star Bolt or Dart",
+      6
+    ],
+    [
+      "Star Potion gain +{n} more use",
+      6
+    ],
+    [
+      "{pct} chance to gain {n} Armor",
+      5
+    ],
+    [
+      "{pct} chance to gain {n} Mana",
+      5
+    ],
+    [
+      "{pct} chance to inflict {n} Chill",
+      5
+    ],
+    [
+      "Cleanse {n} Chill",
+      5
+    ],
+    [
+      "Drain {n} Stamina",
+      5
+    ],
+    [
+      "Gain {n} Armor and {n} Thorns",
+      5
+    ],
+    [
+      "Gain {n} Armor per Star Armor",
+      5
+    ],
+    [
+      "Gain {n} Max Health and {n} Armor",
+      5
+    ],
+    [
+      "Gain {n} Regeneration and {n} Empower",
+      5
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Max Health per item inside",
+      5
+    ],
+    [
+      "levelUpAbilityEffect: to gain +{n} Damage",
+      5
+    ],
+    [
+      "Reduce Damage taken by {pct} for {n} seconds",
+      5
+    ],
+    [
+      "Trigger an attack",
+      5
+    ],
+    [
+      "Use {n} Mana to gain {n} Buff",
+      5
+    ],
+    [
+      "Use {n} Mana to inflict {n} Chill",
+      5
+    ],
+    [
+      "{pct} chance to get {n} Insect",
+      4
+    ],
+    [
+      "{pct} chance to inflict {n} Blind",
+      4
+    ],
+    [
+      "{pct} chance to Stun an enemy item for {n} seconds",
+      4
+    ],
+    [
+      "{pct} chance to trigger an extra attack",
+      4
+    ],
+    [
+      "{pct} chance to: * Block {n} Damage * Drain {n} Stamina from opponent",
+      4
+    ],
+    [
+      "+{pct} per failed attempt until success",
+      4
+    ],
+    [
+      "Absorb {n} Star Filled Chocolate ({n}/{n})",
+      4
+    ],
+    [
+      "Absorb {n} Star Ingredient ({n}/{n})",
+      4
+    ],
+    [
+      "Activate Regeneration",
+      4
+    ],
+    [
+      "Cleanse {n} Burn",
+      4
+    ],
+    [
+      "Gain {n} Armor per Star item",
+      4
+    ],
+    [
+      "Gain {n} Empower and {n} Mana",
+      4
+    ],
+    [
+      "Gain {n} free reroll",
+      4
+    ],
+    [
+      "Gain {n} Haste and {n} Luck",
+      4
+    ],
+    [
+      "Gain {n} Luck and {n} Resist",
+      4
+    ],
+    [
+      "Gain {n} Resist per Star item",
+      4
+    ],
+    [
+      "Gain {n} Static and +{n} max Damage",
+      4
+    ],
+    [
+      "Gain +{pct} Crit Chance and +{pct} Crit Damage",
+      4
+    ],
+    [
+      "Gain Hunter's mark",
+      4
+    ],
+    [
+      "Heal for {n} Health per Star Pet Plant",
+      4
+    ],
+    [
+      "Increase Max Health gained by {n} permanently",
+      4
+    ],
+    [
+      "Increase Stamina Recovery by {n} for {n} seconds",
+      4
+    ],
+    [
+      "Inflict {n} Bleed on critical hit",
+      4
+    ],
+    [
+      "Inflict {n} Blind for {n} seconds",
+      4
+    ],
+    [
+      "Inflict {n} Chill for {n} seconds",
+      4
+    ],
+    [
+      "Inflict {n} Chill per second for {n} seconds",
+      4
+    ],
+    [
+      "Inflict {n} Debuff",
+      4
+    ],
+    [
+      "Inflict Call of the Void on both players",
+      4
+    ],
+    [
+      "Inflict Stun for {n} seconds",
+      4
+    ],
+    [
+      "levelUpAbilityEffect: Star items gain {n} Static",
+      4
+    ],
+    [
+      "levelUpAbilityEffect: Star Melee Weapon Ranged Weapon Pet gains +{pct} faster attacks",
+      4
+    ],
+    [
+      "levelUpAbilityEffect: to discharge again",
+      4
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Armor per item inside",
+      4
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Burn and {n} Poison",
+      4
+    ],
+    [
+      "levelUpAbilityEffect: to steal {n} Buff",
+      4
+    ],
+    [
+      "Reduce hits required by {n} (minimum {n})",
+      4
+    ],
+    [
+      "Remove -{n} min Damage and -{pct} Crit Damage from target",
+      4
+    ],
+    [
+      "Remove {n} Armor and {n} Buff",
+      4
+    ],
+    [
+      "Resist on this ignores Insanity",
+      4
+    ],
+    [
+      "Sabotage {n} enemy Melee Weapon Ranged Weapon",
+      4
+    ],
+    [
+      "Skip {n} seconds Cooldown on Star Ingredient",
+      4
+    ],
+    [
+      "Star items gain +{pct} faster activations",
+      4
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon Pet gains +{pct} Crit Chance",
+      4
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon Pet gains +{pct} faster attacks",
+      4
+    ],
+    [
+      "Steal {n} Health",
+      4
+    ],
+    [
+      "Suffer {n} Insanity for {n} seconds",
+      4
+    ],
+    [
+      "This counts as {n} Cactus",
+      4
+    ],
+    [
+      "Use {n} Mana to gain {n} Static",
+      4
+    ],
+    [
+      "{pct} chance to activate Bleed",
+      3
+    ],
+    [
+      "{pct} chance to gain {n} Regeneration",
+      3
+    ],
+    [
+      "{pct} chance to gain Hunter's mark",
+      3
+    ],
+    [
+      "{pct} chance to get {n} Essence",
+      3
+    ],
+    [
+      "{pct} chance to Go Fishing (Deep)",
+      3
+    ],
+    [
+      "{pct} chance to Go Fishing (Shallow)",
+      3
+    ],
+    [
+      "{pct} chance to Go Mining (Surface)",
+      3
+    ],
+    [
+      "{pct} chance to inflict Stun for {n} seconds",
+      3
+    ],
+    [
+      "+{pct} chance to increase the rarity on a shop item when it rerolls",
+      3
+    ],
+    [
+      "Activate absorbed items * No Charm absorbed yet",
+      3
+    ],
+    [
+      "Break {n} Star Rock to find an Ore",
+      3
+    ],
+    [
+      "Cleanse {n} Bleed",
+      3
+    ],
+    [
+      "Cleanse {n} Debuff per Star Pet Plant",
+      3
+    ],
+    [
+      "Gain {n} Armor and {n} Haste",
+      3
+    ],
+    [
+      "Gain {n} Armor and {n} Mana",
+      3
+    ],
+    [
+      "Gain {n} Armor per Star Part",
+      3
+    ],
+    [
+      "Gain {n} Haste and {n} Empower",
+      3
+    ],
+    [
+      "Gain {n} Haste for {n} seconds",
+      3
+    ],
+    [
+      "Gain {n} Haste per Star Dragonleaf",
+      3
+    ],
+    [
+      "Gain {n} Haste per Star Reef Knot",
+      3
+    ],
+    [
+      "Gain {n} Luck and {n} Regeneration",
+      3
+    ],
+    [
+      "Gain {n} Mana and {n} Luck",
+      3
+    ],
+    [
+      "Gain {n} Regeneration and {n} Max Health",
+      3
+    ],
+    [
+      "Gain {n} Static per Star item",
+      3
+    ],
+    [
+      "Gain {n}-{n} Gold",
+      3
+    ],
+    [
+      "Gain +{n} Damage and +{pct} Crit Chance",
+      3
+    ],
+    [
+      "Gain +{n} Damage per Star Food",
+      3
+    ],
+    [
+      "Gain +{n} Damage per Star Rat",
+      3
+    ],
+    [
+      "Gain +{pct} Crit Chance and +{pct} faster attacks",
+      3
+    ],
+    [
+      "Gain +{pct} Crit Damage permanently",
+      3
+    ],
+    [
+      "Gain +{pct} faster attacks per Star Melee Weapon Pet Food",
+      3
+    ],
+    [
+      "Get {n} Potion",
+      3
+    ],
+    [
+      "Heal for {n} Health per empty slot",
+      3
+    ],
+    [
+      "Heal for {n} Health per filled slot",
+      3
+    ],
+    [
+      "If opponent has Armor : * Gain +{n} Damage and +{pct} Crit Chance",
+      3
+    ],
+    [
+      "Inflict {n} Burn and {n} Blind",
+      3
+    ],
+    [
+      "Inflict {n} Burn during Day",
+      3
+    ],
+    [
+      "Inflict {n} Chill per Star Melee Weapon Ranged Weapon Pet",
+      3
+    ],
+    [
+      "Inflict Stun for {n} second",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: Star items gain +{pct} faster activations",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: Star Melee Weapon Ranged Weapon gains +{n} Damage",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: Star Melee Weapon Ranged Weapon gains +{pct} Crit Damage",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: Star Melee Weapon Ranged Weapon gains +{pct} faster attacks",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: Star Ranged Weapon gains +{pct} faster attacks",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Armor per Star Armor",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to gain {n} Max Health and {n} Resist",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to heal {n} Health per Star Pet Plant",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to increase Stamina Recovery by {n} for {n} seconds",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to inflict {n} Burn every second for {n} seconds",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to remove {n} Thorns",
+      3
+    ],
+    [
+      "levelUpAbilityEffect: to Stun an enemy item for {n} second",
+      3
+    ],
+    [
+      "Lose {n} Max Health",
+      3
+    ],
+    [
+      "Reduce Cooldown by {n} second",
+      3
+    ],
+    [
+      "Remove {n} Regeneration",
+      3
+    ],
+    [
+      "Star Melee Weapon gains +{n} Damage",
+      3
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon Pet gains +{pct} Crit Damage",
+      3
+    ],
+    [
+      "Star Potion gains +{n} more use",
+      3
+    ],
+    [
+      "Star Rat gains +{n} Damage",
+      3
+    ],
+    [
+      "Steal {n} Mana from opponent",
+      3
+    ],
+    [
+      "Steal {n} Max Health per Star item from another hero",
+      3
+    ],
+    [
+      "Stun {n} enemy item for {n} seconds",
+      3
+    ],
+    [
+      "Stun an enemy item for {n} seconds",
+      3
+    ],
+    [
+      "That shot gets +{n} Damage",
+      3
+    ],
+    [
+      "Use {n} Mana to double that bonus",
+      3
+    ],
+    [
+      "{pct} chance Star Melee Weapon Ranged Weapon gains +{n} Damage",
+      2
+    ],
+    [
+      "{pct} chance this and Star items gain {n} Static",
+      2
+    ],
+    [
+      "{pct} chance to activate Poison on hit",
+      2
+    ],
+    [
+      "{pct} chance to block {n} Damage and gain {n} Armor",
+      2
+    ],
+    [
+      "{pct} chance to catch {n} Brown Rat",
+      2
+    ],
+    [
+      "{pct} chance to catch {n} Rat",
+      2
+    ],
+    [
+      "{pct} chance to cleanse {n} Debuff",
+      2
+    ],
+    [
+      "{pct} chance to find a Treasure",
+      2
+    ],
+    [
+      "{pct} chance to gain {n} Armor per Star Part",
+      2
+    ],
+    [
+      "{pct} chance to gain {n} Empower , {n} Thorns , or {n} Regeneration",
+      2
+    ],
+    [
+      "{pct} chance to gain {n} Max Health",
+      2
+    ],
+    [
+      "{pct} chance to gain {n} Resist",
+      2
+    ],
+    [
+      "{pct} chance to gain {n} Thorns",
+      2
+    ],
+    [
+      "{pct} chance to get {n} Cheese",
+      2
+    ],
+    [
+      "{pct} chance to Go Mining (Underground)",
+      2
+    ],
+    [
+      "{pct} chance to Stun attacking Melee Weapon Ranged Weapon for {n} second",
+      2
+    ],
+    [
+      "{pct} chance to Stun attacking Pet for {n} seconds",
+      2
+    ],
+    [
+      "{pct} chance to use {n} Mana to: * Block {n} Damage * Inflict {n} Burn or {n} Chill",
+      2
+    ],
+    [
+      "Activate absorbed items *No Charm absorbed yet",
+      2
+    ],
+    [
+      "Activate Poison",
+      2
+    ],
+    [
+      "Activate Poison on opponent",
+      2
+    ],
+    [
+      "Become invulnerable for {n} second",
+      2
+    ],
+    [
+      "Break {n} Star Ore to find a Gem",
+      2
+    ],
+    [
+      "Cleanse {n} Curse",
+      2
+    ],
+    [
+      "Cleanse {n} Debuff per second for {n} seconds",
+      2
+    ],
+    [
+      "Cleanse {n} Poison",
+      2
+    ],
+    [
+      "Deal {n} Damage per Thorns on you",
+      2
+    ],
+    [
+      "During Dawn : * Gain {n} Resist and {n} Regeneration",
+      2
+    ]
+  ],
+  "effectsSample": [
+    [
+      "+10% faster for every Star Food of another type",
+      62
+    ],
+    [
+      "One use left",
+      33
+    ],
+    [
+      "Inflict 2 Bleed",
+      19
+    ],
+    [
+      "Open this",
+      15
+    ],
+    [
+      "Trap 1 Soul",
+      14
+    ],
+    [
+      "Activate absorbed items",
+      13
+    ],
+    [
+      "Can only be thrown once per battle",
+      13
+    ],
+    [
+      "Cleanse 2 Debuff",
+      13
+    ],
+    [
+      "Gain 1 Regeneration",
+      13
+    ],
+    [
+      "Inflict 3 Bleed",
+      13
+    ],
+    [
+      "Inflict 1 Bleed",
+      12
+    ],
+    [
+      "Inflict 2 Burn",
+      12
+    ],
+    [
+      "Gain 2 Mana",
+      11
+    ],
+    [
+      "Cleanse 3 Debuff",
+      10
+    ],
+    [
+      "Inflict 2 Chill",
+      10
+    ],
+    [
+      "Trigger an extra attack",
+      10
+    ],
+    [
+      "Activate Bleed",
+      8
+    ],
+    [
+      "Gain 1 Haste",
+      8
+    ],
+    [
+      "Gain 2 Haste",
+      8
+    ],
+    [
+      "Gain 2 Regeneration",
+      8
+    ],
+    [
+      "Gain 3 Haste",
+      8
+    ],
+    [
+      "Star Mineral can now be thrown multiple times",
+      8
+    ],
+    [
+      "Steal 1 Buff",
+      8
+    ],
+    [
+      "Gain 1 Luck",
+      7
+    ],
+    [
+      "Gain 1 Stamina",
+      7
+    ],
+    [
+      "Gain 2 Resist and 20 Max Health",
+      7
+    ],
+    [
+      "Gain 20 Armor",
+      7
+    ],
+    [
+      "Gain 35 Armor",
+      7
+    ],
+    [
+      "Inflict 1 Chill",
+      7
+    ],
+    [
+      "Inflict 1 Curse",
+      7
+    ],
+    [
+      "This hatches",
+      7
+    ],
+    [
+      "Destroy this",
+      6
+    ],
+    [
+      "Gain 1 Empower",
+      6
+    ],
+    [
+      "Gain 2 Gold",
+      6
+    ],
+    [
+      "Gain 2 Thorns",
+      6
+    ],
+    [
+      "Gain 5 Luck for 3 seconds",
+      6
+    ],
+    [
+      "Inflict 1 Burn",
+      6
+    ],
+    [
+      "Inflict 2 Poison",
+      6
+    ],
+    [
+      "Inflict 3 Burn",
+      6
+    ],
+    [
+      "Quantity: 3/3",
+      6
+    ],
+    [
+      "Reduce Damage taken by 30%",
+      6
+    ],
+    [
+      "Shoot 1 Star Bolt or Dart",
+      6
+    ],
+    [
+      "Star Bloomers bloom for 1.5 seconds",
+      6
+    ],
+    [
+      "Star Bloomers bloom for 2 seconds",
+      6
+    ],
+    [
+      "Star Bloomers bloom for 3 seconds",
+      6
+    ],
+    [
+      "Star items gain 4 Static",
+      6
+    ],
+    [
+      "Star Potion gain +1 more use",
+      6
+    ],
+    [
+      "Cleanse 5 Debuff",
+      5
+    ],
+    [
+      "Gain +1% Crit Chance",
+      5
+    ],
+    [
+      "Gain +3% Crit Chance",
+      5
+    ],
+    [
+      "Gain +5% Crit Damage",
+      5
+    ],
+    [
+      "Gain +50% faster activations",
+      5
+    ],
+    [
+      "Gain 60 Armor",
+      5
+    ],
+    [
+      "Inflict 1 Blind",
+      5
+    ],
+    [
+      "Inflict 1 Insanity on both players",
+      5
+    ],
+    [
+      "Inflict 4 Bleed",
+      5
+    ],
+    [
+      "Quantity: 2/2",
+      5
+    ],
+    [
+      "Reduce Stun duration by 50%",
+      5
+    ],
+    [
+      "Remove 1 Thorns",
+      5
+    ],
+    [
+      "This counts as 2 Dragonleaf",
+      5
+    ],
+    [
+      "Trigger an attack",
+      5
+    ],
+    [
+      "50% chance to block 8 Damage",
+      4
+    ],
+    [
+      "50% chance to inflict 1 Bleed",
+      4
+    ],
+    [
+      "50% chance to inflict 1 Blind",
+      4
+    ],
+    [
+      "Absorb 1 Star Charm (0/2)",
+      4
+    ],
+    [
+      "Activate Regeneration",
+      4
+    ],
+    [
+      "Cleanse 4 Debuff",
+      4
+    ],
+    [
+      "Gain +1 Damage",
+      4
+    ],
+    [
+      "Gain +1% faster attacks",
+      4
+    ],
+    [
+      "Gain +2 Damage",
+      4
+    ],
+    [
+      "Gain +2% Crit Chance",
+      4
+    ],
+    [
+      "Gain 1 Dodge",
+      4
+    ],
+    [
+      "Gain 1 free reroll",
+      4
+    ],
+    [
+      "Gain 1 Lifesteal",
+      4
+    ],
+    [
+      "Gain 1 Thorns",
+      4
+    ],
+    [
+      "Gain 15 Max Health",
+      4
+    ],
+    [
+      "Gain 2 Luck",
+      4
+    ],
+    [
+      "Gain 2 Static",
+      4
+    ],
+    [
+      "Gain 3 Mana",
+      4
+    ],
+    [
+      "Gain 3 Max Health",
+      4
+    ],
+    [
+      "Gain 3 Resist",
+      4
+    ],
+    [
+      "Gain 4 Mana",
+      4
+    ],
+    [
+      "Gain 4 Resist and 16 Max Health",
+      4
+    ],
+    [
+      "Gain Hunter's mark",
+      4
+    ],
+    [
+      "Heal for 16 Health per Star Pet Plant",
+      4
+    ],
+    [
+      "Heal for 5 Health",
+      4
+    ],
+    [
+      "Heal for 6 Health",
+      4
+    ],
+    [
+      "Inflict 1 Poison",
+      4
+    ],
+    [
+      "Inflict 2 Curse",
+      4
+    ],
+    [
+      "Inflict 3 Poison",
+      4
+    ],
+    [
+      "Inflict 4 Poison",
+      4
+    ],
+    [
+      "Inflict Call of the Void on both players",
+      4
+    ],
+    [
+      "Reduce Crit Damage taken by 20%",
+      4
+    ],
+    [
+      "Reduce hits required by 1 (minimum 1)",
+      4
+    ],
+    [
+      "Remove -1 min Damage and -10% Crit Damage from target",
+      4
+    ],
+    [
+      "Resist on this ignores Insanity",
+      4
+    ],
+    [
+      "Star items gain 1 Static",
+      4
+    ],
+    [
+      "Steal 2 Buff",
+      4
+    ],
+    [
+      "Suffer 5 Insanity for 5 seconds",
+      4
+    ],
+    [
+      "This counts as 1 Dragonleaf",
+      4
+    ],
+    [
+      "+10% per failed attempt until success",
+      3
+    ],
+    [
+      "33% chance to inflict Stun for 1 second",
+      3
+    ],
+    [
+      "50% chance to Go Fishing (Deep)",
+      3
+    ],
+    [
+      "50% chance to trigger a free attack",
+      3
+    ],
+    [
+      "Activate absorbed items * No Charm absorbed yet",
+      3
+    ],
+    [
+      "Break 1 Star Rock to find an Ore",
+      3
+    ],
+    [
+      "Cleanse 15 Blind",
+      3
+    ],
+    [
+      "Cleanse 3 Debuff per Star Pet Plant",
+      3
+    ],
+    [
+      "Drain 0.5 Stamina",
+      3
+    ],
+    [
+      "Gain +1 Damage per Star Rat",
+      3
+    ],
+    [
+      "Gain +2% Crit Damage",
+      3
+    ],
+    [
+      "Gain +5% Crit Chance",
+      3
+    ],
+    [
+      "Gain +5% faster attacks",
+      3
+    ],
+    [
+      "Gain +5% faster attacks per Star Melee Weapon Pet Food",
+      3
+    ],
+    [
+      "Gain 1 Mana",
+      3
+    ],
+    [
+      "Gain 1 Static per Star item",
+      3
+    ],
+    [
+      "Gain 10 Armor",
+      3
+    ],
+    [
+      "Gain 2 Buff",
+      3
+    ],
+    [
+      "Gain 2 Lifesteal",
+      3
+    ],
+    [
+      "Gain 3 Luck",
+      3
+    ]
+  ],
+  "levelTriggers": [
+    [
+      "On hit",
+      310
+    ],
+    [
+      "When time of day changes",
+      113
+    ],
+    [
+      "When consumed",
+      33
+    ],
+    [
+      "When blocking Damage",
+      29
+    ],
+    [
+      "Every 5 seconds",
+      27
+    ],
+    [
+      "Every 4 seconds",
+      23
+    ],
+    [
+      "When this item activates",
+      23
+    ],
+    [
+      "Every 4.2 seconds",
+      19
+    ],
+    [
+      "Every 4.4 seconds",
+      14
+    ],
+    [
+      "Every 3 seconds",
+      13
+    ],
+    [
+      "Every 3.3 seconds",
+      12
+    ],
+    [
+      "On critical hit",
+      9
+    ],
+    [
+      "Every 4.6 seconds",
+      8
+    ],
+    [
+      "Every 6 seconds",
+      8
+    ],
+    [
+      "When this activates",
+      8
+    ],
+    [
+      "Every 3.1 seconds",
+      7
+    ],
+    [
+      "Every 3.2 seconds",
+      7
+    ],
+    [
+      "Every 3.5 seconds",
+      7
+    ],
+    [
+      "Every 3.8 seconds",
+      7
+    ],
+    [
+      "Every 4.5 seconds",
+      7
+    ],
+    [
+      "Every 4.8 seconds",
+      7
+    ],
+    [
+      "Every 12 seconds",
+      6
+    ],
+    [
+      "Every 3.6 seconds",
+      6
+    ],
+    [
+      "Every 3.9 seconds",
+      6
+    ],
+    [
+      "Every 4.1 seconds",
+      6
+    ],
+    [
+      "Every 5.2 seconds",
+      6
+    ],
+    [
+      "Every 9 seconds",
+      5
+    ],
+    [
+      "On discharge",
+      5
+    ],
+    [
+      "Every 5.6 seconds",
+      4
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon critical hit",
+      4
+    ],
+    [
+      "When time if day changes",
+      4
+    ],
+    [
+      "2",
+      3
+    ],
+    [
+      "Every 2 seconds",
+      3
+    ],
+    [
+      "Every 2.9 seconds",
+      3
+    ],
+    [
+      "Every 3.7 seconds",
+      3
+    ],
+    [
+      "Every 6.2 seconds",
+      3
+    ],
+    [
+      "Every 7 seconds",
+      3
+    ],
+    [
+      "On shop entered",
+      3
+    ],
+    [
+      "On Star Potion consumed",
+      3
+    ],
+    [
+      "When hit 5 times ( Melee Weapon Ranged Weapon Pet )",
+      3
+    ],
+    [
+      "Every 2.8 seconds",
+      2
+    ],
+    [
+      "Every 4.3 seconds",
+      2
+    ],
+    [
+      "Every 4.9 seconds",
+      2
+    ],
+    [
+      "Every 5.5 seconds",
+      2
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon hit",
+      2
+    ],
+    [
+      "On Star Potion use",
+      2
+    ],
+    [
+      "On Star Ranged Weapon hit",
+      2
+    ],
+    [
+      "Start of Dawn",
+      2
+    ],
+    [
+      "Start of Dawn , Day , Dusk , Night",
+      2
+    ],
+    [
+      "2.5",
+      1
+    ],
+    [
+      "Armor",
+      1
+    ],
+    [
+      "During Dusk and Night",
+      1
+    ],
+    [
+      "Every 1 second",
+      1
+    ],
+    [
+      "Every 1.6 seconds",
+      1
+    ],
+    [
+      "Every 2.2 seconds",
+      1
+    ],
+    [
+      "Every 2.5 seconds",
+      1
+    ],
+    [
+      "Every 2.6 seconds",
+      1
+    ],
+    [
+      "Every 3.3 seconds during Dusk and Night",
+      1
+    ],
+    [
+      "Every 3.4 seconds",
+      1
+    ],
+    [
+      "Every 4.4 secoonds",
+      1
+    ],
+    [
+      "Every 5.7 seconds",
+      1
+    ],
+    [
+      "Every 6.6 seconds",
+      1
+    ],
+    [
+      "Every 7.7 seconds",
+      1
+    ],
+    [
+      "Every Burn activation on you",
+      1
+    ],
+    [
+      "Every Soul trapped",
+      1
+    ],
+    [
+      "Fish , crab , or lobster activates this",
+      1
+    ],
+    [
+      "On Discharge",
+      1
+    ],
+    [
+      "On every 5 Star Tool activations",
+      1
+    ],
+    [
+      "On Star Fly hit",
+      1
+    ],
+    [
+      "On Star Food activation",
+      1
+    ],
+    [
+      "On Star Forge Hammer hit",
+      1
+    ],
+    [
+      "On Star Melee Weapon critical hit",
+      1
+    ],
+    [
+      "On Star Melee Weapon hit",
+      1
+    ],
+    [
+      "On Star Melee Weapon Ranged Weapon Pet critical hit",
+      1
+    ],
+    [
+      "On Star Mineral critical hit",
+      1
+    ],
+    [
+      "On Star Pet critical hit",
+      1
+    ],
+    [
+      "On Star Rat critical hit",
+      1
+    ],
+    [
+      "On Star Skull activation",
+      1
+    ],
+    [
+      "On Star Tool Pet hit",
+      1
+    ],
+    [
+      "Per 10 Burn inflicted by Star items",
+      1
+    ]
+  ],
+  "levelEffects": [
+    [
+      "to inflict 1 Bleed",
+      37
+    ],
+    [
+      "to inflict 1 Poison",
+      18
+    ],
+    [
+      "to inflict 1 Chill",
+      16
+    ],
+    [
+      "to inflict 2 Bleed",
+      15
+    ],
+    [
+      "to gain 1 Luck",
+      14
+    ],
+    [
+      "to inflict 1 Burn",
+      13
+    ],
+    [
+      "to activate absorbed items",
+      12
+    ],
+    [
+      "to inflict 2 Burn",
+      11
+    ],
+    [
+      "to gain 1 Haste",
+      9
+    ],
+    [
+      "to gain 1 Regeneration",
+      9
+    ],
+    [
+      "to gain 6 Armor",
+      9
+    ],
+    [
+      "to gain 1 Thorns",
+      8
+    ],
+    [
+      "to inflict 2 Poison",
+      8
+    ],
+    [
+      "to remove 1 Buff",
+      8
+    ],
+    [
+      "3",
+      7
+    ],
+    [
+      "to gain 1 Mana",
+      7
+    ],
+    [
+      "to gain 1 Static",
+      7
+    ],
+    [
+      "to inflict 1 Blind",
+      7
+    ],
+    [
+      "to inflict 2 Chill",
+      7
+    ],
+    [
+      "2",
+      6
+    ],
+    [
+      "to gain 1 Empower",
+      6
+    ],
+    [
+      "to gain 1 Resist",
+      6
+    ],
+    [
+      "to gain 1 Stamina",
+      6
+    ],
+    [
+      "to gain 2 Luck",
+      6
+    ],
+    [
+      "to gain 2 Mana",
+      6
+    ],
+    [
+      "to remove 2 Buff",
+      6
+    ],
+    [
+      "5",
+      5
+    ],
+    [
+      "to gain 1 Buff",
+      5
+    ],
+    [
+      "to gain 12 Armor",
+      5
+    ],
+    [
+      "to Stun an enemy item for 0.5 seconds",
+      5
+    ],
+    [
+      "to block another 12 Damage",
+      4
+    ],
+    [
+      "to block another 16 Damage",
+      4
+    ],
+    [
+      "to block another 8 Damage",
+      4
+    ],
+    [
+      "to cleanse 2 Debuff",
+      4
+    ],
+    [
+      "to discharge again",
+      4
+    ],
+    [
+      "to gain 2 Buff",
+      4
+    ],
+    [
+      "to gain 4 Max Health per item inside",
+      4
+    ],
+    [
+      "to inflict 1 Curse",
+      4
+    ],
+    [
+      "to inflict 3 Poison",
+      4
+    ],
+    [
+      "1",
+      3
+    ],
+    [
+      "Star Melee Weapon Ranged Weapon Pet gains +10% faster attacks",
+      3
+    ],
+    [
+      "to block another 18 Damage",
+      3
+    ],
+    [
+      "to block another 6 Damage",
+      3
+    ],
+    [
+      "to cleanse 1 Debuff",
+      3
+    ],
+    [
+      "to gain +2 Damage",
+      3
+    ],
+    [
+      "to gain 2 Haste",
+      3
+    ],
+    [
+      "to gain 2 Resist",
+      3
+    ],
+    [
+      "to gain 3 Max Health",
+      3
+    ],
+    [
+      "to gain 5 Armor",
+      3
+    ],
+    [
+      "to gain 5 Buff",
+      3
+    ],
+    [
+      "to gain 5 Max Health",
+      3
+    ],
+    [
+      "to heal for 4 Health",
+      3
+    ],
+    [
+      "to inflict 4 Poison",
+      3
+    ],
+    [
+      "to Stun an enemy item for 1 second",
+      3
+    ],
+    [
+      "4",
+      2
+    ],
+    [
+      "Star items gain 1 Static",
+      2
+    ],
+    [
+      "to block another 14 Damage",
+      2
+    ],
+    [
+      "to block another 24 Damage",
+      2
+    ],
+    [
+      "to cleanse 2 Bleed",
+      2
+    ],
+    [
+      "to cleanse 3 Debuff",
+      2
+    ],
+    [
+      "to gain +1 Damage",
+      2
+    ],
+    [
+      "to gain 1 Haste per item inside",
+      2
+    ],
+    [
+      "to gain 1 Lifesteal",
+      2
+    ],
+    [
+      "to gain 1 Mana and 1 Regeneration",
+      2
+    ],
+    [
+      "to gain 2 Mana and inflict 1 Curse",
+      2
+    ],
+    [
+      "to gain 3 Haste",
+      2
+    ],
+    [
+      "to gain 3 Haste per Star Dragonleaf",
+      2
+    ],
+    [
+      "to gain 3 Thorns",
+      2
+    ],
+    [
+      "to gain 4 Armor",
+      2
+    ],
+    [
+      "to gain 4 Armor per item inside",
+      2
+    ],
+    [
+      "to gain 4 Resist",
+      2
+    ],
+    [
+      "to gain 5 Armor per item inside",
+      2
+    ],
+    [
+      "to gain 8 Buff",
+      2
+    ],
+    [
+      "to heal for 15 Health",
+      2
+    ],
+    [
+      "to inflict 1 Bleed or 1 Chill",
+      2
+    ],
+    [
+      "to inflict 1 Bleed per Star Melee Weapon Ranged Weapon Pet",
+      2
+    ],
+    [
+      "to inflict 1 Bleed per Star Plant",
+      2
+    ],
+    [
+      "to inflict 1 Burn and 1 Poison",
+      2
+    ],
+    [
+      "to inflict 1 Burn every second for 5 seconds",
+      2
+    ],
+    [
+      "to inflict 1 Poison per Star item",
+      2
+    ]
+  ],
+  "starPhrases": [
+    [
+      "effect: +10% faster for every Star Food of another type",
+      62
+    ],
+    [
+      "trigger: On Star Melee Weapon Ranged Weapon Pet hit",
+      22
+    ],
+    [
+      "trigger: On Star Melee Weapon Ranged Weapon hit",
+      17
+    ],
+    [
+      "trigger: When Star item activates",
+      12
+    ],
+    [
+      "effect: Star Mineral can now be thrown multiple times",
+      8
+    ],
+    [
+      "trigger: On Star Potion use",
+      7
+    ],
+    [
+      "effect: Shoot 1 Star Bolt or Dart",
+      6
+    ],
+    [
+      "effect: Star Bloomers bloom for 1.5 seconds",
+      6
+    ],
+    [
+      "effect: Star Bloomers bloom for 2 seconds",
+      6
+    ],
+    [
+      "effect: Star Bloomers bloom for 3 seconds",
+      6
+    ],
+    [
+      "effect: Star items gain 4 Static",
+      6
+    ],
+    [
+      "effect: Star Potion gain +1 more use",
+      6
+    ],
+    [
+      "trigger: On Star Potion consumed",
+      6
+    ],
+    [
+      "trigger: On Star Pet hit",
+      5
+    ],
+    [
+      "effect: Absorb 1 Star Charm (0/2)",
+      4
+    ],
+    [
+      "effect: Heal for 16 Health per Star Pet Plant",
+      4
+    ],
+    [
+      "effect: Star items gain 1 Static",
+      4
+    ],
+    [
+      "trigger: On Star Rat hit",
+      4
+    ],
+    [
+      "effect: Break 1 Star Rock to find an Ore",
+      3
+    ],
+    [
+      "effect: Cleanse 3 Debuff per Star Pet Plant",
+      3
+    ],
+    [
+      "effect: Gain +1 Damage per Star Rat",
+      3
+    ],
+    [
+      "effect: Gain +5% faster attacks per Star Melee Weapon Pet Food",
+      3
+    ],
+    [
+      "effect: Gain 1 Static per Star item",
+      3
+    ],
+    [
+      "effect: Star Melee Weapon gains +2 Damage",
+      3
+    ],
+    [
+      "effect: Star Potion gains +1 more use",
+      3
+    ],
+    [
+      "effect: This and Star items gain 2 Static",
+      3
+    ],
+    [
+      "trigger: On Star Melee Weapon Pet hit",
+      3
+    ],
+    [
+      "trigger: On Star Melee Weapon Ranged Weapon critical hit",
+      3
+    ],
+    [
+      "trigger: On Star Melee Weapon Ranged Weapon Pet critical hit",
+      3
+    ],
+    [
+      "effect: 40% chance Star Melee Weapon Ranged Weapon gains +1 Damage",
+      2
+    ],
+    [
+      "effect: 40% chance this and Star items gain 1 Static",
+      2
+    ],
+    [
+      "effect: Absorb 1 Star Ingredient (0/3)",
+      2
+    ],
+    [
+      "effect: Break 1 Star Ore to find a Gem",
+      2
+    ],
+    [
+      "effect: Extend Day by 2 seconds per Star Pet Ranged Weapon",
+      2
+    ],
+    [
+      "effect: Gain +1 Damage per Star Food",
+      2
+    ],
+    [
+      "effect: Gain +10% faster attacks per Star Part",
+      2
+    ],
+    [
+      "effect: Gain 1 Haste per Star Dragonleaf",
+      2
+    ],
+    [
+      "effect: Gain 1 Haste per Star Fish",
+      2
+    ],
+    [
+      "effect: Gain 1 Luck per Star Pet",
+      2
+    ],
+    [
+      "effect: Gain 1 Luck per Star Rat",
+      2
+    ],
+    [
+      "effect: Gain 1 Resist per Star item",
+      2
+    ],
+    [
+      "effect: Gain 2 Empower per Star Pet",
+      2
+    ],
+    [
+      "effect: Gain 2 Haste per Star Reef Knot",
+      2
+    ],
+    [
+      "effect: Gain 2 Mana per Star Rat",
+      2
+    ],
+    [
+      "effect: Gain 4 Armor per Star Part",
+      2
+    ],
+    [
+      "effect: Gain 5 Armor per Star item",
+      2
+    ],
+    [
+      "effect: Inflict 1 Bleed per Star Dragonleaf",
+      2
+    ],
+    [
+      "effect: Inflict 1 Bleed per Star Melee Weapon Ranged Weapon Pet",
+      2
+    ],
+    [
+      "effect: Inflict 2 Burn per Star Lava Rock",
+      2
+    ],
+    [
+      "effect: Inflict 2 Poison per Star Rat",
+      2
+    ],
+    [
+      "effect: Shoot 1 Star Dart or Bolt",
+      2
+    ],
+    [
+      "effect: Shorten Dawn and Day by 1.5 seconds per Star Melee Weapon Armor",
+      2
+    ],
+    [
+      "effect: Skip 1.0 seconds Cooldown on Star Ingredient",
+      2
+    ],
+    [
+      "effect: Star Bolts and Darts gain +2 quantity",
+      2
+    ],
+    [
+      "effect: Star items bloom for 5 seconds",
+      2
+    ],
+    [
+      "effect: Star Melee Weapon Ranged Weapon Pet gains +1% Crit Chance",
+      2
+    ],
+    [
+      "effect: Star Melee Weapon Ranged Weapon Pet gains +5% faster attacks",
+      2
+    ],
+    [
+      "effect: Star Potion gains +1 more uses",
+      2
+    ],
+    [
+      "effect: Star Rat gains +2 Damage",
+      2
+    ],
+    [
+      "effect: Steal 1 Buff per Star item from another hero",
+      2
+    ],
+    [
+      "effect: This and Star items gain 3 Static",
+      2
+    ],
+    [
+      "effect: Turn 1 Star Rock into a Lava Rock",
+      2
+    ],
+    [
+      "effect: Turn Star Fly Agaric into Noxious Red Mush",
+      2
+    ],
+    [
+      "effect: Turn Star Ginseng Root into Sticky Stuff",
+      2
+    ],
+    [
+      "effect: Turn Star Golden Tail into 3 Ball of Thread",
+      2
+    ],
+    [
+      "effect: Turn Star Lava Rock into Brimstone Powder",
+      2
+    ],
+    [
+      "effect: Turn Star Rock into Finely Ground Gravel",
+      2
+    ],
+    [
+      "effect: Turn Star Succulent into Pleasant Green Paste",
+      2
+    ],
+    [
+      "trigger: Every 30 Max Health gained by Star Food",
+      2
+    ],
+    [
+      "trigger: On Star item activation",
+      2
+    ],
+    [
+      "trigger: On Star Melee Weapon hit",
+      2
+    ],
+    [
+      "trigger: On Star Pet critical hit",
+      2
+    ],
+    [
+      "trigger: On Star Ranged Weapon hit",
+      2
+    ],
+    [
+      "trigger: On Star Tool hit",
+      2
+    ],
+    [
+      "effect: 1 other Star Bomb goes +20% faster",
+      1
+    ],
+    [
+      "effect: 1 Star Bomb goes +33% faster",
+      1
+    ],
+    [
+      "effect: 10% chance for Star Pet to trigger an extra attack",
+      1
+    ],
+    [
+      "effect: 10% chance per Star Plant to get 1 Champion's Syrup",
+      1
+    ],
+    [
+      "effect: 10% chance per Star Plant to get 1 Gold Elixir",
+      1
+    ],
+    [
+      "effect: 10% chance per Star Plant to get 1 Manuka Honey",
+      1
+    ],
+    [
+      "effect: 10% chance per Star Plant to get 1 Royal Nectar",
+      1
+    ],
+    [
+      "effect: 14% chance per Star Pet to inflict 4 Chill",
+      1
+    ],
+    [
+      "effect: 15% less chance to escape per Star Food Pet Melee Weapon Ranged Weapon",
+      1
+    ],
+    [
+      "effect: 2 random Star Melee Weapon Ranged Weapon trigger a free attack",
+      1
+    ],
+    [
+      "effect: 20% chance all Star Pet gain +1 Damage",
+      1
+    ],
+    [
+      "effect: 20% chance another Star Melee Weapon Ranged Weapon triggers a free attack",
+      1
+    ],
+    [
+      "effect: 20% chance per Star Melee Weapon Food to: * Gain 1.5 Stamina * Inflict 2 Chill",
+      1
+    ],
+    [
+      "effect: 20% chance to gain 1 Regeneration per Star Melee Weapon Ranged Weapon",
+      1
+    ],
+    [
+      "effect: 20% chance to inflict 1 Bleed per Star Plant",
+      1
+    ],
+    [
+      "effect: 20% chance to restore 1 use to 2 Star Potion",
+      1
+    ],
+    [
+      "effect: 20% chance to: * Trigger an extra attack * Trigger an extra attack for a random Star Rat",
+      1
+    ],
+    [
+      "effect: 25% chance per Star Plant to catch 1 Insect",
+      1
+    ],
+    [
+      "effect: 25% chance to gain 1 Static per Star Armor",
+      1
+    ],
+    [
+      "effect: 25% chance to gain 2 Haste per Star Melee Weapon Ranged Weapon",
+      1
+    ],
+    [
+      "effect: 25% chance to gain 5 Max Health per Star Melee Weapon Ranged Weapon Pet",
+      1
+    ],
+    [
+      "effect: 25% chance to inflict 2 Chill per Star Pet",
+      1
+    ],
+    [
+      "effect: 25% chance to Star Melee Weapon Ranged Weapon to trigger a free attack",
+      1
+    ],
+    [
+      "effect: 25% chance to use 1 Mana to: * Inflict 1 Burn , 1 Chill , and 1 Poison per Star Part",
+      1
+    ],
+    [
+      "effect: 30% chance for Star Melee Weapon to gain +2 Damage",
+      1
+    ],
+    [
+      "effect: 30% chance per Star Food to catch a crab",
+      1
+    ],
+    [
+      "effect: 30% chance per Star Food to catch a crab or lobster",
+      1
+    ],
+    [
+      "effect: 30% chance Star Melee Weapon Ranged Weapon Pet gains +1 Damage",
+      1
+    ],
+    [
+      "effect: 30% chance to: * Trigger an extra attack for a Star Molten Core Creeper",
+      1
+    ],
+    [
+      "effect: 33% chance Star items gain 1 Static",
+      1
+    ],
+    [
+      "effect: 33% chance Star Pet gains +1 Damage and +1% Crit Chance",
+      1
+    ],
+    [
+      "effect: 40% chance for all Star Tool to gain +2 Damage",
+      1
+    ],
+    [
+      "effect: 40% chance for that Star Melee Weapon Ranged Weapon Pet to gain +2 Damage",
+      1
+    ],
+    [
+      "effect: 50% chance all Star Melee Weapon Ranged Weapon Pet gains +3% attacks",
+      1
+    ],
+    [
+      "effect: 50% chance for all Star Melee Weapon Ranged Weapon to gain +1 Damage",
+      1
+    ],
+    [
+      "effect: 50% chance for all Star Rat to gain +1 Damage",
+      1
+    ],
+    [
+      "effect: 50% chance per Star Food to Go Fishing (Deep). If you catch something * Destroy Star Food",
+      1
+    ],
+    [
+      "effect: 50% chance this and Star Melee Weapon Ranged Weapon gains +15% Crit Damage",
+      1
+    ],
+    [
+      "effect: 50% chance to gain 1 Gold per Star Rat",
+      1
+    ],
+    [
+      "effect: 50% chance to gain 2 Armor per Star Armor",
+      1
+    ],
+    [
+      "effect: 50% chance to gain 2 Armor per Star Part",
+      1
+    ],
+    [
+      "effect: 50% chance to inflict 1 Bleed per Star Part",
+      1
+    ],
+    [
+      "effect: 50% chance to inflict 1 Chill per Star Spiderweb",
+      1
+    ],
+    [
+      "effect: 50% chance to inflict 2 Bleed per Star Fish",
+      1
+    ],
+    [
+      "effect: 60% chance to gain 3 Armor per Star Part",
+      1
+    ],
+    [
+      "effect: Absoeb 1 Star Charm (0/1)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Charm",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Charm (0/1)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Charm (0/5)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Filled Chocolate (0/3)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Filled Chocolate (0/4)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Filled Chocolate (0/6)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Filled Chocolate (0/9)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Golden Egg (0/3)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Ingredient",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Ingredient (0/1)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Ingredient (0/2)",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Snowball",
+      1
+    ],
+    [
+      "effect: Absorb 1 Star Snowball (0/4)",
+      1
+    ],
+    [
+      "effect: Absorb 2 Star Parts",
+      1
+    ],
+    [
+      "effect: Activate all absorbed Ingredient on Star items",
+      1
+    ],
+    [
+      "effect: Activate Bleed once per Star Melee Weapon Ranged Weapon Pet",
+      1
+    ],
+    [
+      "effect: Activate Regeneration twice per Star Food",
+      1
+    ],
+    [
+      "effect: After 3 seconds: * Inflict Stun for 1 second per Star Melee Weapon Ranged Weapon",
+      1
+    ],
+    [
+      "effect: Break open Star Tidal Clam and gain 5 Gold",
+      1
+    ],
+    [
+      "effect: Cleanse 1 Debuff per Star Rat",
+      1
+    ],
+    [
+      "effect: Cleanse 2 Debuff per Star Armor",
+      1
+    ],
+    [
+      "effect: Cleanse 2 Debuff per Star Melee Weapon Pet Potion",
+      1
+    ],
+    [
+      "effect: Cleanse 3 Bleed per Star Plant",
+      1
+    ],
+    [
+      "effect: Cleanse 3 Debuff per Star Eyeball",
+      1
+    ],
+    [
+      "effect: Cleanse 4 Debuff per Star Pet Potion",
+      1
+    ],
+    [
+      "effect: Cleanse 4 Debuff per Star Ranged Weapon Pet",
+      1
+    ],
+    [
+      "effect: Crack open a Star Rock",
+      1
+    ],
+    [
+      "effect: Deal 5 Damage per Star Ranged Weapon Pet",
+      1
+    ],
+    [
+      "effect: Destory this if there is no Star Food",
+      1
+    ],
+    [
+      "effect: Discharge requires 2 less Static per different Star Pet",
+      1
+    ],
+    [
+      "effect: Drain 0.2 Stamina per Star Rat",
+      1
+    ],
+    [
+      "effect: Every Star Pet gains +1% Crit Chance",
+      1
+    ],
+    [
+      "effect: Extend Day by 6.0 seconds per Star Sun Scarb",
+      1
+    ],
+    [
+      "effect: Gain +1 Damage per Star Armor",
+      1
+    ],
+    [
+      "effect: Gain +1 Damage per Star Skull",
+      1
+    ],
+    [
+      "effect: Gain +1 max Damage per Star item",
+      1
+    ],
+    [
+      "effect: Gain +10% Accuracy per Star Bee",
+      1
+    ],
+    [
+      "effect: Gain +10% Crit Chance per Star Dragonleaf",
+      1
+    ],
+    [
+      "effect: Gain +10% Crit Chance per Star Fish",
+      1
+    ],
+    [
+      "effect: Gain +10% faster activation per Star Melee Weapon Ranged Weapon Potion",
+      1
+    ],
+    [
+      "effect: Gain +10% faster attacks per Star Fish",
+      1
+    ],
+    [
+      "effect: Gain +11% Crit Chance per Star Dragonleaf",
+      1
+    ],
+    [
+      "effect: Gain +12% Crit Chance and +20% Crit Damage per Star Dragonleaf",
+      1
+    ],
+    [
+      "effect: Gain +2 Damage per Star Plant",
+      1
+    ],
+    [
+      "effect: Gain +25% Crit Damage per Star Fish",
+      1
+    ],
+    [
+      "effect: Gain +3 Damage per Star Melee Weapon Ranged Weapon Pet",
+      1
+    ],
+    [
+      "effect: Gain +3% faster attacks per Star Grapes",
+      1
+    ],
+    [
+      "effect: Gain +4 Damage and +10% cricha per Star Cactus",
+      1
+    ],
+    [
+      "effect: Gain +4 Damage per Star Banana",
+      1
+    ],
+    [
+      "effect: Gain +4 Damage per Star Food",
+      1
+    ],
+    [
+      "effect: Gain +4 Damage per Star item",
+      1
+    ],
+    [
+      "effect: Gain +4 Damage per Star Melee Weapon Pet Food",
+      1
+    ],
+    [
+      "effect: Gain +5% faster attacks per Star item",
+      1
+    ],
+    [
+      "effect: Gain +6% faster attacks per Star Food",
+      1
+    ],
+    [
+      "effect: Gain +7% Crit Chance per Star Cactus",
+      1
+    ],
+    [
+      "effect: Gain +7% faster activations per Star Skull",
+      1
+    ],
+    [
+      "effect: Gain +8% Crit Chance per Star Food",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Armor",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Food",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Food Ingredient",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Food of another type",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Ingredient",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Melee Weapon Pet",
+      1
+    ],
+    [
+      "effect: Gain 1 Buff per Star Rat",
+      1
+    ],
+    [
+      "effect: Gain 1 Empower per Star Armor",
+      1
+    ],
+    [
+      "effect: Gain 1 Empower per Star Bell",
+      1
+    ],
+    [
+      "effect: Gain 1 Empower per Star Melee Weapon",
+      1
+    ],
+    [
+      "effect: Gain 1 Gold per Star Cheese",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste , 1 Regeneration , or 5 Armor per Star Tool Rat",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste per Star 2 Dragonleaf",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste per Star Ingredient",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste per Star Melee Weapon Ranged Weapon",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste per Star Melee Weapon Ranged Weapon Pet",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste per Star Mineral",
+      1
+    ],
+    [
+      "effect: Gain 1 Haste per Star Pet",
+      1
+    ],
+    [
+      "effect: Gain 1 Luck , 1 Haste , 1 Regeneration per Star Melee Weapon Pet",
+      1
+    ],
+    [
+      "effect: Gain 1 Luck or 1 Haste per Star Food Pet Ranged Weapon",
+      1
+    ],
+    [
+      "effect: Gain 1 Luck per Star Cat",
+      1
+    ],
+    [
+      "effect: Gain 1 Luck per Star Melee Weapon Mineral",
+      1
+    ],
+    [
+      "effect: Gain 1 Luck per Star Mineral",
+      1
+    ]
+  ],
+  "constraintCandidates": [
+    [
+      "+10% faster for every Star Food of another type",
+      62
+    ],
+    [
+      "One use left",
+      33
+    ],
+    [
+      "Can only be thrown once per battle",
+      13
+    ],
+    [
+      "Star Mineral can now be thrown multiple times",
+      8
+    ],
+    [
+      "Quantity: 3/3",
+      6
+    ],
+    [
+      "Quantity: 2/2",
+      5
+    ],
+    [
+      "This counts as 2 Dragonleaf",
+      5
+    ],
+    [
+      "Resist on this ignores Insanity",
+      4
+    ],
+    [
+      "This counts as 1 Dragonleaf",
+      4
+    ],
+    [
+      "This counts as 2 Cactus",
+      2
+    ],
+    [
+      "This counts as 3 Cactus",
+      2
+    ],
+    [
+      "This is not affected by Chill",
+      2
+    ],
+    [
+      "2 of 2 uses left",
+      1
+    ],
+    [
+      "Burn on you triggers 1 second slower",
+      1
+    ],
+    [
+      "Can be thrown once more per absorbed Snowball",
+      1
+    ],
+    [
+      "Get 1 Insect or 1 Filled Chocolate",
+      1
+    ],
+    [
+      "Increase your maximum Stamina by 1",
+      1
+    ],
+    [
+      "Items in this bag gain +10% Crit Chance",
+      1
+    ],
+    [
+      "Items in this bag gain +10% faster activations",
+      1
+    ],
+    [
+      "Katana inside require 1 less hit to trigger",
+      1
+    ],
+    [
+      "Mineral inside this bag can be thrown +1 more time",
+      1
+    ],
+    [
+      "Ouantity: 3/3",
+      1
+    ],
+    [
+      "Poison on you triggers 2 seconds slower",
+      1
+    ],
+    [
+      "Quantity: (2/2)",
+      1
+    ],
+    [
+      "Reduces Stun duration by 50% on items inside",
+      1
+    ],
+    [
+      "Star Pet are affected by Empower and Lifesteal",
+      1
+    ],
+    [
+      "This and Star Melee Weapon Ranged Weapon Pet are not affected by Chill",
+      1
+    ],
+    [
+      "This and Star Pet are affected by Empower",
+      1
+    ],
+    [
+      "This benefits from Lifesteal",
+      1
+    ],
+    [
+      "This counts as a Starbloom",
+      1
+    ],
+    [
+      "This is an extremely rare secret item!",
+      1
+    ],
+    [
+      "Your Fatigue starts 10 seconds later",
+      1
+    ],
+    [
+      "Your Thorns also activate on enemy Pet attacks",
+      1
+    ]
+  ],
+  "statuses": [
+    [
+      "Damage",
+      202
+    ],
+    [
+      "Armor",
+      180
+    ],
+    [
+      "Mana",
+      180
+    ],
+    [
+      "Max Health",
+      133
+    ],
+    [
+      "Bleed",
+      127
+    ],
+    [
+      "Burn",
+      121
+    ],
+    [
+      "Chill",
+      109
+    ],
+    [
+      "Poison",
+      108
+    ],
+    [
+      "Haste",
+      97
+    ],
+    [
+      "Buff",
+      95
+    ],
+    [
+      "Resist",
+      93
+    ],
+    [
+      "Debuff",
+      91
+    ],
+    [
+      "Crit Chance",
+      88
+    ],
+    [
+      "Luck",
+      88
+    ],
+    [
+      "Health",
+      69
+    ],
+    [
+      "Empower",
+      65
+    ],
+    [
+      "Crit Damage",
+      63
+    ],
+    [
+      "Blind",
+      54
+    ],
+    [
+      "Thorns",
+      54
+    ],
+    [
+      "Stamina",
+      52
+    ],
+    [
+      "Curse",
+      46
+    ],
+    [
+      "Insanity",
+      31
+    ],
+    [
+      "Lifesteal",
+      26
+    ],
+    [
+      "Accuracy",
+      11
+    ],
+    [
+      "Cooldown",
+      10
+    ],
+    [
+      "Dodge",
+      7
+    ],
+    [
+      "Fatigue",
+      2
+    ],
+    [
+      "damage",
+      1
+    ],
+    [
+      "health",
+      1
+    ]
+  ]
+}

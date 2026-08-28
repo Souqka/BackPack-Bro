@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseArgs } from "../index.ts";
-import { parseOneItem } from "../parser.ts";
+import { buildUsedInIndex, parseOneItem } from "../parser.ts";
 import { slugifyItemName } from "../utils/ids.ts";
 import { Logger } from "../utils/logger.ts";
 import { parseItemTemplate } from "../utils/wikitext.ts";
@@ -55,8 +55,25 @@ describe("parseOneItem fixtures", () => {
     const { item } = await parse("adamantite_bar");
     const logger = new Logger();
     const issues = validateCatalog([item, { ...item }], logger);
-    expect(issues.some((i) => i.message.includes("Duplicate id"))).toBe(true);
-    expect(issues.some((i) => i.message.includes("Duplicate name"))).toBe(true);
+    expect(issues.some((i) => i.message.includes("Дублирующийся id"))).toBe(true);
+    expect(issues.some((i) => i.message.includes("Дублирующееся имя"))).toBe(true);
+  });
+});
+
+describe("usedIn index", () => {
+  it("строит производный индекс только из recipes целевого предмета", async () => {
+    const logger = new Logger();
+    const bar = await parseOneItem(loadFixture("adamantite_bar").page, {
+      logger,
+      knownNames: new Map(),
+      outputDir: "/tmp",
+      skipImages: true,
+      fetcher: null,
+    });
+    const index = buildUsedInIndex([bar.item]);
+    expect(index.steel_bar).toEqual(["adamantite_bar"]);
+    expect(index.adamantite_ore).toEqual(["adamantite_bar"]);
+    expect(bar.item).not.toHaveProperty("usedInRecipes");
   });
 });
 
@@ -66,5 +83,6 @@ describe("CLI args", () => {
     expect(args.items).toEqual(["Adamantite Bar"]);
     expect(args.limit).toBe(5);
     expect(args.skipImages).toBe(true);
+    expect(args.quiet).toBe(false);
   });
 });

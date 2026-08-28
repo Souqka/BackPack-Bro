@@ -45,7 +45,7 @@ export function parseGeneralInfo(
   if (rarity && !KNOWN_RARITY_SET.has(rarity)) {
     logger.warn(
       "unknown_rarity",
-      `Unknown rarity "${rarityRaw}"`,
+      `Неизвестная редкость "${rarityRaw}"`,
       itemNameForLog,
       { rarity: rarityRaw },
     );
@@ -74,7 +74,7 @@ export function parseGeneralInfo(
     if (!KNOWN_TYPE_SLUGS.has(slug)) {
       logger.warn(
         "unknown_item_type",
-        `Unknown item type "${typeName}"`,
+        `Неизвестный тип предмета "${typeName}"`,
         itemNameForLog,
         { type: typeName },
       );
@@ -161,7 +161,7 @@ export function parseUnlock(
     });
     logger.warn(
       "unparsed_unlock",
-      `Unlock source kept as raw: "${text}"`,
+      `Источник разблокировки оставлен как raw: "${text}"`,
       itemName,
     );
   }

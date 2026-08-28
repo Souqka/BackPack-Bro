@@ -1,6 +1,6 @@
 {
-  "parserVersion": "0.1.0",
-  "generatedAt": "2026-08-28T18:03:51.675Z",
+  "parserVersion": "0.2.0",
+  "generatedAt": "2026-08-28T18:49:34.109Z",
   "wikiOrigin": "https://backpackbrawl.wiki.gg",
   "items": [
     {
@@ -41,201 +41,258 @@
         ]
       },
       "stats": null,
+      "constraints": [],
       "abilities": {
         "initial": [],
         "levelUp": [
           {
             "level": 2,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 5,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "5% chance to gain 24 Armor"
+                "chance": 5,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "5% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "5% chance to gain 24 Armor"
           },
           {
             "level": 3,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 10,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "10% chance to gain 24 Armor"
+                "chance": 10,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "10% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "10% chance to gain 24 Armor"
           },
           {
             "level": 4,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 15,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "15% chance to gain 24 Armor"
+                "chance": 15,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "15% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "15% chance to gain 24 Armor"
           },
           {
             "level": 5,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 30,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "30% chance to gain 24 Armor"
+                "chance": 30,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "30% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "30% chance to gain 24 Armor"
           },
           {
             "level": 6,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 35,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "35% chance to gain 24 Armor"
+                "chance": 35,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "35% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "35% chance to gain 24 Armor"
           },
           {
             "level": 7,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 40,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "40% chance to gain 24 Armor"
+                "chance": 40,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "40% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "40% chance to gain 24 Armor"
           },
           {
             "level": 8,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 45,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "45% chance to gain 24 Armor"
+                "chance": 45,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "45% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "45% chance to gain 24 Armor"
           },
           {
             "level": 9,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 50,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "50% chance to gain 24 Armor"
+                "chance": 50,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "50% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "50% chance to gain 24 Armor"
           },
           {
             "level": 10,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 65,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "65% chance to gain 24 Armor"
+                "chance": 65,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "65% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "65% chance to gain 24 Armor"
           },
           {
             "level": 11,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 70,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "70% chance to gain 24 Armor"
+                "chance": 70,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "70% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "70% chance to gain 24 Armor"
           },
           {
             "level": 12,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 75,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "75% chance to gain 24 Armor"
+                "chance": 75,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "75% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "75% chance to gain 24 Armor"
           },
           {
             "level": 13,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 80,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "80% chance to gain 24 Armor"
+                "chance": 80,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "80% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "80% chance to gain 24 Armor"
           },
           {
             "level": 14,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 85,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "85% chance to gain 24 Armor"
+                "chance": 85,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "85% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "85% chance to gain 24 Armor"
           },
           {
             "level": 15,
-            "trigger": "When this activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 100,
-                "verb": "gain",
-                "amount": 24,
-                "status": "armor",
-                "raw": "100% chance to gain 24 Armor"
+                "chance": 100,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "100% chance to gain 24 Armor"
+                }
               }
             ],
             "rawText": "100% chance to gain 24 Armor"
@@ -243,18 +300,24 @@
         ]
       },
       "star": {
-        "activation": {
-          "raw": "When Star item activates",
-          "trigger": "When Star item activates"
-        },
-        "effects": [
+        "rules": [
           {
-            "chancePercent": 20,
-            "verb": "gain",
-            "amount": 24,
-            "status": "armor",
-            "raw": "20% chance to gain 24 Armor",
-            "trigger": "When Star item activates"
+            "trigger": {
+              "type": "on_star_activation"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "chance": 20,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 24,
+                  "raw": "20% chance to gain 24 Armor"
+                }
+              }
+            ],
+            "rawText": "When Star item activates: 20% chance to gain 24 Armor"
           }
         ]
       },
@@ -288,8 +351,8 @@
         "imageUrls": [
           "https://backpackbrawl.wiki.gg/images/Adamantite_Bar.png"
         ],
-        "parsedAt": "2026-08-28T18:03:50.896Z",
-        "parserVersion": "0.1.0"
+        "parsedAt": "2026-08-28T18:49:33.300Z",
+        "parserVersion": "0.2.0"
       }
     },
     {
@@ -325,212 +388,293 @@
         "critChance": 0,
         "critDamage": 100
       },
+      "constraints": [
+        {
+          "type": "max_uses_per_battle",
+          "value": 1,
+          "raw": "Can only be thrown once per battle"
+        }
+      ],
       "abilities": {
         "initial": [
           {
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
+            "conditions": [],
             "effects": [
               {
-                "verb": "gain",
-                "amount": 20,
-                "status": "armor",
-                "raw": "Gain 20 Armor"
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 20,
+                  "raw": "Gain 20 Armor"
+                }
               }
             ],
             "rawText": "On hit: Gain 20 Armor"
-          },
-          {
-            "trigger": null,
-            "effects": [
-              {
-                "raw": "Can only be thrown once per battle"
-              }
-            ],
-            "rawText": "Can only be thrown once per battle"
           }
         ],
         "levelUp": [
           {
             "level": 2,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 1,
-                "status": "damage",
-                "raw": "Gain +1 Damage"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "damage",
+                  "operation": "add",
+                  "value": 1,
+                  "unit": "flat",
+                  "raw": "Gain +1 Damage"
+                }
               }
             ],
             "rawText": "Gain +1 Damage"
           },
           {
             "level": 3,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 5,
-                "status": "crit_chance",
-                "raw": "Gain 5% Crit Chance"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "crit_chance",
+                  "operation": "add",
+                  "value": 5,
+                  "unit": "percent",
+                  "raw": "Gain 5% Crit Chance"
+                }
               }
             ],
             "rawText": "Gain 5% Crit Chance"
           },
           {
             "level": 4,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 10,
-                "status": "crit_damage",
-                "raw": "Gain 10% Crit Damage"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "crit_damage",
+                  "operation": "add",
+                  "value": 10,
+                  "unit": "percent",
+                  "raw": "Gain 10% Crit Damage"
+                }
               }
             ],
             "rawText": "Gain 10% Crit Damage"
           },
           {
             "level": 5,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "chancePercent": 20,
-                "verb": "gain",
-                "amount": 6,
-                "status": "armor",
-                "raw": "20% chance to gain 6 Armor"
+                "chance": 20,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 6,
+                  "raw": "20% chance to gain 6 Armor"
+                }
               }
             ],
             "rawText": "20% chance to gain 6 Armor"
           },
           {
             "level": 6,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 5,
-                "status": "accuracy",
-                "raw": "Gain 5% Accuracy"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "accuracy",
+                  "operation": "add",
+                  "value": 5,
+                  "unit": "percent",
+                  "raw": "Gain 5% Accuracy"
+                }
               }
             ],
             "rawText": "Gain 5% Accuracy"
           },
           {
             "level": 7,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 1,
-                "status": "damage",
-                "raw": "Gain +1 Damage"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "damage",
+                  "operation": "add",
+                  "value": 1,
+                  "unit": "flat",
+                  "raw": "Gain +1 Damage"
+                }
               }
             ],
             "rawText": "Gain +1 Damage"
           },
           {
             "level": 8,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 5,
-                "status": "crit_chance",
-                "raw": "Gain 5% Crit Chance"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "crit_chance",
+                  "operation": "add",
+                  "value": 5,
+                  "unit": "percent",
+                  "raw": "Gain 5% Crit Chance"
+                }
               }
             ],
             "rawText": "Gain 5% Crit Chance"
           },
           {
             "level": 9,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 10,
-                "status": "crit_damage",
-                "raw": "Gain 10% Crit Damage"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "crit_damage",
+                  "operation": "add",
+                  "value": 10,
+                  "unit": "percent",
+                  "raw": "Gain 10% Crit Damage"
+                }
               }
             ],
             "rawText": "Gain 10% Crit Damage"
           },
           {
             "level": 10,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "chancePercent": 40,
-                "verb": "gain",
-                "amount": 6,
-                "status": "armor",
-                "raw": "40% chance to gain 6 Armor"
+                "chance": 40,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 6,
+                  "raw": "40% chance to gain 6 Armor"
+                }
               }
             ],
             "rawText": "40% chance to gain 6 Armor"
           },
           {
             "level": 11,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 5,
-                "status": "accuracy",
-                "raw": "Gain 5% Accuracy"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "accuracy",
+                  "operation": "add",
+                  "value": 5,
+                  "unit": "percent",
+                  "raw": "Gain 5% Accuracy"
+                }
               }
             ],
             "rawText": "Gain 5% Accuracy"
           },
           {
             "level": 12,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 1,
-                "status": "damage",
-                "raw": "Gain +1 Damage"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "damage",
+                  "operation": "add",
+                  "value": 1,
+                  "unit": "flat",
+                  "raw": "Gain +1 Damage"
+                }
               }
             ],
             "rawText": "Gain +1 Damage"
           },
           {
             "level": 13,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 5,
-                "status": "crit_chance",
-                "raw": "Gain 5% Crit Chance"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "crit_chance",
+                  "operation": "add",
+                  "value": 5,
+                  "unit": "percent",
+                  "raw": "Gain 5% Crit Chance"
+                }
               }
             ],
             "rawText": "Gain 5% Crit Chance"
           },
           {
             "level": 14,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "verb": "gain",
-                "amount": 10,
-                "status": "crit_damage",
-                "raw": "Gain 10% Crit Damage"
+                "effect": {
+                  "type": "modify_stat",
+                  "stat": "crit_damage",
+                  "operation": "add",
+                  "value": 10,
+                  "unit": "percent",
+                  "raw": "Gain 10% Crit Damage"
+                }
               }
             ],
             "rawText": "Gain 10% Crit Damage"
           },
           {
             "level": 15,
-            "trigger": "On hit",
+            "trigger": {
+              "type": "on_hit"
+            },
             "changes": [
               {
-                "chancePercent": 60,
-                "verb": "gain",
-                "amount": 6,
-                "status": "armor",
-                "raw": "60% chance to gain 6 Armor"
+                "chance": 60,
+                "effect": {
+                  "type": "gain",
+                  "status": "armor",
+                  "value": 6,
+                  "raw": "60% chance to gain 6 Armor"
+                }
               }
             ],
             "rawText": "60% chance to gain 6 Armor"
@@ -551,8 +695,8 @@
         "imageUrls": [
           "https://backpackbrawl.wiki.gg/images/Adamantite_Ore.png"
         ],
-        "parsedAt": "2026-08-28T18:03:51.320Z",
-        "parserVersion": "0.1.0"
+        "parsedAt": "2026-08-28T18:49:33.721Z",
+        "parserVersion": "0.2.0"
       }
     },
     {
@@ -592,16 +736,25 @@
         ]
       },
       "stats": null,
+      "constraints": [],
       "abilities": {
         "initial": [
           {
-            "trigger": "Start of Dawn",
+            "trigger": {
+              "type": "start_of_phase",
+              "phases": [
+                "dawn"
+              ]
+            },
+            "conditions": [],
             "effects": [
               {
-                "verb": "gain",
-                "amount": 2,
-                "status": "mana",
-                "raw": "Gain 2 Mana"
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 2,
+                  "raw": "Gain 2 Mana"
+                }
               }
             ],
             "rawText": "Start of Dawn : Gain 2 Mana"
@@ -610,196 +763,252 @@
         "levelUp": [
           {
             "level": 2,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 5,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "5% chance to gain 1 Mana"
+                "chance": 5,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "5% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "5% chance to gain 1 Mana"
           },
           {
             "level": 3,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 10,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "10% chance to gain 1 Mana"
+                "chance": 10,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "10% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "10% chance to gain 1 Mana"
           },
           {
             "level": 4,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 15,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "15% chance to gain 1 Mana"
+                "chance": 15,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "15% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "15% chance to gain 1 Mana"
           },
           {
             "level": 5,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 30,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "30% chance to gain 1 Mana"
+                "chance": 30,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "30% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "30% chance to gain 1 Mana"
           },
           {
             "level": 6,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 35,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "35% chance to gain 1 Mana"
+                "chance": 35,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "35% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "35% chance to gain 1 Mana"
           },
           {
             "level": 7,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 40,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "40% chance to gain 1 Mana"
+                "chance": 40,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "40% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "40% chance to gain 1 Mana"
           },
           {
             "level": 8,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 45,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "45% chance to gain 1 Mana"
+                "chance": 45,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "45% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "45% chance to gain 1 Mana"
           },
           {
             "level": 9,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 50,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "50% chance to gain 1 Mana"
+                "chance": 50,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "50% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "50% chance to gain 1 Mana"
           },
           {
             "level": 10,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 65,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "65% chance to gain 1 Mana"
+                "chance": 65,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "65% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "65% chance to gain 1 Mana"
           },
           {
             "level": 11,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 70,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "70% chance to gain 1 Mana"
+                "chance": 70,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "70% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "70% chance to gain 1 Mana"
           },
           {
             "level": 12,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 75,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "75% chance to gain 1 Mana"
+                "chance": 75,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "75% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "75% chance to gain 1 Mana"
           },
           {
             "level": 13,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 80,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "80% chance to gain 1 Mana"
+                "chance": 80,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "80% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "80% chance to gain 1 Mana"
           },
           {
             "level": 14,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 85,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "85% chance to gain 1 Mana"
+                "chance": 85,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "85% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "85% chance to gain 1 Mana"
           },
           {
             "level": 15,
-            "trigger": "When this item activates",
+            "trigger": {
+              "type": "on_self_activation"
+            },
             "changes": [
               {
-                "chancePercent": 100,
-                "verb": "gain",
-                "amount": 1,
-                "status": "mana",
-                "raw": "100% chance to gain 1 Mana"
+                "chance": 100,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "100% chance to gain 1 Mana"
+                }
               }
             ],
             "rawText": "100% chance to gain 1 Mana"
@@ -807,18 +1016,24 @@
         ]
       },
       "star": {
-        "activation": {
-          "raw": "On Star activation",
-          "trigger": "On Star activation"
-        },
-        "effects": [
+        "rules": [
           {
-            "chancePercent": 35,
-            "verb": "gain",
-            "amount": 1,
-            "status": "mana",
-            "raw": "35% chance to gain 1 Mana",
-            "trigger": "On Star activation"
+            "trigger": {
+              "type": "on_star_activation"
+            },
+            "conditions": [],
+            "effects": [
+              {
+                "chance": 35,
+                "effect": {
+                  "type": "gain",
+                  "status": "mana",
+                  "value": 1,
+                  "raw": "35% chance to gain 1 Mana"
+                }
+              }
+            ],
+            "rawText": "On Star activation: 35% chance to gain 1 Mana"
           }
         ]
       },
@@ -835,9 +1050,17 @@
         "imageUrls": [
           "https://backpackbrawl.wiki.gg/images/Starbloom.png"
         ],
-        "parsedAt": "2026-08-28T18:03:51.675Z",
-        "parserVersion": "0.1.0"
+        "parsedAt": "2026-08-28T18:49:34.109Z",
+        "parserVersion": "0.2.0"
       }
     }
-  ]
+  ],
+  "usedIn": {
+    "steel_bar": [
+      "adamantite_bar"
+    ],
+    "adamantite_ore": [
+      "adamantite_bar"
+    ]
+  }
 }

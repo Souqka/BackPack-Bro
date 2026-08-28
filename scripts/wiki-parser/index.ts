@@ -8,10 +8,11 @@ export interface CliArgs {
   limit?: number;
   skipImages: boolean;
   outputDir: string;
+  quiet: boolean;
 }
 
 /**
- * CLI entry for `npm run parse:items`.
+ * Точка входа `npm run parse:items`.
  *
  *   npm run parse:items
  *   npm run parse:items -- --item "Adamantite Bar"
@@ -22,6 +23,7 @@ export function parseArgs(argv: string[]): CliArgs {
   let limit: number | undefined;
   let skipImages = false;
   let outputDir = process.cwd();
+  let quiet = false;
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
@@ -40,6 +42,10 @@ export function parseArgs(argv: string[]): CliArgs {
       skipImages = true;
       continue;
     }
+    if (arg === "--quiet") {
+      quiet = true;
+      continue;
+    }
     if ((arg === "--out" || arg === "--output-dir") && next) {
       outputDir = path.resolve(next);
       i += 1;
@@ -51,33 +57,35 @@ export function parseArgs(argv: string[]): CliArgs {
     }
   }
 
-  return { items, limit, skipImages, outputDir };
+  return { items, limit, skipImages, outputDir, quiet };
 }
 
 function printHelp(): void {
-  console.log(`Wiki item parser
+  console.log(`Парсер предметов Wiki
 
-Usage:
+Использование:
   npm run parse:items
   npm run parse:items -- --item "Adamantite Bar"
   npm run parse:items -- --item "Adamantite Bar" --item "Starbloom"
   npm run parse:items -- --limit 5
-  npm run parse:items -- --skip-images --limit 10
+  npm run parse:items -- --skip-images --quiet
 
-Options:
-  --item <name>       Parse a specific Wiki page (repeatable)
-  --limit <n>         Parse at most n items
-  --skip-images       Do not download / convert portraits
-  --out <dir>         Output root (default: cwd)
+Параметры:
+  --item <name>       Разобрать указанную страницу Wiki (можно повторять)
+  --limit <n>         Не больше n предметов
+  --skip-images       Не скачивать портреты
+  --quiet             Печатать только предупреждения, ошибки и итог
+  --out <dir>         Корень вывода (по умолчанию cwd)
 `);
 }
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   const logger = new Logger();
+  logger.quiet = args.quiet;
 
   if (args.limit !== undefined && (!Number.isFinite(args.limit) || args.limit < 0)) {
-    logger.error("cli", `Invalid --limit: ${args.limit}`);
+    logger.error("cli", `Некорректный --limit: ${args.limit}`);
     process.exitCode = 1;
     return;
   }

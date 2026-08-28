@@ -8,15 +8,16 @@ export interface LoggerSummary {
 }
 
 /**
- * Collects parser diagnostics and prints `[INFO]` / `[WARN]` / `[ERROR]` lines.
+ * Сбор диагностики и печать строк [INFO] / [WARN] / [ERROR].
  */
 export class Logger {
   readonly diagnostics: Diagnostic[] = [];
   parsed = 0;
   successful = 0;
+  quiet = false;
 
   info(message: string, itemName?: string): void {
-    console.log(`[INFO] ${message}`);
+    if (!this.quiet) console.log(`[INFO] ${message}`);
     this.diagnostics.push({ level: "info", code: "info", message, itemName });
   }
 
@@ -46,9 +47,9 @@ export class Logger {
   printSummary(): void {
     const s = this.summary();
     console.log("");
-    console.log(`Parsed: ${s.parsed}`);
-    console.log(`Successful: ${s.successful}`);
-    console.log(`Warnings: ${s.warnings}`);
-    console.log(`Errors: ${s.errors}`);
+    console.log(`Разобрано: ${s.parsed}`);
+    console.log(`Успешно: ${s.successful}`);
+    console.log(`Предупреждения: ${s.warnings}`);
+    console.log(`Ошибки: ${s.errors}`);
   }
 }

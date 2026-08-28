@@ -23,23 +23,23 @@ export function validateCatalog(items: Item[], logger: Logger): ValidationIssue[
     const label = item.name || item.id || "(unknown)";
 
     if (!item.id) {
-      push(issues, logger, "error", "Missing id", label, item.id);
+      push(issues, logger, "error", "Отсутствует id", label, item.id);
     }
     if (!item.name) {
-      push(issues, logger, "error", "Missing name", label, item.id);
+      push(issues, logger, "error", "Отсутствует name", label, item.id);
     }
     if (!item.rarity || !RARITY_SET.has(item.rarity)) {
       push(
         issues,
         logger,
         "error",
-        `Invalid rarity "${item.rarity || ""}"`,
+        `Некорректная редкость "${item.rarity || ""}"`,
         label,
         item.id,
       );
     }
     if (!item.geometry?.cells?.length) {
-      push(issues, logger, "error", "geometry.cells is empty", label, item.id);
+      push(issues, logger, "error", "geometry.cells пуст", label, item.id);
     }
     if (item.geometry) {
       for (const cell of [...item.geometry.cells, ...item.geometry.stars]) {
@@ -48,7 +48,7 @@ export function validateCatalog(items: Item[], logger: Logger): ValidationIssue[
             issues,
             logger,
             "error",
-            `Invalid geometry coordinate ${JSON.stringify(cell)}`,
+            `Некорректная координата geometry ${JSON.stringify(cell)}`,
             label,
             item.id,
           );
@@ -56,17 +56,38 @@ export function validateCatalog(items: Item[], logger: Logger): ValidationIssue[
       }
     }
 
+    if (item.star && item.star.rules.length === 0) {
+      push(
+        issues,
+        logger,
+        "warning",
+        "star присутствует, но rules пуст — ожидается null",
+        label,
+        item.id,
+      );
+    }
+    if ((item.star?.rules.length ?? 0) > 0 && (!item.geometry?.stars || item.geometry.stars.length === 0)) {
+      push(
+        issues,
+        logger,
+        "warning",
+        "есть star.rules, но geometry.stars пуст",
+        label,
+        item.id,
+      );
+    }
+
     for (const recipe of item.recipes) {
       for (const ingredient of recipe.ingredients) {
         if (!ingredient.itemId) {
-          push(issues, logger, "error", "Recipe contains empty ingredient ID", label, item.id);
+          push(issues, logger, "error", "Рецепт содержит пустой ID ингредиента", label, item.id);
         }
         if (!Number.isFinite(ingredient.quantity) || ingredient.quantity < 1) {
           push(
             issues,
             logger,
             "error",
-            `Invalid ingredient quantity for ${ingredient.itemId}`,
+            `Некорректное количество ингредиента ${ingredient.itemId}`,
             label,
             item.id,
           );
@@ -77,7 +98,7 @@ export function validateCatalog(items: Item[], logger: Logger): ValidationIssue[
     if (item.id) {
       const prev = ids.get(item.id);
       if (prev) {
-        push(issues, logger, "error", `Duplicate id "${item.id}" (also "${prev}")`, label, item.id);
+        push(issues, logger, "error", `Дублирующийся id "${item.id}" (также "${prev}")`, label, item.id);
       } else {
         ids.set(item.id, item.name);
       }
@@ -86,7 +107,7 @@ export function validateCatalog(items: Item[], logger: Logger): ValidationIssue[
       const key = item.name.toLowerCase();
       const prev = names.get(key);
       if (prev) {
-        push(issues, logger, "error", `Duplicate name "${item.name}" (also id "${prev}")`, label, item.id);
+        push(issues, logger, "error", `Дублирующееся имя "${item.name}" (также id "${prev}")`, label, item.id);
       } else {
         names.set(key, item.id);
       }

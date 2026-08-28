@@ -1,17 +1,14 @@
 /**
- * Parser identity and Wiki-derived vocabularies.
- *
- * Rarity / type lists were collected from the live Cargo `Item` table on
- * backpackbrawl.wiki.gg (2026-08-28). They are snapshots of Wiki data, not
- * invented game rules. Unknown values must be preserved and warned about.
+ * Словари, собранные из Cargo/wikitext backpackbrawl.wiki.gg (2026-08-28).
+ * Не выдуманы: неизвестное значение остаётся строкой и не ломает parser.
  */
 
-export const PARSER_VERSION = "0.1.0";
+export const PARSER_VERSION = "0.2.0";
 
 export const WIKI_ORIGIN = "https://backpackbrawl.wiki.gg";
 export const WIKI_API = `${WIKI_ORIGIN}/api.php`;
 export const USER_AGENT =
-  "BackpackBrawlOptimizer/0.1.0 (https://github.com/Souqka/BackPack-Bro; wiki item parser)";
+  "BackpackBrawlOptimizer/0.2.0 (https://github.com/Souqka/BackPack-Bro; wiki item parser)";
 
 export const KNOWN_RARITIES = [
   "common",
@@ -26,10 +23,6 @@ export const KNOWN_RARITIES = [
 
 export type KnownRarity = (typeof KNOWN_RARITIES)[number];
 
-/**
- * Item types observed as `type1`/`type2`/`type3`/`type4` in the Wiki Cargo table.
- * Display names are stored here; normalized output uses snake_case slugs.
- */
 export const KNOWN_ITEM_TYPES = [
   "Abyssal",
   "Accessory",
@@ -71,6 +64,106 @@ export const KNOWN_ITEM_TYPES = [
   "Skull",
   "Tool",
 ] as const;
+
+/**
+ * Боевые ресурсы и статусы из формулировок Gain/Inflict Wiki.
+ * Порядок важен: более длинные имена проверяются первыми.
+ */
+export const KNOWN_STATUS_NAMES = [
+  "Max Health",
+  "Crit Chance",
+  "Crit Damage",
+  "Armor",
+  "Mana",
+  "Health",
+  "Stamina",
+  "Luck",
+  "Bleed",
+  "Poison",
+  "Blind",
+  "Thorns",
+  "Burn",
+  "Chill",
+  "Haste",
+  "Regeneration",
+  "Resist",
+  "Dodge",
+  "Buff",
+  "Debuff",
+  "Curse",
+  "Insanity",
+  "Empower",
+  "Lifesteal",
+  "Fatigue",
+  "Gold",
+  "Static",
+  "Soul",
+  "Stun",
+] as const;
+
+/** Нормализованные slug тех же статусов (`Armor` → `armor`). */
+export const KNOWN_STATUS_SLUGS = [
+  "max_health",
+  "crit_chance",
+  "crit_damage",
+  "armor",
+  "mana",
+  "health",
+  "stamina",
+  "luck",
+  "bleed",
+  "poison",
+  "blind",
+  "thorns",
+  "burn",
+  "chill",
+  "haste",
+  "regeneration",
+  "resist",
+  "dodge",
+  "buff",
+  "debuff",
+  "curse",
+  "insanity",
+  "empower",
+  "lifesteal",
+  "fatigue",
+  "gold",
+  "static",
+  "soul",
+  "stun",
+] as const;
+
+export type KnownStatusSlug = (typeof KNOWN_STATUS_SLUGS)[number];
+
+/**
+ * Характеристики предмета из level-up и modify-формулировок Wiki.
+ */
+export const KNOWN_STAT_NAMES = [
+  "Crit Chance",
+  "Crit Damage",
+  "Max Health",
+  "Damage",
+  "Accuracy",
+  "Cooldown",
+  "Stamina Recovery",
+] as const;
+
+export const KNOWN_STAT_SLUGS = [
+  "crit_chance",
+  "crit_damage",
+  "max_health",
+  "damage",
+  "accuracy",
+  "cooldown",
+  "stamina_recovery",
+  "attack_speed",
+  "activation_speed",
+  "min_damage",
+  "max_damage",
+] as const;
+
+export type KnownStatSlug = (typeof KNOWN_STAT_SLUGS)[number];
 
 export const TILE_ALT = {
   empty: "Empty Tile",

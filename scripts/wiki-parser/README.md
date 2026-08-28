@@ -1,49 +1,31 @@
-# Backpack Brawl Optimizer
+# Wiki parser — Backpack Brawl Optimizer
 
-Stage 1: a Wiki item parser that turns [backpackbrawl.wiki.gg](https://backpackbrawl.wiki.gg/) pages into normalized JSON.
+Парсер предметов с [backpackbrawl.wiki.gg](https://backpackbrawl.wiki.gg/).
 
-Game data is taken from the Wiki. Missing fields stay `null` / `[]`. The parser does not invent stats, effects, or item IDs.
+Источник игровых значений — только Wiki. Неизвестное остаётся `raw`.
 
-## Run
-
-```bash
-npm install
-
-# three test items (images downloaded locally as WebP)
-npm run parse:items -- --item "Adamantite Bar" --item "Adamantite Ore" --item "Starbloom"
-
-# first N Cargo items
-npm run parse:items -- --limit 5
-
-# full catalog
-npm run parse:items
-```
-
-Output:
-
-- `data/normalized/items.json` — app-facing catalog
-- `data/raw/items/{id}.json` — wikitext, template params, diagnostics
-- `assets/items/{id}/icon.webp` and `full.webp`
+## Команды
 
 ```bash
 npm test
-npm run typecheck
+npm run parse:items -- --item "Adamantite Bar" --item "Adamantite Ore" --item "Starbloom"
+npm run parse:items -- --limit 5 --skip-images --quiet
+npm run analyze:corpus
 ```
 
-## Geometry
+## Геометрия
 
-`geometry.cells` and `geometry.stars` use local `[row, col]` after empty padding is cropped. Stars are not item cells. Width/height and rotations are not stored; rotate both arrays together at runtime later.
+`geometry.cells` и `geometry.stars` — локальные `[row, col]` после обрезки пустых клеток. Star не занимает клетку Item. Повороты не хранятся.
 
-Wiki tile tables are classified by image `alt` (`Empty Tile`, `Item Tile`, `Star`), not by pixels.
+## Эффекты (этап 2)
 
-## Test items
+Строгие union-типы в `types/effects.ts`:
 
-These Wiki pages exist and are the fixture set:
+- `Effect` — gain / inflict / modify_stat / reduce / …
+- `ChancedEffect` — `{ chance?, effect }`
+- `Trigger` — on_hit, start_of_phase, on_star_activation, …
+- `Condition` — тип occupant'а Star, наличие статуса у противника
+- `Constraint` — лимит использований, quantity, counts_as
+- `StarRule` — trigger + conditions + effects; Star не отдельный предмет
 
-| Wiki page        | Why |
-| ---------------- | --- |
-| Adamantite Bar   | 2×1 cells, stars on both ends, two craft recipes, 15 levels |
-| Adamantite Ore   | combat stats, on-hit ability, weapon level-up table, no stars |
-| Starbloom        | Dawn + Star abilities, non-rectangular star layout |
-
-No names were substituted.
+Если формулировка Wiki не распознана: `{ type: "raw", raw: "оригинальный текст" }`.

@@ -49,12 +49,13 @@ describe("abilities", () => {
     const logger = new Logger();
     const result = parseAbilities(fixture.html, paramsOf("adamantite_bar"), logger, "Adamantite Bar", true);
     expect(result.initial).toEqual([]);
-    expect(result.star?.effects.length).toBeGreaterThan(0);
-    expect(result.star?.activation.raw).toMatch(/star/i);
-    const effect = result.star?.effects[0] as { chancePercent?: number; amount?: number; status?: string };
-    expect(effect.chancePercent).toBe(20);
-    expect(effect.amount).toBe(24);
-    expect(effect.status).toBe("armor");
+    expect(result.star?.rules.length).toBeGreaterThan(0);
+    const rule = result.star?.rules[0];
+    expect(rule?.trigger).toEqual({ type: "on_star_activation" });
+    expect(rule?.effects[0]).toMatchObject({
+      chance: 20,
+      effect: { type: "gain", status: "armor", value: 24 },
+    });
   });
 
   it("keeps Ore on-hit ability and the throw-once line separate", () => {
@@ -62,17 +63,24 @@ describe("abilities", () => {
     const logger = new Logger();
     const result = parseAbilities(fixture.html, paramsOf("adamantite_ore"), logger, "Adamantite Ore", false);
     expect(result.star).toBeNull();
-    expect(result.initial.length).toBe(2);
-    expect(result.initial[0]?.trigger).toBe("On hit");
-    expect(result.initial[1]?.effects[0]).toMatchObject({ raw: "Can only be thrown once per battle" });
+    expect(result.initial.length).toBe(1);
+    expect(result.initial[0]?.trigger).toEqual({ type: "on_hit" });
+    expect(result.constraints[0]).toMatchObject({
+      type: "max_uses_per_battle",
+      value: 1,
+    });
   });
 
   it("splits Starbloom Dawn ability from Star activation", () => {
     const fixture = loadFixture("starbloom");
     const logger = new Logger();
     const result = parseAbilities(fixture.html, paramsOf("starbloom"), logger, "Starbloom", true);
-    expect(result.initial[0]?.trigger).toMatch(/dawn/i);
-    expect(result.star?.effects.length).toBe(1);
+    expect(result.initial[0]?.trigger).toEqual({ type: "start_of_phase", phases: ["dawn"] });
+    expect(result.star?.rules[0]?.trigger).toEqual({ type: "on_star_activation" });
+    expect(result.star?.rules[0]?.effects[0]).toMatchObject({
+      chance: 35,
+      effect: { type: "gain", status: "mana", value: 1 },
+    });
   });
 });
 
@@ -85,8 +93,9 @@ describe("levels", () => {
     expect(result.levelUp).toHaveLength(14);
     expect(result.levelUp[0]?.level).toBe(2);
     expect(result.levelUp.at(-1)?.level).toBe(15);
-    const last = result.levelUp.at(-1)?.changes[0] as { chancePercent?: number };
-    expect(last.chancePercent).toBe(100);
+    const last = result.levelUp.at(-1)?.changes[0];
+    expect(last?.chance).toBe(100);
+    expect(last?.effect).toMatchObject({ type: "gain", status: "armor", value: 24 });
   });
 
   it("reads Ore weapon level-up stat bonuses as separate changes", () => {

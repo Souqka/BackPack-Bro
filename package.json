@@ -2,10 +2,11 @@
   "name": "backpack-brawl-optimizer",
   "version": "0.1.0",
   "private": true,
-  "description": "Backpack Brawl Optimizer — Wiki item parser (stage 1)",
+  "description": "Backpack Brawl Optimizer — парсер Wiki и строгая модель эффектов",
   "type": "module",
   "scripts": {
     "parse:items": "tsx scripts/wiki-parser/index.ts",
+    "analyze:corpus": "tsx scripts/wiki-parser/analyze-corpus.ts",
     "test": "vitest run",
     "test:parser": "vitest run scripts/wiki-parser",
     "typecheck": "tsc --noEmit"

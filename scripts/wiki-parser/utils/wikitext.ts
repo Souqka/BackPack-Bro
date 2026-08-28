@@ -108,11 +108,13 @@ export function splitTopLevel(text: string, sep: string): string[] {
 
 /**
  * Flatten Wiki markup used inside Item template values into readable text.
- * `{{Icon|Status|Armor}}` becomes `Armor`; `[[Foo]]` becomes `Foo`.
+ * `{{Icon|Status|Armor}}` becomes ` Armor `; `[[Foo]]` becomes `Foo`.
+ * Adjacent Icon templates get spaces so «Melee Weapon» + «Ranged Weapon»
+ * не склеиваются в «Melee WeaponRanged Weapon».
  */
 export function flattenWikitext(value: string): string {
   let text = value;
-  text = text.replace(/\{\{\s*Icon\s*\|[^}|]+\|([^}|]+)(?:\|[^}]*)?\}\}/gi, "$1");
+  text = text.replace(/\{\{\s*Icon\s*\|[^}|]+\|([^}|]+)(?:\|[^}]*)?\}\}/gi, " $1 ");
   text = text.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, "$2");
   text = text.replace(/\[\[([^\]]+)\]\]/g, "$1");
   text = text.replace(/'{2,}/g, "");

@@ -85,7 +85,7 @@ function collapseIngredients(
     if (!resolved) {
       logger.warn(
         "unresolved_recipe_ingredient",
-        `Unresolved recipe ingredient: "${name}"`,
+        `Неразрешённый ингредиент рецепта: "${name}"`,
         itemName,
       );
       unparsed.push({

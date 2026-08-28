@@ -31,8 +31,8 @@ export interface ParseRunResult {
 }
 
 /**
- * Orchestrate fetch → extract → normalize → validate → write.
- * Individual Wiki pages that fail are logged and skipped; the run continues.
+ * Конвейер: Wiki → raw → строгая нормализация → JSON.
+ * Ошибка на одной странице не останавливает остальные.
  */
 export async function parseItems(
   options: ParseRunOptions,
@@ -45,14 +45,14 @@ export async function parseItems(
   if (options.itemTitles && options.itemTitles.length > 0) {
     titles = options.itemTitles;
   } else {
-    logger.info("Listing items from Wiki Cargo table");
+    logger.info("Загрузка списка предметов из Cargo Wiki");
     const listed = await fetcher.listItems();
     for (const entry of listed) {
       knownNames.set(entry.name.toLowerCase(), slugifyItemName(entry.name));
       knownNames.set(entry.title.toLowerCase(), slugifyItemName(entry.name || entry.title));
     }
     titles = listed.map((e) => e.title);
-    logger.info(`Found ${titles.length} item pages`);
+    logger.info(`Найдено страниц предметов: ${titles.length}`);
   }
 
   if (options.limit != null && options.limit >= 0) {
@@ -69,7 +69,7 @@ export async function parseItems(
 
   for (const title of titles) {
     logger.parsed += 1;
-    logger.info(`Parsing item: ${title}`);
+    logger.info(`Разбор предмета: ${title}`);
     try {
       const page = await fetcher.fetchPage(title);
       const result = await parseOneItem(page, {
@@ -84,14 +84,14 @@ export async function parseItems(
       allUnparsed.push(...result.raw.unparsed);
       logger.successful += 1;
       logger.info(
-        `Geometry: ${result.item.geometry.cells.length} cells, ${result.item.geometry.stars.length} stars`,
+        `Геометрия: ${result.item.geometry.cells.length} клеток, ${result.item.geometry.stars.length} star`,
         title,
       );
-      logger.info(`Recipes: ${result.item.recipes.length}`, title);
-      logger.info(`Levels: ${result.item.upgrade?.maxLevel ?? 0}`, title);
+      logger.info(`Рецепты: ${result.item.recipes.length}`, title);
+      logger.info(`Уровни: ${result.item.upgrade?.maxLevel ?? 0}`, title);
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      logger.error("parse_failed", `Failed to parse item: ${title} (${message})`, title);
+      logger.error("parse_failed", `Не удалось разобрать предмет: ${title} (${message})`, title);
     }
   }
 
@@ -102,6 +102,7 @@ export async function parseItems(
     generatedAt: new Date().toISOString(),
     wikiOrigin: WIKI_ORIGIN,
     items,
+    usedIn: buildUsedInIndex(items),
   };
 
   await writeOutputs(options.outputDir, catalog, rawItems);
@@ -166,6 +167,7 @@ export async function parseOneItem(
     cost: general.cost,
     geometry: geometryResult.geometry,
     stats,
+    constraints: abilities.constraints,
     abilities: {
       initial: abilities.initial,
       levelUp: levels.levelUp,
@@ -205,6 +207,24 @@ export async function parseOneItem(
   };
 
   return { item, raw };
+}
+
+/**
+ * Индекс «предмет используется в рецепте» строится только из `recipes`
+ * целевого предмета. Не дублируется в каждом Item.
+ */
+export function buildUsedInIndex(items: Item[]): Record<string, string[]> {
+  const index: Record<string, string[]> = {};
+  for (const item of items) {
+    for (const recipe of item.recipes) {
+      for (const ingredient of recipe.ingredients) {
+        const list = index[ingredient.itemId] ?? [];
+        if (!list.includes(item.id)) list.push(item.id);
+        index[ingredient.itemId] = list;
+      }
+    }
+  }
+  return index;
 }
 
 function uniqueDiagnostics(list: Diagnostic[]): Diagnostic[] {
