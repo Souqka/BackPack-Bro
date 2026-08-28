@@ -3,6 +3,7 @@
  *
  * Не вызывает analyzeInventory и Scoring. Collision — lookup в occupiedCells.
  * Порядок: rotation ASC, row ASC, col ASC.
+ * availableCells — опциональный слой Bags: Item можно ставить только на эти клетки.
  */
 
 import { rotateGeometry } from "../inventory/geometry.ts";
@@ -15,6 +16,7 @@ export function generatePlacementCandidates(
   item: ItemToPlace,
   state: SearchState,
   catalog: Map<string, Item>,
+  availableCells?: ReadonlySet<string>,
 ): PlacementCandidate[] {
   const catalogItem = catalog.get(item.itemId);
   if (!catalogItem) return [];
@@ -49,7 +51,7 @@ export function generatePlacementCandidates(
             col: col + localCol,
           })),
         };
-        if (canPlaceCandidate(candidate, state).valid) {
+        if (canPlaceCandidate(candidate, state, availableCells).valid) {
           candidates.push(candidate);
         }
       }
