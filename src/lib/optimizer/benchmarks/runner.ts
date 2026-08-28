@@ -13,7 +13,7 @@ import { analyzeHeuristicInversions } from "../metrics.ts";
 import { compareOptimizerResults } from "../compare.ts";
 import { runOptimizer } from "../optimizer.ts";
 import type { OptimizerOptions, OptimizerResult } from "../search-types.ts";
-import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE9_BEAM_WIDTHS } from "./cases.ts";
+import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE9_BEAM_WIDTHS, STAGE10_BENCHMARK_CASES } from "./cases.ts";
 import { requireMetrics, toBeamWidthRow } from "./metrics.ts";
 import type {
   AlgorithmComparisonRow,
@@ -22,6 +22,8 @@ import type {
   Stage8Report,
   Stage9AlgorithmRow,
   Stage9CaseReport,
+  Stage10CaseReport,
+  Stage10ModeRow,
 } from "./types.ts";
 
 export function runBenchmarkCase(
@@ -279,6 +281,84 @@ export function buildStage9Report(catalog: Map<string, Item>): Stage9CaseReport[
         withoutLocal: withoutLocalScores,
         withLocal: withLocalScores,
       },
+    };
+  });
+}
+
+function stage10ModeRow(label: string, result: OptimizerResult): Stage10ModeRow {
+  const metrics = requireMetrics(result);
+  return {
+    label,
+    score: metrics.finalScore,
+    stars: metrics.activatedStars,
+    complete: metrics.complete,
+    durationMs: metrics.durationMs,
+    placedItems: metrics.placedItems,
+    unplacedItems: metrics.unplacedItems,
+    bagLocalSearchEnabled: metrics.bagLocalSearchEnabled,
+    bagLocalSearchIterations: metrics.bagLocalSearchIterations,
+    bagNeighborsGenerated: metrics.bagNeighborsGenerated,
+    bagNeighborsVisited: metrics.bagNeighborsVisited,
+    bagNeighborsPruned: metrics.bagNeighborsPruned,
+    bagLayoutsAccepted: metrics.bagLayoutsAccepted,
+    displacedItems: metrics.displacedItems,
+    repairedItems: metrics.repairedItems,
+    unrepairedItems: metrics.unrepairedItems,
+    repairStatesGenerated: metrics.repairStatesGenerated,
+    repairStatesPruned: metrics.repairStatesPruned,
+    initialScore: metrics.bagLocalSearchEnabled ? metrics.bagLocalSearchInitialScore : metrics.initialScore,
+    finalScore: metrics.finalScore,
+    delta: metrics.bagLocalSearchEnabled ? metrics.bagLocalSearchScoreDelta : metrics.scoreDelta,
+    bagLocalSearchDurationMs: metrics.bagLocalSearchDurationMs,
+    repairDurationMs: metrics.repairDurationMs,
+    itemLocalSearchDurationMs: metrics.bagItemLocalSearchDurationMs,
+  };
+}
+
+/**
+ * Stage 10: Beam(1) vs Item LS vs Joint Bag LS vs Beam(20) on H/I/J/K.
+ * Joint run uses existing Item Local Search after repair; it does not restart runOptimizer.
+ */
+export function buildStage10Report(catalog: Map<string, Item>): Stage10CaseReport[] {
+  return STAGE10_BENCHMARK_CASES.map((entry) => {
+    const beam1 = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 1,
+      itemBeamWidth: 1,
+      localSearch: false,
+      bagLocalSearch: false,
+    });
+    const beam1ItemLs = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 1,
+      itemBeamWidth: 1,
+      localSearch: true,
+      bagLocalSearch: false,
+      resultCount: 10,
+    });
+    const beam1Joint = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 1,
+      itemBeamWidth: 1,
+      localSearch: true,
+      bagLocalSearch: true,
+      resultCount: 10,
+    });
+    const beam20 = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 20,
+      itemBeamWidth: 20,
+      localSearch: false,
+      bagLocalSearch: false,
+    });
+    return {
+      caseId: entry.id,
+      name: entry.name,
+      description: entry.description,
+      beam1: stage10ModeRow("Beam(1)", beam1),
+      beam1ItemLs: stage10ModeRow("Beam(1)+Item LS", beam1ItemLs),
+      beam1Joint: stage10ModeRow("Beam(1)+Joint Bag LS", beam1Joint),
+      beam20: stage10ModeRow("Beam(20)", beam20),
     };
   });
 }

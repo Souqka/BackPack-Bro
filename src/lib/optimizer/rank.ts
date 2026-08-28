@@ -15,7 +15,13 @@
  * 7) canonicalSignature ASC.
  */
 
-import type { RankedLayout } from "./search-types.ts";
+import type { Item } from "../inventory/types.ts";
+import { analyzePlacementScore } from "../scoring/analyzer.ts";
+import { emptyEffectCoverage, invalidBreakdown } from "../scoring/score.ts";
+import { INVALID_PLACEMENT_SCORE } from "../scoring/weights.ts";
+import type { OptimizerState, RankedLayout } from "./search-types.ts";
+import { getOptimizerStateSignature } from "./signature.ts";
+import type { ItemToPlace } from "./types.ts";
 
 export function compareRankedLayouts(a: RankedLayout, b: RankedLayout): number {
   if (a.complete !== b.complete) return a.complete ? -1 : 1;
@@ -93,4 +99,32 @@ export function isStrictlyBetterLayout(candidate: RankedLayout, current: RankedL
 function finiteScore(layout: RankedLayout): number {
   if (!layout.score.valid) return Number.NEGATIVE_INFINITY;
   return layout.score.score;
+}
+
+export function buildRankedLayout(
+  state: OptimizerState,
+  unplacedItems: ItemToPlace[],
+  unplacedBags: ItemToPlace[],
+  catalog: Map<string, Item>,
+): RankedLayout {
+  const score =
+    state.items.items.length === 0 && state.bags.bags.length === 0
+      ? {
+          valid: false as const,
+          score: INVALID_PLACEMENT_SCORE,
+          breakdown: invalidBreakdown("Нет валидного Bag layout"),
+          effectCoverage: emptyEffectCoverage(),
+          synergies: [],
+          graph: { nodes: [], edges: [] },
+        }
+      : analyzePlacementScore({ inventory: state.backpack, items: state.items.items }, catalog);
+  return {
+    state,
+    score,
+    unplacedItems,
+    unplacedBags,
+    complete:
+      unplacedItems.length === 0 && unplacedBags.length === 0 && state.bags.bags.length > 0,
+    signature: getOptimizerStateSignature(state),
+  };
 }

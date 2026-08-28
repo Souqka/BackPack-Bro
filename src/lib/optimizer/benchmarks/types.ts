@@ -104,6 +104,43 @@ export interface Stage9CaseReport {
   };
 }
 
+export interface Stage10ModeRow {
+  label: string;
+  score: number;
+  stars: number;
+  complete: boolean;
+  durationMs: number;
+  placedItems: number;
+  unplacedItems: number;
+  bagLocalSearchEnabled: boolean;
+  bagLocalSearchIterations: number;
+  bagNeighborsGenerated: number;
+  bagNeighborsVisited: number;
+  bagNeighborsPruned: number;
+  bagLayoutsAccepted: number;
+  displacedItems: number;
+  repairedItems: number;
+  unrepairedItems: number;
+  repairStatesGenerated: number;
+  repairStatesPruned: number;
+  initialScore: number;
+  finalScore: number;
+  delta: number;
+  bagLocalSearchDurationMs: number;
+  repairDurationMs: number;
+  itemLocalSearchDurationMs: number;
+}
+
+export interface Stage10CaseReport {
+  caseId: string;
+  name: string;
+  description: string;
+  beam1: Stage10ModeRow;
+  beam1ItemLs: Stage10ModeRow;
+  beam1Joint: Stage10ModeRow;
+  beam20: Stage10ModeRow;
+}
+
 export interface Stage8Report {
   algorithms: AlgorithmComparisonRow[];
   beamWidths: BeamWidthRow[];

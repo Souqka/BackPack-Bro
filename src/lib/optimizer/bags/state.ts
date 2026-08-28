@@ -95,6 +95,29 @@ export function addBagCandidate(state: BagState, candidate: PlacementCandidate, 
   return next;
 }
 
+/**
+ * Снимает одну Bag и пересчитывает occupiedCells / availableCells
+ * по оставшимся geometry. Каталог не нужен: geometry уже в state.
+ */
+export function removeBag(state: BagState, instanceId: string): BagState {
+  const next = emptyBagState();
+  for (const bag of state.bags) {
+    if (bag.instanceId === instanceId) continue;
+    const geometry = state.geometries.get(bag.instanceId);
+    if (!geometry) continue;
+    next.bags.push(bag);
+    applyBagGeometry(next, bag, geometry);
+  }
+  return next;
+}
+
+/**
+ * Клетки, на которые можно ставить Items. Это union Bag cells.
+ */
+export function getAvailableCells(bags: BagState): ReadonlySet<string> {
+  return bags.availableCells;
+}
+
 function applyBagGeometry(state: BagState, bag: PlacedBag, geometry: ResolvedItemGeometry): void {
   for (const cell of geometry.cells) {
     const key = positionKey(cell);

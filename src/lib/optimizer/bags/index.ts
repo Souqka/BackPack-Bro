@@ -5,5 +5,7 @@ export {
   bagStateAsSearchState,
   createBagState,
   emptyBagState,
+  getAvailableCells,
   getBagStateSignature,
+  removeBag,
 } from "./state.ts";

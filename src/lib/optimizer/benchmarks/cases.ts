@@ -184,6 +184,33 @@ export const STAGE9_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   },
 ];
 
+export const STAGE10_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "H-multiple-bags")!,
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "I-geometry-trap")!,
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "J-bag-item-topology")!,
+  {
+    id: "K-displaced-repair",
+    name: "Bag topology displaces Items",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "medium_bag" },
+      { instanceId: "bag-b", itemId: "medium_bag" },
+    ],
+    items: [
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "ore-1", itemId: "adamantite_ore" },
+      { instanceId: "ore-2", itemId: "adamantite_ore" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["medium_bag", "medium_bag"],
+    itemIds: ["adamantite_bar", "adamantite_ore", "adamantite_ore", "starbloom"],
+    expected: { minScore: 1, minActiveStars: 1 },
+    options: { bagBeamWidth: 20, itemBeamWidth: 20 },
+    description:
+      "Две Medium Bag: смена topology меняет availableCells. Items, которые больше не лежат в новой области, должны быть displaced и repair-иться.",
+  },
+];
+
 export const SMOKE_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   {
     id: "smoke-5",
@@ -263,9 +290,12 @@ export const BEAM_WIDTHS = [1, 5, 10, 20, 50, 100] as const;
 export const STAGE9_BEAM_WIDTHS = [1, 2, 5, 10, 20, 50] as const;
 
 export function getBenchmarkCase(id: string): OptimizerBenchmarkCase {
-  const found = [...OPTIMIZER_BENCHMARK_CASES, ...STAGE9_BENCHMARK_CASES, ...SMOKE_BENCHMARK_CASES].find(
-    (entry) => entry.id === id,
-  );
+  const found = [
+    ...OPTIMIZER_BENCHMARK_CASES,
+    ...STAGE9_BENCHMARK_CASES,
+    ...STAGE10_BENCHMARK_CASES,
+    ...SMOKE_BENCHMARK_CASES,
+  ].find((entry) => entry.id === id);
   if (!found) throw new Error(`Неизвестный benchmark case: ${id}`);
   return found;
 }
