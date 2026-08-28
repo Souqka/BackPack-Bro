@@ -63,3 +63,12 @@ export interface CandidateValidationResult {
   reason?: CandidateInvalidReason;
   cells?: Position[];
 }
+
+/** Размер игрового рюкзака. Совпадает с Inventory Stage 4. */
+export type Backpack = Inventory;
+
+/** Игровой рюкзак 6×9. Алгоритмы читают поле, а не литералы. */
+export const DEFAULT_BACKPACK: Backpack = {
+  rows: 6,
+  cols: 9,
+};

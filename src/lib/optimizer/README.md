@@ -1,26 +1,16 @@
-# Candidate Generator
+# Optimizer
 
-Этап 6: валидные позиции и уникальные повороты. Поиск лучшей расстановки не входит в этот слой.
+Этап 6: кандидаты и SearchState. Этап 7: двухслойный Beam Search.
 
 ```text
-ItemToPlace + SearchState
-  → unique rotations (cells + stars)
-  → позиции (bounding box Item-клеток)
-  → O(клетки кандидата) collision
-  → PlacementCandidate[]
+Bags → availableCells → Items → Star → Scoring
 ```
 
-Scoring и `analyzeInventory` на каждый кандидат не вызываются.
-
-## SearchState
-
-Инкрементально: `addCandidate` / `removePlacement` обновляют `occupiedCells` и `itemGeometries` без полного анализа рюкзака.
-
-Невалидное начальное состояние (`createSearchState`) возвращает `ok: false` и список issues — молча не принимается.
-
-## Тесты
+Пустой слой Bags не считается игровым layout. Item стоит только на клетках Bags. Bag и Item — разные слои, collision только внутри слоя.
 
 ```bash
-npm test
 npm run test:optimizer
 ```
+
+`runOptimizer({ backpack, bags, items, catalog, options })` возвращает лучший найденный layout, unplaced items и статистику поиска.
+

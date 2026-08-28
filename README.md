@@ -75,6 +75,22 @@ npm run test:optimizer
 
 Collision проверяется за O(клетки кандидата) через `occupiedCells`. Scoring на кандидат не вызывается.
 
+## Auto-Placement (этап 7)
+
+`runOptimizer` ищет layout двухслойным Beam Search: сначала Bags (доступная площадь), затем Items на `availableCells`.
+
+```ts
+runOptimizer({
+  backpack: { rows: 6, cols: 9 },
+  bags,
+  items,
+  catalog,
+  options: { bagBeamWidth: 20, itemBeamWidth: 50 },
+});
+```
+
+Heuristic — оценка ветки поиска, не боевая симуляция. Final Score считает Scoring Engine.
+
 
 ## Модель эффектов
 

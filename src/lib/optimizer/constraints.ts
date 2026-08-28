@@ -3,6 +3,7 @@
  *
  * Только Item cells: внутри сетки и не на occupiedCells.
  * Star не создаёт collision и не влияет на границы.
+ * Если передан availableCells (слой Bags), каждая Item-клетка должна быть в этом множестве.
  * Сложность: O(клетки кандидата).
  */
 
@@ -13,12 +14,17 @@ import type { CandidateValidationResult, PlacementCandidate, SearchState } from 
 export function canPlaceCandidate(
   candidate: PlacementCandidate,
   state: SearchState,
+  availableCells?: ReadonlySet<string>,
 ): CandidateValidationResult {
   const outside: typeof candidate.cells = [];
   const colliding: typeof candidate.cells = [];
 
   for (const cell of candidate.cells) {
     if (!isInsideInventory(cell, state.inventory)) {
+      outside.push(cell);
+      continue;
+    }
+    if (availableCells && !availableCells.has(positionKey(cell))) {
       outside.push(cell);
       continue;
     }
