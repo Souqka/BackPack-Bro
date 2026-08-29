@@ -17,7 +17,6 @@
  */
 
 import type { Item } from "../inventory/types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
 import { addBagCandidate, emptyBagState, generateBagCandidates } from "./bags/index.ts";
 import type { BagState } from "./bags/types.ts";
 import { generatePlacementCandidates } from "./candidates.ts";
@@ -36,6 +35,7 @@ import type {
 import { DEFAULT_DFS_LIMITS } from "./search-types.ts";
 import { getOptimizerStateSignature } from "./signature.ts";
 import { addCandidate, createSearchState } from "./state.ts";
+import { scoreLayout } from "./score-cache.ts";
 import type { Backpack, ItemToPlace } from "./types.ts";
 
 const MAX_UNIQUE_LAYOUTS = 400;
@@ -339,10 +339,7 @@ function toRanked(
   unplacedBags: ItemToPlace[],
   catalog: Map<string, Item>,
 ): RankedLayout {
-  const score =
-    state.bags.bags.length === 0 && state.items.items.length === 0
-      ? analyzePlacementScore({ inventory: state.backpack, items: [] }, catalog)
-      : analyzePlacementScore({ inventory: state.backpack, items: state.items.items }, catalog);
+  const score = scoreLayout(state, catalog);
   return {
     state,
     score,

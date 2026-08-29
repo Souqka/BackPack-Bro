@@ -18,6 +18,7 @@ export interface ResolvedAdaptiveSearchOptions {
   stableLevelsBeforeStop: number | false;
   resultCount: number;
   maxDurationMs?: number;
+  scoreCache: boolean;
 }
 
 export const DEFAULT_ADAPTIVE_SEARCH_OPTIONS: ResolvedAdaptiveSearchOptions = {
@@ -34,6 +35,7 @@ export const DEFAULT_ADAPTIVE_SEARCH_OPTIONS: ResolvedAdaptiveSearchOptions = {
   /** Two consecutive non-improving levels after Stage 9 diminishing returns. */
   stableLevelsBeforeStop: 2,
   resultCount: 10,
+  scoreCache: true,
 };
 
 export function normalizeWidthLadder(widths: readonly number[]): number[] {
@@ -70,6 +72,7 @@ export function resolveAdaptiveSearchOptions(
   merged.initialItemBeamWidth = merged.itemBeamWidths[0]!;
   merged.maxBagSeeds = Math.max(1, Math.floor(merged.maxBagSeeds));
   merged.resultCount = Math.max(1, Math.floor(merged.resultCount));
+  merged.scoreCache = merged.scoreCache !== false;
   return merged;
 }
 

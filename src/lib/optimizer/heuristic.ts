@@ -15,8 +15,8 @@
 
 import { positionKey } from "../inventory/geometry.ts";
 import type { Item } from "../inventory/types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
 import { itemCouldActivateStar } from "./ordering.ts";
+import { scoreLayout } from "./score-cache.ts";
 import type { OptimizerState, PartialStateScore } from "./search-types.ts";
 import type { ItemToPlace } from "./types.ts";
 
@@ -52,10 +52,7 @@ export function evaluatePartialState(
   const remainingCells = remainingItemCells(remainingItems, catalog);
   const feasible = remainingCells <= freeCells && freeCells >= 0;
 
-  const placement = analyzePlacementScore(
-    { inventory: state.backpack, items: state.items.items },
-    catalog,
-  );
+  const placement = scoreLayout(state, catalog);
   const structural = placement.valid ? placement.score : 0;
   const effectCoverage = placement.effectCoverage.normalizedEffects;
   const placementQuality = state.items.items.length;

@@ -23,6 +23,10 @@ export function createEmptyStats(): OptimizerStats {
     candidatesGenerated: 0,
     searchDepth: 0,
     durationMs: 0,
+    scoreCacheHits: 0,
+    scoreCacheMisses: 0,
+    scoreCacheEvaluations: 0,
+    scoreCacheUniqueLayouts: 0,
   };
 }
 
@@ -112,6 +116,10 @@ export function toOptimizerMetrics(
     bagLocalSearchDurationMs: bag?.durationMs ?? 0,
     repairDurationMs: bag?.repairDurationMs ?? 0,
     bagItemLocalSearchDurationMs: bag?.itemLocalSearchDurationMs ?? 0,
+    scoreCacheHits: result.stats.scoreCacheHits,
+    scoreCacheMisses: result.stats.scoreCacheMisses,
+    scoreCacheEvaluations: result.stats.scoreCacheEvaluations,
+    scoreCacheUniqueLayouts: result.stats.scoreCacheUniqueLayouts,
   };
 }
 

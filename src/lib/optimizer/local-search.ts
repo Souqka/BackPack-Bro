@@ -19,7 +19,7 @@
  */
 
 import type { Item } from "../inventory/types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
+import { scoreLayout } from "./score-cache.ts";
 import { generatePlacementCandidates } from "./candidates.ts";
 import { isStrictlyBetterLayout, compareRankedLayouts } from "./rank.ts";
 import type { OptimizerState, RankedLayout, LocalSearchOptions } from "./search-types.ts";
@@ -280,7 +280,7 @@ function toRanked(
   unplacedItems: ItemToPlace[],
   catalog: Map<string, Item>,
 ): RankedLayout | null {
-  const score = analyzePlacementScore({ inventory: state.backpack, items: state.items.items }, catalog);
+  const score = scoreLayout(state, catalog);
   if (!score.valid) return null;
   return {
     state,

@@ -165,6 +165,37 @@ export interface Stage11CaseReport {
   adaptive: Stage11ModeRow;
 }
 
+export interface Stage12CacheRow {
+  label: string;
+  score: number;
+  stars: number;
+  complete: boolean;
+  signature: string;
+  durationMs: number;
+  evaluations: number;
+  hits: number;
+  misses: number;
+  uniqueLayouts: number;
+  hitRate: number;
+  placed: number;
+  unplaced: number;
+  stopReason: string;
+}
+
+export interface Stage12CaseReport {
+  caseId: string;
+  name: string;
+  description: string;
+  scoreSame: boolean;
+  starsSame: boolean;
+  completeSame: boolean;
+  signatureSame: boolean;
+  stopReasonSame: boolean;
+  topNSame: boolean;
+  uncached: Stage12CacheRow;
+  cached: Stage12CacheRow;
+}
+
 export interface Stage8Report {
   algorithms: AlgorithmComparisonRow[];
   beamWidths: BeamWidthRow[];

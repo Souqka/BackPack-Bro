@@ -9,7 +9,7 @@
  *     → skip seen signatures
  *     → repair displaced Items (bounded Beam)
  *     → existing Item Local Search
- *     → analyzePlacementScore via buildRankedLayout
+ *     → scoreLayout via buildRankedLayout
  *     → accept only isStrictlyBetterLayout
  */
 

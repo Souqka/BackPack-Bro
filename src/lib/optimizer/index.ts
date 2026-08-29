@@ -60,6 +60,18 @@ export { compareRankedLayouts, isStrictlyBetterLayout, sortRankedLayouts } from 
 export { analyzeHeuristicInversions, toOptimizerMetrics } from "./metrics.ts";
 export { loadProductionCatalog } from "./load-catalog.ts";
 export {
+  applyScoreCacheMetrics,
+  createScoreCache,
+  getActiveScoreCache,
+  getScoreCacheKey,
+  scoreCacheHitRate,
+  scoreLayout,
+  withActiveScoreCache,
+} from "./score-cache.ts";
+export type { ScoreCache, ScoreCacheMetrics } from "./score-cache.ts";
+export { incrementalScoringSupported } from "./layout-change.ts";
+export type { LayoutChange, LayoutChangeKind } from "./layout-change.ts";
+export {
   DEFAULT_LOCAL_SEARCH_OPTIONS,
   improveLayoutLocally,
   improveTopNLocally,
