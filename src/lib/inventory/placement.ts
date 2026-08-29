@@ -7,7 +7,7 @@
 
 import { resolvePlacedGeometry } from "./geometry.ts";
 import type { Item } from "./types.ts";
-import type { Inventory, PlacedItem, PlacementIssue, Position } from "./types.ts";
+import type { Inventory, PlacedItem, PlacementIssue, Position, ResolvedItemGeometry } from "./types.ts";
 
 export function isInsideInventory(position: Position, inventory: Inventory): boolean {
   return (
@@ -35,6 +35,7 @@ export function findOutOfBounds(
   placedItems: PlacedItem[],
   catalog: Map<string, Item>,
   inventory: Inventory,
+  resolved?: Map<string, ResolvedItemGeometry>,
 ): PlacementIssue[] {
   const issues: PlacementIssue[] = [];
   for (const placed of placedItems) {
@@ -48,8 +49,8 @@ export function findOutOfBounds(
       });
       continue;
     }
-    const resolved = resolvePlacedGeometry(item, placed);
-    const outside = resolved.cells.filter((cell) => !isInsideInventory(cell, inventory));
+    const geometry = resolved?.get(placed.instanceId) ?? resolvePlacedGeometry(item, placed);
+    const outside = geometry.cells.filter((cell) => !isInsideInventory(cell, inventory));
     if (outside.length > 0) {
       issues.push({
         instanceId: placed.instanceId,

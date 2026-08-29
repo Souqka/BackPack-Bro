@@ -276,19 +276,20 @@ describe("score cache hits/misses", () => {
 });
 
 describe("incremental scoring boundaries", () => {
-  it("prototype не реализован: любой local move требует полный scoring", () => {
+  it("поддерживаемые local moves можно пытаться оценить incremental", () => {
     const kinds = [
       "item_place",
       "item_relocate",
       "item_rotate",
       "item_swap",
+      "item_remove",
       "bag_relocate",
       "bag_rotate",
       "bag_swap",
       "repair",
     ] as const;
     for (const kind of kinds) {
-      expect(incrementalScoringSupported({ kind })).toBe(false);
+      expect(incrementalScoringSupported({ kind })).toBe(true);
     }
   });
 });

@@ -6,7 +6,8 @@
  */
 
 import { analyzeInventory } from "../inventory/inventory.ts";
-import type { InventoryState, Item } from "../inventory/types.ts";
+import type { InventoryAnalysis, InventoryState, Item } from "../inventory/types.ts";
+import { bindInventoryAnalysis } from "./analysis-bind.ts";
 import { buildSynergyGraph } from "./graph.ts";
 import { buildPlacementFacts } from "./rules.ts";
 import {
@@ -25,11 +26,24 @@ export function analyzePlacementScore(
   weights?: Partial<ScoringWeights>,
 ): PlacementScore {
   const analysis = analyzeInventory(state, catalog);
+  return scoreInventoryAnalysis(analysis, state, catalog, weights);
+}
+
+/**
+ * Canonical scoring from an already-built InventoryAnalysis.
+ * Incremental scoring must call this rather than inventing a second score.
+ */
+export function scoreInventoryAnalysis(
+  analysis: InventoryAnalysis,
+  state: InventoryState,
+  catalog: Map<string, Item>,
+  weights?: Partial<ScoringWeights>,
+): PlacementScore {
   const resolvedWeights = resolveWeights(weights);
 
   if (!analysis.valid) {
     const reason = invalidReason(analysis.collisions.length, analysis.outOfBounds.length);
-    return {
+    const invalid: PlacementScore = {
       valid: false,
       score: INVALID_PLACEMENT_SCORE,
       breakdown: invalidBreakdown(reason),
@@ -37,6 +51,8 @@ export function analyzePlacementScore(
       synergies: [],
       graph: { nodes: [], edges: [] },
     };
+    bindInventoryAnalysis(invalid, analysis);
+    return invalid;
   }
 
   const facts = buildPlacementFacts(analysis, state, catalog);
@@ -45,7 +61,7 @@ export function analyzePlacementScore(
   const { score, breakdown } = calculateStructuralScore(synergies, state, catalog);
   const effectCoverage = calculateEffectCoverage(facts, catalog);
 
-  return {
+  const result: PlacementScore = {
     valid: true,
     score,
     breakdown,
@@ -53,6 +69,8 @@ export function analyzePlacementScore(
     synergies,
     graph,
   };
+  bindInventoryAnalysis(result, analysis);
+  return result;
 }
 
 /** То же, что analyzePlacementScore: оценка конкретной расстановки. */

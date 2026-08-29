@@ -17,6 +17,7 @@
 
 import type { Item } from "../inventory/types.ts";
 import { emptyEffectCoverage, invalidBreakdown } from "../scoring/score.ts";
+import type { IncrementalScoreContext } from "../scoring/incremental/index.ts";
 import { INVALID_PLACEMENT_SCORE } from "../scoring/weights.ts";
 import { scoreLayout } from "./score-cache.ts";
 import type { OptimizerState, RankedLayout } from "./search-types.ts";
@@ -106,6 +107,7 @@ export function buildRankedLayout(
   unplacedItems: ItemToPlace[],
   unplacedBags: ItemToPlace[],
   catalog: Map<string, Item>,
+  incremental?: IncrementalScoreContext | null,
 ): RankedLayout {
   const score =
     state.items.items.length === 0 && state.bags.bags.length === 0
@@ -117,7 +119,7 @@ export function buildRankedLayout(
           synergies: [],
           graph: { nodes: [], edges: [] },
         }
-      : scoreLayout(state, catalog);
+      : scoreLayout(state, catalog, undefined, incremental);
   return {
     state,
     score,

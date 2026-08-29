@@ -31,6 +31,12 @@ export function createEmptyStats(): OptimizerStats {
     transpositionPruned: 0,
     transpositionAccepted: 0,
     transpositionReplacements: 0,
+    incrementalScoreAttempts: 0,
+    incrementalScoreSuccesses: 0,
+    incrementalScoreFallbacks: 0,
+    incrementalAffectedItems: 0,
+    incrementalAffectedInteractions: 0,
+    incrementalAffectedStars: 0,
   };
 }
 
@@ -128,6 +134,12 @@ export function toOptimizerMetrics(
     transpositionPruned: result.stats.transpositionPruned,
     transpositionAccepted: result.stats.transpositionAccepted,
     transpositionReplacements: result.stats.transpositionReplacements,
+    incrementalScoreAttempts: result.stats.incrementalScoreAttempts,
+    incrementalScoreSuccesses: result.stats.incrementalScoreSuccesses,
+    incrementalScoreFallbacks: result.stats.incrementalScoreFallbacks,
+    incrementalAffectedItems: result.stats.incrementalAffectedItems,
+    incrementalAffectedInteractions: result.stats.incrementalAffectedInteractions,
+    incrementalAffectedStars: result.stats.incrementalAffectedStars,
   };
 }
 

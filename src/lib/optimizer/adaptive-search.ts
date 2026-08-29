@@ -7,6 +7,7 @@
  */
 
 import type { Item } from "../inventory/types.ts";
+import { withIncrementalScoring } from "../scoring/incremental/index.ts";
 import { resolveAdaptiveSearchOptions, zipSearchLevels } from "./adaptive-options.ts";
 import type { ResolvedAdaptiveSearchOptions } from "./adaptive-options.ts";
 import type {
@@ -60,10 +61,19 @@ export function runAdaptiveOptimizer(
     maxDurationMs: adaptive?.maxDurationMs ?? input.options?.maxDurationMs,
     scoreCache: adaptive?.scoreCache ?? input.options?.scoreCache,
     transposition: adaptive?.transposition ?? input.options?.transposition,
+    incrementalScore: adaptive?.incrementalScore ?? input.options?.incrementalScore,
+    incrementalVerify: adaptive?.incrementalVerify ?? input.options?.incrementalVerify,
   });
   const cache = createScoreCache({ enabled: options.scoreCache !== false });
-  return withTranspositionEnabled(options.transposition !== false, () =>
-    withActiveScoreCache(cache, () => runAdaptiveOptimizerWithCache(input, options, started)),
+  return withIncrementalScoring(
+    {
+      enabled: options.incrementalScore !== false,
+      verify: options.incrementalVerify === true,
+    },
+    () =>
+      withTranspositionEnabled(options.transposition !== false, () =>
+        withActiveScoreCache(cache, () => runAdaptiveOptimizerWithCache(input, options, started)),
+      ),
   );
 }
 
@@ -294,6 +304,7 @@ function runAdaptiveOptimizerWithCache(
           ),
         ];
   stats.durationMs = Date.now() - started;
+  applyScoreCacheMetrics(stats);
   const finalScore = fallback[0] ? layoutScore(fallback[0]) : Number.NEGATIVE_INFINITY;
   if (initialScore === Number.NEGATIVE_INFINITY) initialScore = finalScore;
 
@@ -325,6 +336,12 @@ function runAdaptiveOptimizerWithCache(
     transpositionPruned: stats.transpositionPruned,
     transpositionAccepted: stats.transpositionAccepted,
     transpositionReplacements: stats.transpositionReplacements,
+    incrementalScoreAttempts: stats.incrementalScoreAttempts,
+    incrementalScoreSuccesses: stats.incrementalScoreSuccesses,
+    incrementalScoreFallbacks: stats.incrementalScoreFallbacks,
+    incrementalAffectedItems: stats.incrementalAffectedItems,
+    incrementalAffectedInteractions: stats.incrementalAffectedInteractions,
+    incrementalAffectedStars: stats.incrementalAffectedStars,
   };
 
   return assembleResult(fallback, stats, options.resultCount, lsOptions !== null, bagLsOptions !== null, adaptiveMetrics);

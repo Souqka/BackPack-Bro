@@ -33,6 +33,8 @@ import type {
   Stage12CaseReport,
   Stage13CaseReport,
   Stage13ModeRow,
+  Stage14CaseReport,
+  Stage14ModeRow,
 } from "./types.ts";
 
 export function runBenchmarkCase(
@@ -568,6 +570,90 @@ function stage13ModeRow(label: string, result: AdaptiveOptimizerResult): Stage13
     scoreCacheHits: metrics.scoreCacheHits,
     scoreCacheMisses: metrics.scoreCacheMisses,
     hitRate: scoreCacheHitRate({ hits: metrics.scoreCacheHits, evaluations: metrics.scoreCacheEvaluations }),
+    stopReason: result.adaptive.stopReason,
+  };
+}
+
+/**
+ * Stage 14: Adaptive full scoring vs score-cache-only vs cache + incremental.
+ * Each mode is run twice; duration is the min of the two runs.
+ */
+export function buildStage14Report(catalog: Map<string, Item>): Stage14CaseReport[] {
+  return STAGE11_BENCHMARK_CASES.map((entry) => {
+    const input = {
+      inventory: entry.inventory,
+      bags: entry.bags,
+      items: entry.items,
+      catalog,
+      options: { metrics: true, dynamicOrdering: false },
+    };
+    const full = timedAdaptive(input, { scoreCache: false, incrementalScore: false });
+    const cacheOnly = timedAdaptive(input, { incrementalScore: false });
+    const incremental = timedAdaptive(input);
+    const fullRow = stage14ModeRow("full", full.result, full.durationMs);
+    const cacheRow = stage14ModeRow("cache-only", cacheOnly.result, cacheOnly.durationMs);
+    const incrementalRow = stage14ModeRow("incremental", incremental.result, incremental.durationMs);
+    const incrementalSignatures = signaturesOf(incremental.result);
+    const cacheSignatures = signaturesOf(cacheOnly.result);
+    return {
+      caseId: entry.id,
+      name: entry.name,
+      description: entry.description,
+      scoreSame: incremental.result.metrics.finalScore === cacheOnly.result.metrics.finalScore,
+      starsSame: incremental.result.metrics.activatedStars === cacheOnly.result.metrics.activatedStars,
+      completeSame: incremental.result.complete === cacheOnly.result.complete,
+      signatureSame: incrementalRow.signature === cacheRow.signature,
+      coverageSame:
+        incremental.result.metrics.normalizedEffects === cacheOnly.result.metrics.normalizedEffects,
+      placedSame: incremental.result.metrics.placedItems === cacheOnly.result.metrics.placedItems,
+      unplacedSame: incremental.result.metrics.unplacedItems === cacheOnly.result.metrics.unplacedItems,
+      stopReasonSame: incremental.result.adaptive.stopReason === cacheOnly.result.adaptive.stopReason,
+      topNSame: incrementalSignatures === cacheSignatures,
+      full: fullRow,
+      cacheOnly: cacheRow,
+      incremental: incrementalRow,
+    };
+  });
+}
+
+function timedAdaptive(
+  input: Parameters<typeof runAdaptiveOptimizer>[0],
+  extra?: Parameters<typeof runAdaptiveOptimizer>[1],
+): { result: AdaptiveOptimizerResult; durationMs: number } {
+  const first = runAdaptiveOptimizer(input, extra);
+  const second = runAdaptiveOptimizer(input, extra);
+  return {
+    result: second,
+    durationMs: Math.min(first.metrics.durationMs, second.metrics.durationMs),
+  };
+}
+
+function signaturesOf(result: AdaptiveOptimizerResult): string {
+  return [
+    getOptimizerStateSignature(result.bestState),
+    ...result.alternatives.map((entry) => entry.signature),
+  ].join("|");
+}
+
+function stage14ModeRow(label: string, result: AdaptiveOptimizerResult, durationMs: number): Stage14ModeRow {
+  const metrics = result.metrics;
+  return {
+    label,
+    score: metrics.finalScore,
+    stars: metrics.activatedStars,
+    complete: result.complete,
+    signature: getOptimizerStateSignature(result.bestState),
+    durationMs,
+    scoreEvaluations: metrics.scoreCacheEvaluations,
+    scoreCacheHits: metrics.scoreCacheHits,
+    scoreCacheMisses: metrics.scoreCacheMisses,
+    uniqueLayouts: metrics.scoreCacheUniqueLayouts,
+    incrementalAttempts: metrics.incrementalScoreAttempts,
+    incrementalSuccesses: metrics.incrementalScoreSuccesses,
+    incrementalFallbacks: metrics.incrementalScoreFallbacks,
+    incrementalAffectedItems: metrics.incrementalAffectedItems,
+    incrementalAffectedInteractions: metrics.incrementalAffectedInteractions,
+    incrementalAffectedStars: metrics.incrementalAffectedStars,
     stopReason: result.adaptive.stopReason,
   };
 }

@@ -1,9 +1,9 @@
 /**
- * Boundaries for a future incremental Scoring Engine.
+ * Local-move kinds that incremental scoring may attempt.
  *
- * Stage 12 records which local moves exist. It does not compute delta
- * scores: a local move produces a new cache key and falls back to
- * analyzePlacementScore. Approximate / heuristic deltas are forbidden.
+ * Success is not guaranteed: Bag+repair or missing context still falls
+ * back to analyzePlacementScore. Approximate / heuristic deltas remain
+ * forbidden.
  */
 
 export type LayoutChangeKind =
@@ -11,6 +11,7 @@ export type LayoutChangeKind =
   | "item_relocate"
   | "item_rotate"
   | "item_swap"
+  | "item_remove"
   | "bag_relocate"
   | "bag_rotate"
   | "bag_swap"
@@ -20,10 +21,22 @@ export interface LayoutChange {
   kind: LayoutChangeKind;
 }
 
+const SUPPORTED: ReadonlySet<LayoutChangeKind> = new Set([
+  "item_place",
+  "item_relocate",
+  "item_rotate",
+  "item_swap",
+  "item_remove",
+  "bag_relocate",
+  "bag_rotate",
+  "bag_swap",
+  "repair",
+]);
+
 /**
- * Incremental scoring is not implemented. Always false: callers must use
- * the full Scoring Engine (via the score cache) for every distinct layout.
+ * Whether incremental scoring may be attempted for this kind of local move.
+ * A true result does not skip the score cache or forbid a full fallback.
  */
-export function incrementalScoringSupported(_change: LayoutChange): boolean {
-  return false;
+export function incrementalScoringSupported(change: LayoutChange): boolean {
+  return SUPPORTED.has(change.kind);
 }

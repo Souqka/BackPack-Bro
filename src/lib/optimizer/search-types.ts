@@ -67,6 +67,17 @@ export interface OptimizerOptions {
    * and the Stage 13 baseline. Not shared across Adaptive ladder widths.
    */
   transposition?: boolean;
+  /**
+   * Incremental placement scoring for local moves on a cache miss.
+   * Default true. false is for identity tests and the Stage 14 baseline.
+   * analyzePlacementScore remains the source of truth; mismatches fall back.
+   */
+  incrementalScore?: boolean;
+  /**
+   * Compare each incremental result to analyzePlacementScore.
+   * Default false — too expensive for production. Tests may enable it.
+   */
+  incrementalVerify?: boolean;
 }
 
 export interface LocalSearchOptions {
@@ -100,6 +111,8 @@ export const DEFAULT_OPTIMIZER_OPTIONS: OptimizerOptions = {
   bagLocalSearch: false,
   scoreCache: true,
   transposition: true,
+  incrementalScore: true,
+  incrementalVerify: false,
 };
 
 export const DEFAULT_DFS_LIMITS: DfsSearchLimits = {
@@ -134,6 +147,12 @@ export interface OptimizerStats {
   transpositionPruned: number;
   transpositionAccepted: number;
   transpositionReplacements: number;
+  incrementalScoreAttempts: number;
+  incrementalScoreSuccesses: number;
+  incrementalScoreFallbacks: number;
+  incrementalAffectedItems: number;
+  incrementalAffectedInteractions: number;
+  incrementalAffectedStars: number;
 }
 
 /**
@@ -195,6 +214,12 @@ export interface OptimizerMetrics {
   transpositionPruned: number;
   transpositionAccepted: number;
   transpositionReplacements: number;
+  incrementalScoreAttempts: number;
+  incrementalScoreSuccesses: number;
+  incrementalScoreFallbacks: number;
+  incrementalAffectedItems: number;
+  incrementalAffectedInteractions: number;
+  incrementalAffectedStars: number;
 }
 
 export interface OptimizerLayout {

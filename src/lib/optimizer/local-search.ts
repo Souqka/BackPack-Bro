@@ -19,6 +19,14 @@
  */
 
 import type { Item } from "../inventory/types.ts";
+import {
+  createItemPlaceMove,
+  createItemSwapMove,
+  relocateOrRotateMove,
+  snapshotFromCandidate,
+  snapshotGeometry,
+  type LayoutMove,
+} from "../scoring/incremental/index.ts";
 import { scoreLayout } from "./score-cache.ts";
 import { generatePlacementCandidates } from "./candidates.ts";
 import { isStrictlyBetterLayout, compareRankedLayouts } from "./rank.ts";
@@ -187,7 +195,20 @@ function collectUnplacedNeighbors(
     for (const candidate of candidates) {
       const nextItems = addCandidate(current.state.items, candidate);
       const rest = current.unplacedItems.filter((entry) => entry.instanceId !== item.instanceId);
-      if (push(toRanked(current, { ...current.state, items: nextItems }, rest, catalog))) return true;
+      if (push(toRanked(current, { ...current.state, items: nextItems }, rest, catalog, [
+        createItemPlaceMove(
+          item.instanceId,
+          item.itemId,
+          snapshotFromCandidate(
+            item.instanceId,
+            item.itemId,
+            candidate.placement.position,
+            candidate.placement.rotation,
+            candidate.cells,
+            candidate.stars,
+          ),
+        ),
+      ]))) return true;
     }
   }
   return false;
@@ -210,8 +231,23 @@ function collectRelocateNeighbors(
     );
     for (const candidate of candidates) {
       if (samePlacement(candidate.placement, item)) continue;
+      const previous = current.state.items.itemGeometries.get(item.instanceId);
+      if (!previous) continue;
       const nextItems = addCandidate(stripped, candidate);
-      if (push(toRanked(current, { ...current.state, items: nextItems }, current.unplacedItems, catalog))) {
+      const move = relocateOrRotateMove(
+        item.instanceId,
+        item.itemId,
+        snapshotGeometry(previous, item),
+        snapshotFromCandidate(
+          item.instanceId,
+          item.itemId,
+          candidate.placement.position,
+          candidate.placement.rotation,
+          candidate.cells,
+          candidate.stars,
+        ),
+      );
+      if (push(toRanked(current, { ...current.state, items: nextItems }, current.unplacedItems, catalog, [move]))) {
         return true;
       }
     }
@@ -247,8 +283,39 @@ function collectSwapNeighbors(
         a,
       );
       if (!candB) continue;
+      const geomA = current.state.items.itemGeometries.get(a.instanceId);
+      const geomB = current.state.items.itemGeometries.get(b.instanceId);
+      if (!geomA || !geomB) continue;
       const nextItems = addCandidate(afterA, candB);
-      if (push(toRanked(current, { ...current.state, items: nextItems }, current.unplacedItems, catalog))) {
+      const move = createItemSwapMove(
+        {
+          instanceId: a.instanceId,
+          itemId: a.itemId,
+          previous: snapshotGeometry(geomA, a),
+          next: snapshotFromCandidate(
+            a.instanceId,
+            a.itemId,
+            candA.placement.position,
+            candA.placement.rotation,
+            candA.cells,
+            candA.stars,
+          ),
+        },
+        {
+          instanceId: b.instanceId,
+          itemId: b.itemId,
+          previous: snapshotGeometry(geomB, b),
+          next: snapshotFromCandidate(
+            b.instanceId,
+            b.itemId,
+            candB.placement.position,
+            candB.placement.rotation,
+            candB.cells,
+            candB.stars,
+          ),
+        },
+      );
+      if (push(toRanked(current, { ...current.state, items: nextItems }, current.unplacedItems, catalog, [move]))) {
         return true;
       }
     }
@@ -279,8 +346,13 @@ function toRanked(
   state: OptimizerState,
   unplacedItems: ItemToPlace[],
   catalog: Map<string, Item>,
+  moves: LayoutMove[],
 ): RankedLayout | null {
-  const score = scoreLayout(state, catalog);
+  const score = scoreLayout(state, catalog, undefined, {
+    previousState: origin.state,
+    previousScore: origin.score,
+    moves,
+  });
   if (!score.valid) return null;
   return {
     state,

@@ -20,6 +20,8 @@ export interface ResolvedAdaptiveSearchOptions {
   maxDurationMs?: number;
   scoreCache: boolean;
   transposition: boolean;
+  incrementalScore: boolean;
+  incrementalVerify: boolean;
 }
 
 export const DEFAULT_ADAPTIVE_SEARCH_OPTIONS: ResolvedAdaptiveSearchOptions = {
@@ -38,6 +40,8 @@ export const DEFAULT_ADAPTIVE_SEARCH_OPTIONS: ResolvedAdaptiveSearchOptions = {
   resultCount: 10,
   scoreCache: true,
   transposition: true,
+  incrementalScore: true,
+  incrementalVerify: false,
 };
 
 export function normalizeWidthLadder(widths: readonly number[]): number[] {
@@ -76,6 +80,8 @@ export function resolveAdaptiveSearchOptions(
   merged.resultCount = Math.max(1, Math.floor(merged.resultCount));
   merged.scoreCache = merged.scoreCache !== false;
   merged.transposition = merged.transposition !== false;
+  merged.incrementalScore = merged.incrementalScore !== false;
+  merged.incrementalVerify = merged.incrementalVerify === true;
   return merged;
 }
 

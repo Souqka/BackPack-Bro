@@ -28,4 +28,4 @@ export { isInsideInventory, isPlacementInsideInventory, findOutOfBounds } from "
 export { findCollisions, hasCollision } from "./collision.ts";
 export { findStarOverlaps } from "./stars.ts";
 export { evaluateStarActivations, matchingStarRuleIndexes } from "./activation.ts";
-export { analyzeInventory, catalogFromItems } from "./inventory.ts";
+export { analyzeInventory, analyzeInventoryWithResolved, catalogFromItems } from "./inventory.ts";
