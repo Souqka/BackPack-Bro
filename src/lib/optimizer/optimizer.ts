@@ -23,6 +23,8 @@ import {
   layoutScore,
   resolveLocalSearchOptions,
 } from "./local-search.ts";
+import { emptyBagLocalSearchStats, resolveBagLocalSearchOptions } from "./bag-local-search.ts";
+import { improveTopNJointly } from "./joint-search.ts";
 import { createEmptyStats, toOptimizerMetrics } from "./metrics.ts";
 import { orderItemsForSearch } from "./ordering.ts";
 import { sortRankedLayouts } from "./rank.ts";
@@ -604,17 +606,28 @@ function finish(args: {
   const initialScore = ranked[0] ? layoutScore(ranked[0]) : Number.NEGATIVE_INFINITY;
   const lsOptions = resolveLocalSearchOptions(args.options.localSearch);
   let lsStats = emptyLocalSearchStats(initialScore);
+  const resultCount = Math.max(1, args.options.resultCount ?? 1);
 
   if (lsOptions) {
-    const resultCount = Math.max(1, args.options.resultCount ?? 1);
     const improved = improveTopNLocally(ranked, args.catalog, resultCount, lsOptions);
     ranked = improved.layouts;
     lsStats = improved.stats;
   }
 
+  const bagLsOptions = resolveBagLocalSearchOptions(args.options.bagLocalSearch, {
+    iterations: args.options.bagLocalSearchIterations,
+    repairBeamWidth: args.options.bagRepairBeamWidth,
+  });
+  const bagLsInitial = ranked[0] ? layoutScore(ranked[0]) : initialScore;
+  let bagLsStats = emptyBagLocalSearchStats(bagLsInitial);
+  if (bagLsOptions) {
+    const improved = improveTopNJointly(ranked, args.catalog, resultCount, bagLsOptions);
+    ranked = improved.layouts;
+    bagLsStats = improved.stats;
+  }
+
   const best = ranked[0]!;
   args.stats.durationMs = Date.now() - args.started;
-  const resultCount = Math.max(1, args.options.resultCount ?? 1);
   const top = ranked.slice(0, resultCount);
   const layout = toLayout(best);
   const alternatives: OptimizerAlternative[] = top.slice(1).map((entry) => ({
@@ -664,6 +677,24 @@ function finish(args: {
           neighbors: lsStats.neighborsEvaluated,
           improvements: lsStats.improvements,
           initialScore: lsStats.initialScore,
+        },
+        bagLocalSearch: {
+          enabled: bagLsOptions !== null,
+          iterations: bagLsStats.iterations,
+          neighborsGenerated: bagLsStats.bagNeighborsGenerated,
+          neighborsVisited: bagLsStats.bagNeighborsVisited,
+          neighborsPruned: bagLsStats.bagNeighborsPruned,
+          layoutsAccepted: bagLsStats.bagLayoutsAccepted,
+          displacedItems: bagLsStats.displacedItems,
+          repairedItems: bagLsStats.repairedItems,
+          unrepairedItems: bagLsStats.unrepairedItems,
+          repairStatesGenerated: bagLsStats.repairStatesGenerated,
+          repairStatesPruned: bagLsStats.repairStatesPruned,
+          initialScore: bagLsStats.initialScore,
+          finalScore: bagLsStats.finalScore,
+          durationMs: bagLsStats.durationMs,
+          repairDurationMs: bagLsStats.repairDurationMs,
+          itemLocalSearchDurationMs: bagLsStats.itemLocalSearchDurationMs,
         },
       },
     ),

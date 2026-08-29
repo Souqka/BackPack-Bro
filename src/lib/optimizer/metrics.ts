@@ -30,7 +30,7 @@ export function toOptimizerMetrics(
   result: Omit<OptimizerResult, "metrics">,
   algorithm: OptimizerMetrics["algorithm"],
   searchExhaustive: boolean,
-  extra?: {
+    extra?: {
     beamWidth?: number;
     bagBeamWidth?: number;
     localSearch?: {
@@ -40,10 +40,31 @@ export function toOptimizerMetrics(
       improvements: number;
       initialScore: number;
     };
+    bagLocalSearch?: {
+      enabled: boolean;
+      iterations: number;
+      neighborsGenerated: number;
+      neighborsVisited: number;
+      neighborsPruned: number;
+      layoutsAccepted: number;
+      displacedItems: number;
+      repairedItems: number;
+      unrepairedItems: number;
+      repairStatesGenerated: number;
+      repairStatesPruned: number;
+      initialScore: number;
+      finalScore: number;
+      durationMs: number;
+      repairDurationMs: number;
+      itemLocalSearchDurationMs: number;
+    };
   },
 ): OptimizerMetrics {
   const score = result.score.valid ? result.score.score : Number.NEGATIVE_INFINITY;
-  const initialScore = extra?.localSearch?.initialScore ?? score;
+  const initialScore = extra?.localSearch?.initialScore ?? extra?.bagLocalSearch?.initialScore ?? score;
+  const bag = extra?.bagLocalSearch;
+  const bagInitial = bag?.initialScore ?? score;
+  const bagFinal = bag?.finalScore ?? score;
   return {
     algorithm,
     durationMs: result.stats.durationMs,
@@ -71,6 +92,26 @@ export function toOptimizerMetrics(
     scoreDelta: score === Number.NEGATIVE_INFINITY || initialScore === Number.NEGATIVE_INFINITY
       ? 0
       : score - initialScore,
+    bagLocalSearchEnabled: bag?.enabled ?? false,
+    bagLocalSearchIterations: bag?.iterations ?? 0,
+    bagNeighborsGenerated: bag?.neighborsGenerated ?? 0,
+    bagNeighborsVisited: bag?.neighborsVisited ?? 0,
+    bagNeighborsPruned: bag?.neighborsPruned ?? 0,
+    bagLayoutsAccepted: bag?.layoutsAccepted ?? 0,
+    displacedItems: bag?.displacedItems ?? 0,
+    repairedItems: bag?.repairedItems ?? 0,
+    unrepairedItems: bag?.unrepairedItems ?? 0,
+    repairStatesGenerated: bag?.repairStatesGenerated ?? 0,
+    repairStatesPruned: bag?.repairStatesPruned ?? 0,
+    bagLocalSearchInitialScore: bagInitial,
+    bagLocalSearchFinalScore: bagFinal,
+    bagLocalSearchScoreDelta:
+      bagInitial === Number.NEGATIVE_INFINITY || bagFinal === Number.NEGATIVE_INFINITY
+        ? 0
+        : bagFinal - bagInitial,
+    bagLocalSearchDurationMs: bag?.durationMs ?? 0,
+    repairDurationMs: bag?.repairDurationMs ?? 0,
+    bagItemLocalSearchDurationMs: bag?.itemLocalSearchDurationMs ?? 0,
   };
 }
 

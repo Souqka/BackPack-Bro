@@ -23,7 +23,7 @@ export { getStateSignature, getCandidateSignature } from "./deduplication.ts";
 
 export type { BagState, OccupiedBagCell, PlacedBag } from "./bags/types.ts";
 export { generateBagCandidates } from "./bags/candidates.ts";
-export { addBagCandidate, createBagState, emptyBagState, getBagStateSignature } from "./bags/state.ts";
+export { addBagCandidate, createBagState, emptyBagState, getAvailableCells, getBagStateSignature, removeBag } from "./bags/state.ts";
 
 export type {
   BeamSearchOptions,
@@ -43,7 +43,7 @@ export type {
   RankedLayout,
   RunOptimizerInput,
 } from "./search-types.ts";
-export type { LocalSearchOptions } from "./search-types.ts";
+export type { LocalSearchOptions, BagLocalSearchOptions } from "./search-types.ts";
 export { DEFAULT_DFS_LIMITS, DEFAULT_OPTIMIZER_OPTIONS } from "./search-types.ts";
 
 export { evaluatePartialState, countFutureStarPotential, DEFAULT_HEURISTIC_WEIGHTS } from "./heuristic.ts";
@@ -64,3 +64,13 @@ export {
   resolveLocalSearchOptions,
 } from "./local-search.ts";
 export type { LocalSearchOutcome, LocalSearchStats } from "./local-search.ts";
+export {
+  DEFAULT_BAG_LOCAL_SEARCH_OPTIONS,
+  resolveBagLocalSearchOptions,
+} from "./bag-local-search.ts";
+export type { BagLocalSearchStats } from "./bag-local-search.ts";
+export { canonicalBagSignature, generateBagNeighbors, limitBagNeighbors } from "./bag-neighbors.ts";
+export type { BagNeighbor, BagNeighborOperation } from "./bag-neighbors.ts";
+export { findDisplacedItems, findKeptItems, itemIsDisplaced, repairItemLayout } from "./repair.ts";
+export type { RepairOptions, RepairResult } from "./repair.ts";
+export { improveTopNJointly, runJointLocalSearch } from "./joint-search.ts";

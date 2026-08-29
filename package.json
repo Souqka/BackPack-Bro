@@ -14,6 +14,7 @@
     "test:optimizer": "vitest run src/lib/optimizer",
     "benchmark:optimizer": "tsx scripts/optimizer-stage8-report.ts",
     "benchmark:optimizer:stage9": "tsx scripts/optimizer-stage9-report.ts",
+    "benchmark:optimizer:stage10": "tsx scripts/optimizer-stage10-report.ts",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

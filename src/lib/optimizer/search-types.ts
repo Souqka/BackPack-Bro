@@ -47,11 +47,27 @@ export interface OptimizerOptions {
    * чтобы сравнение Beam width не смешивалось с локальными ходами.
    */
   localSearch?: boolean | LocalSearchOptions;
+  /**
+   * Joint Bag + Item Local Search после Item LS / Top-N.
+   * Default false: Stage 9 width-sweep не должен смешиваться с Bag mutations.
+   */
+  bagLocalSearch?: boolean | BagLocalSearchOptions;
+  /** Alias for BagLocalSearchOptions.maxIterations when bagLocalSearch is true. */
+  bagLocalSearchIterations?: number;
+  /** Bounded Beam width for repairing displaced Items after a Bag mutation. */
+  bagRepairBeamWidth?: number;
 }
 
 export interface LocalSearchOptions {
   maxIterations?: number;
   maxNeighbors?: number;
+}
+
+export interface BagLocalSearchOptions {
+  maxIterations?: number;
+  maxNeighbors?: number;
+  repairBeamWidth?: number;
+  itemLocalSearch?: boolean;
 }
 
 export interface BeamSearchOptions {
@@ -69,6 +85,7 @@ export const DEFAULT_OPTIMIZER_OPTIONS: OptimizerOptions = {
   dynamicOrdering: false,
   metrics: true,
   localSearch: false,
+  bagLocalSearch: false,
 };
 
 export const DEFAULT_DFS_LIMITS: DfsSearchLimits = {
@@ -131,6 +148,23 @@ export interface OptimizerMetrics {
   localSearchImprovements: number;
   initialScore: number;
   scoreDelta: number;
+  bagLocalSearchEnabled: boolean;
+  bagLocalSearchIterations: number;
+  bagNeighborsGenerated: number;
+  bagNeighborsVisited: number;
+  bagNeighborsPruned: number;
+  bagLayoutsAccepted: number;
+  displacedItems: number;
+  repairedItems: number;
+  unrepairedItems: number;
+  repairStatesGenerated: number;
+  repairStatesPruned: number;
+  bagLocalSearchInitialScore: number;
+  bagLocalSearchFinalScore: number;
+  bagLocalSearchScoreDelta: number;
+  bagLocalSearchDurationMs: number;
+  repairDurationMs: number;
+  bagItemLocalSearchDurationMs: number;
 }
 
 export interface OptimizerLayout {
