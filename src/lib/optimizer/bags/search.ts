@@ -9,6 +9,12 @@ import type { Item } from "../../inventory/types.ts";
 import { remainingItemCells } from "../heuristic.ts";
 import { pastDeadline, selectBeam, type ScoredBeamState } from "../beam-search.ts";
 import type { OptimizerStats } from "../search-types.ts";
+import { getBagPartialStateSignature } from "../state-signature.ts";
+import {
+  addTranspositionMetrics,
+  createTranspositionTable,
+  pruneIfSeen,
+} from "../transposition.ts";
 import type { Backpack, ItemToPlace } from "../types.ts";
 import { generateBagCandidates } from "./candidates.ts";
 import { orderBags } from "./order.ts";
@@ -22,6 +28,7 @@ export interface BagSearchInput {
   beamWidth: number;
   stats: OptimizerStats;
   deadlineMs?: number;
+  transposition?: boolean;
 }
 
 export interface BagSearchResult {
@@ -34,6 +41,7 @@ export function searchBagLayouts(input: BagSearchInput): BagSearchResult {
   const ordered = orderBags(input.bags, input.catalog);
   let beam = [emptyBagState()];
   const unplaced: ItemToPlace[] = [];
+  const table = createTranspositionTable({ enabled: input.transposition });
 
   for (let index = 0; index < ordered.length; index++) {
     const bag = ordered[index]!;
@@ -58,6 +66,10 @@ export function searchBagLayouts(input: BagSearchInput): BagSearchResult {
           input.stats.bagStatesPruned += 1;
           continue;
         }
+        if (pruneIfSeen(table, getBagPartialStateSignature(input.backpack, next, remainingAfter))) {
+          input.stats.bagStatesPruned += 1;
+          continue;
+        }
         input.stats.bagStatesGenerated += 1;
         expanded.push({
           state: next,
@@ -75,5 +87,6 @@ export function searchBagLayouts(input: BagSearchInput): BagSearchResult {
     beam = kept.map((node) => node.state);
   }
 
+  addTranspositionMetrics(input.stats, table.snapshot());
   return { layouts: beam, unplacedBags: unplaced, placedCount: ordered.length - unplaced.length };
 }

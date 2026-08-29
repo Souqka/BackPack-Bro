@@ -16,12 +16,19 @@ import { generatePlacementCandidates } from "./candidates.ts";
 import { evaluatePartialState, remainingItemCells } from "./heuristic.ts";
 import { orderItemsForSearch } from "./ordering.ts";
 import { getOptimizerStateSignature } from "./signature.ts";
+import { getItemPartialStateSignature } from "./state-signature.ts";
 import { addCandidate, createSearchState, removePlacement } from "./state.ts";
+import {
+  addTranspositionMetrics,
+  createTranspositionTable,
+  pruneIfSeen,
+} from "./transposition.ts";
 import type { OptimizerState } from "./search-types.ts";
 import type { ItemToPlace, PlacedItem } from "./types.ts";
 
 export interface RepairOptions {
   beamWidth: number;
+  transposition?: boolean;
 }
 
 export interface RepairResult {
@@ -34,6 +41,10 @@ export interface RepairResult {
   statesGenerated: number;
   statesPruned: number;
   durationMs: number;
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 }
 
 export function itemIsDisplaced(placed: PlacedItem, state: OptimizerState): boolean {
@@ -86,7 +97,7 @@ export function repairItemLayout(
     itemId: placed.itemId,
   }));
   const ordered = orderItemsForSearch(toRepair, { catalog, state: nextState });
-  const placed = repairWithBeam(nextState, ordered, catalog, options.beamWidth);
+  const placed = repairWithBeam(nextState, ordered, catalog, options.beamWidth, options.transposition);
 
   const repairedIds = new Set(placed.state.items.items.map((item) => item.instanceId));
   const repaired = displaced.filter((item) => repairedIds.has(item.instanceId));
@@ -105,6 +116,10 @@ export function repairItemLayout(
     statesGenerated: placed.statesGenerated,
     statesPruned: placed.statesPruned,
     durationMs: Date.now() - started,
+    transpositionHits: placed.transpositionHits,
+    transpositionPruned: placed.transpositionPruned,
+    transpositionAccepted: placed.transpositionAccepted,
+    transpositionReplacements: placed.transpositionReplacements,
   };
 }
 
@@ -113,16 +128,28 @@ function repairWithBeam(
   items: ItemToPlace[],
   catalog: Map<string, Item>,
   beamWidth: number,
+  transposition?: boolean,
 ): {
   state: OptimizerState;
   unplaced: ItemToPlace[];
   statesGenerated: number;
   statesPruned: number;
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 } {
   let beam: OptimizerState[] = [initial];
   const unplaced: ItemToPlace[] = [];
   let statesGenerated = 0;
   let statesPruned = 0;
+  const table = createTranspositionTable({ enabled: transposition });
+  const metrics = {
+    transpositionHits: 0,
+    transpositionPruned: 0,
+    transpositionAccepted: 0,
+    transpositionReplacements: 0,
+  };
 
   for (let index = 0; index < items.length; index++) {
     const item = items[index]!;
@@ -152,6 +179,10 @@ function repairWithBeam(
           statesPruned += 1;
           continue;
         }
+        if (pruneIfSeen(table, getItemPartialStateSignature(nextState, remainingAfter))) {
+          statesPruned += 1;
+          continue;
+        }
         const heuristic = evaluatePartialState(nextState, remainingAfter, catalog);
         if (!heuristic.feasible) {
           statesPruned += 1;
@@ -176,7 +207,8 @@ function repairWithBeam(
   }
 
   const best = pickRepairedState(beam);
-  return { state: best, unplaced, statesGenerated, statesPruned };
+  addTranspositionMetrics(metrics, table.snapshot());
+  return { state: best, unplaced, statesGenerated, statesPruned, ...metrics };
 }
 
 function pickRepairedState(beam: OptimizerState[]): OptimizerState {

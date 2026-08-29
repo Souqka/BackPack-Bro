@@ -31,6 +31,8 @@ import type {
   Stage11ModeRow,
   Stage12CacheRow,
   Stage12CaseReport,
+  Stage13CaseReport,
+  Stage13ModeRow,
 } from "./types.ts";
 
 export function runBenchmarkCase(
@@ -503,6 +505,69 @@ function stage12CacheRow(label: string, result: AdaptiveOptimizerResult): Stage1
     hitRate: scoreCacheHitRate({ hits: metrics.scoreCacheHits, evaluations: metrics.scoreCacheEvaluations }),
     placed: metrics.placedItems,
     unplaced: metrics.unplacedItems,
+    stopReason: result.adaptive.stopReason,
+  };
+}
+
+/**
+ * Stage 13: Adaptive score-cache-only vs score cache + transposition pruning on G–O.
+ */
+export function buildStage13Report(catalog: Map<string, Item>): Stage13CaseReport[] {
+  return STAGE11_BENCHMARK_CASES.map((entry) => {
+    const input = {
+      inventory: entry.inventory,
+      bags: entry.bags,
+      items: entry.items,
+      catalog,
+      options: { metrics: true, dynamicOrdering: false },
+    };
+    const baseline = runAdaptiveOptimizer(input, { transposition: false });
+    const pruned = runAdaptiveOptimizer(input);
+    const baselineRow = stage13ModeRow("baseline", baseline);
+    const prunedRow = stage13ModeRow("pruned", pruned);
+    const prunedSignatures = [
+      getOptimizerStateSignature(pruned.bestState),
+      ...pruned.alternatives.map((item) => item.signature),
+    ];
+    const baselineSignatures = [
+      getOptimizerStateSignature(baseline.bestState),
+      ...baseline.alternatives.map((item) => item.signature),
+    ];
+    return {
+      caseId: entry.id,
+      name: entry.name,
+      description: entry.description,
+      scoreSame: pruned.metrics.finalScore === baseline.metrics.finalScore,
+      starsSame: pruned.metrics.activatedStars === baseline.metrics.activatedStars,
+      completeSame: pruned.complete === baseline.complete,
+      signatureSame: prunedRow.signature === baselineRow.signature,
+      stopReasonSame: pruned.adaptive.stopReason === baseline.adaptive.stopReason,
+      topNSame: prunedSignatures.join("|") === baselineSignatures.join("|"),
+      baseline: baselineRow,
+      pruned: prunedRow,
+    };
+  });
+}
+
+function stage13ModeRow(label: string, result: AdaptiveOptimizerResult): Stage13ModeRow {
+  const metrics = result.metrics;
+  return {
+    label,
+    score: metrics.finalScore,
+    stars: metrics.activatedStars,
+    complete: result.complete,
+    signature: getOptimizerStateSignature(result.bestState),
+    durationMs: metrics.durationMs,
+    statesGenerated: metrics.statesGenerated,
+    statesPruned: metrics.statesPruned,
+    transpositionAccepted: metrics.transpositionAccepted,
+    transpositionPruned: metrics.transpositionPruned,
+    transpositionHits: metrics.transpositionHits,
+    transpositionReplacements: metrics.transpositionReplacements,
+    scoreEvaluations: metrics.scoreCacheEvaluations,
+    scoreCacheHits: metrics.scoreCacheHits,
+    scoreCacheMisses: metrics.scoreCacheMisses,
+    hitRate: scoreCacheHitRate({ hits: metrics.scoreCacheHits, evaluations: metrics.scoreCacheEvaluations }),
     stopReason: result.adaptive.stopReason,
   };
 }

@@ -30,6 +30,11 @@ export interface AdaptiveSearchOptions {
    * Default true. false is only for uncached benchmark / identity tests.
    */
   scoreCache?: boolean;
+  /**
+   * Transposition pruning inside each Beam / Repair call. Default true.
+   * Tables are not shared across ladder levels.
+   */
+  transposition?: boolean;
 }
 
 export interface AdaptiveLevelMetrics {
@@ -63,6 +68,10 @@ export interface AdaptiveSearchMetrics {
   scoreDelta: number;
   jointImproved: boolean;
   levels: AdaptiveLevelMetrics[];
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 }
 
 export interface AdaptiveOptimizerResult extends OptimizerResult {

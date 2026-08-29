@@ -35,6 +35,10 @@ import { createEmptyStats, toOptimizerMetrics } from "./metrics.ts";
 import { runBeamSearch } from "./optimizer.ts";
 import { buildRankedLayout, isStrictlyBetterLayout, sortRankedLayouts } from "./rank.ts";
 import { applyScoreCacheMetrics, createScoreCache, withActiveScoreCache } from "./score-cache.ts";
+import {
+  addTranspositionMetrics,
+  withTranspositionEnabled,
+} from "./transposition.ts";
 import type {
   OptimizerAlternative,
   OptimizerLayout,
@@ -55,9 +59,12 @@ export function runAdaptiveOptimizer(
     ...adaptive,
     maxDurationMs: adaptive?.maxDurationMs ?? input.options?.maxDurationMs,
     scoreCache: adaptive?.scoreCache ?? input.options?.scoreCache,
+    transposition: adaptive?.transposition ?? input.options?.transposition,
   });
   const cache = createScoreCache({ enabled: options.scoreCache !== false });
-  return withActiveScoreCache(cache, () => runAdaptiveOptimizerWithCache(input, options, started));
+  return withTranspositionEnabled(options.transposition !== false, () =>
+    withActiveScoreCache(cache, () => runAdaptiveOptimizerWithCache(input, options, started)),
+  );
 }
 
 function runAdaptiveOptimizerWithCache(
@@ -118,6 +125,7 @@ function runAdaptiveOptimizerWithCache(
       beamWidth: level.bagBeamWidth,
       stats,
       deadlineMs,
+      transposition: options.transposition,
     });
     unplacedBags = bagSearch.unplacedBags;
     bagSeedsGenerated += bagSearch.layouts.length;
@@ -171,6 +179,7 @@ function runAdaptiveOptimizerWithCache(
           beamWidth: level.itemBeamWidth,
           deadlineMs,
           dynamicOrdering: input.options?.dynamicOrdering,
+          transposition: options.transposition,
         },
         stats,
       );
@@ -206,6 +215,7 @@ function runAdaptiveOptimizerWithCache(
       const improved = improveTopNJointly(ranked, catalog, options.resultCount, bagLsOptions);
       ranked = improved.layouts;
       jointNeighbors += improved.stats.bagNeighborsVisited;
+      addTranspositionMetrics(stats, improved.stats);
       if (improved.stats.bagLayoutsAccepted > 0) jointImproved = true;
       if (beforeJoint && ranked[0] && isStrictlyBetterLayout(ranked[0], beforeJoint)) {
         jointImproved = true;
@@ -311,6 +321,10 @@ function runAdaptiveOptimizerWithCache(
         : finalScore - initialScore,
     jointImproved,
     levels: levelMetrics,
+    transpositionHits: stats.transpositionHits,
+    transpositionPruned: stats.transpositionPruned,
+    transpositionAccepted: stats.transpositionAccepted,
+    transpositionReplacements: stats.transpositionReplacements,
   };
 
   return assembleResult(fallback, stats, options.resultCount, lsOptions !== null, bagLsOptions !== null, adaptiveMetrics);

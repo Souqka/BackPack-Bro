@@ -17,6 +17,7 @@
     "benchmark:optimizer:stage10": "tsx scripts/optimizer-stage10-report.ts",
     "benchmark:optimizer:stage11": "tsx scripts/optimizer-stage11-report.ts",
     "benchmark:optimizer:stage12": "tsx scripts/optimizer-stage12-report.ts",
+    "benchmark:optimizer:stage13": "tsx scripts/optimizer-stage13-report.ts",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

@@ -19,6 +19,7 @@ export interface ResolvedAdaptiveSearchOptions {
   resultCount: number;
   maxDurationMs?: number;
   scoreCache: boolean;
+  transposition: boolean;
 }
 
 export const DEFAULT_ADAPTIVE_SEARCH_OPTIONS: ResolvedAdaptiveSearchOptions = {
@@ -36,6 +37,7 @@ export const DEFAULT_ADAPTIVE_SEARCH_OPTIONS: ResolvedAdaptiveSearchOptions = {
   stableLevelsBeforeStop: 2,
   resultCount: 10,
   scoreCache: true,
+  transposition: true,
 };
 
 export function normalizeWidthLadder(widths: readonly number[]): number[] {
@@ -73,6 +75,7 @@ export function resolveAdaptiveSearchOptions(
   merged.maxBagSeeds = Math.max(1, Math.floor(merged.maxBagSeeds));
   merged.resultCount = Math.max(1, Math.floor(merged.resultCount));
   merged.scoreCache = merged.scoreCache !== false;
+  merged.transposition = merged.transposition !== false;
   return merged;
 }
 

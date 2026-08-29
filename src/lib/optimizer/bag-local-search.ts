@@ -45,6 +45,10 @@ export interface BagLocalSearchStats {
   durationMs: number;
   repairDurationMs: number;
   itemLocalSearchDurationMs: number;
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 }
 
 export function emptyBagLocalSearchStats(initialScore = Number.NEGATIVE_INFINITY): BagLocalSearchStats {
@@ -66,6 +70,10 @@ export function emptyBagLocalSearchStats(initialScore = Number.NEGATIVE_INFINITY
     durationMs: 0,
     repairDurationMs: 0,
     itemLocalSearchDurationMs: 0,
+    transpositionHits: 0,
+    transpositionPruned: 0,
+    transpositionAccepted: 0,
+    transpositionReplacements: 0,
   };
 }
 
@@ -89,6 +97,10 @@ export function mergeBagLocalSearchStats(parts: BagLocalSearchStats[]): BagLocal
     merged.durationMs += part.durationMs;
     merged.repairDurationMs += part.repairDurationMs;
     merged.itemLocalSearchDurationMs += part.itemLocalSearchDurationMs;
+    merged.transpositionHits += part.transpositionHits;
+    merged.transpositionPruned += part.transpositionPruned;
+    merged.transpositionAccepted += part.transpositionAccepted;
+    merged.transpositionReplacements += part.transpositionReplacements;
     if (part.finalScore > bestFinal) bestFinal = part.finalScore;
   }
   merged.finalScore = bestFinal;

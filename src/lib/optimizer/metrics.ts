@@ -27,6 +27,10 @@ export function createEmptyStats(): OptimizerStats {
     scoreCacheMisses: 0,
     scoreCacheEvaluations: 0,
     scoreCacheUniqueLayouts: 0,
+    transpositionHits: 0,
+    transpositionPruned: 0,
+    transpositionAccepted: 0,
+    transpositionReplacements: 0,
   };
 }
 
@@ -120,6 +124,10 @@ export function toOptimizerMetrics(
     scoreCacheMisses: result.stats.scoreCacheMisses,
     scoreCacheEvaluations: result.stats.scoreCacheEvaluations,
     scoreCacheUniqueLayouts: result.stats.scoreCacheUniqueLayouts,
+    transpositionHits: result.stats.transpositionHits,
+    transpositionPruned: result.stats.transpositionPruned,
+    transpositionAccepted: result.stats.transpositionAccepted,
+    transpositionReplacements: result.stats.transpositionReplacements,
   };
 }
 
