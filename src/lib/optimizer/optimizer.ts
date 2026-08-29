@@ -48,6 +48,13 @@ import type {
 } from "./search-types.ts";
 import { DEFAULT_OPTIMIZER_OPTIONS } from "./search-types.ts";
 import { getOptimizerStateSignature } from "./signature.ts";
+import { getItemPartialStateSignature } from "./state-signature.ts";
+import {
+  addTranspositionMetrics,
+  createTranspositionTable,
+  pruneIfSeen,
+  withTranspositionEnabled,
+} from "./transposition.ts";
 import { addCandidate, createSearchState } from "./state.ts";
 import { DEFAULT_BACKPACK, type Backpack, type ItemToPlace } from "./types.ts";
 
@@ -64,7 +71,9 @@ interface ResolvedOptimizerInput {
 export function runOptimizer(input: RunOptimizerInput): OptimizerResult {
   const resolved = resolveInput(input);
   const cache = createScoreCache({ enabled: resolved.options.scoreCache !== false });
-  return withActiveScoreCache(cache, () => runOptimizerWithCache(resolved));
+  return withTranspositionEnabled(resolved.options.transposition !== false, () =>
+    withActiveScoreCache(cache, () => runOptimizerWithCache(resolved)),
+  );
 }
 
 function runOptimizerWithCache(resolved: ResolvedOptimizerInput): OptimizerResult {
@@ -191,6 +200,7 @@ function runBeamOptimizer(
         beamWidth: input.options.itemBeamWidth,
         deadlineMs,
         dynamicOrdering: input.options.dynamicOrdering,
+        transposition: input.options.transposition,
       },
       stats,
     );
@@ -267,6 +277,7 @@ function runStaticItemBeam(
   let beam: OptimizerState[] = [initialState];
   const unplaced: ItemToPlace[] = [];
   let depth = initialState.items.items.length;
+  const table = createTranspositionTable({ enabled: options.transposition });
 
   for (let index = 0; index < ordered.length; index++) {
     const item = ordered[index]!;
@@ -302,6 +313,12 @@ function runStaticItemBeam(
           stats.itemStatesPruned += 1;
           continue;
         }
+        if (
+          pruneIfSeen(table, getItemPartialStateSignature(nextState, remainingAfter))
+        ) {
+          stats.itemStatesPruned += 1;
+          continue;
+        }
         const heuristic = evaluatePartialState(nextState, remainingAfter, catalog);
         if (!heuristic.feasible) {
           stats.itemStatesPruned += 1;
@@ -327,6 +344,7 @@ function runStaticItemBeam(
   }
 
   stats.searchDepth = Math.max(stats.searchDepth, depth);
+  addTranspositionMetrics(stats, table.snapshot());
   const finalNodes = beam.map((state) => ({ state, unplacedItems: unplaced }));
   const best = pickBestItemState(beam, catalog);
   return { bestState: best, unplacedItems: unplaced, finalNodes };
@@ -348,6 +366,7 @@ function runDynamicItemBeam(
   let beam: DynamicNode[] = [{ state: initialState, remaining: [...items], unplaced: [] }];
   let depth = initialState.items.items.length;
   let guard = items.length + 1;
+  const table = createTranspositionTable({ enabled: options.transposition });
 
   while (guard > 0 && beam.some((node) => node.remaining.length > 0)) {
     guard -= 1;
@@ -363,6 +382,10 @@ function runDynamicItemBeam(
     const expanded: ScoredBeamState<DynamicNode>[] = [];
     for (const node of beam) {
       if (node.remaining.length === 0) {
+        if (pruneIfSeen(table, getItemPartialStateSignature(node.state, [], node.unplaced))) {
+          stats.itemStatesPruned += 1;
+          continue;
+        }
         expanded.push({
           state: node,
           score: evaluatePartialState(node.state, [], catalog).total,
@@ -391,6 +414,9 @@ function runDynamicItemBeam(
           remaining: rest,
           unplaced: [...node.unplaced, nextItem],
         };
+        if (pruneIfSeen(table, getItemPartialStateSignature(skipped.state, rest, skipped.unplaced))) {
+          continue;
+        }
         expanded.push({
           state: skipped,
           score: evaluatePartialState(skipped.state, rest, catalog).total,
@@ -412,17 +438,21 @@ function runDynamicItemBeam(
           stats.itemStatesPruned += 1;
           continue;
         }
+        const placed: DynamicNode = {
+          state: nextState,
+          remaining: rest,
+          unplaced: node.unplaced,
+        };
+        if (pruneIfSeen(table, getItemPartialStateSignature(placed.state, rest, placed.unplaced))) {
+          stats.itemStatesPruned += 1;
+          continue;
+        }
         const heuristic = evaluatePartialState(nextState, rest, catalog);
         if (!heuristic.feasible) {
           stats.itemStatesPruned += 1;
           continue;
         }
         stats.itemStatesGenerated += 1;
-        const placed: DynamicNode = {
-          state: nextState,
-          remaining: rest,
-          unplaced: node.unplaced,
-        };
         expanded.push({
           state: placed,
           score: heuristic.total,
@@ -439,6 +469,7 @@ function runDynamicItemBeam(
   }
 
   stats.searchDepth = Math.max(stats.searchDepth, depth);
+  addTranspositionMetrics(stats, table.snapshot());
   const finalNodes = beam.map((node) => ({
     state: node.state,
     unplacedItems: node.unplaced.concat(node.remaining),
@@ -477,6 +508,7 @@ function searchBags(
     beamWidth: input.options.bagBeamWidth,
     stats,
     deadlineMs,
+    transposition: input.options.transposition,
   });
 }
 
@@ -595,6 +627,7 @@ function finish(args: {
     const improved = improveTopNJointly(ranked, args.catalog, resultCount, bagLsOptions);
     ranked = improved.layouts;
     bagLsStats = improved.stats;
+    addTranspositionMetrics(args.stats, bagLsStats);
   }
 
   const best = ranked[0]!;
@@ -696,6 +729,7 @@ function resolveInput(input: RunOptimizerInput): ResolvedOptimizerInput {
       ...DEFAULT_OPTIMIZER_OPTIONS,
       ...input.options,
       scoreCache: input.options?.scoreCache !== false,
+      transposition: input.options?.transposition !== false,
     },
   };
 }

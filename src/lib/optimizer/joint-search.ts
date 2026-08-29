@@ -66,6 +66,10 @@ export function runJointLocalSearch(
       stats.repairStatesPruned += candidate.repairStatesPruned;
       stats.repairDurationMs += candidate.repairDurationMs;
       stats.itemLocalSearchDurationMs += candidate.itemLocalSearchDurationMs;
+      stats.transpositionHits += candidate.transpositionHits;
+      stats.transpositionPruned += candidate.transpositionPruned;
+      stats.transpositionAccepted += candidate.transpositionAccepted;
+      stats.transpositionReplacements += candidate.transpositionReplacements;
       evaluated.push(candidate.layout);
     }
 
@@ -138,6 +142,10 @@ function evaluateBagNeighbor(
   repairStatesPruned: number;
   repairDurationMs: number;
   itemLocalSearchDurationMs: number;
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 } {
   const mutated: RankedLayout["state"] = {
     backpack: origin.state.backpack,
@@ -163,5 +171,9 @@ function evaluateBagNeighbor(
     repairStatesPruned: repaired.statesPruned,
     repairDurationMs: repaired.durationMs,
     itemLocalSearchDurationMs,
+    transpositionHits: repaired.transpositionHits,
+    transpositionPruned: repaired.transpositionPruned,
+    transpositionAccepted: repaired.transpositionAccepted,
+    transpositionReplacements: repaired.transpositionReplacements,
   };
 }

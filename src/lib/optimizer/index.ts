@@ -69,6 +69,19 @@ export {
   withActiveScoreCache,
 } from "./score-cache.ts";
 export type { ScoreCache, ScoreCacheMetrics } from "./score-cache.ts";
+export {
+  getBagPartialStateSignature,
+  getItemPartialStateSignature,
+  remainingMultisetSignature,
+} from "./state-signature.ts";
+export {
+  addTranspositionMetrics,
+  createTranspositionTable,
+  isTranspositionEnabled,
+  pruneIfSeen,
+  withTranspositionEnabled,
+} from "./transposition.ts";
+export type { TranspositionMetrics, TranspositionTable } from "./transposition.ts";
 export { incrementalScoringSupported } from "./layout-change.ts";
 export type { LayoutChange, LayoutChangeKind } from "./layout-change.ts";
 export {

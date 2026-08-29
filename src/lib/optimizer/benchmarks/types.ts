@@ -196,6 +196,40 @@ export interface Stage12CaseReport {
   cached: Stage12CacheRow;
 }
 
+export interface Stage13ModeRow {
+  label: string;
+  score: number;
+  stars: number;
+  complete: boolean;
+  signature: string;
+  durationMs: number;
+  statesGenerated: number;
+  statesPruned: number;
+  transpositionAccepted: number;
+  transpositionPruned: number;
+  transpositionHits: number;
+  transpositionReplacements: number;
+  scoreEvaluations: number;
+  scoreCacheHits: number;
+  scoreCacheMisses: number;
+  hitRate: number;
+  stopReason: string;
+}
+
+export interface Stage13CaseReport {
+  caseId: string;
+  name: string;
+  description: string;
+  scoreSame: boolean;
+  starsSame: boolean;
+  completeSame: boolean;
+  signatureSame: boolean;
+  stopReasonSame: boolean;
+  topNSame: boolean;
+  baseline: Stage13ModeRow;
+  pruned: Stage13ModeRow;
+}
+
 export interface Stage8Report {
   algorithms: AlgorithmComparisonRow[];
   beamWidths: BeamWidthRow[];

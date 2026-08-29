@@ -61,6 +61,12 @@ export interface OptimizerOptions {
    * Default true. false is only for uncached benchmark / identity tests.
    */
   scoreCache?: boolean;
+  /**
+   * Safe transposition pruning of equivalent partial states within one
+   * Beam / Repair invocation. Default true. false is for identity tests
+   * and the Stage 13 baseline. Not shared across Adaptive ladder widths.
+   */
+  transposition?: boolean;
 }
 
 export interface LocalSearchOptions {
@@ -80,6 +86,7 @@ export interface BeamSearchOptions {
   maxStates?: number;
   deadlineMs?: number;
   dynamicOrdering?: boolean;
+  transposition?: boolean;
 }
 
 export const DEFAULT_OPTIMIZER_OPTIONS: OptimizerOptions = {
@@ -92,6 +99,7 @@ export const DEFAULT_OPTIMIZER_OPTIONS: OptimizerOptions = {
   localSearch: false,
   bagLocalSearch: false,
   scoreCache: true,
+  transposition: true,
 };
 
 export const DEFAULT_DFS_LIMITS: DfsSearchLimits = {
@@ -122,6 +130,10 @@ export interface OptimizerStats {
   scoreCacheMisses: number;
   scoreCacheEvaluations: number;
   scoreCacheUniqueLayouts: number;
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 }
 
 /**
@@ -179,6 +191,10 @@ export interface OptimizerMetrics {
   scoreCacheMisses: number;
   scoreCacheEvaluations: number;
   scoreCacheUniqueLayouts: number;
+  transpositionHits: number;
+  transpositionPruned: number;
+  transpositionAccepted: number;
+  transpositionReplacements: number;
 }
 
 export interface OptimizerLayout {
