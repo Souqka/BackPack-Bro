@@ -10,9 +10,11 @@
 
 import type { Item } from "../../inventory/types.ts";
 import { runAdaptiveOptimizer } from "../adaptive-search.ts";
+import type { AdaptiveOptimizerResult } from "../adaptive-types.ts";
 import { analyzeHeuristicInversions } from "../metrics.ts";
 import { compareOptimizerResults } from "../compare.ts";
-import { runOptimizer } from "../optimizer.ts";
+import { getOptimizerStateSignature, runOptimizer } from "../optimizer.ts";
+import { scoreCacheHitRate } from "../score-cache.ts";
 import type { OptimizerOptions, OptimizerResult } from "../search-types.ts";
 import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE9_BEAM_WIDTHS, STAGE10_BENCHMARK_CASES, STAGE11_BENCHMARK_CASES } from "./cases.ts";
 import { requireMetrics, toBeamWidthRow } from "./metrics.ts";
@@ -27,6 +29,8 @@ import type {
   Stage10ModeRow,
   Stage11CaseReport,
   Stage11ModeRow,
+  Stage12CacheRow,
+  Stage12CaseReport,
 } from "./types.ts";
 
 export function runBenchmarkCase(
@@ -440,4 +444,65 @@ export function buildStage11Report(catalog: Map<string, Item>): Stage11CaseRepor
       }),
     };
   });
+}
+
+/**
+ * Stage 12: Adaptive uncached vs cached on G–O.
+ * Uncached is a benchmark-only flag, not the public default.
+ */
+export function buildStage12Report(catalog: Map<string, Item>): Stage12CaseReport[] {
+  return STAGE11_BENCHMARK_CASES.map((entry) => {
+    const input = {
+      inventory: entry.inventory,
+      bags: entry.bags,
+      items: entry.items,
+      catalog,
+      options: { metrics: true, dynamicOrdering: false },
+    };
+    const uncached = runAdaptiveOptimizer(input, { scoreCache: false });
+    const cached = runAdaptiveOptimizer(input);
+    const uncachedRow = stage12CacheRow("uncached", uncached);
+    const cachedRow = stage12CacheRow("cached", cached);
+    const cachedSignatures = [
+      getOptimizerStateSignature(cached.bestState),
+      ...cached.alternatives.map((entry) => entry.signature),
+    ];
+    const uncachedSignatures = [
+      getOptimizerStateSignature(uncached.bestState),
+      ...uncached.alternatives.map((entry) => entry.signature),
+    ];
+    return {
+      caseId: entry.id,
+      name: entry.name,
+      description: entry.description,
+      scoreSame: cached.metrics.finalScore === uncached.metrics.finalScore,
+      starsSame: cached.metrics.activatedStars === uncached.metrics.activatedStars,
+      completeSame: cached.complete === uncached.complete,
+      signatureSame: cachedRow.signature === uncachedRow.signature,
+      stopReasonSame: cached.adaptive.stopReason === uncached.adaptive.stopReason,
+      topNSame: cachedSignatures.join("|") === uncachedSignatures.join("|"),
+      uncached: uncachedRow,
+      cached: cachedRow,
+    };
+  });
+}
+
+function stage12CacheRow(label: string, result: AdaptiveOptimizerResult): Stage12CacheRow {
+  const metrics = result.metrics;
+  return {
+    label,
+    score: metrics.finalScore,
+    stars: metrics.activatedStars,
+    complete: result.complete,
+    signature: getOptimizerStateSignature(result.bestState),
+    durationMs: metrics.durationMs,
+    evaluations: metrics.scoreCacheEvaluations,
+    hits: metrics.scoreCacheHits,
+    misses: metrics.scoreCacheMisses,
+    uniqueLayouts: metrics.scoreCacheUniqueLayouts,
+    hitRate: scoreCacheHitRate({ hits: metrics.scoreCacheHits, evaluations: metrics.scoreCacheEvaluations }),
+    placed: metrics.placedItems,
+    unplaced: metrics.unplacedItems,
+    stopReason: result.adaptive.stopReason,
+  };
 }

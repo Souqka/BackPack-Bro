@@ -6,7 +6,6 @@
  */
 
 import type { Item } from "../inventory/types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
 import { emptyEffectCoverage, invalidBreakdown } from "../scoring/score.ts";
 import { INVALID_PLACEMENT_SCORE } from "../scoring/weights.ts";
 import { emptyBagState } from "./bags/index.ts";
@@ -29,6 +28,12 @@ import { improveTopNJointly } from "./joint-search.ts";
 import { createEmptyStats, toOptimizerMetrics } from "./metrics.ts";
 import { orderItemsForSearch } from "./ordering.ts";
 import { sortRankedLayouts } from "./rank.ts";
+import {
+  applyScoreCacheMetrics,
+  createScoreCache,
+  scoreLayout,
+  withActiveScoreCache,
+} from "./score-cache.ts";
 import type {
   BeamSearchOptions,
   OptimizerAlgorithm,
@@ -57,8 +62,13 @@ interface ResolvedOptimizerInput {
 }
 
 export function runOptimizer(input: RunOptimizerInput): OptimizerResult {
-  const started = Date.now();
   const resolved = resolveInput(input);
+  const cache = createScoreCache({ enabled: resolved.options.scoreCache !== false });
+  return withActiveScoreCache(cache, () => runOptimizerWithCache(resolved));
+}
+
+function runOptimizerWithCache(resolved: ResolvedOptimizerInput): OptimizerResult {
+  const started = Date.now();
   const deadlineMs =
     resolved.options.maxDurationMs !== undefined ? started + resolved.options.maxDurationMs : undefined;
   const stats = createEmptyStats();
@@ -475,10 +485,7 @@ function pickBestItemState(beam: OptimizerState[], catalog: Map<string, Item>): 
     throw new Error("Пустой beam");
   }
   const ranked = beam.map((state) => {
-    const scored = analyzePlacementScore(
-      { inventory: state.backpack, items: state.items.items },
-      catalog,
-    );
+    const scored = scoreLayout(state, catalog);
     return {
       state,
       score: scored.valid ? scored.score : Number.NEGATIVE_INFINITY,
@@ -538,7 +545,7 @@ function scoreOrInvalid(state: OptimizerState, catalog: Map<string, Item>) {
       graph: { nodes: [], edges: [] },
     };
   }
-  return analyzePlacementScore({ inventory: state.backpack, items: state.items.items }, catalog);
+  return scoreLayout(state, catalog);
 }
 
 function invalidEmptyLayout(
@@ -591,6 +598,7 @@ function finish(args: {
   }
 
   const best = ranked[0]!;
+  applyScoreCacheMetrics(args.stats);
   args.stats.durationMs = Date.now() - args.started;
   const top = ranked.slice(0, resultCount);
   const layout = toLayout(best);
@@ -684,7 +692,11 @@ function resolveInput(input: RunOptimizerInput): ResolvedOptimizerInput {
     bags: input.bags,
     items: input.items,
     catalog: input.catalog ?? loadProductionCatalog(),
-    options: { ...DEFAULT_OPTIMIZER_OPTIONS, ...input.options },
+    options: {
+      ...DEFAULT_OPTIMIZER_OPTIONS,
+      ...input.options,
+      scoreCache: input.options?.scoreCache !== false,
+    },
   };
 }
 

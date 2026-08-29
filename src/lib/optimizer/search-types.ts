@@ -56,6 +56,11 @@ export interface OptimizerOptions {
   bagLocalSearchIterations?: number;
   /** Bounded Beam width for repairing displaced Items after a Bag mutation. */
   bagRepairBeamWidth?: number;
+  /**
+   * Memoize PlacementScore for identical layouts within this run.
+   * Default true. false is only for uncached benchmark / identity tests.
+   */
+  scoreCache?: boolean;
 }
 
 export interface LocalSearchOptions {
@@ -86,6 +91,7 @@ export const DEFAULT_OPTIMIZER_OPTIONS: OptimizerOptions = {
   metrics: true,
   localSearch: false,
   bagLocalSearch: false,
+  scoreCache: true,
 };
 
 export const DEFAULT_DFS_LIMITS: DfsSearchLimits = {
@@ -112,6 +118,10 @@ export interface OptimizerStats {
   candidatesGenerated: number;
   searchDepth: number;
   durationMs: number;
+  scoreCacheHits: number;
+  scoreCacheMisses: number;
+  scoreCacheEvaluations: number;
+  scoreCacheUniqueLayouts: number;
 }
 
 /**
@@ -165,6 +175,10 @@ export interface OptimizerMetrics {
   bagLocalSearchDurationMs: number;
   repairDurationMs: number;
   bagItemLocalSearchDurationMs: number;
+  scoreCacheHits: number;
+  scoreCacheMisses: number;
+  scoreCacheEvaluations: number;
+  scoreCacheUniqueLayouts: number;
 }
 
 export interface OptimizerLayout {

@@ -25,6 +25,11 @@ export interface AdaptiveSearchOptions {
   stableLevelsBeforeStop?: number | false;
   resultCount?: number;
   maxDurationMs?: number;
+  /**
+   * Shared score cache for the whole Adaptive run (all ladder levels).
+   * Default true. false is only for uncached benchmark / identity tests.
+   */
+  scoreCache?: boolean;
 }
 
 export interface AdaptiveLevelMetrics {

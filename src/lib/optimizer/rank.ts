@@ -16,9 +16,9 @@
  */
 
 import type { Item } from "../inventory/types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
 import { emptyEffectCoverage, invalidBreakdown } from "../scoring/score.ts";
 import { INVALID_PLACEMENT_SCORE } from "../scoring/weights.ts";
+import { scoreLayout } from "./score-cache.ts";
 import type { OptimizerState, RankedLayout } from "./search-types.ts";
 import { getOptimizerStateSignature } from "./signature.ts";
 import type { ItemToPlace } from "./types.ts";
@@ -117,7 +117,7 @@ export function buildRankedLayout(
           synergies: [],
           graph: { nodes: [], edges: [] },
         }
-      : analyzePlacementScore({ inventory: state.backpack, items: state.items.items }, catalog);
+      : scoreLayout(state, catalog);
   return {
     state,
     score,

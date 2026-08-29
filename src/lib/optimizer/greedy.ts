@@ -23,8 +23,8 @@ import type {
 import { getOptimizerStateSignature } from "./signature.ts";
 import { addCandidate, createSearchState } from "./state.ts";
 import type { Backpack, ItemToPlace } from "./types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
 import { orderBags } from "./bags/order.ts";
+import { scoreLayout } from "./score-cache.ts";
 
 export { orderBags };
 
@@ -188,10 +188,7 @@ function toRanked(
   unplacedBags: ItemToPlace[],
   catalog: Map<string, Item>,
 ): RankedLayout {
-  const score = analyzePlacementScore(
-    { inventory: state.backpack, items: state.items.items },
-    catalog,
-  );
+  const score = scoreLayout(state, catalog);
   return {
     state,
     score,

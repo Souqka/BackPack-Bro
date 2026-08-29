@@ -8,6 +8,7 @@
 
 import type { Item } from "../inventory/types.ts";
 import { resolveAdaptiveSearchOptions, zipSearchLevels } from "./adaptive-options.ts";
+import type { ResolvedAdaptiveSearchOptions } from "./adaptive-options.ts";
 import type {
   AdaptiveLevelMetrics,
   AdaptiveOptimizerResult,
@@ -33,6 +34,7 @@ import { loadProductionCatalog } from "./load-catalog.ts";
 import { createEmptyStats, toOptimizerMetrics } from "./metrics.ts";
 import { runBeamSearch } from "./optimizer.ts";
 import { buildRankedLayout, isStrictlyBetterLayout, sortRankedLayouts } from "./rank.ts";
+import { applyScoreCacheMetrics, createScoreCache, withActiveScoreCache } from "./score-cache.ts";
 import type {
   OptimizerAlternative,
   OptimizerLayout,
@@ -52,7 +54,17 @@ export function runAdaptiveOptimizer(
   const options = resolveAdaptiveSearchOptions({
     ...adaptive,
     maxDurationMs: adaptive?.maxDurationMs ?? input.options?.maxDurationMs,
+    scoreCache: adaptive?.scoreCache ?? input.options?.scoreCache,
   });
+  const cache = createScoreCache({ enabled: options.scoreCache !== false });
+  return withActiveScoreCache(cache, () => runAdaptiveOptimizerWithCache(input, options, started));
+}
+
+function runAdaptiveOptimizerWithCache(
+  input: RunOptimizerInput,
+  options: ResolvedAdaptiveSearchOptions,
+  started: number,
+): AdaptiveOptimizerResult {
   const catalog = input.catalog ?? loadProductionCatalog();
   const backpack = input.backpack ?? input.inventory ?? DEFAULT_BACKPACK;
   validateAdaptiveInput(backpack, input.bags, input.items, catalog);
@@ -312,6 +324,7 @@ function assembleResult(
   bagLocalSearchEnabled: boolean,
   adaptive: AdaptiveSearchMetrics,
 ): AdaptiveOptimizerResult {
+  applyScoreCacheMetrics(stats);
   const best = ranked[0]!;
   const top = ranked.slice(0, resultCount);
   const layout = toLayout(best);
