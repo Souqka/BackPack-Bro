@@ -9,12 +9,13 @@ import type { Item } from "../inventory/types.ts";
 import { analyzePlacementScore } from "../scoring/analyzer.ts";
 import { emptyEffectCoverage, invalidBreakdown } from "../scoring/score.ts";
 import { INVALID_PLACEMENT_SCORE } from "../scoring/weights.ts";
-import { addBagCandidate, emptyBagState, generateBagCandidates, getBagStateSignature } from "./bags/index.ts";
+import { emptyBagState } from "./bags/index.ts";
+import { searchBagLayouts } from "./bags/search.ts";
 import type { BagState } from "./bags/types.ts";
 import { pastDeadline, selectBeam, type ScoredBeamState } from "./beam-search.ts";
 import { generatePlacementCandidates } from "./candidates.ts";
 import { runDfsSearch } from "./dfs.ts";
-import { runGreedySearch, orderBags } from "./greedy.ts";
+import { runGreedySearch } from "./greedy.ts";
 import { evaluatePartialState, remainingItemCells } from "./heuristic.ts";
 import { loadProductionCatalog } from "./load-catalog.ts";
 import {
@@ -459,51 +460,14 @@ function searchBags(
   stats: OptimizerStats,
   deadlineMs?: number,
 ): { layouts: BagState[]; unplacedBags: ItemToPlace[]; placedCount: number } {
-  const ordered = orderBags(input.bags, input.catalog);
-  let beam = [emptyBagState()];
-  const unplaced: ItemToPlace[] = [];
-
-  for (let index = 0; index < ordered.length; index++) {
-    const bag = ordered[index]!;
-    if (pastDeadline(deadlineMs)) {
-      unplaced.push(bag);
-      continue;
-    }
-    const expanded: ScoredBeamState<BagState>[] = [];
-    const remainingAfter = ordered.slice(index + 1);
-    for (const node of beam) {
-      const candidates = generateBagCandidates(bag, node, input.backpack, input.catalog);
-      stats.candidatesGenerated += candidates.length;
-      if (candidates.length === 0) {
-        stats.bagStatesPruned += 1;
-        continue;
-      }
-      for (const candidate of candidates) {
-        const next = addBagCandidate(node, candidate, input.backpack);
-        const remainingCells = remainingItemCells(remainingAfter, input.catalog);
-        const freeBackpack = input.backpack.rows * input.backpack.cols - next.occupiedCells.size;
-        if (remainingCells > freeBackpack) {
-          stats.bagStatesPruned += 1;
-          continue;
-        }
-        stats.bagStatesGenerated += 1;
-        expanded.push({
-          state: next,
-          score: next.availableCells.size - remainingAfter.length,
-          signature: getBagStateSignature(next),
-        });
-      }
-    }
-    if (expanded.length === 0) {
-      unplaced.push(bag);
-      continue;
-    }
-    const kept = selectBeam(expanded, { beamWidth: input.options.bagBeamWidth, deadlineMs });
-    stats.bagStatesPruned += Math.max(0, expanded.length - kept.length);
-    beam = kept.map((node) => node.state);
-  }
-
-  return { layouts: beam, unplacedBags: unplaced, placedCount: ordered.length - unplaced.length };
+  return searchBagLayouts({
+    backpack: input.backpack,
+    bags: input.bags,
+    catalog: input.catalog,
+    beamWidth: input.options.bagBeamWidth,
+    stats,
+    deadlineMs,
+  });
 }
 
 function pickBestItemState(beam: OptimizerState[], catalog: Map<string, Item>): OptimizerState {

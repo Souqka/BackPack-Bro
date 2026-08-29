@@ -13,7 +13,7 @@ export interface OptimizerState {
   items: SearchState;
 }
 
-export type OptimizerAlgorithm = "beam" | "greedy" | "dfs";
+export type OptimizerAlgorithm = "beam" | "greedy" | "dfs" | "adaptive";
 
 /**
  * Лимиты reference-DFS. Без них DFS не является bounded и не должен
