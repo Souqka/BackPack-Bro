@@ -211,6 +211,94 @@ export const STAGE10_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   },
 ];
 
+export const STAGE11_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "G-competing-stars")!,
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "H-multiple-bags")!,
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "I-geometry-trap")!,
+  STAGE9_BENCHMARK_CASES.find((entry) => entry.id === "J-bag-item-topology")!,
+  STAGE10_BENCHMARK_CASES.find((entry) => entry.id === "K-displaced-repair")!,
+  {
+    id: "L-multistart",
+    name: "Multi-start Bag topology",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "medium_bag" },
+      { instanceId: "bag-b", itemId: "fanny_pack" },
+      { instanceId: "bag-c", itemId: "fanny_pack" },
+    ],
+    items: [
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "ore", itemId: "adamantite_ore" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["medium_bag", "fanny_pack", "fanny_pack"],
+    itemIds: ["adamantite_bar", "adamantite_ore", "starbloom"],
+    expected: { minScore: 1, minActiveStars: 1 },
+    options: { bagBeamWidth: 20, itemBeamWidth: 20 },
+    description:
+      "Medium Bag + две Fanny Pack: один лучший Bag seed может не дать лучший Item layout, разнообразный второй seed — даёт.",
+  },
+  {
+    id: "M-stable-stop",
+    name: "Stable early stop",
+    inventory: GRID,
+    bags: [{ instanceId: "bag", itemId: "medium_bag" }],
+    items: [
+      { instanceId: "ore-1", itemId: "adamantite_ore" },
+      { instanceId: "ore-2", itemId: "adamantite_ore" },
+    ],
+    bagIds: ["medium_bag"],
+    itemIds: ["adamantite_ore", "adamantite_ore"],
+    expected: { minScore: 0, minActiveStars: 0 },
+    options: { bagBeamWidth: 8, itemBeamWidth: 8 },
+    description:
+      "Две Ore в Medium Bag: Beam(1) уже complete. Escalation выше 1–5 не должна тратить budget до 20.",
+  },
+  {
+    id: "N-escalation",
+    name: "Escalation required",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "warrior_backpack" },
+      { instanceId: "bag-b", itemId: "medium_bag" },
+    ],
+    items: [
+      { instanceId: "bar-1", itemId: "adamantite_bar" },
+      { instanceId: "bar-2", itemId: "adamantite_bar" },
+      { instanceId: "bloom-1", itemId: "starbloom" },
+      { instanceId: "bloom-2", itemId: "starbloom" },
+    ],
+    bagIds: ["warrior_backpack", "medium_bag"],
+    itemIds: ["adamantite_bar", "adamantite_bar", "starbloom", "starbloom"],
+    expected: { minScore: 2, minActiveStars: 2 },
+    options: { bagBeamWidth: 50, itemBeamWidth: 50 },
+    description:
+      "Как G: Beam(1) слабее широкого Beam. Adaptive должен эскалировать budget и найти улучшение.",
+  },
+  {
+    id: "O-multi-bag-repair",
+    name: "Multiple Bags + Repair",
+    inventory: GRID,
+    bags: [
+      { instanceId: "bag-a", itemId: "warrior_backpack" },
+      { instanceId: "bag-b", itemId: "medium_bag" },
+      { instanceId: "bag-c", itemId: "fanny_pack" },
+    ],
+    items: [
+      { instanceId: "cat", itemId: "black_cat" },
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "ore", itemId: "adamantite_ore" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["warrior_backpack", "medium_bag", "fanny_pack"],
+    itemIds: ["black_cat", "adamantite_bar", "adamantite_ore", "starbloom"],
+    expected: { minScore: 1, minActiveStars: 1 },
+    options: { bagBeamWidth: 20, itemBeamWidth: 20 },
+    description:
+      "Три Bags разной геометрии: topology влияет на availableCells, Joint/repair может сдвигать Bags.",
+  },
+];
+
 export const SMOKE_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   {
     id: "smoke-5",
@@ -294,6 +382,7 @@ export function getBenchmarkCase(id: string): OptimizerBenchmarkCase {
     ...OPTIMIZER_BENCHMARK_CASES,
     ...STAGE9_BENCHMARK_CASES,
     ...STAGE10_BENCHMARK_CASES,
+    ...STAGE11_BENCHMARK_CASES,
     ...SMOKE_BENCHMARK_CASES,
   ].find((entry) => entry.id === id);
   if (!found) throw new Error(`Неизвестный benchmark case: ${id}`);

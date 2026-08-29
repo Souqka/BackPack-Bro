@@ -9,11 +9,12 @@
  */
 
 import type { Item } from "../../inventory/types.ts";
+import { runAdaptiveOptimizer } from "../adaptive-search.ts";
 import { analyzeHeuristicInversions } from "../metrics.ts";
 import { compareOptimizerResults } from "../compare.ts";
 import { runOptimizer } from "../optimizer.ts";
 import type { OptimizerOptions, OptimizerResult } from "../search-types.ts";
-import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE9_BEAM_WIDTHS, STAGE10_BENCHMARK_CASES } from "./cases.ts";
+import { BEAM_WIDTHS, OPTIMIZER_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE9_BEAM_WIDTHS, STAGE10_BENCHMARK_CASES, STAGE11_BENCHMARK_CASES } from "./cases.ts";
 import { requireMetrics, toBeamWidthRow } from "./metrics.ts";
 import type {
   AlgorithmComparisonRow,
@@ -24,6 +25,8 @@ import type {
   Stage9CaseReport,
   Stage10CaseReport,
   Stage10ModeRow,
+  Stage11CaseReport,
+  Stage11ModeRow,
 } from "./types.ts";
 
 export function runBenchmarkCase(
@@ -359,6 +362,82 @@ export function buildStage10Report(catalog: Map<string, Item>): Stage10CaseRepor
       beam1ItemLs: stage10ModeRow("Beam(1)+Item LS", beam1ItemLs),
       beam1Joint: stage10ModeRow("Beam(1)+Joint Bag LS", beam1Joint),
       beam20: stage10ModeRow("Beam(20)", beam20),
+    };
+  });
+}
+
+function stage11ModeRow(
+  label: string,
+  result: OptimizerResult,
+  extra?: { bagSeeds?: number; escalationSteps?: number; stopReason?: string },
+): Stage11ModeRow {
+  const metrics = requireMetrics(result);
+  return {
+    label,
+    score: metrics.finalScore,
+    stars: metrics.activatedStars,
+    complete: metrics.complete,
+    placed: metrics.placedItems,
+    unplaced: metrics.unplacedItems,
+    durationMs: metrics.durationMs,
+    states: metrics.statesGenerated,
+    bagSeeds: extra?.bagSeeds ?? 0,
+    escalationSteps: extra?.escalationSteps ?? 0,
+    stopReason: extra?.stopReason ?? "n/a",
+  };
+}
+
+/**
+ * Stage 11: Beam(1) vs Beam(20) vs Joint vs Adaptive Portfolio on G–O.
+ */
+export function buildStage11Report(catalog: Map<string, Item>): Stage11CaseReport[] {
+  return STAGE11_BENCHMARK_CASES.map((entry) => {
+    const beam1 = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 1,
+      itemBeamWidth: 1,
+      localSearch: false,
+      bagLocalSearch: false,
+    });
+    const beam20 = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 20,
+      itemBeamWidth: 20,
+      localSearch: false,
+      bagLocalSearch: false,
+    });
+    const joint = runBenchmarkCase(entry, catalog, {
+      algorithm: "beam",
+      bagBeamWidth: 1,
+      itemBeamWidth: 1,
+      localSearch: true,
+      bagLocalSearch: true,
+      resultCount: 10,
+    });
+    const adaptive = runAdaptiveOptimizer(
+      {
+        inventory: entry.inventory,
+        bags: entry.bags,
+        items: entry.items,
+        catalog,
+        options: { metrics: true, dynamicOrdering: false },
+      },
+    );
+    return {
+      caseId: entry.id,
+      name: entry.name,
+      description: entry.description,
+      beam1: stage11ModeRow("Beam(1)", beam1),
+      beam20: stage11ModeRow("Beam(20)", beam20),
+      joint: stage11ModeRow("Joint", joint, {
+        bagSeeds: 1,
+        stopReason: "n/a",
+      }),
+      adaptive: stage11ModeRow("Adaptive", adaptive, {
+        bagSeeds: adaptive.adaptive.bagSeedsSelected,
+        escalationSteps: adaptive.adaptive.escalationSteps,
+        stopReason: adaptive.adaptive.stopReason,
+      }),
     };
   });
 }

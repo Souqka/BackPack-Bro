@@ -14,7 +14,6 @@ import type { BagState } from "./bags/types.ts";
 import { generatePlacementCandidates } from "./candidates.ts";
 import { evaluatePartialState, remainingItemCells } from "./heuristic.ts";
 import { orderItemsForSearch } from "./ordering.ts";
-import { getUniqueRotations } from "./rotations.ts";
 import type {
   OptimizerOptions,
   OptimizerState,
@@ -25,6 +24,9 @@ import { getOptimizerStateSignature } from "./signature.ts";
 import { addCandidate, createSearchState } from "./state.ts";
 import type { Backpack, ItemToPlace } from "./types.ts";
 import { analyzePlacementScore } from "../scoring/analyzer.ts";
+import { orderBags } from "./bags/order.ts";
+
+export { orderBags };
 
 export interface GreedySearchInput {
   backpack: Backpack;
@@ -178,20 +180,6 @@ function placeBagsGreedy(
   }
 
   return { state, unplaced };
-}
-
-export function orderBags(bags: ItemToPlace[], catalog: Map<string, Item>): ItemToPlace[] {
-  return [...bags].sort((a, b) => {
-    const itemA = catalog.get(a.itemId);
-    const itemB = catalog.get(b.itemId);
-    const cellsA = itemA?.geometry.cells.length ?? 0;
-    const cellsB = itemB?.geometry.cells.length ?? 0;
-    if (cellsA !== cellsB) return cellsB - cellsA;
-    const rotA = itemA ? getUniqueRotations(itemA).length : 0;
-    const rotB = itemB ? getUniqueRotations(itemB).length : 0;
-    if (rotA !== rotB) return rotB - rotA;
-    return a.instanceId < b.instanceId ? -1 : a.instanceId > b.instanceId ? 1 : 0;
-  });
 }
 
 function toRanked(

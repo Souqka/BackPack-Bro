@@ -141,6 +141,30 @@ export interface Stage10CaseReport {
   beam20: Stage10ModeRow;
 }
 
+export interface Stage11ModeRow {
+  label: string;
+  score: number;
+  stars: number;
+  complete: boolean;
+  placed: number;
+  unplaced: number;
+  durationMs: number;
+  states: number;
+  bagSeeds: number;
+  escalationSteps: number;
+  stopReason: string;
+}
+
+export interface Stage11CaseReport {
+  caseId: string;
+  name: string;
+  description: string;
+  beam1: Stage11ModeRow;
+  beam20: Stage11ModeRow;
+  joint: Stage11ModeRow;
+  adaptive: Stage11ModeRow;
+}
+
 export interface Stage8Report {
   algorithms: AlgorithmComparisonRow[];
   beamWidths: BeamWidthRow[];

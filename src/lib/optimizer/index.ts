@@ -24,6 +24,8 @@ export { getStateSignature, getCandidateSignature } from "./deduplication.ts";
 export type { BagState, OccupiedBagCell, PlacedBag } from "./bags/types.ts";
 export { generateBagCandidates } from "./bags/candidates.ts";
 export { addBagCandidate, createBagState, emptyBagState, getAvailableCells, getBagStateSignature, removeBag } from "./bags/state.ts";
+export { orderBags } from "./bags/order.ts";
+export { searchBagLayouts } from "./bags/search.ts";
 
 export type {
   BeamSearchOptions,
@@ -74,3 +76,24 @@ export type { BagNeighbor, BagNeighborOperation } from "./bag-neighbors.ts";
 export { findDisplacedItems, findKeptItems, itemIsDisplaced, repairItemLayout } from "./repair.ts";
 export type { RepairOptions, RepairResult } from "./repair.ts";
 export { improveTopNJointly, runJointLocalSearch } from "./joint-search.ts";
+export {
+  DEFAULT_ADAPTIVE_SEARCH_OPTIONS,
+  normalizeWidthLadder,
+  resolveAdaptiveSearchOptions,
+  zipSearchLevels,
+} from "./adaptive-options.ts";
+export type {
+  AdaptiveLevelMetrics,
+  AdaptiveOptimizerResult,
+  AdaptiveSearchMetrics,
+  AdaptiveSearchOptions,
+  AdaptiveStopReason,
+} from "./adaptive-types.ts";
+export { runAdaptiveOptimizer } from "./adaptive-search.ts";
+export {
+  bagOccupiedCellKeys,
+  bagTopologySimilarity,
+  DEFAULT_BAG_SIMILARITY_THRESHOLD,
+  selectDiverseBagSeeds,
+} from "./bag-diversity.ts";
+export type { BagTopologySimilarity } from "./bag-diversity.ts";
