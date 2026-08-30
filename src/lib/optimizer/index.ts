@@ -15,10 +15,12 @@ export type {
 } from "./types.ts";
 export { DEFAULT_BACKPACK } from "./types.ts";
 
-export { getUniqueRotations } from "./rotations.ts";
+export { getUniqueRotations, getRotationDescriptors } from "./rotations.ts";
+export type { RotationDescriptor } from "./rotations.ts";
 export { createSearchState, addCandidate, removePlacement } from "./state.ts";
 export { canPlaceCandidate } from "./constraints.ts";
-export { generatePlacementCandidates } from "./candidates.ts";
+export { generatePlacementCandidates, withBaselineCandidateGeneration } from "./candidates.ts";
+export { generatePlacementCandidatesBaseline } from "./candidates.baseline.ts";
 export { getStateSignature, getCandidateSignature } from "./deduplication.ts";
 
 export type { BagState, OccupiedBagCell, PlacedBag } from "./bags/types.ts";
