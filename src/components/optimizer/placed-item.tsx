@@ -7,6 +7,7 @@ import {
   occupiedMaskStyle,
   type PlacementFootprint,
 } from "@/lib/ui/placement-view.ts";
+import type { ItemVisualRole } from "@/lib/ui/grid-interaction.ts";
 import type { OptimizedPlacement } from "@/lib/optimizer/api/types.ts";
 import { cn } from "@/lib/utils";
 
@@ -14,11 +15,13 @@ export function PlacedItem({
   placement,
   item,
   hovered = false,
+  role = "normal",
   onHover,
 }: {
   placement: OptimizedPlacement;
   item: CatalogItemView;
   hovered?: boolean;
+  role?: ItemVisualRole;
   onHover?: (instanceId: string | null) => void;
 }) {
   const footprint = footprintForPlacement(item, placement);
@@ -29,6 +32,7 @@ export function PlacedItem({
       item={item}
       footprint={footprint}
       hovered={hovered}
+      role={role}
       onHover={onHover}
     />
   );
@@ -39,12 +43,14 @@ function PlacedItemVisual({
   item,
   footprint,
   hovered,
+  role,
   onHover,
 }: {
   placement: OptimizedPlacement;
   item: CatalogItemView;
   footprint: PlacementFootprint;
   hovered: boolean;
+  role: ItemVisualRole;
   onHover?: (instanceId: string | null) => void;
 }) {
   const mask = occupiedMaskStyle(footprint);
@@ -59,6 +65,7 @@ function PlacedItemVisual({
       data-item-id={placement.itemId}
       data-rotation={placement.rotation}
       data-hovered={hovered ? "true" : "false"}
+      data-visual-role={role}
       data-min-row={footprint.minRow}
       data-min-col={footprint.minCol}
       data-max-row={footprint.maxRow}
@@ -69,7 +76,10 @@ function PlacedItemVisual({
       data-irregular={mask ? "true" : "false"}
       className={cn(
         "cursor-pointer overflow-hidden",
-        hovered && "brightness-125 drop-shadow-[0_0_8px_rgba(255,255,255,0.45)]",
+        role === "hovered" && "brightness-125 drop-shadow-[0_0_8px_rgba(255,255,255,0.45)]",
+        role === "source" && "brightness-110 drop-shadow-[0_0_8px_rgba(125,211,252,0.7)]",
+        role === "target" && "brightness-125 drop-shadow-[0_0_10px_rgba(252,211,77,0.8)]",
+        role === "dimmed" && "opacity-40",
       )}
       style={{ ...footprintBoxStyle(footprint), pointerEvents: "auto" }}
       onMouseEnter={() => onHover?.(placement.instanceId)}

@@ -64,6 +64,19 @@ export interface OptimizedLayout {
   unplacedBags: OptimizedInstance[];
 }
 
+export interface OptimizedStarActivation {
+  sourceInstanceId: string;
+  sourceItemId: string;
+  targetInstanceId: string;
+  targetItemId: string;
+  row: number;
+  col: number;
+}
+
+export interface OptimizerExplanation {
+  activatedStars: OptimizedStarActivation[];
+}
+
 export interface OptimizedLayoutResult {
   layout: OptimizedLayout;
   score: OptimizedScore;
@@ -75,6 +88,11 @@ export interface OptimizedLayoutResult {
    * Optional for backward compatibility with older serialized fixtures.
    */
   bagBonuses?: OptimizedActiveStat[];
+  /**
+   * Activated Star links from the Scoring Engine result for this layout.
+   * Optional for backward compatibility with older serialized fixtures.
+   */
+  explanation?: OptimizerExplanation;
 }
 
 export interface OptimizeInventoryExecution {
@@ -90,6 +108,11 @@ export interface OptimizeInventorySuccess {
   signature: string;
   results: OptimizedLayoutResult[];
   execution: OptimizeInventoryExecution;
+  /**
+   * Explanation of the best layout (same as `results[0].explanation`).
+   * Optional for backward compatibility with older serialized fixtures.
+   */
+  explanation?: OptimizerExplanation;
 }
 
 export interface OptimizeInventoryFailure {

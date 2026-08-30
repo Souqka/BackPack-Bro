@@ -1,6 +1,7 @@
 export { optimizeInventory } from "./service.ts";
 export { serializeOptimizerResult } from "./serialize.ts";
 export { extractBagBonuses } from "./bag-bonuses.ts";
+export { extractOptimizerExplanation } from "./explanation.ts";
 export { validateOptimizeInventoryInput } from "./validate.ts";
 export {
   DEFAULT_PRODUCTION_QUALITY,
@@ -20,6 +21,8 @@ export type {
   OptimizedLayoutResult,
   OptimizedPlacement,
   OptimizedScore,
+  OptimizedStarActivation,
+  OptimizerExplanation,
   OptimizeInventoryError,
   OptimizeInventoryExecution,
   OptimizeInventoryFailure,

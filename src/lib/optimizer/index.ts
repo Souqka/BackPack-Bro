@@ -143,6 +143,8 @@ export type {
   OptimizedLayoutResult,
   OptimizedPlacement,
   OptimizedScore,
+  OptimizedStarActivation,
+  OptimizerExplanation,
   OptimizeInventoryError,
   OptimizeInventoryExecution,
   OptimizeInventoryFailure,

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { TooltipProvider } from "../ui/tooltip.tsx";
 import { ActiveStats } from "./active-stats.tsx";
+import { ActiveSynergies } from "./active-synergies.tsx";
 import { BagBonuses } from "./bag-bonuses.tsx";
 import { BackpackGrid } from "./backpack-grid.tsx";
 import { ResultList } from "./result-list.tsx";
@@ -498,5 +499,158 @@ describe("result presentation", () => {
     expect(empty).toContain('data-testid="bag-bonuses-empty"');
     expect(empty).toContain("No active backpack bonuses");
     expect(empty).not.toContain('data-testid="bag-bonuses"');
+  });
+
+  it("renders Active Synergies from explanation data and a compact zero state", () => {
+    const explanation = {
+      activatedStars: [
+        {
+          sourceInstanceId: "item-1",
+          sourceItemId: "black_cat",
+          targetInstanceId: "item-0",
+          targetItemId: "adamantite_ore",
+          row: 1,
+          col: 3,
+        },
+      ],
+    };
+    const list = renderToStaticMarkup(
+      <ActiveSynergies
+        explanation={explanation}
+        catalog={catalog}
+        previewSynergyId={null}
+        selectedSynergyId={null}
+        onPreview={() => undefined}
+        onSelect={() => undefined}
+      />,
+    );
+    expect(list).toContain('data-testid="active-synergies"');
+    expect(list).toContain("Black Cat");
+    expect(list).toContain("Adamantite Ore");
+    expect(list).toContain('data-source-instance="item-1"');
+    expect(list).toContain('data-target-instance="item-0"');
+    expect(list).toContain('aria-pressed="false"');
+    const empty = renderToStaticMarkup(
+      <ActiveSynergies
+        explanation={{ activatedStars: [] }}
+        catalog={catalog}
+        previewSynergyId={null}
+        selectedSynergyId={null}
+        onPreview={() => undefined}
+        onSelect={() => undefined}
+      />,
+    );
+    expect(empty).toContain('data-testid="active-synergies-empty"');
+    expect(empty).toContain("No active Star synergies");
+    expect(empty).not.toContain('data-testid="active-synergies"');
+  });
+
+  it("keeps Top-N explanation tied to the selected result", () => {
+    const first = {
+      ...layoutResult,
+      explanation: {
+        activatedStars: [
+          {
+            sourceInstanceId: "item-1",
+            sourceItemId: "black_cat",
+            targetInstanceId: "item-0",
+            targetItemId: "adamantite_ore",
+            row: 1,
+            col: 3,
+          },
+        ],
+      },
+    };
+    const second: OptimizedLayoutResult = {
+      ...layoutResult,
+      signature: "sig-2",
+      score: { ...layoutResult.score, structuralScore: 0, activatedStars: 0 },
+      explanation: { activatedStars: [] },
+    };
+    const firstHtml = renderToStaticMarkup(
+      <ActiveSynergies
+        explanation={first.explanation}
+        catalog={catalog}
+        previewSynergyId={null}
+        selectedSynergyId={null}
+        onPreview={() => undefined}
+        onSelect={() => undefined}
+      />,
+    );
+    const secondHtml = renderToStaticMarkup(
+      <ActiveSynergies
+        explanation={second.explanation}
+        catalog={catalog}
+        previewSynergyId={null}
+        selectedSynergyId={null}
+        onPreview={() => undefined}
+        onSelect={() => undefined}
+      />,
+    );
+    expect(firstHtml).toContain("Black Cat");
+    expect(secondHtml).toContain("No active Star synergies");
+    expect(secondHtml).not.toContain("Black Cat");
+  });
+});
+
+describe("synergy grid highlight", () => {
+  const synergy = {
+    sourceInstanceId: "item-1",
+    sourceItemId: "black_cat",
+    targetInstanceId: "item-0",
+    targetItemId: "adamantite_ore",
+    row: 1,
+    col: 3,
+  };
+
+  it("highlights source and target, dims unrelated items, and emphasizes the star cell", () => {
+    const layout = {
+      rows: 6,
+      cols: 9,
+      bags: [],
+      items: [
+        { instanceId: "item-0", itemId: "adamantite_ore", row: 1, col: 2, rotation: 0 },
+        { instanceId: "item-1", itemId: "black_cat", row: 1, col: 3, rotation: 0 },
+        { instanceId: "item-2", itemId: "starbloom", row: 3, col: 3, rotation: 0 },
+      ],
+      unplacedItems: [],
+      unplacedBags: [],
+    };
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layout} catalog={catalog} activeSynergy={synergy} />
+      </TooltipProvider>,
+    );
+    expect(html).toContain('data-testid="synergy-highlight-layer"');
+    expect(html).toContain('data-synergy-role="source"');
+    expect(html).toContain('data-synergy-role="target"');
+    expect(html).toContain('data-visual-role="source"');
+    expect(html).toContain('data-visual-role="target"');
+    expect(html).toContain('data-visual-role="dimmed"');
+    expect(html).toContain('data-emphasized="true"');
+    expect(html).toContain('data-row="1"');
+    expect(html).toContain('data-col="3"');
+    expect(html).toContain('data-star-instance="item-1"');
+    expect(html).not.toContain('data-testid="item-name-label"');
+  });
+
+  it("keeps item hover stars when no synergy is active", () => {
+    const layout = {
+      rows: 6,
+      cols: 9,
+      bags: [],
+      items: [{ instanceId: "bar-a", itemId: "adamantite_bar", row: 2, col: 3, rotation: 0 }],
+      unplacedItems: [],
+      unplacedBags: [],
+    };
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layout} catalog={catalog} hoveredInstanceId="bar-a" />
+      </TooltipProvider>,
+    );
+    expect(html).toContain('data-testid="item-name-label"');
+    expect(html).toContain("star-marker");
+    expect(html).not.toContain('data-emphasized="true"');
+    expect(html).not.toContain('data-testid="synergy-highlight-layer"');
   });
 });

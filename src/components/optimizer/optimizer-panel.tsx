@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { optimizeBackpackAction } from "@/app/actions/optimize";
 import { ActiveStats } from "@/components/optimizer/active-stats";
+import { ActiveSynergies } from "@/components/optimizer/active-synergies";
 import { BagBonuses } from "@/components/optimizer/bag-bonuses";
 import { OptimizerControls } from "@/components/optimizer/optimizer-controls";
 import { BackpackGrid } from "@/components/optimizer/backpack-grid";
@@ -15,6 +16,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useOptimizer } from "@/hooks/use-optimizer";
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import { userFacingError } from "@/lib/ui/error-messages.ts";
+import { resolveActiveSynergy } from "@/lib/ui/grid-interaction.ts";
+import type { OptimizedLayoutResult, OptimizeInventorySuccess } from "@/lib/optimizer/api/types.ts";
+import type { Dispatch } from "react";
+import type { GridViewOptions, OptimizerUiAction } from "@/lib/ui/optimizer-state.ts";
 
 export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
   const catalogMap = useMemo(() => new Map(catalog.map((item) => [item.id, item])), [catalog]);
@@ -42,34 +47,92 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
             <AlertDescription>{userFacingError(state.error)}</AlertDescription>
           </Alert>
         ) : null}
-        <div className="flex w-fit max-w-full flex-col gap-2">
-          <ViewToggles
+        {state.result && selected ? (
+          <SelectedResultView
+            key={selected.signature}
+            result={state.result}
+            selected={selected}
+            catalog={catalogMap}
             view={state.view}
-            onChange={(option, value) => dispatch({ type: "SET_VIEW_OPTION", option, value })}
+            dispatch={dispatch}
           />
-          <div className="max-w-full overflow-x-auto">
-            <div className="w-fit rounded-lg border border-border bg-zinc-900 p-1.5">
-              <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} view={state.view} />
+        ) : (
+          <div className="flex w-fit max-w-full flex-col gap-2">
+            <ViewToggles
+              view={state.view}
+              onChange={(option, value) => dispatch({ type: "SET_VIEW_OPTION", option, value })}
+            />
+            <div className="max-w-full overflow-x-auto">
+              <div className="w-fit rounded-lg border border-border bg-zinc-900 p-1.5">
+                <BackpackGrid layout={null} catalog={catalogMap} view={state.view} />
+              </div>
             </div>
           </div>
-        </div>
-        {state.result && selected ? (
-          <>
-            <ResultSummary result={state.result} selected={selected} />
-            <ActiveStats
-              stats={selected.score.activeStats ?? []}
-              activatedStars={selected.score.activatedStars}
-            />
-            <BagBonuses bonuses={selected.bagBonuses ?? []} />
-            <ResultList
-              results={state.result.results}
-              selectedSignature={state.selectedSignature}
-              onSelect={(signature) => dispatch({ type: "SELECT_RESULT", signature })}
-            />
-            <UnplacedItems items={selected.layout.unplacedItems} catalog={catalogMap} />
-          </>
-        ) : null}
+        )}
       </div>
     </div>
+  );
+}
+
+function SelectedResultView({
+  result,
+  selected,
+  catalog,
+  view,
+  dispatch,
+}: {
+  result: OptimizeInventorySuccess;
+  selected: OptimizedLayoutResult;
+  catalog: Map<string, CatalogItemView>;
+  view: GridViewOptions;
+  dispatch: Dispatch<OptimizerUiAction>;
+}) {
+  const [hoveredInstanceId, setHoveredInstanceId] = useState<string | null>(null);
+  const [previewSynergyId, setPreviewSynergyId] = useState<string | null>(null);
+  const [selectedSynergyId, setSelectedSynergyId] = useState<string | null>(null);
+  const activations = selected.explanation?.activatedStars ?? [];
+  const activeSynergy = resolveActiveSynergy(activations, previewSynergyId, selectedSynergyId);
+
+  return (
+    <>
+      <div className="flex w-fit max-w-full flex-col gap-2">
+        <ViewToggles
+          view={view}
+          onChange={(option, value) => dispatch({ type: "SET_VIEW_OPTION", option, value })}
+        />
+        <div className="max-w-full overflow-x-auto">
+          <div className="w-fit rounded-lg border border-border bg-zinc-900 p-1.5">
+            <BackpackGrid
+              layout={selected.layout}
+              catalog={catalog}
+              view={view}
+              hoveredInstanceId={hoveredInstanceId}
+              onHoverInstance={setHoveredInstanceId}
+              activeSynergy={activeSynergy}
+            />
+          </div>
+        </div>
+      </div>
+      <ResultSummary result={result} selected={selected} />
+      <ActiveStats
+        stats={selected.score.activeStats ?? []}
+        activatedStars={selected.score.activatedStars}
+      />
+      <BagBonuses bonuses={selected.bagBonuses ?? []} />
+      <ActiveSynergies
+        explanation={selected.explanation}
+        catalog={catalog}
+        previewSynergyId={previewSynergyId}
+        selectedSynergyId={selectedSynergyId}
+        onPreview={setPreviewSynergyId}
+        onSelect={setSelectedSynergyId}
+      />
+      <ResultList
+        results={result.results}
+        selectedSignature={selected.signature}
+        onSelect={(signature) => dispatch({ type: "SELECT_RESULT", signature })}
+      />
+      <UnplacedItems items={selected.layout.unplacedItems} catalog={catalog} />
+    </>
   );
 }

@@ -6,10 +6,12 @@ export function StarMarker({
   row,
   col,
   instanceId,
+  emphasized = false,
 }: {
   row: number;
   col: number;
   instanceId: string;
+  emphasized?: boolean;
 }) {
   return (
     <span
@@ -17,8 +19,14 @@ export function StarMarker({
       data-star-instance={instanceId}
       data-row={row}
       data-col={col}
-      className="pointer-events-none text-amber-300"
-      style={starCellCenterStyle(row, col)}
+      data-emphasized={emphasized ? "true" : "false"}
+      className={emphasized ? "pointer-events-none text-amber-200" : "pointer-events-none text-amber-300"}
+      style={{
+        ...starCellCenterStyle(row, col),
+        ...(emphasized
+          ? { filter: "drop-shadow(0 0 6px rgba(252, 211, 77, 0.95))" }
+          : undefined),
+      }}
       aria-hidden
     >
       <svg viewBox="0 0 24 24" className="h-full w-full fill-current drop-shadow" aria-hidden>
