@@ -20,6 +20,13 @@ import {
   type IncrementalScoreContext,
 } from "../scoring/incremental/index.ts";
 import type { PlacementScore } from "../scoring/types.ts";
+import {
+  isSearchPipelineProfiling,
+  recordFullScoring,
+  recordIncrementalScoring,
+  recordScoreCacheHit,
+  recordScoreCacheMiss,
+} from "./search-profile.ts";
 import type { OptimizerState, OptimizerStats } from "./search-types.ts";
 import { getOptimizerStateSignature } from "./signature.ts";
 
@@ -151,8 +158,11 @@ function computePlacementScore(
   incremental?: IncrementalScoreContext | null,
 ): { score: PlacementScore; incremental?: IncrementalScoreResultMetrics } {
   const inventory = { inventory: state.backpack, items: state.items.items };
+  const profiling = isSearchPipelineProfiling();
   if (incremental && isIncrementalScoringEnabled()) {
+    const started = profiling ? performance.now() : 0;
     const result = tryIncrementalPlacementScore(state, catalog, incremental);
+    if (profiling) recordIncrementalScoring(performance.now() - started, result.mode);
     return {
       score: result.score,
       incremental: {
@@ -164,7 +174,10 @@ function computePlacementScore(
       },
     };
   }
-  return { score: analyzePlacementScore(inventory, catalog) };
+  const started = profiling ? performance.now() : 0;
+  const score = analyzePlacementScore(inventory, catalog);
+  if (profiling) recordFullScoring(performance.now() - started);
+  return { score };
 }
 
 interface IncrementalScoreResultMetrics {
@@ -238,18 +251,22 @@ class LayoutScoreCache implements ScoreCache {
     catalog: Map<string, Item>,
     incremental?: IncrementalScoreContext | null,
   ): PlacementScore {
+    const profiling = isSearchPipelineProfiling();
     const key = getScoreCacheKey(state);
     this.seen.add(key);
     if (this.enabled) {
       const cached = this.store.get(key);
       if (cached) {
         this.hits += 1;
+        if (profiling) recordScoreCacheHit(0);
         return cached;
       }
     }
+    const started = profiling ? performance.now() : 0;
     this.misses += 1;
     const computed = computePlacementScore(state, catalog, incremental);
     this.recordIncremental(computed.incremental);
+    if (profiling) recordScoreCacheMiss(performance.now() - started);
     if (!this.enabled) return computed.score;
     const frozen = freezePlacementScore(computed.score);
     this.store.set(key, frozen);

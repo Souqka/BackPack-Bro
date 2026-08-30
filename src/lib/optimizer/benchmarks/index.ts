@@ -41,6 +41,8 @@ export {
   QUALITY_CASE_META,
 } from "./coverage.ts";
 export { buildStage15Report } from "./suites/quality-suite.ts";
+export { buildStage16Report } from "./suites/stage16.ts";
+export { summarizePipeline } from "./incremental-decision.ts";
 export type {
   BenchmarkCategory,
   BestKnownSource,
