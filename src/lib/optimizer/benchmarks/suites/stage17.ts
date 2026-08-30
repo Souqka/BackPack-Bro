@@ -2,11 +2,11 @@
  * Compact Stage 17 production-API benchmark on existing suite cases.
  */
 
-import type { Item } from "../../inventory/types.ts";
-import { optimizeInventory } from "../api/service.ts";
-import type { ProductionQuality } from "../api/types.ts";
-import { getBenchmarkCase } from "./cases.ts";
-import type { OptimizerBenchmarkCase } from "./types.ts";
+import type { Item } from "../../../inventory/types.ts";
+import { optimizeInventory } from "../../api/service.ts";
+import type { ProductionQuality } from "../../api/types.ts";
+import { getBenchmarkCase } from "../cases.ts";
+import type { OptimizerBenchmarkCase } from "../types.ts";
 
 export const STAGE17_CASE_IDS = [
   "A-simple",
