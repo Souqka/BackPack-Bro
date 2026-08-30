@@ -121,13 +121,34 @@ export function occupiedMaskStyle(footprint: PlacementFootprint): Record<string,
   };
 }
 
-export function gridAreaStyle(footprint: PlacementFootprint): {
-  gridColumn: string;
-  gridRow: string;
-} {
+/** Pixel box in the --cell-size coordinate system. Origin is the grid top-left. */
+export function footprintBoxStyle(footprint: PlacementFootprint): Record<string, string> {
   return {
-    gridColumn: `${footprint.minCol + 1} / ${footprint.maxCol + 2}`,
-    gridRow: `${footprint.minRow + 1} / ${footprint.maxRow + 2}`,
+    position: "absolute",
+    top: `calc(var(--cell-size) * ${footprint.minRow})`,
+    left: `calc(var(--cell-size) * ${footprint.minCol})`,
+    width: `calc(var(--cell-size) * ${footprint.bboxCols})`,
+    height: `calc(var(--cell-size) * ${footprint.bboxRows})`,
+  };
+}
+
+export function cellBoxStyle(row: number, col: number): Record<string, string> {
+  return {
+    position: "absolute",
+    top: `calc(var(--cell-size) * ${row})`,
+    left: `calc(var(--cell-size) * ${col})`,
+    width: "var(--cell-size)",
+    height: "var(--cell-size)",
+  };
+}
+
+export function localCellBoxStyle(localRow: number, localCol: number): Record<string, string> {
+  return {
+    position: "absolute",
+    top: `calc(var(--cell-size) * ${localRow})`,
+    left: `calc(var(--cell-size) * ${localCol})`,
+    width: "var(--cell-size)",
+    height: "var(--cell-size)",
   };
 }
 

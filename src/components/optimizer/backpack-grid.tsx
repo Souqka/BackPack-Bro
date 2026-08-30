@@ -9,6 +9,7 @@ import { GRID_COLS, GRID_ROWS } from "@/lib/ui/constants.ts";
 import { buildGridModel } from "@/lib/ui/placement-view.ts";
 import type { OptimizedLayout } from "@/lib/optimizer/api/types.ts";
 import { cn } from "@/lib/utils";
+import type { CSSProperties } from "react";
 
 export function BackpackGrid({
   layout,
@@ -45,6 +46,11 @@ export function BackpackGrid({
         ),
       );
 
+  const boardStyle = {
+    "--grid-cols": cols,
+    "--grid-rows": rows,
+  } as CSSProperties;
+
   return (
     <div
       role="grid"
@@ -53,34 +59,52 @@ export function BackpackGrid({
       data-rows={rows}
       data-cols={cols}
       data-bags-only={bagsOnly ? "true" : "false"}
-      className={cn("relative grid w-full min-w-0 max-w-xl gap-0.5 rounded-lg border border-border bg-zinc-900 p-2")}
-      style={{
-        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
-      }}
+      className={cn("backpack-board")}
+      style={boardStyle}
     >
-      {grid.flatMap((line) =>
-        line.map((cell) => (
-          <BackpackCell
-            key={`${cell.row}:${cell.col}`}
-            row={cell.row}
-            col={cell.col}
-            bags={cell.bags}
-            items={cell.items}
-            stars={cell.stars}
-          />
-        )),
-      )}
-      {layout ? <BagLayer layout={layout} catalog={catalog} emphasize={bagsOnly} /> : null}
-      {layout && !bagsOnly ? <ItemLayer layout={layout} catalog={catalog} /> : null}
-      {stars.map((star) => (
-        <StarMarker
-          key={`${star.instanceId}:${star.row}:${star.col}`}
-          row={star.row}
-          col={star.col}
-          instanceId={star.instanceId}
-        />
-      ))}
+      <div
+        className="grid"
+        data-testid="backpack-cells"
+        style={{
+          gridTemplateColumns: `repeat(${cols}, var(--cell-size))`,
+          gridTemplateRows: `repeat(${rows}, var(--cell-size))`,
+        }}
+      >
+        {grid.flatMap((line) =>
+          line.map((cell) => (
+            <BackpackCell
+              key={`${cell.row}:${cell.col}`}
+              row={cell.row}
+              col={cell.col}
+              bags={cell.bags}
+              items={cell.items}
+              stars={cell.stars}
+            />
+          )),
+        )}
+      </div>
+      {layout ? (
+        <div className="backpack-layer" data-testid="bag-layer">
+          <BagLayer layout={layout} catalog={catalog} emphasize={bagsOnly} />
+        </div>
+      ) : null}
+      {layout && !bagsOnly ? (
+        <div className="backpack-layer" data-testid="item-layer">
+          <ItemLayer layout={layout} catalog={catalog} />
+        </div>
+      ) : null}
+      {stars.length > 0 ? (
+        <div className="backpack-layer pointer-events-none" data-testid="star-layer">
+          {stars.map((star) => (
+            <StarMarker
+              key={`${star.instanceId}:${star.row}:${star.col}`}
+              row={star.row}
+              col={star.col}
+              instanceId={star.instanceId}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

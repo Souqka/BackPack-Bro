@@ -20,7 +20,7 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
   const { state, dispatch, run, busy, selected } = useOptimizer(optimizeBackpackAction);
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)] lg:items-start">
+    <div className="grid gap-4 lg:grid-cols-[minmax(280px,320px)_minmax(0,1fr)] lg:items-start">
       <OptimizerControls
         catalog={catalogMap}
         state={state}
@@ -28,7 +28,7 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
         busy={busy}
         onOptimize={run}
       />
-      <div className="flex min-w-0 flex-col gap-4">
+      <div className="flex min-w-0 w-full max-w-xl flex-col gap-4">
         {state.status === "optimizing" ? (
           <div className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm" role="status">
             <Skeleton className="h-4 w-4 rounded-full" />
@@ -41,23 +41,29 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
             <AlertDescription>{userFacingError(state.error)}</AlertDescription>
           </Alert>
         ) : null}
-        <div className="flex items-center justify-end">
-          <Toggle
-            variant="outline"
-            size="sm"
-            pressed={state.bagsOnly}
-            onPressedChange={(pressed) => dispatch({ type: "SET_BAGS_ONLY", bagsOnly: pressed })}
-            aria-label="Bags only"
-            data-testid="bags-only-toggle"
-          >
-            Bags only
-          </Toggle>
+        <div className="flex w-fit max-w-full flex-col gap-2">
+          <div className="flex items-center justify-end">
+            <Toggle
+              variant="outline"
+              size="sm"
+              pressed={state.bagsOnly}
+              onPressedChange={(pressed) => dispatch({ type: "SET_BAGS_ONLY", bagsOnly: pressed })}
+              aria-label="Bags only"
+              data-testid="bags-only-toggle"
+            >
+              Bags only
+            </Toggle>
+          </div>
+          <div className="max-w-full overflow-x-auto">
+            <div className="w-fit rounded-lg border border-border bg-zinc-900 p-1.5">
+              <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} bagsOnly={state.bagsOnly} />
+            </div>
+          </div>
         </div>
-        <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} bagsOnly={state.bagsOnly} />
         {state.result && selected ? (
           <>
-            <ActiveStats stats={selected.score.activeStats ?? []} />
             <ResultSummary result={state.result} selected={selected} />
+            <ActiveStats stats={selected.score.activeStats ?? []} />
             <ResultList
               results={state.result.results}
               selectedSignature={state.selectedSignature}

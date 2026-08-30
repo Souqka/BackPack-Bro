@@ -1,5 +1,7 @@
 "use client";
 
+import { cellBoxStyle } from "@/lib/ui/placement-view.ts";
+
 export function StarMarker({
   row,
   col,
@@ -15,8 +17,8 @@ export function StarMarker({
       data-star-instance={instanceId}
       data-row={row}
       data-col={col}
-      className="pointer-events-none z-[3] flex items-start justify-end p-0.5 text-[10px] leading-none text-amber-300"
-      style={{ gridColumn: col + 1, gridRow: row + 1 }}
+      className="flex items-start justify-end p-0.5 text-[10px] leading-none text-amber-300"
+      style={cellBoxStyle(row, col)}
       aria-hidden
     >
       ★
