@@ -1,6 +1,9 @@
 "use client";
 
 import { BackpackCell } from "@/components/optimizer/backpack-cell";
+import { BagLayer } from "@/components/optimizer/bag-layer";
+import { ItemLayer } from "@/components/optimizer/item-layer";
+import { StarMarker } from "@/components/optimizer/star-marker";
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import { GRID_COLS, GRID_ROWS } from "@/lib/ui/constants.ts";
 import { buildGridModel } from "@/lib/ui/placement-view.ts";
@@ -10,9 +13,11 @@ import { cn } from "@/lib/utils";
 export function BackpackGrid({
   layout,
   catalog,
+  bagsOnly = false,
 }: {
   layout: OptimizedLayout | null;
   catalog: Map<string, CatalogItemView>;
+  bagsOnly?: boolean;
 }) {
   const rows = layout?.rows ?? GRID_ROWS;
   const cols = layout?.cols ?? GRID_COLS;
@@ -28,6 +33,18 @@ export function BackpackGrid({
         })),
       );
 
+  const stars = bagsOnly
+    ? []
+    : grid.flatMap((line) =>
+        line.flatMap((cell) =>
+          cell.stars.map((star) => ({
+            row: cell.row,
+            col: cell.col,
+            instanceId: star.instanceId,
+          })),
+        ),
+      );
+
   return (
     <div
       role="grid"
@@ -35,7 +52,8 @@ export function BackpackGrid({
       data-testid="backpack-grid"
       data-rows={rows}
       data-cols={cols}
-      className={cn("grid w-full min-w-0 max-w-xl gap-0.5 rounded-lg border border-border bg-zinc-900 p-2")}
+      data-bags-only={bagsOnly ? "true" : "false"}
+      className={cn("relative grid w-full min-w-0 max-w-xl gap-0.5 rounded-lg border border-border bg-zinc-900 p-2")}
       style={{
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
         gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
@@ -50,10 +68,19 @@ export function BackpackGrid({
             bags={cell.bags}
             items={cell.items}
             stars={cell.stars}
-            catalog={catalog}
           />
         )),
       )}
+      {layout ? <BagLayer layout={layout} catalog={catalog} emphasize={bagsOnly} /> : null}
+      {layout && !bagsOnly ? <ItemLayer layout={layout} catalog={catalog} /> : null}
+      {stars.map((star) => (
+        <StarMarker
+          key={`${star.instanceId}:${star.row}:${star.col}`}
+          row={star.row}
+          col={star.col}
+          instanceId={star.instanceId}
+        />
+      ))}
     </div>
   );
 }

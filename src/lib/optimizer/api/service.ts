@@ -21,5 +21,5 @@ export function optimizeInventory(
   }
   const runInput = toRunOptimizerInput(validated.value, resolvedCatalog);
   const adaptive = runAdaptiveOptimizer(runInput, validated.value.options.adaptive);
-  return serializeOptimizerResult(adaptive, validated.value.options.publicResultCount);
+  return serializeOptimizerResult(adaptive, validated.value.options.publicResultCount, resolvedCatalog);
 }

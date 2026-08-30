@@ -137,6 +137,7 @@ export {
   validateOptimizeInventoryInput,
 } from "./api/index.ts";
 export type {
+  OptimizedActiveStat,
   OptimizedInstance,
   OptimizedLayout,
   OptimizedLayoutResult,

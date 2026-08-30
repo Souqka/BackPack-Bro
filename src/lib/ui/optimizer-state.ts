@@ -20,6 +20,7 @@ export interface OptimizerUiState {
   result: OptimizeInventorySuccess | null;
   error: DisplayError | null;
   selectedSignature: string | null;
+  bagsOnly: boolean;
 }
 
 export const initialOptimizerState: OptimizerUiState = {
@@ -31,6 +32,7 @@ export const initialOptimizerState: OptimizerUiState = {
   result: null,
   error: null,
   selectedSignature: null,
+  bagsOnly: false,
 };
 
 export type OptimizerUiAction =
@@ -44,7 +46,8 @@ export type OptimizerUiAction =
   | { type: "OPTIMIZE_STARTED" }
   | { type: "OPTIMIZE_FINISHED"; result: OptimizeInventoryResult }
   | { type: "OPTIMIZE_UNEXPECTED" }
-  | { type: "SELECT_RESULT"; signature: string };
+  | { type: "SELECT_RESULT"; signature: string }
+  | { type: "SET_BAGS_ONLY"; bagsOnly: boolean };
 
 export function optimizerReducer(state: OptimizerUiState, action: OptimizerUiAction): OptimizerUiState {
   switch (action.type) {
@@ -98,6 +101,8 @@ export function optimizerReducer(state: OptimizerUiState, action: OptimizerUiAct
       if (!state.result) return state;
       if (!state.result.results.some((entry) => entry.signature === action.signature)) return state;
       return { ...state, selectedSignature: action.signature };
+    case "SET_BAGS_ONLY":
+      return { ...state, bagsOnly: action.bagsOnly };
   }
 }
 

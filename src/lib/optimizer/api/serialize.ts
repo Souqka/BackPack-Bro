@@ -9,6 +9,8 @@ import type { OptimizerAlternative, OptimizerLayout } from "../search-types.ts";
 import type { PlacementScore } from "../../scoring/types.ts";
 import type { ItemToPlace, PlacedItem } from "../types.ts";
 import type { PlacedBag } from "../bags/types.ts";
+import { extractActiveStats } from "./active-stats.ts";
+import type { Item } from "../../inventory/types.ts";
 import type {
   OptimizedInstance,
   OptimizedLayout,
@@ -21,6 +23,7 @@ import type {
 export function serializeOptimizerResult(
   result: AdaptiveOptimizerResult,
   publicResultCount: number,
+  catalog: Map<string, Item>,
 ): OptimizeInventorySuccess {
   const rows = result.bestState.backpack.rows;
   const cols = result.bestState.backpack.cols;
@@ -34,8 +37,9 @@ export function serializeOptimizerResult(
       getOptimizerStateSignature(result.bestState),
       rows,
       cols,
+      catalog,
     ),
-    ...result.alternatives.map((entry) => alternativeToLayoutResult(entry, rows, cols)),
+    ...result.alternatives.map((entry) => alternativeToLayoutResult(entry, rows, cols, catalog)),
   ].slice(0, publicResultCount);
 
   const best = ranked[0]!;
@@ -57,6 +61,7 @@ function alternativeToLayoutResult(
   entry: OptimizerAlternative,
   rows: number,
   cols: number,
+  catalog: Map<string, Item>,
 ): OptimizedLayoutResult {
   return toLayoutResult(
     entry.layout,
@@ -67,6 +72,7 @@ function alternativeToLayoutResult(
     entry.signature,
     rows,
     cols,
+    catalog,
   );
 }
 
@@ -79,6 +85,7 @@ function toLayoutResult(
   signature: string,
   rows: number,
   cols: number,
+  catalog: Map<string, Item>,
 ): OptimizedLayoutResult {
   return {
     layout: {
@@ -89,7 +96,7 @@ function toLayoutResult(
       unplacedItems: unplacedItems.map(toInstance),
       unplacedBags: unplacedBags.map(toInstance),
     },
-    score: toScore(score),
+    score: toScore(score, layout, catalog, rows, cols),
     complete,
     signature,
   };
@@ -109,11 +116,18 @@ function toInstance(entry: ItemToPlace): OptimizedInstance {
   return { instanceId: entry.instanceId, itemId: entry.itemId };
 }
 
-function toScore(score: PlacementScore): OptimizedScore {
+function toScore(
+  score: PlacementScore,
+  layout: OptimizerLayout,
+  catalog: Map<string, Item>,
+  rows: number,
+  cols: number,
+): OptimizedScore {
   return {
     valid: score.valid,
     structuralScore: Number.isFinite(score.score) ? score.score : null,
     activatedStars: score.breakdown.activatedStars,
     effectCoverage: score.effectCoverage.normalizedEffects,
+    activeStats: extractActiveStats(score, layout, catalog, rows, cols),
   };
 }

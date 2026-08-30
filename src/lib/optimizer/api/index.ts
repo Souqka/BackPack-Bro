@@ -13,6 +13,7 @@ export {
 } from "./defaults.ts";
 export { bagInstanceId, itemInstanceId, toRunOptimizerInput } from "./request.ts";
 export type {
+  OptimizedActiveStat,
   OptimizedInstance,
   OptimizedLayout,
   OptimizedLayoutResult,

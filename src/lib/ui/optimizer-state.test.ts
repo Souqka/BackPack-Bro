@@ -88,4 +88,30 @@ describe("optimizerReducer", () => {
     expect(state.status).toBe("error");
     expect(state.error?.code).toBe("NO_BAG_LAYOUT");
   });
+
+  it("SET_BAGS_ONLY is render state and does not clear the optimizer result", () => {
+    const loaded = optimizerReducer(initialOptimizerState, {
+      type: "OPTIMIZE_FINISHED",
+      result: success(),
+    });
+    expect(loaded.bagsOnly).toBe(false);
+    const hidden = optimizerReducer(loaded, { type: "SET_BAGS_ONLY", bagsOnly: true });
+    expect(hidden.bagsOnly).toBe(true);
+    expect(hidden.status).toBe("success");
+    expect(hidden.result).toBe(loaded.result);
+    expect(hidden.selectedSignature).toBe("sig-a");
+    expect(hidden.result?.score.structuralScore).toBe(6);
+    const shown = optimizerReducer(hidden, { type: "SET_BAGS_ONLY", bagsOnly: false });
+    expect(shown.bagsOnly).toBe(false);
+    expect(shown.result).toBe(loaded.result);
+  });
+
+  it("preserves bagsOnly when a new search is requested via dirty actions", () => {
+    let state = optimizerReducer(initialOptimizerState, { type: "SET_BAGS_ONLY", bagsOnly: true });
+    state = optimizerReducer(state, { type: "OPTIMIZE_FINISHED", result: success() });
+    expect(state.bagsOnly).toBe(true);
+    state = optimizerReducer(state, { type: "SET_QUALITY", quality: "fast" });
+    expect(state.bagsOnly).toBe(true);
+    expect(state.result).toBeNull();
+  });
 });

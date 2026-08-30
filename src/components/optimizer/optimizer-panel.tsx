@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { optimizeBackpackAction } from "@/app/actions/optimize";
+import { ActiveStats } from "@/components/optimizer/active-stats";
 import { OptimizerControls } from "@/components/optimizer/optimizer-controls";
 import { BackpackGrid } from "@/components/optimizer/backpack-grid";
 import { ResultList } from "@/components/optimizer/result-list";
@@ -9,6 +10,7 @@ import { ResultSummary } from "@/components/optimizer/result-summary";
 import { UnplacedItems } from "@/components/optimizer/unplaced-items";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Toggle } from "@/components/ui/toggle";
 import { useOptimizer } from "@/hooks/use-optimizer";
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import { userFacingError } from "@/lib/ui/error-messages.ts";
@@ -39,9 +41,22 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
             <AlertDescription>{userFacingError(state.error)}</AlertDescription>
           </Alert>
         ) : null}
-        <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} />
+        <div className="flex items-center justify-end">
+          <Toggle
+            variant="outline"
+            size="sm"
+            pressed={state.bagsOnly}
+            onPressedChange={(pressed) => dispatch({ type: "SET_BAGS_ONLY", bagsOnly: pressed })}
+            aria-label="Bags only"
+            data-testid="bags-only-toggle"
+          >
+            Bags only
+          </Toggle>
+        </div>
+        <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} bagsOnly={state.bagsOnly} />
         {state.result && selected ? (
           <>
+            <ActiveStats stats={selected.score.activeStats ?? []} />
             <ResultSummary result={state.result} selected={selected} />
             <ResultList
               results={state.result.results}
