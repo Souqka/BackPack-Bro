@@ -35,6 +35,14 @@ export interface AdaptiveSearchOptions {
    * Tables are not shared across ladder levels.
    */
   transposition?: boolean;
+  /**
+   * Incremental scoring of local neighbors on a cache miss. Default true.
+   */
+  incrementalScore?: boolean;
+  /**
+   * Compare incremental results to analyzePlacementScore. Default false.
+   */
+  incrementalVerify?: boolean;
 }
 
 export interface AdaptiveLevelMetrics {
@@ -72,6 +80,12 @@ export interface AdaptiveSearchMetrics {
   transpositionPruned: number;
   transpositionAccepted: number;
   transpositionReplacements: number;
+  incrementalScoreAttempts: number;
+  incrementalScoreSuccesses: number;
+  incrementalScoreFallbacks: number;
+  incrementalAffectedItems: number;
+  incrementalAffectedInteractions: number;
+  incrementalAffectedStars: number;
 }
 
 export interface AdaptiveOptimizerResult extends OptimizerResult {

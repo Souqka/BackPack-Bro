@@ -7,6 +7,7 @@
 
 import type { Item } from "../inventory/types.ts";
 import { emptyEffectCoverage, invalidBreakdown } from "../scoring/score.ts";
+import { withIncrementalScoring } from "../scoring/incremental/index.ts";
 import { INVALID_PLACEMENT_SCORE } from "../scoring/weights.ts";
 import { emptyBagState } from "./bags/index.ts";
 import { searchBagLayouts } from "./bags/search.ts";
@@ -71,8 +72,15 @@ interface ResolvedOptimizerInput {
 export function runOptimizer(input: RunOptimizerInput): OptimizerResult {
   const resolved = resolveInput(input);
   const cache = createScoreCache({ enabled: resolved.options.scoreCache !== false });
-  return withTranspositionEnabled(resolved.options.transposition !== false, () =>
-    withActiveScoreCache(cache, () => runOptimizerWithCache(resolved)),
+  return withIncrementalScoring(
+    {
+      enabled: resolved.options.incrementalScore !== false,
+      verify: resolved.options.incrementalVerify === true,
+    },
+    () =>
+      withTranspositionEnabled(resolved.options.transposition !== false, () =>
+        withActiveScoreCache(cache, () => runOptimizerWithCache(resolved)),
+      ),
   );
 }
 
@@ -730,6 +738,8 @@ function resolveInput(input: RunOptimizerInput): ResolvedOptimizerInput {
       ...input.options,
       scoreCache: input.options?.scoreCache !== false,
       transposition: input.options?.transposition !== false,
+      incrementalScore: input.options?.incrementalScore !== false,
+      incrementalVerify: input.options?.incrementalVerify === true,
     },
   };
 }

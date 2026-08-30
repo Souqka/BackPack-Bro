@@ -85,6 +85,12 @@ export type { TranspositionMetrics, TranspositionTable } from "./transposition.t
 export { incrementalScoringSupported } from "./layout-change.ts";
 export type { LayoutChange, LayoutChangeKind } from "./layout-change.ts";
 export {
+  assertEquivalentPlacementScore,
+  placementScoresEquivalent,
+  withIncrementalScoring,
+} from "../scoring/incremental/index.ts";
+export type { IncrementalScoreContext, IncrementalScoreResult, LayoutMove } from "../scoring/incremental/index.ts";
+export {
   DEFAULT_LOCAL_SEARCH_OPTIONS,
   improveLayoutLocally,
   improveTopNLocally,

@@ -230,6 +230,44 @@ export interface Stage13CaseReport {
   pruned: Stage13ModeRow;
 }
 
+export interface Stage14ModeRow {
+  label: string;
+  score: number;
+  stars: number;
+  complete: boolean;
+  signature: string;
+  durationMs: number;
+  scoreEvaluations: number;
+  scoreCacheHits: number;
+  scoreCacheMisses: number;
+  uniqueLayouts: number;
+  incrementalAttempts: number;
+  incrementalSuccesses: number;
+  incrementalFallbacks: number;
+  incrementalAffectedItems: number;
+  incrementalAffectedInteractions: number;
+  incrementalAffectedStars: number;
+  stopReason: string;
+}
+
+export interface Stage14CaseReport {
+  caseId: string;
+  name: string;
+  description: string;
+  scoreSame: boolean;
+  starsSame: boolean;
+  completeSame: boolean;
+  signatureSame: boolean;
+  coverageSame: boolean;
+  placedSame: boolean;
+  unplacedSame: boolean;
+  stopReasonSame: boolean;
+  topNSame: boolean;
+  full: Stage14ModeRow;
+  cacheOnly: Stage14ModeRow;
+  incremental: Stage14ModeRow;
+}
+
 export interface Stage8Report {
   algorithms: AlgorithmComparisonRow[];
   beamWidths: BeamWidthRow[];

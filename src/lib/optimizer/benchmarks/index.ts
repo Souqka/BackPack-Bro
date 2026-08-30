@@ -15,6 +15,8 @@ export type {
   Stage12CaseReport,
   Stage13CaseReport,
   Stage13ModeRow,
+  Stage14CaseReport,
+  Stage14ModeRow,
 } from "./types.ts";
 export { BEAM_WIDTHS, STAGE9_BEAM_WIDTHS, getBenchmarkCase, OPTIMIZER_BENCHMARK_CASES, STAGE9_BENCHMARK_CASES, STAGE10_BENCHMARK_CASES, STAGE11_BENCHMARK_CASES, SMOKE_BENCHMARK_CASES } from "./cases.ts";
 export {
@@ -24,6 +26,7 @@ export {
   buildStage11Report,
   buildStage12Report,
   buildStage13Report,
+  buildStage14Report,
   compareAlgorithms,
   runAlgorithmSuite,
   runBeamWidthSweep,

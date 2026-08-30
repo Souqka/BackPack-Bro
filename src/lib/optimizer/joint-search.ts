@@ -15,17 +15,25 @@
 
 import type { Item } from "../inventory/types.ts";
 import {
+  createBagRelocateMove,
+  createBagRotateMove,
+  createBagSwapMove,
+  createRepairMove,
+  snapshotPlaced,
+  type ItemGeometryChange,
+  type LayoutMove,
+} from "../scoring/incremental/index.ts";
+import {
   emptyBagLocalSearchStats,
   mergeBagLocalSearchStats,
   resolveBagLocalSearchOptions,
   type BagLocalSearchStats,
 } from "./bag-local-search.ts";
-import { canonicalBagSignature, generateBagNeighbors, limitBagNeighbors } from "./bag-neighbors.ts";
+import { canonicalBagSignature, generateBagNeighbors, limitBagNeighbors, type BagNeighbor } from "./bag-neighbors.ts";
 import { improveLayoutLocally, layoutScore } from "./local-search.ts";
 import { buildRankedLayout, compareRankedLayouts, isStrictlyBetterLayout, sortRankedLayouts } from "./rank.ts";
-import { repairItemLayout } from "./repair.ts";
+import { repairItemLayout, type RepairResult } from "./repair.ts";
 import type { BagLocalSearchOptions, RankedLayout } from "./search-types.ts";
-import type { BagState } from "./bags/types.ts";
 
 export function runJointLocalSearch(
   seed: RankedLayout,
@@ -58,7 +66,7 @@ export function runJointLocalSearch(
     for (const neighbor of limited) {
       visitedBags.add(neighbor.signature);
       stats.bagNeighborsVisited += 1;
-      const candidate = evaluateBagNeighbor(current, neighbor.bags, catalog, limits);
+      const candidate = evaluateBagNeighbor(current, neighbor, catalog, limits);
       stats.displacedItems += candidate.displaced;
       stats.repairedItems += candidate.repaired;
       stats.unrepairedItems += candidate.unrepaired;
@@ -130,7 +138,7 @@ export function improveTopNJointly(
 
 function evaluateBagNeighbor(
   origin: RankedLayout,
-  bags: BagState,
+  neighbor: BagNeighbor,
   catalog: Map<string, Item>,
   limits: Required<BagLocalSearchOptions>,
 ): {
@@ -149,13 +157,24 @@ function evaluateBagNeighbor(
 } {
   const mutated: RankedLayout["state"] = {
     backpack: origin.state.backpack,
-    bags,
+    bags: neighbor.bags,
     items: origin.state.items,
   };
   const repaired = repairItemLayout(mutated, origin.unplacedItems, catalog, {
     beamWidth: limits.repairBeamWidth,
   });
-  let layout = buildRankedLayout(repaired.state, repaired.unplacedItems, origin.unplacedBags, catalog);
+  const incremental = {
+    previousState: origin.state,
+    previousScore: origin.score,
+    moves: jointLayoutMoves(origin, neighbor, repaired),
+  };
+  let layout = buildRankedLayout(
+    repaired.state,
+    repaired.unplacedItems,
+    origin.unplacedBags,
+    catalog,
+    incremental,
+  );
   let itemLocalSearchDurationMs = 0;
   if (limits.itemLocalSearch) {
     const lsStarted = Date.now();
@@ -176,4 +195,40 @@ function evaluateBagNeighbor(
     transpositionAccepted: repaired.transpositionAccepted,
     transpositionReplacements: repaired.transpositionReplacements,
   };
+}
+
+function jointLayoutMoves(
+  origin: RankedLayout,
+  neighbor: BagNeighbor,
+  repaired: RepairResult,
+): LayoutMove[] {
+  const moves: LayoutMove[] = [bagMoveFromNeighbor(origin, neighbor)];
+  const changes: ItemGeometryChange[] = [];
+  for (const displaced of repaired.displaced) {
+    const previous = snapshotPlaced(origin.state.items, displaced.instanceId);
+    if (!previous) continue;
+    const stillPlaced = repaired.state.items.items.some((item) => item.instanceId === displaced.instanceId);
+    const next = stillPlaced ? snapshotPlaced(repaired.state.items, displaced.instanceId) : undefined;
+    changes.push({
+      instanceId: displaced.instanceId,
+      itemId: displaced.itemId,
+      previous,
+      next,
+    });
+  }
+  if (changes.length > 0) moves.push(createRepairMove(changes));
+  return moves;
+}
+
+function bagMoveFromNeighbor(origin: RankedLayout, neighbor: BagNeighbor): LayoutMove {
+  if (neighbor.operation === "swap") {
+    const first = neighbor.movedInstanceIds[0] ?? "a";
+    const second = neighbor.movedInstanceIds[1] ?? "b";
+    return createBagSwapMove([first, second]);
+  }
+  const instanceId = neighbor.movedInstanceIds[0] ?? origin.state.bags.bags[0]?.instanceId ?? "bag";
+  const itemId =
+    origin.state.bags.bags.find((bag) => bag.instanceId === instanceId)?.itemId ?? instanceId;
+  if (neighbor.operation === "rotate") return createBagRotateMove(instanceId, itemId);
+  return createBagRelocateMove(instanceId, itemId);
 }
