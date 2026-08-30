@@ -18,6 +18,7 @@ import type { Item } from "../inventory/types.ts";
 import { itemCouldActivateStar } from "./ordering.ts";
 import { scoreLayout } from "./score-cache.ts";
 import type { OptimizerState, PartialStateScore } from "./search-types.ts";
+import { recordHeuristicCall } from "./search-profile.ts";
 import type { ItemToPlace } from "./types.ts";
 
 export interface HeuristicWeights {
@@ -47,6 +48,7 @@ export function evaluatePartialState(
   catalog: Map<string, Item>,
   weights?: Partial<HeuristicWeights>,
 ): PartialStateScore {
+  recordHeuristicCall();
   const w = resolveHeuristicWeights(weights);
   const freeCells = state.bags.availableCells.size - state.items.occupiedCells.size;
   const remainingCells = remainingItemCells(remainingItems, catalog);
