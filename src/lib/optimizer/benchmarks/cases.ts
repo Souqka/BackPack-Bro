@@ -374,6 +374,50 @@ export const SMOKE_BENCHMARK_CASES: OptimizerBenchmarkCase[] = [
   },
 ];
 
+/**
+ * Небольшой набор новых production scenarios для Stage 15.
+ * Только реальные itemId из каталога, без synthetic geometry.
+ */
+export const STAGE15_EXTRA_CASES: OptimizerBenchmarkCase[] = [
+  {
+    id: "P-asymmetric-star",
+    name: "Asymmetric Star overlap",
+    inventory: GRID,
+    bags: [{ instanceId: "bag", itemId: "bottom_trawl" }],
+    items: [
+      { instanceId: "box", itemId: "big_chocolate_gift_box" },
+      { instanceId: "bar", itemId: "adamantite_bar" },
+      { instanceId: "bloom", itemId: "starbloom" },
+    ],
+    bagIds: ["bottom_trawl"],
+    itemIds: ["big_chocolate_gift_box", "adamantite_bar", "starbloom"],
+    options: { bagBeamWidth: 8, itemBeamWidth: 20 },
+    description:
+      "Gift box с асимметричной Star и Bar Star на Bottom Trawl: competing overlap на реальной геометрии.",
+  },
+  {
+    id: "Q-impossible-l",
+    name: "Impossible L-shape",
+    inventory: GRID,
+    bags: [{ instanceId: "bag", itemId: "fanny_pack" }],
+    items: [
+      { instanceId: "cat", itemId: "black_cat" },
+      { instanceId: "bar", itemId: "adamantite_bar" },
+    ],
+    bagIds: ["fanny_pack"],
+    itemIds: ["black_cat", "adamantite_bar"],
+    expected: { minScore: 0, minActiveStars: 0 },
+    options: {
+      bagBeamWidth: 4,
+      itemBeamWidth: 8,
+      dfs: { maxNodes: 4_000, maxDepth: 6, timeoutMs: 2_000 },
+    },
+    description:
+      "black_cat (L, 4 клетки) и Bar (2 клетки) vs Fanny Pack (2 клетки): complete невозможен.",
+    runDfs: true,
+  },
+];
+
 export const BEAM_WIDTHS = [1, 5, 10, 20, 50, 100] as const;
 export const STAGE9_BEAM_WIDTHS = [1, 2, 5, 10, 20, 50] as const;
 
@@ -383,6 +427,7 @@ export function getBenchmarkCase(id: string): OptimizerBenchmarkCase {
     ...STAGE9_BENCHMARK_CASES,
     ...STAGE10_BENCHMARK_CASES,
     ...STAGE11_BENCHMARK_CASES,
+    ...STAGE15_EXTRA_CASES,
     ...SMOKE_BENCHMARK_CASES,
   ].find((entry) => entry.id === id);
   if (!found) throw new Error(`Неизвестный benchmark case: ${id}`);
