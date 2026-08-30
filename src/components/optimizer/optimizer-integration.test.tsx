@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { ActiveStats } from "./active-stats.tsx";
+import { ActiveSynergies } from "./active-synergies.tsx";
 import { BagBonuses } from "./bag-bonuses.tsx";
 import { BackpackGrid } from "./backpack-grid.tsx";
 import { ResultList } from "./result-list.tsx";
@@ -11,6 +12,7 @@ import { optimizeInventory } from "../../lib/optimizer/api/service.ts";
 import { loadProductionCatalog } from "../../lib/optimizer/load-catalog.ts";
 import { catalogViewFromItems } from "../../lib/ui/catalog-project.ts";
 import { optimizerReducer, initialOptimizerState, selectedLayout, defaultGridViewOptions } from "../../lib/ui/optimizer-state.ts";
+import { synergyId } from "../../lib/ui/grid-interaction.ts";
 
 const catalog = loadProductionCatalog();
 const views = catalogViewFromItems(catalog.values());
@@ -285,6 +287,89 @@ describe("optimizer UI integration", () => {
       expect(bonuses).toContain("data-stat-id=");
     } else {
       expect(bonuses).toContain('data-testid="bag-bonuses-empty"');
+    }
+  });
+
+  it("Case G: explanation uses scoring activations and instance-level synergies", () => {
+    const result = optimizeInventory(
+      {
+        bagItemIds: ["warrior_backpack", "medium_bag"],
+        itemIds: ["adamantite_bar", "adamantite_bar", "starbloom", "starbloom"],
+        options: { quality: "balanced", resultCount: 1 },
+      },
+      catalog,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const selected = result.results[0]!;
+    expect(selected.explanation?.activatedStars.length).toBe(selected.score.activatedStars);
+    const html = renderToStaticMarkup(
+      <ActiveSynergies
+        explanation={selected.explanation}
+        catalog={views}
+        previewSynergyId={null}
+        selectedSynergyId={null}
+        onPreview={() => undefined}
+        onSelect={() => undefined}
+      />,
+    );
+    if ((selected.explanation?.activatedStars.length ?? 0) === 0) {
+      expect(html).toContain("No active Star synergies");
+      return;
+    }
+    expect(html).toContain('data-testid="active-synergies"');
+    const first = selected.explanation!.activatedStars[0]!;
+    expect(html).toContain(`data-source-instance="${first.sourceInstanceId}"`);
+    expect(html).toContain(`data-target-instance="${first.targetInstanceId}"`);
+    const grid = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={selected.layout} catalog={views} activeSynergy={first} />
+      </TooltipProvider>,
+    );
+    expect(grid).toContain(`data-visual-role="source"`);
+    expect(grid).toContain(`data-visual-role="target"`);
+    expect(grid).toContain(`data-row="${first.row}"`);
+    expect(grid).toContain(`data-col="${first.col}"`);
+    expect(grid).toContain('data-emphasized="true"');
+  });
+
+  it("Top-N switches explanation without a new optimize and drops the previous synergy id", () => {
+    const result = optimizeInventory(
+      {
+        bagItemIds: ["medium_bag", "fanny_pack"],
+        itemIds: ["adamantite_bar", "adamantite_ore", "starbloom"],
+        options: { quality: "fast", resultCount: 3 },
+      },
+      catalog,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.results.length).toBeGreaterThan(1);
+    let state = optimizerReducer(initialOptimizerState, { type: "OPTIMIZE_FINISHED", result });
+    const first = selectedLayout(state)!;
+    const firstLink = first.explanation?.activatedStars[0];
+    const firstId = firstLink ? synergyId(firstLink) : null;
+    const second = result.results[1]!;
+    state = optimizerReducer(state, { type: "SELECT_RESULT", signature: second.signature });
+    expect(state.result).toBe(result);
+    const switched = selectedLayout(state)!;
+    expect(switched.signature).toBe(second.signature);
+    expect(switched.explanation).toEqual(second.explanation);
+    expect(switched.explanation).not.toBe(first.explanation);
+    const secondHtml = renderToStaticMarkup(
+      <ActiveSynergies
+        explanation={switched.explanation}
+        catalog={views}
+        previewSynergyId={null}
+        selectedSynergyId={firstId}
+        onPreview={() => undefined}
+        onSelect={() => {
+          throw new Error("onSelect should not run optimize");
+        }}
+      />,
+    );
+    if (firstId) {
+      expect(secondHtml).not.toContain(`aria-pressed="true"`);
     }
   });
 });

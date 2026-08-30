@@ -7,11 +7,13 @@ import { ItemHoverLabel } from "@/components/optimizer/item-hover-label";
 import { ItemLayer } from "@/components/optimizer/item-layer";
 import { ItemOutlineLayer } from "@/components/optimizer/item-outline-layer";
 import { StarMarker } from "@/components/optimizer/star-marker";
+import { SynergyHighlightLayer } from "@/components/optimizer/synergy-highlight-layer";
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import { GRID_COLS, GRID_ROWS } from "@/lib/ui/constants.ts";
+import { resolveItemVisualRole, type ItemVisualRole } from "@/lib/ui/grid-interaction.ts";
 import { defaultGridViewOptions, type GridViewOptions } from "@/lib/ui/optimizer-state.ts";
 import { buildGridModel, footprintForPlacement } from "@/lib/ui/placement-view.ts";
-import type { OptimizedLayout } from "@/lib/optimizer/api/types.ts";
+import type { OptimizedLayout, OptimizedStarActivation } from "@/lib/optimizer/api/types.ts";
 import { cn } from "@/lib/utils";
 import type { CSSProperties } from "react";
 
@@ -21,12 +23,14 @@ export function BackpackGrid({
   view = defaultGridViewOptions,
   hoveredInstanceId,
   onHoverInstance,
+  activeSynergy = null,
 }: {
   layout: OptimizedLayout | null;
   catalog: Map<string, CatalogItemView>;
   view?: GridViewOptions;
   hoveredInstanceId?: string | null;
   onHoverInstance?: (instanceId: string | null) => void;
+  activeSynergy?: OptimizedStarActivation | null;
 }) {
   const rows = layout?.rows ?? GRID_ROWS;
   const cols = layout?.cols ?? GRID_COLS;
@@ -57,6 +61,9 @@ export function BackpackGrid({
   const hoveredFootprint =
     hoveredPlacement && hoveredItem ? footprintForPlacement(hoveredItem, hoveredPlacement) : null;
 
+  const itemRole = (instanceId: string): ItemVisualRole =>
+    resolveItemVisualRole(instanceId, activeSynergy, hovered);
+
   const boardStyle = {
     "--grid-cols": cols,
     "--grid-rows": rows,
@@ -73,6 +80,7 @@ export function BackpackGrid({
       data-show-bags={view.showBags ? "true" : "false"}
       data-show-outlines={view.showItemOutlines ? "true" : "false"}
       data-hovered-instance={hovered ?? undefined}
+      data-active-synergy={activeSynergy ? "true" : "false"}
       className={cn("backpack-board")}
       style={boardStyle}
     >
@@ -109,6 +117,7 @@ export function BackpackGrid({
             catalog={catalog}
             hoveredInstanceId={hovered}
             onHoverInstance={setHovered}
+            itemRole={itemRole}
           />
         </div>
       ) : null}
@@ -117,8 +126,22 @@ export function BackpackGrid({
           <ItemOutlineLayer layout={layout} catalog={catalog} />
         </div>
       ) : null}
-      {hoveredFootprint && hoveredPlacement ? (
-        <div className="backpack-layer z-[3]" data-testid="hover-stars">
+      {layout && activeSynergy ? (
+        <div className="backpack-layer z-[3]" data-testid="synergy-layer">
+          <SynergyHighlightLayer layout={layout} catalog={catalog} synergy={activeSynergy} />
+        </div>
+      ) : null}
+      {activeSynergy ? (
+        <div className="backpack-layer z-[4]" data-testid="hover-stars">
+          <StarMarker
+            row={activeSynergy.row}
+            col={activeSynergy.col}
+            instanceId={activeSynergy.sourceInstanceId}
+            emphasized
+          />
+        </div>
+      ) : hoveredFootprint && hoveredPlacement ? (
+        <div className="backpack-layer z-[4]" data-testid="hover-stars">
           {hoveredFootprint.stars.map((star) => (
             <StarMarker
               key={`${hoveredPlacement.instanceId}:${star.row}:${star.col}`}
@@ -129,8 +152,8 @@ export function BackpackGrid({
           ))}
         </div>
       ) : null}
-      {hoveredPlacement && hoveredItem ? (
-        <div className="backpack-layer z-[4]" data-testid="hover-name">
+      {hoveredPlacement && hoveredItem && !activeSynergy ? (
+        <div className="backpack-layer z-[5]" data-testid="hover-name">
           <ItemHoverLabel placement={hoveredPlacement} item={hoveredItem} />
         </div>
       ) : null}

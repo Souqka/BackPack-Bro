@@ -11,6 +11,7 @@ import type { ItemToPlace, PlacedItem } from "../types.ts";
 import type { PlacedBag } from "../bags/types.ts";
 import { extractActiveStats } from "./active-stats.ts";
 import { extractBagBonuses } from "./bag-bonuses.ts";
+import { extractOptimizerExplanation } from "./explanation.ts";
 import type { Item } from "../../inventory/types.ts";
 import type {
   OptimizedInstance,
@@ -50,6 +51,7 @@ export function serializeOptimizerResult(
     score: best.score,
     complete: best.complete,
     signature: best.signature,
+    explanation: best.explanation,
     results: ranked,
     execution: {
       stopReason: result.adaptive.stopReason,
@@ -99,6 +101,7 @@ function toLayoutResult(
     },
     score: toScore(score, layout, catalog, rows, cols),
     bagBonuses: extractBagBonuses(layout, catalog),
+    explanation: extractOptimizerExplanation(score, layout, catalog, rows, cols),
     complete,
     signature,
   };
