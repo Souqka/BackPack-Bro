@@ -69,7 +69,8 @@ console.log("");
 
 console.log("1. Suite overview");
 console.log("   Production-like Adaptive on G–O. analyzePlacementScore stays source of truth.");
-console.log("   Existing exact incremental path (LS/Joint/Repair) is measured, not expanded.");
+console.log("   Exclusive: candidate generation, unique scoring (full + incremental compute).");
+console.log("   Inclusive Adaptive metrics (LS / Joint / Repair) overlap those leaves — not added into the same %.");
 console.log("");
 
 console.log("2. Pipeline profiling (exclusive leaf times, Adaptive default = cache + incremental)");
