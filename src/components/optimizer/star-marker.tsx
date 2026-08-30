@@ -1,6 +1,6 @@
 "use client";
 
-import { cellBoxStyle } from "@/lib/ui/placement-view.ts";
+import { starCellCenterStyle } from "@/lib/ui/placement-view.ts";
 
 export function StarMarker({
   row,
@@ -17,11 +17,13 @@ export function StarMarker({
       data-star-instance={instanceId}
       data-row={row}
       data-col={col}
-      className="flex items-start justify-end p-0.5 text-[10px] leading-none text-amber-300"
-      style={cellBoxStyle(row, col)}
+      className="pointer-events-none text-amber-300"
+      style={starCellCenterStyle(row, col)}
       aria-hidden
     >
-      ★
+      <svg viewBox="0 0 24 24" className="h-full w-full fill-current drop-shadow" aria-hidden>
+        <path d="M12 2.4 14.7 8.7 21.6 9.6 16.6 14.3 18 21.2 12 17.8 6 21.2 7.4 14.3 2.4 9.6 9.3 8.7Z" />
+      </svg>
     </span>
   );
 }

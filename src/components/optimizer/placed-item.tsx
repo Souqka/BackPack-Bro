@@ -13,23 +13,39 @@ import { cn } from "@/lib/utils";
 export function PlacedItem({
   placement,
   item,
+  hovered = false,
+  onHover,
 }: {
   placement: OptimizedPlacement;
   item: CatalogItemView;
+  hovered?: boolean;
+  onHover?: (instanceId: string | null) => void;
 }) {
   const footprint = footprintForPlacement(item, placement);
   if (!footprint) return null;
-  return <PlacedItemVisual placement={placement} item={item} footprint={footprint} />;
+  return (
+    <PlacedItemVisual
+      placement={placement}
+      item={item}
+      footprint={footprint}
+      hovered={hovered}
+      onHover={onHover}
+    />
+  );
 }
 
 function PlacedItemVisual({
   placement,
   item,
   footprint,
+  hovered,
+  onHover,
 }: {
   placement: OptimizedPlacement;
   item: CatalogItemView;
   footprint: PlacementFootprint;
+  hovered: boolean;
+  onHover?: (instanceId: string | null) => void;
 }) {
   const mask = occupiedMaskStyle(footprint);
   const name = item.name;
@@ -38,11 +54,11 @@ function PlacedItemVisual({
     <div
       role="img"
       aria-label={name}
-      title={name}
       data-testid={`placed-item-${placement.instanceId}`}
       data-instance-id={placement.instanceId}
       data-item-id={placement.itemId}
       data-rotation={placement.rotation}
+      data-hovered={hovered ? "true" : "false"}
       data-min-row={footprint.minRow}
       data-min-col={footprint.minCol}
       data-max-row={footprint.maxRow}
@@ -51,24 +67,27 @@ function PlacedItemVisual({
       data-bbox-rows={footprint.bboxRows}
       data-cell-count={footprint.cells.length}
       data-irregular={mask ? "true" : "false"}
-      className="pointer-events-none overflow-hidden"
-      style={footprintBoxStyle(footprint)}
+      className={cn(
+        "cursor-pointer overflow-hidden",
+        hovered && "brightness-125 drop-shadow-[0_0_8px_rgba(255,255,255,0.45)]",
+      )}
+      style={{ ...footprintBoxStyle(footprint), pointerEvents: "auto" }}
+      onMouseEnter={() => onHover?.(placement.instanceId)}
+      onMouseLeave={() => onHover?.(null)}
     >
       {item.icon ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={item.icon}
           alt=""
-          className={cn("h-full w-full object-contain")}
+          className={cn("pointer-events-none h-full w-full object-contain")}
           style={{
             transform: `rotate(${placement.rotation}deg)`,
             ...mask,
           }}
         />
       ) : (
-        <span className="flex h-full w-full items-center justify-center px-1 text-center text-[10px] leading-tight text-sky-100">
-          {name}
-        </span>
+        <span className="pointer-events-none block h-full w-full bg-sky-950/80" />
       )}
     </div>
   );

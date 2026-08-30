@@ -3,14 +3,15 @@
 import { useMemo } from "react";
 import { optimizeBackpackAction } from "@/app/actions/optimize";
 import { ActiveStats } from "@/components/optimizer/active-stats";
+import { BagBonuses } from "@/components/optimizer/bag-bonuses";
 import { OptimizerControls } from "@/components/optimizer/optimizer-controls";
 import { BackpackGrid } from "@/components/optimizer/backpack-grid";
 import { ResultList } from "@/components/optimizer/result-list";
 import { ResultSummary } from "@/components/optimizer/result-summary";
 import { UnplacedItems } from "@/components/optimizer/unplaced-items";
+import { ViewToggles } from "@/components/optimizer/view-toggles";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Toggle } from "@/components/ui/toggle";
 import { useOptimizer } from "@/hooks/use-optimizer";
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import { userFacingError } from "@/lib/ui/error-messages.ts";
@@ -42,28 +43,24 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
           </Alert>
         ) : null}
         <div className="flex w-fit max-w-full flex-col gap-2">
-          <div className="flex items-center justify-end">
-            <Toggle
-              variant="outline"
-              size="sm"
-              pressed={state.bagsOnly}
-              onPressedChange={(pressed) => dispatch({ type: "SET_BAGS_ONLY", bagsOnly: pressed })}
-              aria-label="Bags only"
-              data-testid="bags-only-toggle"
-            >
-              Bags only
-            </Toggle>
-          </div>
+          <ViewToggles
+            view={state.view}
+            onChange={(option, value) => dispatch({ type: "SET_VIEW_OPTION", option, value })}
+          />
           <div className="max-w-full overflow-x-auto">
             <div className="w-fit rounded-lg border border-border bg-zinc-900 p-1.5">
-              <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} bagsOnly={state.bagsOnly} />
+              <BackpackGrid layout={selected?.layout ?? null} catalog={catalogMap} view={state.view} />
             </div>
           </div>
         </div>
         {state.result && selected ? (
           <>
             <ResultSummary result={state.result} selected={selected} />
-            <ActiveStats stats={selected.score.activeStats ?? []} />
+            <ActiveStats
+              stats={selected.score.activeStats ?? []}
+              activatedStars={selected.score.activatedStars}
+            />
+            <BagBonuses bonuses={selected.bagBonuses ?? []} />
             <ResultList
               results={state.result.results}
               selectedSignature={state.selectedSignature}

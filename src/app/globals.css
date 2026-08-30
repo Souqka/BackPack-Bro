@@ -40,6 +40,7 @@
 @layer components {
   .backpack-board {
     --cell-size: 48px;
+    --star-size: calc(var(--cell-size) * 0.66);
     position: relative;
     overflow: hidden;
     width: calc(var(--grid-cols) * var(--cell-size));
@@ -49,6 +50,7 @@
   .backpack-layer {
     position: absolute;
     inset: 0;
+    pointer-events: none;
   }
 
   @media (max-width: 1023px) {

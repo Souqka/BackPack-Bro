@@ -64,7 +64,7 @@ export function extractActiveStats(
   });
 }
 
-function presentNormalizedEffect(effect: Effect): { id: string; name: string; value?: number } | null {
+export function presentNormalizedEffect(effect: Effect): { id: string; name: string; value?: number } | null {
   switch (effect.type) {
     case "gain":
     case "inflict":

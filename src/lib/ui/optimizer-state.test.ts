@@ -4,6 +4,7 @@ import {
   optimizerReducer,
   selectedLayout,
   toOptimizeInput,
+  defaultGridViewOptions,
 } from "./optimizer-state.ts";
 import { OPTIMIZER_EXAMPLES } from "./examples.ts";
 import type { OptimizeInventorySuccess } from "../optimizer/api/types.ts";
@@ -89,29 +90,55 @@ describe("optimizerReducer", () => {
     expect(state.error?.code).toBe("NO_BAG_LAYOUT");
   });
 
-  it("SET_BAGS_ONLY is render state and does not clear the optimizer result", () => {
+  it("SET_VIEW_OPTION is render state and does not clear the optimizer result", () => {
     const loaded = optimizerReducer(initialOptimizerState, {
       type: "OPTIMIZE_FINISHED",
       result: success(),
     });
-    expect(loaded.bagsOnly).toBe(false);
-    const hidden = optimizerReducer(loaded, { type: "SET_BAGS_ONLY", bagsOnly: true });
-    expect(hidden.bagsOnly).toBe(true);
+    expect(loaded.view).toEqual(defaultGridViewOptions);
+    const hidden = optimizerReducer(loaded, { type: "SET_VIEW_OPTION", option: "showItems", value: false });
+    expect(hidden.view.showItems).toBe(false);
+    expect(hidden.view.showBags).toBe(true);
+    expect(hidden.view.showItemOutlines).toBe(true);
     expect(hidden.status).toBe("success");
     expect(hidden.result).toBe(loaded.result);
     expect(hidden.selectedSignature).toBe("sig-a");
     expect(hidden.result?.score.structuralScore).toBe(6);
-    const shown = optimizerReducer(hidden, { type: "SET_BAGS_ONLY", bagsOnly: false });
-    expect(shown.bagsOnly).toBe(false);
+    const shown = optimizerReducer(hidden, { type: "SET_VIEW_OPTION", option: "showItems", value: true });
+    expect(shown.view.showItems).toBe(true);
+    expect(shown.view.showBags).toBe(true);
     expect(shown.result).toBe(loaded.result);
   });
 
-  it("preserves bagsOnly when a new search is requested via dirty actions", () => {
-    let state = optimizerReducer(initialOptimizerState, { type: "SET_BAGS_ONLY", bagsOnly: true });
+  it("toggling one view layer does not change the others or the optimizer result", () => {
+    const loaded = optimizerReducer(initialOptimizerState, {
+      type: "OPTIMIZE_FINISHED",
+      result: success(),
+    });
+    const bagsOff = optimizerReducer(loaded, { type: "SET_VIEW_OPTION", option: "showBags", value: false });
+    expect(bagsOff.view).toEqual({ showItems: true, showBags: false, showItemOutlines: true });
+    expect(bagsOff.result).toBe(loaded.result);
+    const outlinesOff = optimizerReducer(bagsOff, {
+      type: "SET_VIEW_OPTION",
+      option: "showItemOutlines",
+      value: false,
+    });
+    expect(outlinesOff.view).toEqual({ showItems: true, showBags: false, showItemOutlines: false });
+    expect(outlinesOff.result).toBe(loaded.result);
+    expect(outlinesOff.selectedSignature).toBe("sig-a");
+  });
+
+  it("preserves view options when a new search is requested via dirty actions", () => {
+    let state = optimizerReducer(initialOptimizerState, {
+      type: "SET_VIEW_OPTION",
+      option: "showItems",
+      value: false,
+    });
     state = optimizerReducer(state, { type: "OPTIMIZE_FINISHED", result: success() });
-    expect(state.bagsOnly).toBe(true);
+    expect(state.view.showItems).toBe(false);
     state = optimizerReducer(state, { type: "SET_QUALITY", quality: "fast" });
-    expect(state.bagsOnly).toBe(true);
+    expect(state.view.showItems).toBe(false);
+    expect(state.view.showBags).toBe(true);
     expect(state.result).toBeNull();
   });
 });

@@ -11,6 +11,19 @@ import type { OptimizerExample } from "./examples.ts";
 
 export type OptimizerStatus = "idle" | "optimizing" | "success" | "error";
 
+/** Render-only grid layers. Toggling these must not dirty the optimizer result. */
+export interface GridViewOptions {
+  showItems: boolean;
+  showBags: boolean;
+  showItemOutlines: boolean;
+}
+
+export const defaultGridViewOptions: GridViewOptions = {
+  showItems: true,
+  showBags: true,
+  showItemOutlines: true,
+};
+
 export interface OptimizerUiState {
   bags: QuantityLine[];
   items: QuantityLine[];
@@ -20,7 +33,7 @@ export interface OptimizerUiState {
   result: OptimizeInventorySuccess | null;
   error: DisplayError | null;
   selectedSignature: string | null;
-  bagsOnly: boolean;
+  view: GridViewOptions;
 }
 
 export const initialOptimizerState: OptimizerUiState = {
@@ -32,7 +45,7 @@ export const initialOptimizerState: OptimizerUiState = {
   result: null,
   error: null,
   selectedSignature: null,
-  bagsOnly: false,
+  view: { ...defaultGridViewOptions },
 };
 
 export type OptimizerUiAction =
@@ -47,7 +60,7 @@ export type OptimizerUiAction =
   | { type: "OPTIMIZE_FINISHED"; result: OptimizeInventoryResult }
   | { type: "OPTIMIZE_UNEXPECTED" }
   | { type: "SELECT_RESULT"; signature: string }
-  | { type: "SET_BAGS_ONLY"; bagsOnly: boolean };
+  | { type: "SET_VIEW_OPTION"; option: keyof GridViewOptions; value: boolean };
 
 export function optimizerReducer(state: OptimizerUiState, action: OptimizerUiAction): OptimizerUiState {
   switch (action.type) {
@@ -101,8 +114,9 @@ export function optimizerReducer(state: OptimizerUiState, action: OptimizerUiAct
       if (!state.result) return state;
       if (!state.result.results.some((entry) => entry.signature === action.signature)) return state;
       return { ...state, selectedSignature: action.signature };
-    case "SET_BAGS_ONLY":
-      return { ...state, bagsOnly: action.bagsOnly };
+    case "SET_VIEW_OPTION":
+      if (state.view[action.option] === action.value) return state;
+      return { ...state, view: { ...state.view, [action.option]: action.value } };
   }
 }
 
