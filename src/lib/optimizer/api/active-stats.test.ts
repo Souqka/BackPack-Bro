@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { catalogFromItems } from "../inventory/inventory.ts";
-import type { InventoryState, Item } from "../inventory/types.ts";
-import { analyzePlacementScore } from "../scoring/analyzer.ts";
-import { getBoundInventoryAnalysis } from "../scoring/analysis-bind.ts";
-import { extractActiveStats } from "./api/active-stats.ts";
-import { optimizeInventory } from "./api/service.ts";
-import { loadProductionCatalog } from "./load-catalog.ts";
+import { catalogFromItems } from "../../inventory/inventory.ts";
+import type { InventoryState, Item } from "../../inventory/types.ts";
+import { analyzePlacementScore } from "../../scoring/analyzer.ts";
+import { getBoundInventoryAnalysis } from "../../scoring/analysis-bind.ts";
+import { extractActiveStats } from "./active-stats.ts";
+import { optimizeInventory } from "./service.ts";
+import { loadProductionCatalog } from "../load-catalog.ts";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
