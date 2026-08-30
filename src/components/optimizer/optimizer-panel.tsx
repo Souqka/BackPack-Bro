@@ -18,7 +18,7 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
   const { state, dispatch, run, busy, selected } = useOptimizer(optimizeBackpackAction);
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)]">
+    <div className="grid gap-4 lg:grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)] lg:items-start">
       <OptimizerControls
         catalog={catalogMap}
         state={state}
@@ -26,7 +26,7 @@ export function OptimizerPanel({ catalog }: { catalog: CatalogItemView[] }) {
         busy={busy}
         onOptimize={run}
       />
-      <div className="flex flex-col gap-4">
+      <div className="flex min-w-0 flex-col gap-4">
         {state.status === "optimizing" ? (
           <div className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm" role="status">
             <Skeleton className="h-4 w-4 rounded-full" />
