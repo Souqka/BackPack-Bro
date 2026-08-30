@@ -89,7 +89,7 @@ describe("footprintForPlacement", () => {
     expect(keys.has("1:1")).toBe(true);
     expect(keys.has("0:1")).toBe(false);
     expect(footprint!.bboxRows * footprint!.bboxCols).toBe(4);
-    expect(occupiedMaskStyle(footprint!)?.maskImage.split(",")).toHaveLength(3);
+    expect(occupiedMaskStyle(footprint!)?.maskImage?.split(",")).toHaveLength(3);
   });
 });
 
