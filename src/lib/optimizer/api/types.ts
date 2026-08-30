@@ -36,12 +36,23 @@ export interface OptimizedInstance {
   itemId: string;
 }
 
+export interface OptimizedActiveStat {
+  id: string;
+  name: string;
+  value?: number;
+}
+
 export interface OptimizedScore {
   valid: boolean;
   /** Final Scoring Engine score. null when the layout is invalid (−∞ is not JSON-safe). */
   structuralScore: number | null;
   activatedStars: number;
   effectCoverage: number;
+  /**
+   * Activated star-rule effects from the Scoring Engine result.
+   * Optional for backward compatibility with older serialized fixtures.
+   */
+  activeStats?: OptimizedActiveStat[];
 }
 
 export interface OptimizedLayout {

@@ -26,6 +26,16 @@ export interface ResolvedPlacementCells {
   stars: Array<{ row: number; col: number }>;
 }
 
+/** Bounding box of occupied `geometry.cells` after rotateGeometry + placement. */
+export interface PlacementFootprint extends ResolvedPlacementCells {
+  minRow: number;
+  minCol: number;
+  maxRow: number;
+  maxCol: number;
+  bboxRows: number;
+  bboxCols: number;
+}
+
 const ROTATIONS: readonly Rotation[] = [0, 90, 180, 270];
 
 export function asRotation(value: number): Rotation {
@@ -51,6 +61,73 @@ export function cellsForPlacement(
       row: placement.row + row,
       col: placement.col + col,
     })),
+  };
+}
+
+export function footprintForPlacement(
+  item: CatalogItemView,
+  placement: OptimizedPlacement,
+): PlacementFootprint | null {
+  const resolved = cellsForPlacement(item, placement);
+  if (resolved.cells.length === 0) return null;
+  const minRow = Math.min(...resolved.cells.map((cell) => cell.row));
+  const maxRow = Math.max(...resolved.cells.map((cell) => cell.row));
+  const minCol = Math.min(...resolved.cells.map((cell) => cell.col));
+  const maxCol = Math.max(...resolved.cells.map((cell) => cell.col));
+  return {
+    ...resolved,
+    minRow,
+    minCol,
+    maxRow,
+    maxCol,
+    bboxRows: maxRow - minRow + 1,
+    bboxCols: maxCol - minCol + 1,
+  };
+}
+
+export function occupiedCellKeys(footprint: Pick<ResolvedPlacementCells, "cells">): Set<string> {
+  return new Set(footprint.cells.map((cell) => `${cell.row}:${cell.col}`));
+}
+
+export function footprintFillsBbox(footprint: PlacementFootprint): boolean {
+  return footprint.cells.length === footprint.bboxRows * footprint.bboxCols;
+}
+
+/** CSS mask so an overlay image covers only `geometry.cells`, not bbox holes. */
+export function occupiedMaskStyle(footprint: PlacementFootprint): Record<string, string> | undefined {
+  if (footprintFillsBbox(footprint)) return undefined;
+  const { bboxRows, bboxCols, minRow, minCol, cells } = footprint;
+  const layers = cells.map(() => "linear-gradient(#fff 0 0)");
+  const sizes = cells.map(() => `${100 / bboxCols}% ${100 / bboxRows}%`);
+  const positions = cells.map((cell) => {
+    const localCol = cell.col - minCol;
+    const localRow = cell.row - minRow;
+    const x = bboxCols === 1 ? "0%" : `${(localCol / (bboxCols - 1)) * 100}%`;
+    const y = bboxRows === 1 ? "0%" : `${(localRow / (bboxRows - 1)) * 100}%`;
+    return `${x} ${y}`;
+  });
+  const image = layers.join(",");
+  const size = sizes.join(",");
+  const position = positions.join(",");
+  return {
+    WebkitMaskImage: image,
+    maskImage: image,
+    WebkitMaskSize: size,
+    maskSize: size,
+    WebkitMaskPosition: position,
+    maskPosition: position,
+    WebkitMaskRepeat: "no-repeat",
+    maskRepeat: "no-repeat",
+  };
+}
+
+export function gridAreaStyle(footprint: PlacementFootprint): {
+  gridColumn: string;
+  gridRow: string;
+} {
+  return {
+    gridColumn: `${footprint.minCol + 1} / ${footprint.maxCol + 2}`,
+    gridRow: `${footprint.minRow + 1} / ${footprint.maxRow + 2}`,
   };
 }
 

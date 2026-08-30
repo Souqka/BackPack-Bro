@@ -1,0 +1,23 @@
+"use client";
+
+import { PlacedItem } from "@/components/optimizer/placed-item";
+import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
+import type { OptimizedLayout } from "@/lib/optimizer/api/types.ts";
+
+export function ItemLayer({
+  layout,
+  catalog,
+}: {
+  layout: OptimizedLayout;
+  catalog: Map<string, CatalogItemView>;
+}) {
+  return (
+    <>
+      {layout.items.map((placement) => {
+        const item = catalog.get(placement.itemId);
+        if (!item) return null;
+        return <PlacedItem key={placement.instanceId} placement={placement} item={item} />;
+      })}
+    </>
+  );
+}
