@@ -69,6 +69,12 @@ export interface OptimizedLayoutResult {
   score: OptimizedScore;
   complete: boolean;
   signature: string;
+  /**
+   * Aggregated normalized effects from placed Bags' catalog `abilities.initial`.
+   * Separate from `score.activeStats` (star-activated Item effects).
+   * Optional for backward compatibility with older serialized fixtures.
+   */
+  bagBonuses?: OptimizedActiveStat[];
 }
 
 export interface OptimizeInventoryExecution {

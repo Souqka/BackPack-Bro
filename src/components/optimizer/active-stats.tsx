@@ -21,13 +21,28 @@ const STAT_ICONS: Record<string, string> = {
   stun: "💫",
 };
 
-export function ActiveStats({ stats }: { stats: OptimizedActiveStat[] }) {
+function formatValue(value: number): string {
+  return value > 0 ? `+${value}` : String(value);
+}
+
+export function ActiveStats({
+  stats,
+  activatedStars,
+}: {
+  stats: OptimizedActiveStat[];
+  activatedStars?: number;
+}) {
   return (
     <Card data-testid="active-stats">
       <CardHeader>
         <CardTitle>Active Stats</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-2">
+        {activatedStars !== undefined ? (
+          <p className="text-sm" data-testid="activated-stars">
+            ★ Activated Stars: {activatedStars}
+          </p>
+        ) : null}
         {stats.length === 0 ? (
           <p className="text-sm text-muted-foreground" data-testid="active-stats-empty">
             No activated star effects in this layout.
@@ -44,7 +59,7 @@ export function ActiveStats({ stats }: { stats: OptimizedActiveStat[] }) {
                 <span aria-hidden>{STAT_ICONS[stat.id] ?? "✦"}</span>
                 <span>{stat.name}</span>
                 {stat.value !== undefined ? (
-                  <span className="tabular-nums text-muted-foreground">{stat.value}</span>
+                  <span className="tabular-nums text-muted-foreground">{formatValue(stat.value)}</span>
                 ) : null}
               </li>
             ))}

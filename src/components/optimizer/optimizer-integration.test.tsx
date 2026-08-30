@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { ActiveStats } from "./active-stats.tsx";
+import { BagBonuses } from "./bag-bonuses.tsx";
 import { BackpackGrid } from "./backpack-grid.tsx";
 import { ResultList } from "./result-list.tsx";
 import { ResultSummary } from "./result-summary.tsx";
@@ -9,7 +10,7 @@ import { TooltipProvider } from "../ui/tooltip.tsx";
 import { optimizeInventory } from "../../lib/optimizer/api/service.ts";
 import { loadProductionCatalog } from "../../lib/optimizer/load-catalog.ts";
 import { catalogViewFromItems } from "../../lib/ui/catalog-project.ts";
-import { optimizerReducer, initialOptimizerState, selectedLayout } from "../../lib/ui/optimizer-state.ts";
+import { optimizerReducer, initialOptimizerState, selectedLayout, defaultGridViewOptions } from "../../lib/ui/optimizer-state.ts";
 
 const catalog = loadProductionCatalog();
 const views = catalogViewFromItems(catalog.values());
@@ -149,7 +150,7 @@ describe("optimizer UI integration", () => {
     }
   });
 
-  it("Bags-only toggle hides items without changing the optimizer result", () => {
+  it("Items layer toggle hides items without changing the optimizer result", () => {
     const result = optimizeInventory(
       {
         bagItemIds: ["warrior_backpack", "medium_bag"],
@@ -162,12 +163,14 @@ describe("optimizer UI integration", () => {
     if (!result.ok) return;
     let state = optimizerReducer(initialOptimizerState, { type: "OPTIMIZE_FINISHED", result });
     const scoreBefore = selectedLayout(state)?.score.structuralScore;
-    state = optimizerReducer(state, { type: "SET_BAGS_ONLY", bagsOnly: true });
+    state = optimizerReducer(state, { type: "SET_VIEW_OPTION", option: "showItems", value: false });
     expect(state.result).toBe(result);
+    expect(state.view.showBags).toBe(true);
+    expect(state.view.showItemOutlines).toBe(true);
     expect(selectedLayout(state)?.score.structuralScore).toBe(scoreBefore);
     const hidden = renderToStaticMarkup(
       <TooltipProvider>
-        <BackpackGrid layout={result.layout} catalog={views} bagsOnly={state.bagsOnly} />
+        <BackpackGrid layout={result.layout} catalog={views} view={state.view} />
       </TooltipProvider>,
     );
     expect(hidden).not.toContain("placed-item-");
@@ -190,7 +193,11 @@ describe("optimizer UI integration", () => {
     if (!result.ok) return;
     const html = renderToStaticMarkup(
       <TooltipProvider>
-        <BackpackGrid layout={result.layout} catalog={views} bagsOnly />
+        <BackpackGrid
+          layout={result.layout}
+          catalog={views}
+          view={{ ...defaultGridViewOptions, showItems: false }}
+        />
       </TooltipProvider>,
     );
     expect(html).toContain('data-instance-id="bag-0"');
@@ -239,11 +246,11 @@ describe("optimizer UI integration", () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     let state = optimizerReducer(initialOptimizerState, { type: "OPTIMIZE_FINISHED", result });
-    state = optimizerReducer(state, { type: "SET_BAGS_ONLY", bagsOnly: true });
+    state = optimizerReducer(state, { type: "SET_VIEW_OPTION", option: "showItems", value: false });
     const selected = selectedLayout(state)!;
     const html = renderToStaticMarkup(
       <TooltipProvider>
-        <BackpackGrid layout={selected.layout} catalog={views} bagsOnly />
+        <BackpackGrid layout={selected.layout} catalog={views} view={state.view} />
         <ActiveStats stats={selected.score.activeStats ?? []} />
         <UnplacedItems items={selected.layout.unplacedItems} catalog={views} />
       </TooltipProvider>,
@@ -253,6 +260,31 @@ describe("optimizer UI integration", () => {
     if (selected.layout.unplacedItems.length > 0) {
       expect(html).toContain('data-testid="unplaced-items"');
       expect(html).toContain(`data-instance-id="${selected.layout.unplacedItems[0]!.instanceId}"`);
+    }
+  });
+
+  it("Backpack Bonuses come from the serialized DTO and stay separate from Active Stats", () => {
+    const result = optimizeInventory(
+      {
+        bagItemIds: ["warrior_backpack", "medium_bag"],
+        itemIds: ["adamantite_bar", "adamantite_bar", "starbloom", "starbloom"],
+        options: { quality: "fast", resultCount: 1 },
+      },
+      catalog,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const selected = result.results[0]!;
+    expect(selected.bagBonuses).toBeDefined();
+    const bonuses = renderToStaticMarkup(<BagBonuses bonuses={selected.bagBonuses ?? []} />);
+    const stats = renderToStaticMarkup(<ActiveStats stats={selected.score.activeStats ?? []} />);
+    expect(stats).toContain('data-testid="active-stats"');
+    expect(bonuses).not.toContain('data-testid="active-stats"');
+    if ((selected.bagBonuses?.length ?? 0) > 0) {
+      expect(bonuses).toContain('data-testid="bag-bonuses"');
+      expect(bonuses).toContain("data-stat-id=");
+    } else {
+      expect(bonuses).toContain('data-testid="bag-bonuses-empty"');
     }
   });
 });

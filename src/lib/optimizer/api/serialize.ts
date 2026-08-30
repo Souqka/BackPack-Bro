@@ -10,6 +10,7 @@ import type { PlacementScore } from "../../scoring/types.ts";
 import type { ItemToPlace, PlacedItem } from "../types.ts";
 import type { PlacedBag } from "../bags/types.ts";
 import { extractActiveStats } from "./active-stats.ts";
+import { extractBagBonuses } from "./bag-bonuses.ts";
 import type { Item } from "../../inventory/types.ts";
 import type {
   OptimizedInstance,
@@ -97,6 +98,7 @@ function toLayoutResult(
       unplacedBags: unplacedBags.map(toInstance),
     },
     score: toScore(score, layout, catalog, rows, cols),
+    bagBonuses: extractBagBonuses(layout, catalog),
     complete,
     signature,
   };

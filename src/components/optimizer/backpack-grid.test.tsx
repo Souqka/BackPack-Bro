@@ -2,15 +2,21 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { TooltipProvider } from "../ui/tooltip.tsx";
 import { ActiveStats } from "./active-stats.tsx";
+import { BagBonuses } from "./bag-bonuses.tsx";
 import { BackpackGrid } from "./backpack-grid.tsx";
 import { ResultList } from "./result-list.tsx";
 import { ResultSummary } from "./result-summary.tsx";
 import { UnplacedItems } from "./unplaced-items.tsx";
+import { ViewToggles } from "./view-toggles.tsx";
 import { loadProductionCatalog } from "../../lib/optimizer/load-catalog.ts";
 import { catalogViewFromItems } from "../../lib/ui/catalog-project.ts";
+import { defaultGridViewOptions, type GridViewOptions } from "../../lib/ui/optimizer-state.ts";
 import type { OptimizedLayoutResult, OptimizeInventorySuccess } from "../../lib/optimizer/api/types.ts";
 
 const catalog = catalogViewFromItems(loadProductionCatalog().values());
+const itemsOff: GridViewOptions = { ...defaultGridViewOptions, showItems: false };
+const bagsOff: GridViewOptions = { ...defaultGridViewOptions, showBags: false };
+const outlinesOff: GridViewOptions = { ...defaultGridViewOptions, showItemOutlines: false };
 
 const layoutResult: OptimizedLayoutResult = {
   layout: {
@@ -63,7 +69,7 @@ describe("BackpackGrid", () => {
     expect(html).not.toContain("grid-column:");
   });
 
-  it("does not change board geometry when Bags only is enabled", () => {
+  it("does not change board geometry when Items are hidden", () => {
     const shown = renderToStaticMarkup(
       <TooltipProvider>
         <BackpackGrid layout={layoutResult.layout} catalog={catalog} />
@@ -71,7 +77,7 @@ describe("BackpackGrid", () => {
     );
     const hidden = renderToStaticMarkup(
       <TooltipProvider>
-        <BackpackGrid layout={layoutResult.layout} catalog={catalog} bagsOnly />
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} view={itemsOff} />
       </TooltipProvider>,
     );
     const shownBoard = shown.match(/data-testid="backpack-grid"[^>]*/)?.[0] ?? "";
@@ -197,13 +203,13 @@ describe("BackpackGrid", () => {
     expect(html).toContain("hsla(");
   });
 
-  it("hides items and item stars in bags-only mode while keeping bags and occupancy metadata", () => {
+  it("hides items and item stars when the Items layer is off while keeping bags and occupancy metadata", () => {
     const html = renderToStaticMarkup(
       <TooltipProvider>
-        <BackpackGrid layout={layoutResult.layout} catalog={catalog} bagsOnly />
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} view={itemsOff} />
       </TooltipProvider>,
     );
-    expect(html).toContain('data-bags-only="true"');
+    expect(html).toContain('data-show-items="false"');
     expect(html).toContain('data-testid="bag-footprint-bag-0"');
     expect(html).not.toContain("placed-item-");
     expect(html).not.toContain("star-marker");
@@ -234,6 +240,184 @@ describe("BackpackGrid", () => {
     expect(html).toContain('data-testid="placed-item-item-1"');
     expect([...html.matchAll(/data-testid="placed-item-item-/g)]).toHaveLength(2);
     expect([...html.matchAll(/<img\b/g)]).toHaveLength(2);
+  });
+});
+
+describe("grid hover", () => {
+  const duplicateBars = {
+    rows: 6,
+    cols: 9,
+    bags: [{ instanceId: "bag-0", itemId: "medium_bag", row: 0, col: 0, rotation: 0 }],
+    items: [
+      { instanceId: "bar-a", itemId: "adamantite_bar", row: 0, col: 0, rotation: 0 },
+      { instanceId: "bar-b", itemId: "adamantite_bar", row: 1, col: 0, rotation: 0 },
+    ],
+    unplacedItems: [],
+    unplacedBags: [],
+  };
+
+  it("hides item names and stars until an instance is hovered", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={duplicateBars} catalog={catalog} />
+      </TooltipProvider>,
+    );
+    expect(html).not.toContain('data-testid="item-name-label"');
+    expect(html).not.toContain("star-marker");
+    expect(html).not.toContain('data-testid="hover-stars"');
+  });
+
+  it("shows the hovered instance name and only that instance's stars", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={duplicateBars} catalog={catalog} hoveredInstanceId="bar-a" />
+      </TooltipProvider>,
+    );
+    expect(html).toContain('data-testid="item-name-label"');
+    expect(html).toContain("Adamantite Bar");
+    expect(html).toContain('data-instance-id="bar-a"');
+    expect(html).toContain('data-star-instance="bar-a"');
+    expect(html).not.toContain('data-star-instance="bar-b"');
+    expect(html).toContain('data-hovered="true"');
+    const hovered = html.match(/data-testid="placed-item-bar-a"[^>]*/)?.[0] ?? "";
+    const other = html.match(/data-testid="placed-item-bar-b"[^>]*/)?.[0] ?? "";
+    expect(hovered).toContain('data-hovered="true"');
+    expect(other).toContain('data-hovered="false"');
+  });
+
+  it("hovers duplicate itemIds independently by instanceId", () => {
+    const hoverA = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={duplicateBars} catalog={catalog} hoveredInstanceId="bar-a" />
+      </TooltipProvider>,
+    );
+    const hoverB = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={duplicateBars} catalog={catalog} hoveredInstanceId="bar-b" />
+      </TooltipProvider>,
+    );
+    expect(hoverA).toContain('data-star-instance="bar-a"');
+    expect(hoverA).not.toContain('data-star-instance="bar-b"');
+    expect(hoverB).toContain('data-star-instance="bar-b"');
+    expect(hoverB).not.toContain('data-star-instance="bar-a"');
+    expect(hoverA.match(/data-testid="item-name-label"[^>]*data-instance-id="bar-a"/)).not.toBeNull();
+    expect(hoverB.match(/data-testid="item-name-label"[^>]*data-instance-id="bar-b"/)).not.toBeNull();
+  });
+
+  it("disables item hover when the Items layer is off", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid
+          layout={duplicateBars}
+          catalog={catalog}
+          view={itemsOff}
+          hoveredInstanceId="bar-a"
+        />
+      </TooltipProvider>,
+    );
+    expect(html).not.toContain("placed-item-");
+    expect(html).not.toContain('data-testid="item-name-label"');
+    expect(html).not.toContain("star-marker");
+  });
+});
+
+describe("grid layers", () => {
+  it("renders independent View toggles without mixing layer flags", () => {
+    const html = renderToStaticMarkup(
+      <ViewToggles view={{ showItems: true, showBags: false, showItemOutlines: true }} onChange={() => undefined} />,
+    );
+    expect(html).toContain('data-testid="view-toggle-items"');
+    expect(html).toContain('data-testid="view-toggle-bags"');
+    expect(html).toContain('data-testid="view-toggle-outlines"');
+    const items = html.match(/data-testid="view-toggle-items"[^>]*/)?.[0] ?? "";
+    const bags = html.match(/data-testid="view-toggle-bags"[^>]*/)?.[0] ?? "";
+    const outlines = html.match(/data-testid="view-toggle-outlines"[^>]*/)?.[0] ?? "";
+    expect(items).toContain('data-state="on"');
+    expect(bags).toContain('data-state="off"');
+    expect(outlines).toContain('data-state="on"');
+  });
+  it("hides the Items layer independently of Bags and outlines", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} view={itemsOff} />
+      </TooltipProvider>,
+    );
+    expect(html).not.toContain('data-testid="item-layer"');
+    expect(html).toContain('data-testid="bag-layer"');
+    expect(html).toContain('data-testid="item-outline-layer"');
+    expect(html).toContain('data-show-items="false"');
+    expect(html).toContain('data-show-bags="true"');
+    expect(html).toContain('data-show-outlines="true"');
+  });
+
+  it("hides the Bags layer independently of Items and outlines", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} view={bagsOff} />
+      </TooltipProvider>,
+    );
+    expect(html).not.toContain('data-testid="bag-layer"');
+    expect(html).toContain('data-testid="item-layer"');
+    expect(html).toContain('data-testid="item-outline-layer"');
+    expect(html).toContain('data-show-bags="false"');
+    expect(html).toContain('data-show-items="true"');
+  });
+
+  it("hides item outlines independently of Items and Bags", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} view={outlinesOff} />
+      </TooltipProvider>,
+    );
+    expect(html).not.toContain('data-testid="item-outline-layer"');
+    expect(html).toContain('data-testid="item-layer"');
+    expect(html).toContain('data-testid="bag-layer"');
+    expect(html).toContain('data-show-outlines="false"');
+  });
+});
+
+describe("item perimeter rendering", () => {
+  it("draws one outer perimeter for an L-shaped item without boxing every cell", () => {
+    const layout = {
+      rows: 6,
+      cols: 9,
+      bags: [],
+      items: [{ instanceId: "item-cat", itemId: "black_cat", row: 0, col: 0, rotation: 0 }],
+      unplacedItems: [],
+      unplacedBags: [],
+    };
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layout} catalog={catalog} />
+      </TooltipProvider>,
+    );
+    expect(html).toContain('data-testid="item-outline-item-cat"');
+    const outline = html.match(/data-testid="item-outline-item-cat"[^>]*/)?.[0] ?? "";
+    expect(outline).toContain('data-edge-count="8"');
+    expect([...html.matchAll(/data-edge="/g)]).toHaveLength(8);
+  });
+});
+
+describe("hover stars", () => {
+  it("centers star markers on the star cell at two-thirds of cell size", () => {
+    const layout = {
+      rows: 6,
+      cols: 9,
+      bags: [],
+      items: [{ instanceId: "bar-a", itemId: "adamantite_bar", row: 2, col: 3, rotation: 0 }],
+      unplacedItems: [],
+      unplacedBags: [],
+    };
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layout} catalog={catalog} hoveredInstanceId="bar-a" />
+      </TooltipProvider>,
+    );
+    expect(html).toContain('data-testid="star-marker"');
+    expect(html).toContain("calc(var(--cell-size) * 0.66)");
+    expect(html).toContain("translate(-50%, -50%)");
+    expect(html).toContain("calc(var(--cell-size) * ");
+    expect(html).toContain(" + var(--cell-size) * 0.5)");
   });
 });
 
@@ -299,5 +483,20 @@ describe("result presentation", () => {
     expect(firstHtml).not.toContain("Mana");
     expect(secondHtml).toContain("Mana");
     expect(secondHtml).not.toContain("Armor");
+  });
+
+  it("renders Backpack Bonuses separately from Active Stats", () => {
+    const withBonuses = renderToStaticMarkup(
+      <BagBonuses bonuses={[{ id: "armor", name: "Armor", value: 2 }]} />,
+    );
+    const empty = renderToStaticMarkup(<BagBonuses bonuses={[]} />);
+    expect(withBonuses).toContain('data-testid="bag-bonuses"');
+    expect(withBonuses).toContain("Backpack Bonuses");
+    expect(withBonuses).toContain("Armor");
+    expect(withBonuses).toContain("+2");
+    expect(withBonuses).not.toContain("Active Stats");
+    expect(empty).toContain('data-testid="bag-bonuses-empty"');
+    expect(empty).toContain("No active backpack bonuses");
+    expect(empty).not.toContain('data-testid="bag-bonuses"');
   });
 });

@@ -142,6 +142,104 @@ export function cellBoxStyle(row: number, col: number): Record<string, string> {
   };
 }
 
+/** Star marker centered on a geometry cell, independent of the item image bbox. */
+export function starCellCenterStyle(row: number, col: number): Record<string, string> {
+  return {
+    position: "absolute",
+    top: `calc(var(--cell-size) * ${row} + var(--cell-size) * 0.5)`,
+    left: `calc(var(--cell-size) * ${col} + var(--cell-size) * 0.5)`,
+    width: "calc(var(--cell-size) * 0.66)",
+    height: "calc(var(--cell-size) * 0.66)",
+    transform: "translate(-50%, -50%)",
+  };
+}
+
+export type PerimeterSide = "top" | "bottom" | "left" | "right";
+
+export interface PerimeterEdge {
+  row: number;
+  col: number;
+  side: PerimeterSide;
+}
+
+export function occupancyKey(row: number, col: number): string {
+  return `${row}:${col}`;
+}
+
+/**
+ * Outer perimeter of occupied cells. Shared edges between neighboring
+ * occupied cells are omitted so L-shapes and lines get one outline.
+ */
+export function perimeterEdges(cells: ReadonlyArray<{ row: number; col: number }>): PerimeterEdge[] {
+  const occupied = new Set(cells.map((cell) => occupancyKey(cell.row, cell.col)));
+  const edges: PerimeterEdge[] = [];
+  for (const cell of cells) {
+    if (!occupied.has(occupancyKey(cell.row - 1, cell.col))) {
+      edges.push({ row: cell.row, col: cell.col, side: "top" });
+    }
+    if (!occupied.has(occupancyKey(cell.row + 1, cell.col))) {
+      edges.push({ row: cell.row, col: cell.col, side: "bottom" });
+    }
+    if (!occupied.has(occupancyKey(cell.row, cell.col - 1))) {
+      edges.push({ row: cell.row, col: cell.col, side: "left" });
+    }
+    if (!occupied.has(occupancyKey(cell.row, cell.col + 1))) {
+      edges.push({ row: cell.row, col: cell.col, side: "right" });
+    }
+  }
+  return edges;
+}
+
+/** Edge segment inside a footprint box whose origin is (originRow, originCol). */
+export function perimeterEdgeStyle(
+  edge: PerimeterEdge,
+  originRow = 0,
+  originCol = 0,
+): Record<string, string> {
+  const localRow = edge.row - originRow;
+  const localCol = edge.col - originCol;
+  const thickness = "calc(var(--cell-size) * 0.06)";
+  const base: Record<string, string> = {
+    position: "absolute",
+    pointerEvents: "none",
+    backgroundColor: "rgba(250, 250, 250, 0.82)",
+  };
+  switch (edge.side) {
+    case "top":
+      return {
+        ...base,
+        top: `calc(var(--cell-size) * ${localRow})`,
+        left: `calc(var(--cell-size) * ${localCol})`,
+        width: "var(--cell-size)",
+        height: thickness,
+      };
+    case "bottom":
+      return {
+        ...base,
+        top: `calc(var(--cell-size) * ${localRow} + var(--cell-size) - var(--cell-size) * 0.06)`,
+        left: `calc(var(--cell-size) * ${localCol})`,
+        width: "var(--cell-size)",
+        height: thickness,
+      };
+    case "left":
+      return {
+        ...base,
+        top: `calc(var(--cell-size) * ${localRow})`,
+        left: `calc(var(--cell-size) * ${localCol})`,
+        width: thickness,
+        height: "var(--cell-size)",
+      };
+    case "right":
+      return {
+        ...base,
+        top: `calc(var(--cell-size) * ${localRow})`,
+        left: `calc(var(--cell-size) * ${localCol} + var(--cell-size) - var(--cell-size) * 0.06)`,
+        width: thickness,
+        height: "var(--cell-size)",
+      };
+  }
+}
+
 export function localCellBoxStyle(localRow: number, localCol: number): Record<string, string> {
   return {
     position: "absolute",
