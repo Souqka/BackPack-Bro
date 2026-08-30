@@ -253,10 +253,15 @@ describe("starCellCenterStyle", () => {
     })!;
     expect(at0.stars.length).toBeGreaterThan(0);
     expect(at90.stars.length).toBe(at0.stars.length);
-    const style0 = starCellCenterStyle(at0.stars[0]!.row, at0.stars[0]!.col);
-    const style90 = starCellCenterStyle(at90.stars[0]!.row, at90.stars[0]!.col);
-    expect(style0.width).toBe(style90.width);
-    expect(style0.height).toBe("calc(var(--cell-size) * 0.66)");
-    expect(`${style0.top}:${style0.left}`).not.toBe(`${style90.top}:${style90.left}`);
+    const keys0 = at0.stars.map((star) => `${star.row}:${star.col}`).sort();
+    const keys90 = at90.stars.map((star) => `${star.row}:${star.col}`).sort();
+    expect(keys0).not.toEqual(keys90);
+    for (const star of [...at0.stars, ...at90.stars]) {
+      const style = starCellCenterStyle(star.row, star.col);
+      expect(style.top).toBe(`calc(var(--cell-size) * ${star.row} + var(--cell-size) * 0.5)`);
+      expect(style.left).toBe(`calc(var(--cell-size) * ${star.col} + var(--cell-size) * 0.5)`);
+      expect(style.width).toBe("calc(var(--cell-size) * 0.66)");
+      expect(style.transform).toBe("translate(-50%, -50%)");
+    }
   });
 });

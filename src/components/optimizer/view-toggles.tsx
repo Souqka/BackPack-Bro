@@ -29,6 +29,7 @@ export function ViewToggles({
             onPressedChange={(pressed) => onChange(option.key, pressed)}
             aria-label={option.label}
             data-testid={option.testId}
+            data-pressed={view[option.key] ? "true" : "false"}
           >
             {option.label}
           </Toggle>

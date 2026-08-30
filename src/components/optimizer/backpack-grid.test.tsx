@@ -332,9 +332,9 @@ describe("grid layers", () => {
     const items = html.match(/data-testid="view-toggle-items"[^>]*/)?.[0] ?? "";
     const bags = html.match(/data-testid="view-toggle-bags"[^>]*/)?.[0] ?? "";
     const outlines = html.match(/data-testid="view-toggle-outlines"[^>]*/)?.[0] ?? "";
-    expect(items).toContain('data-state="on"');
-    expect(bags).toContain('data-state="off"');
-    expect(outlines).toContain('data-state="on"');
+    expect(items).toContain('data-pressed="true"');
+    expect(bags).toContain('data-pressed="false"');
+    expect(outlines).toContain('data-pressed="true"');
   });
   it("hides the Items layer independently of Bags and outlines", () => {
     const html = renderToStaticMarkup(
