@@ -42,8 +42,8 @@ export function BackpackCell({
       aria-label={labelParts.join(". ")}
       className={cn(
         "relative aspect-square overflow-hidden rounded-[3px] border border-zinc-800 bg-zinc-950",
-        bag && "bg-amber-950/70 border-amber-800/70",
-        item && "border-sky-700/80",
+        bag && "bg-amber-800/45 border-amber-500/80",
+        item && "border-sky-400/80 bg-sky-950/60",
       )}
     >
       {bagInfo?.icon && bag?.origin ? (

@@ -35,8 +35,11 @@ export function BackpackGrid({
       data-testid="backpack-grid"
       data-rows={rows}
       data-cols={cols}
-      className={cn("grid w-full max-w-xl gap-0.5 rounded-lg border border-border bg-zinc-900 p-2")}
-      style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+      className={cn("grid w-full min-w-0 max-w-xl gap-0.5 rounded-lg border border-border bg-zinc-900 p-2")}
+      style={{
+        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+      }}
     >
       {grid.flatMap((line) =>
         line.map((cell) => (
