@@ -6,6 +6,13 @@
 
 ## Запуск
 
+После скачивания репозитория запустите файл в корне — он поставит зависимости, поднимет локальный сервер и откроет страницу в браузере:
+
+- Windows: дважды щёлкните `start.bat`
+- macOS / Linux: `./start.sh`
+
+Страница: [http://localhost:3000](http://localhost:3000). Нужен [Node.js 20+](https://nodejs.org/).
+
 ```bash
 npm install
 npm test
