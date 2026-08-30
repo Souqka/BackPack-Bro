@@ -36,6 +36,7 @@ export function compareLayoutQuality(result: RankedLayout, reference: RankedLayo
       reference.score.effectCoverage.normalizedEffects - result.score.effectCoverage.normalizedEffects,
     placedGap: reference.state.items.items.length - result.state.items.items.length,
     completeGap: Number(reference.complete) - Number(result.complete),
+    occupiedGap: reference.score.breakdown.occupiedCells - result.score.breakdown.occupiedCells,
     signatureTieOnly: relation === "equal" && result.signature !== reference.signature,
   };
 }

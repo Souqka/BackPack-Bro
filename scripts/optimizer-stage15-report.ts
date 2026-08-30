@@ -24,7 +24,7 @@ function fmtScore(value: number): string {
 
 function fmtGap(gap: QualityComparison | null): string {
   if (!gap) return "n/a";
-  return `${gap.relation} scoreΔ=${fmtScore(gap.scoreGap)} starΔ=${gap.starGap} completeΔ=${gap.completeGap}`;
+  return `${gap.relation} scoreΔ=${fmtScore(gap.scoreGap)} starΔ=${gap.starGap} completeΔ=${gap.completeGap} occΔ=${gap.occupiedGap}`;
 }
 
 function yesNo(value: boolean | null | undefined): string {

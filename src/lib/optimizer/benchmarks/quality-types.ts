@@ -47,6 +47,7 @@ export interface QualityComparison {
   coverageGap: number;
   placedGap: number;
   completeGap: number;
+  occupiedGap: number;
   /**
    * true, если production ranking различает только canonical signature,
    * а gameplay-качество (isStrictlyBetterLayout) одинаковое.

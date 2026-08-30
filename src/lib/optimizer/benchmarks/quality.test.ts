@@ -37,6 +37,16 @@ describe("compareLayoutQuality", () => {
     expect(gap.scoreGap).toBe(2);
     expect(gap.starGap).toBe(1);
     expect(gap.placedGap).toBe(0);
+    expect(gap.occupiedGap).toBe(0);
+  });
+
+  it("occupied cells различают качество при равном score", () => {
+    const denser = stubRankedLayout({ complete: true, score: 0, placed: 1, occupied: 4, signature: "d" });
+    const sparser = stubRankedLayout({ complete: true, score: 0, placed: 1, occupied: 2, signature: "s" });
+    const gap = compareLayoutQuality(sparser, denser);
+    expect(gap.relation).toBe("worse");
+    expect(gap.scoreGap).toBe(0);
+    expect(gap.occupiedGap).toBe(2);
   });
 
   it("равные layout определяются как equal", () => {

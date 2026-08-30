@@ -35,8 +35,8 @@ const QUALITY_CASE_META: Record<string, CaseMeta> = {
     purpose: "L-shape и асимметричная Star: чувствительность к rotation/якорям, не к ширине Bags.",
   },
   "D-many-positions": {
-    categories: ["beam_width_sensitive", "dense_geometry"],
-    purpose: "Много мелких якорей в Bottom Trawl: Beam width влияет на отсечение выгодных веток.",
+    categories: ["dense_geometry"],
+    purpose: "Много мелких якорей в Bottom Trawl: плотная геометрия; width-sweep проверяет, есть ли реальная чувствительность.",
   },
   "E-tight-space": {
     categories: ["incomplete", "dfs_feasible"],
