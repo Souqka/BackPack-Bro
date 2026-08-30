@@ -124,6 +124,35 @@ export type {
 } from "./adaptive-types.ts";
 export { runAdaptiveOptimizer } from "./adaptive-search.ts";
 export {
+  DEFAULT_PRODUCTION_QUALITY,
+  DEFAULT_PRODUCTION_RESULT_COUNT,
+  MAX_PRODUCTION_COLS,
+  MAX_PRODUCTION_DURATION_MS,
+  MAX_PRODUCTION_RESULTS,
+  MAX_PRODUCTION_ROWS,
+  optimizeInventory,
+  PRODUCTION_QUALITY_PRESETS,
+  resolveProductionOptions,
+  serializeOptimizerResult,
+  validateOptimizeInventoryInput,
+} from "./api/index.ts";
+export type {
+  OptimizedInstance,
+  OptimizedLayout,
+  OptimizedLayoutResult,
+  OptimizedPlacement,
+  OptimizedScore,
+  OptimizeInventoryError,
+  OptimizeInventoryExecution,
+  OptimizeInventoryFailure,
+  OptimizeInventoryInput,
+  OptimizeInventoryOptions,
+  OptimizeInventoryResult,
+  OptimizeInventorySuccess,
+  ProductionQuality,
+  ResolvedProductionOptions,
+} from "./api/index.ts";
+export {
   bagOccupiedCellKeys,
   bagTopologySimilarity,
   DEFAULT_BAG_SIMILARITY_THRESHOLD,

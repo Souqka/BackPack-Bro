@@ -42,6 +42,7 @@ export {
 } from "./coverage.ts";
 export { buildStage15Report } from "./suites/quality-suite.ts";
 export { buildStage16Report } from "./suites/stage16.ts";
+export { buildStage17Report, STAGE17_CASE_IDS, STAGE17_PRESETS } from "./suites/stage17.ts";
 export { summarizePipeline } from "./incremental-decision.ts";
 export type {
   BenchmarkCategory,
