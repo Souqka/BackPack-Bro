@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { loadProductionCatalog } from "../optimizer/load-catalog.ts";
 import { catalogViewFromItems } from "./catalog-project.ts";
-import { buildGridModel, cellsForPlacement, footprintForPlacement, occupiedMaskStyle } from "./placement-view.ts";
+import { buildGridModel, cellsForPlacement, footprintBoxStyle, footprintForPlacement, occupiedMaskStyle } from "./placement-view.ts";
 
 const catalog = catalogViewFromItems(loadProductionCatalog().values());
 
@@ -90,6 +90,25 @@ describe("footprintForPlacement", () => {
     expect(keys.has("0:1")).toBe(false);
     expect(footprint!.bboxRows * footprint!.bboxCols).toBe(4);
     expect(occupiedMaskStyle(footprint!)?.maskImage?.split(",")).toHaveLength(3);
+  });
+
+  it("sizes the visual box from rotated occupied cells using --cell-size", () => {
+    const bar = catalog.get("adamantite_bar")!;
+    const footprint = footprintForPlacement(bar, {
+      instanceId: "item-0",
+      itemId: "adamantite_bar",
+      row: 2,
+      col: 3,
+      rotation: 0,
+    })!;
+    const box = footprintBoxStyle(footprint);
+    expect(box.position).toBe("absolute");
+    expect(box.top).toBe(`calc(var(--cell-size) * ${footprint.minRow})`);
+    expect(box.left).toBe(`calc(var(--cell-size) * ${footprint.minCol})`);
+    expect(box.width).toBe(`calc(var(--cell-size) * ${footprint.bboxCols})`);
+    expect(box.height).toBe(`calc(var(--cell-size) * ${footprint.bboxRows})`);
+    expect(footprint.bboxCols).toBe(2);
+    expect(footprint.bboxRows).toBe(1);
   });
 });
 

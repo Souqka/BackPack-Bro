@@ -4,7 +4,7 @@ import { loadCatalogView } from "@/lib/ui/catalog-view.ts";
 export default function Page() {
   const catalog = loadCatalogView();
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col gap-4 px-4 py-6 sm:px-6">
+    <div className="mx-auto flex min-h-screen max-w-5xl flex-col gap-4 px-4 py-6 sm:px-6">
       <header className="space-y-1">
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Backpack Brawl</p>
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Optimizer</h1>

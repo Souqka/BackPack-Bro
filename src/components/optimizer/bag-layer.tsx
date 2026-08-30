@@ -5,12 +5,12 @@ import { bagColorForItemId } from "@/lib/ui/bag-color.ts";
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import {
   footprintForPlacement,
-  gridAreaStyle,
+  footprintBoxStyle,
+  localCellBoxStyle,
   occupiedCellKeys,
   type PlacementFootprint,
 } from "@/lib/ui/placement-view.ts";
 import type { OptimizedLayout, OptimizedPlacement } from "@/lib/optimizer/api/types.ts";
-import { cn } from "@/lib/utils";
 
 export function BagLayer({
   layout,
@@ -75,14 +75,10 @@ export function BagFootprint({
       data-instance-id={placement.instanceId}
       data-item-id={placement.itemId}
       data-bag-name={name}
-      className="relative z-[1] min-h-0 min-w-0"
-      style={{
-        ...gridAreaStyle(footprint),
-        display: "grid",
-        gridTemplateColumns: `repeat(${footprint.bboxCols}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${footprint.bboxRows}, minmax(0, 1fr))`,
-        gap: "inherit",
-      }}
+      data-bbox-cols={footprint.bboxCols}
+      data-bbox-rows={footprint.bboxRows}
+      className="pointer-events-none"
+      style={footprintBoxStyle(footprint)}
     >
       {cells.map((cell) => {
         const north = occupied.has(`${cell.row - 1}:${cell.col}`);
@@ -97,10 +93,9 @@ export function BagFootprint({
                 title={name}
                 aria-label={name}
                 data-bag-cell={`${cell.row}:${cell.col}`}
-                className={cn("min-h-0 min-w-0 rounded-[2px]")}
+                className="pointer-events-auto box-border"
                 style={{
-                  gridColumn: cell.localCol + 1,
-                  gridRow: cell.localRow + 1,
+                  ...localCellBoxStyle(cell.localRow, cell.localCol),
                   backgroundColor: color.fill,
                   borderColor: color.border,
                   borderStyle: "solid",
@@ -111,7 +106,12 @@ export function BagFootprint({
                 }}
               />
             </TooltipTrigger>
-            <TooltipContent>{name}</TooltipContent>
+            <TooltipContent
+              side="top"
+              className="bg-zinc-800 px-2 py-0.5 text-xs text-zinc-100"
+            >
+              {name}
+            </TooltipContent>
           </Tooltip>
         );
       })}

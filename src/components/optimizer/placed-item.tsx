@@ -3,7 +3,7 @@
 import type { CatalogItemView } from "@/lib/ui/catalog-types.ts";
 import {
   footprintForPlacement,
-  gridAreaStyle,
+  footprintBoxStyle,
   occupiedMaskStyle,
   type PlacementFootprint,
 } from "@/lib/ui/placement-view.ts";
@@ -47,17 +47,19 @@ function PlacedItemVisual({
       data-min-col={footprint.minCol}
       data-max-row={footprint.maxRow}
       data-max-col={footprint.maxCol}
+      data-bbox-cols={footprint.bboxCols}
+      data-bbox-rows={footprint.bboxRows}
       data-cell-count={footprint.cells.length}
       data-irregular={mask ? "true" : "false"}
-      className="pointer-events-none relative z-[2] min-h-0 min-w-0 overflow-hidden"
-      style={gridAreaStyle(footprint)}
+      className="pointer-events-none overflow-hidden"
+      style={footprintBoxStyle(footprint)}
     >
       {item.icon ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={item.icon}
           alt=""
-          className={cn("h-full w-full object-contain p-0.5")}
+          className={cn("h-full w-full object-contain")}
           style={{
             transform: `rotate(${placement.rotation}deg)`,
             ...mask,

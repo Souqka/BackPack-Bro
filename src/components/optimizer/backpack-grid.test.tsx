@@ -46,6 +46,46 @@ describe("BackpackGrid", () => {
     expect([...html.matchAll(/data-testid="cell-/g)].length).toBe(54);
   });
 
+  it("sizes the board from --cell-size and --grid-cols/--grid-rows, not stretched tracks", () => {
+    const html = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} />
+      </TooltipProvider>,
+    );
+    expect(html).toContain("backpack-board");
+    expect(html).toContain("--grid-cols:9");
+    expect(html).toContain("--grid-rows:6");
+    expect(html).toContain("repeat(9, var(--cell-size))");
+    expect(html).toContain("repeat(6, var(--cell-size))");
+    expect(html).toContain("calc(var(--cell-size) *");
+    expect(html).toContain('data-testid="bag-layer"');
+    expect(html).toContain('data-testid="item-layer"');
+    expect(html).not.toContain("grid-column:");
+  });
+
+  it("does not change board geometry when Bags only is enabled", () => {
+    const shown = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} />
+      </TooltipProvider>,
+    );
+    const hidden = renderToStaticMarkup(
+      <TooltipProvider>
+        <BackpackGrid layout={layoutResult.layout} catalog={catalog} bagsOnly />
+      </TooltipProvider>,
+    );
+    const shownBoard = shown.match(/data-testid="backpack-grid"[^>]*/)?.[0] ?? "";
+    const hiddenBoard = hidden.match(/data-testid="backpack-grid"[^>]*/)?.[0] ?? "";
+    expect(shownBoard).toContain("--grid-cols:9");
+    expect(hiddenBoard).toContain("--grid-cols:9");
+    expect(shownBoard).toContain("--grid-rows:6");
+    expect(hiddenBoard).toContain("--grid-rows:6");
+    expect(shown).toContain("calc(var(--cell-size) *");
+    expect(hidden).toContain("calc(var(--cell-size) *");
+    expect(hidden).not.toContain('data-testid="item-layer"');
+    expect(hidden).toContain('data-testid="bag-layer"');
+  });
+
   it("renders one image per item instance, not one image per occupied cell", () => {
     const layout = {
       rows: 6,

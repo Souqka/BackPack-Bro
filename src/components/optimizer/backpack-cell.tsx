@@ -34,9 +34,7 @@ export function BackpackCell({
       data-bag-rotation={bag?.rotation}
       data-item-rotation={item?.rotation}
       aria-label={labelParts.join(". ")}
-      className={cn(
-        "pointer-events-none relative z-0 aspect-square overflow-hidden rounded-[3px] border border-zinc-800 bg-zinc-950",
-      )}
+      className={cn("pointer-events-none box-border border border-zinc-800 bg-zinc-950")}
     />
   );
 }

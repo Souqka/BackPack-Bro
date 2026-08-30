@@ -36,3 +36,30 @@
     @apply min-h-screen bg-background text-foreground antialiased;
   }
 }
+
+@layer components {
+  .backpack-board {
+    --cell-size: 48px;
+    position: relative;
+    overflow: hidden;
+    width: calc(var(--grid-cols) * var(--cell-size));
+    height: calc(var(--grid-rows) * var(--cell-size));
+  }
+
+  .backpack-layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .backpack-board {
+      --cell-size: 42px;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .backpack-board {
+      --cell-size: 36px;
+    }
+  }
+}
